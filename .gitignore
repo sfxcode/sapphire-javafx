@@ -1,0 +1,9 @@
+.idea*
+*.iml
+project/target
+target
+lib
+out
+.DS_Store
+.gitconfig
+exit
