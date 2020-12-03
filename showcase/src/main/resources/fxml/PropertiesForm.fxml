@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.sfxcode.sapphire.javafx.showcase.controller.form.PropertiesFormController">
+    <children>
+        <TitledPane collapsible="false" layoutX="26.0" layoutY="35.0" prefHeight="319.0" prefWidth="374.0"
+                    text="Properties Form">
+            <content>
+                <AnchorPane fx:id="propPane" prefHeight="292.0" prefWidth="400.0">
+
+                </AnchorPane>
+            </content>
+        </TitledPane>
+        <Label id="person" layoutX="26.0" layoutY="357.0" prefHeight="16.0" prefWidth="535.0" text="Person complete" />
+        <Button layoutX="26.0" layoutY="300.0" mnemonicParsing="false" onAction="#actionChangePerson" text="next random Person" />
+
+    </children>
+</AnchorPane>

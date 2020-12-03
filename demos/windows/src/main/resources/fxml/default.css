@@ -1,0 +1,15 @@
+
+.main {
+    -fx-background-color: #2196F3;
+}
+
+.infoText {
+    -fx-background-color: #c0bc7c;
+    -fx-font-size: 18px;
+}
+
+.smallInfoText {
+    -fx-background-color: #c0bc7c;
+    -fx-font-size: 14px;
+}
+

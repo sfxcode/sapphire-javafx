@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sfxcode.sapphire.javafx.showcase.controller.table.FriendTableController">
+    <children>
+        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <HBox fx:id="searchBox" prefHeight="30.0" spacing="10.0" BorderPane.alignment="CENTER">
+              </HBox>
+            </top>
+            <center>
+                <TableView fx:id="table" BorderPane.alignment="CENTER">
+
+                </TableView>
+            </center>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+         <bottom>
+            <HBox prefHeight="30.0" spacing="10.0" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets left="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <Button mnemonicParsing="false" text="Add Item" onAction="#actionAddItem"/>
+                  <Button mnemonicParsing="false" text="Add Items" onAction="#actionAddItems"/>
+                  <Button mnemonicParsing="false" text="Clear Items" onAction="#actionRemoveAllItems"/>
+                  <Button mnemonicParsing="false" text="Replace Items" onAction="#actionReplaceItems"/>
+               </children>
+            </HBox>
+         </bottom>
+        </BorderPane>
+    </children>
+</AnchorPane>

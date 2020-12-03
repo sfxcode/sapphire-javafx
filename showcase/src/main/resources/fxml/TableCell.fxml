@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.sfxcode.sapphire.javafx.control.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" styleClass="person" AnchorPane.bottomAnchor="0.0"
+            AnchorPane.leftAnchor="0.0"
+            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="com.sfxcode.sapphire.javafx.showcase.controller.control.TableCellController">
+    <children>
+        <BorderPane maxHeight="300" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <center>
+                <TableView fx:id="tableView" BorderPane.alignment="CENTER">
+                    <columns>
+
+                        <TableColumn text="Name">
+                            <cellValueFactory>
+                                <FXTableValueFactory property="name"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn  text="Balance">
+                            <cellValueFactory>
+                                <FXTableValueFactory property="balance" format="#,##0.00" />
+                            </cellValueFactory>
+                            <cellFactory>
+                                <FXTableCellFactory alignment="right"/>
+                            </cellFactory>
+                        </TableColumn>
+                        <TableColumn  text="Active">
+                            <cellValueFactory>
+                                <FXTableValueFactory property="isActive" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn  text="Checkbox Active">
+                            <cellValueFactory>
+                                <FXTableValueFactory property="isActive" />
+                            </cellValueFactory>
+                            <cellFactory>
+                                <FXTableCellFactory simpleClassName="CheckBoxTableCell" alignment="right"/>
+                            </cellFactory>
+                        </TableColumn>
+                    </columns>
+                </TableView>
+            </center>
+        </BorderPane>
+    </children>
+
+</AnchorPane>
