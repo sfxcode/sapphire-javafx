@@ -20,7 +20,7 @@
 
 <meta name="description" content="sapphire-javafx-docs">
 <link rel="shortcut icon" href="assets/images/favicon.png">
-<title>Sapphire Javafx</title>
+<title>Sapphire JavaFX</title>
 <link rel="stylesheet" href="assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="lib/prettify/prettify.css">
@@ -43,7 +43,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <nav class="md-header-nav md-grid">
 <div class="md-flex">
 <div class="md-flex__cell md-flex__cell--shrink">
-<a href="index.html" title="Sapphire Javafx" class="md-header-nav__button md-logo">
+<a href="index.html" title="Sapphire JavaFX" class="md-header-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
 </div>
@@ -52,7 +52,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 </div>
 <div class="md-flex__cell md-flex__cell--stretch">
 <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-Sapphire Javafx
+Sapphire JavaFX
 </div>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
@@ -107,12 +107,12 @@ sfxcode/sapphire-javafx
 <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
 <label class="md-nav__title md-nav__title--site" for="drawer">
-<a href="index.html" title="Sapphire Javafx" class="md-nav__button md-logo">
+<a href="index.html" title="Sapphire JavaFX" class="md-nav__button md-logo">
 <span class="md-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
-<a href="index.html" title="Sapphire Javafx">
-Sapphire Javafx
+<a href="index.html" title="Sapphire JavaFX">
+Sapphire JavaFX
 </a>
 </label>
 <div class="md-nav__source">
@@ -166,9 +166,10 @@ sfxcode/sapphire-javafx
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="index.html#sapphire-javafx" class="header">Sapphire Javafx</a>
+  <li><a href="index.html#sapphire-javafx" class="header">Sapphire JavaFX</a>
   <ul>
     <li><a href="index.html#cross-build" class="header">Cross Build</a></li>
+    <li><a href="index.html#migrate-from-sapphire-core" class="header">Migrate from sapphire-core</a></li>
     <li><a href="index.html#frameworks" class="header">Frameworks</a></li>
     <li><a href="index.html#maven" class="header">Maven</a></li>
     <li><a href="index.html#licence" class="header">Licence</a></li>
@@ -193,9 +194,10 @@ sfxcode/sapphire-javafx
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="index.html#sapphire-javafx" class="header">Sapphire Javafx</a>
+  <li><a href="index.html#sapphire-javafx" class="header">Sapphire JavaFX</a>
   <ul>
     <li><a href="index.html#cross-build" class="header">Cross Build</a></li>
+    <li><a href="index.html#migrate-from-sapphire-core" class="header">Migrate from sapphire-core</a></li>
     <li><a href="index.html#frameworks" class="header">Frameworks</a></li>
     <li><a href="index.html#maven" class="header">Maven</a></li>
     <li><a href="index.html#licence" class="header">Licence</a></li>
@@ -209,10 +211,18 @@ sfxcode/sapphire-javafx
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#sapphire-javafx" name="sapphire-javafx" class="anchor"><span class="anchor-link"></span></a>Sapphire Javafx</h1>
+<h1><a href="#sapphire-javafx" name="sapphire-javafx" class="anchor"><span class="anchor-link"></span></a>Sapphire JavaFX</h1>
 <p>A JavaFX Application Framework for Scala User. It combines scala programming patterns with MVC for building complex JavaFX Applications.</p>
 <h2><a href="#cross-build" name="cross-build" class="anchor"><span class="anchor-link"></span></a>Cross Build</h2>
 <p>Build and tested against Scala 2.12/2.13 and JDK 11/12</p>
+<h2><a href="#migrate-from-sapphire-core" name="migrate-from-sapphire-core" class="anchor"><span class="anchor-link"></span></a>Migrate from sapphire-core</h2>
+<p>Migration from sapphire-core (and sapphire-extension) by replace:</p>
+<pre><code>sapphire.core (sapphire.extension)
+</code></pre>
+<p>with</p>
+<pre><code>sapphire.javafx
+</code></pre>
+<p>This should make all problems in packages work again.</p>
 <h2><a href="#frameworks" name="frameworks" class="anchor"><span class="anchor-link"></span></a>Frameworks</h2>
 <h3><a href="#javafx" name="javafx" class="anchor"><span class="anchor-link"></span></a>JavaFX</h3>
 <p>Java UI Application Framework as replacement for Swing.</p>
