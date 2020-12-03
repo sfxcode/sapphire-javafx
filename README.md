@@ -4,7 +4,7 @@ A JavaFX Application Framework for Scala User.
 
 ## Documentation
 
-Documentation under [https://sfxcode.github.io/sapphire-core](https://sfxcode.github.io/sapphire-core)
+Documentation under [https://sfxcode.github.io/sapphire-javafx](https://sfxcode.github.io/sapphire-javafx)
 
 ## Migrate from sapphire-core
 
@@ -22,13 +22,13 @@ sapphire.javafx
 
 This should make all problems in packages work again.
 
-## Travis
+## CI
 
-[![Build Status](https://travis-ci.org/sfxcode/sapphire-core.svg?branch=master)](https://travis-ci.org/sfxcode/sapphire-core)
+![Scala CI](https://github.com/sfxcode/sapphire-javafx/workflows/Scala%20CI/badge.svg)
 
 ## Download
 
-[ ![Download](https://api.bintray.com/packages/sfxcode/maven/sapphire-core/images/download.svg) ](https://bintray.com/sfxcode/maven/sapphire-core/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/sfxcode/maven/sapphire-javafx/images/download.svg) ](https://bintray.com/sfxcode/maven/sapphire-javafx/_latestVersion)
 
 ## Giter8 Template
 
@@ -155,7 +155,7 @@ ScalaFX support Scala versions up to 2.12.x
 
 ## maven
 
-sapphire-core is deployed on bintray (jcenter) and maven central.
+sapphire-javafx is deployed on bintray (jcenter) and maven central.
 
 ## Supporters
 
