@@ -126,7 +126,7 @@ lazy val docs = (project in file("docs"))
   .enablePlugins(GhpagesPlugin)
   .settings(
     scalaVersion := "2.13.4",
-    name := "sapphire javafx docs",
+    name := "sapphire-javafx-docs",
     publish / skip := true,
     ghpagesNoJekyll := true,
     git.remoteRepo := "git@github.com:sfxcode/sapphire-javafx.git",

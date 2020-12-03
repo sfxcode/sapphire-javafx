@@ -1,10 +1,27 @@
-# Sapphire Javafx
+# Sapphire JavaFX
 
 A JavaFX  Application Framework for Scala User. It combines scala programming patterns with MVC for building complex JavaFX Applications.
 
 ## Cross Build
 
 Build and tested against Scala 2.12/2.13 and JDK 11/12
+
+## Migrate from sapphire-core
+
+Migration from sapphire-core (and sapphire-extension) by replace:
+
+```
+sapphire.core (sapphire.extension)
+```
+
+with
+
+```
+sapphire.javafx
+```
+
+This should make all problems in packages work again.
+
 
 ## Frameworks
 
@@ -33,6 +50,7 @@ Expressions are resolved by EL 3 [Tomcat Expression Language](https://tomcat.apa
 
 Sapphire is published to Bintray and linked to Maven Central.
 
+
 ### Repository
 
 ```
@@ -51,6 +69,8 @@ resolvers += "sfxcode-bintray" at "https://dl.bintray.com/sfxcode/maven"
 ### Demos
 
 Explore demos and Tutorial in project demo directory.
+
+
 
 ## Licence
 
