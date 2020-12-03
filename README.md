@@ -6,6 +6,22 @@ A JavaFX Application Framework for Scala User.
 
 Documentation under [https://sfxcode.github.io/sapphire-core](https://sfxcode.github.io/sapphire-core)
 
+## Migrate from sapphire-core
+
+Migration from sapphire-core (and sapphire-extension) by replace:
+
+```
+sapphire.core (sapphire.extension)
+```
+
+with
+
+```
+sapphire.javafx
+```
+
+This should make all problems in packages work again.
+
 ## Travis
 
 [![Build Status](https://travis-ci.org/sfxcode/sapphire-core.svg?branch=master)](https://travis-ci.org/sfxcode/sapphire-core)
