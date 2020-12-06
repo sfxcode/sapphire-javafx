@@ -1,12 +1,12 @@
 package com.sfxcode.sapphire.javafx.control
 
 import javafx.scene.layout.Pane
-import com.sfxcode.sapphire.javafx.value.{ BeanConversions, FXBean }
+import com.sfxcode.sapphire.javafx.value.{BeanConversions, FXBean}
 import com.sfxcode.sapphire.javafx.filter.DataListFilter
 import com.sfxcode.sapphire.javafx.skin.DataListViewSkin
 import javafx.beans.property._
-import javafx.collections.{ FXCollections, ObservableList }
-import javafx.scene.control.{ Control, Label, ListView, Skin }
+import javafx.collections.{FXCollections, ObservableList}
+import javafx.scene.control.{Control, Label, ListView, Skin}
 import com.sfxcode.sapphire.javafx.CollectionExtensions._
 
 import scala.jdk.CollectionConverters._
@@ -20,26 +20,27 @@ class DataListView[S <: AnyRef] extends Control with BeanConversions {
   val items = new SimpleObjectProperty[ObservableList[FXBean[S]]](
     this,
     "listViewItems",
-    FXCollections.observableArrayList[FXBean[S]]())
+    FXCollections.observableArrayList[FXBean[S]]()
+  )
 
   val listView = new ListView[FXBean[S]]()
 
   val showHeader = new SimpleBooleanProperty(true)
-  val header = new SimpleObjectProperty[Pane](this, "listViewHeader")
+  val header     = new SimpleObjectProperty[Pane](this, "listViewHeader")
 
   val showFooter = new SimpleBooleanProperty(false)
-  val footer = new SimpleObjectProperty[Pane](this, "listViewFooter")
+  val footer     = new SimpleObjectProperty[Pane](this, "listViewFooter")
 
-  val footerLabel = new SimpleObjectProperty[Label](this, "listViewFooterLabel")
+  val footerLabel        = new SimpleObjectProperty[Label](this, "listViewFooterLabel")
   val footerTextProperty = new SimpleStringProperty("%s of %s items")
 
   val cellProperty = new SimpleStringProperty("${_self.toString()}")
 
-  val sortProperty = new SimpleStringProperty("")
+  val sortProperty       = new SimpleStringProperty("")
   val shouldSortProperty = new SimpleBooleanProperty(true)
 
   val filterPromptProperty = new SimpleStringProperty("type to filter")
-  val filter = new SimpleObjectProperty(new DataListFilter[S](this))
+  val filter               = new SimpleObjectProperty(new DataListFilter[S](this))
 
   protected override def createDefaultSkin: Skin[DataListView[S]] =
     new DataListViewSkin[S](this)

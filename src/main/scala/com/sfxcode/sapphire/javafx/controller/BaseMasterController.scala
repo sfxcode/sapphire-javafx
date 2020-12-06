@@ -6,7 +6,7 @@ import com.sfxcode.sapphire.javafx.filter.DataTableFilter
 abstract class BaseMasterController extends DataTableController {
 
   var detailController: Option[BaseDetailController] = None
-  var lastSelected: Int = 0
+  var lastSelected: Int                              = 0
 
   override def initTable(filter: DataTableFilter[R]): Unit = {
     super.initTable(filter)

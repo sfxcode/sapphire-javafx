@@ -4,24 +4,25 @@ import com.sfxcode.sapphire.data.reflect.FieldRegistry
 import com.sfxcode.sapphire.javafx.CollectionExtensions._
 import com.sfxcode.sapphire.javafx.application.DefaultsTo
 import com.sfxcode.sapphire.javafx.value._
-import javafx.collections.{ FXCollections, ObservableList }
+import javafx.collections.{FXCollections, ObservableList}
 
 import scala.jdk.CollectionConverters._
 import scala.reflect.ClassTag
 
 class BeanItems[T <: AnyRef]() {
-  private val itemBuffer = FXCollections.observableArrayList[BeanItem]()
+  private val itemBuffer              = FXCollections.observableArrayList[BeanItem]()
   private var beanItemBean: FXBean[T] = _
 
   def getItems: ObservableList[BeanItem] = itemBuffer
 
   def addItem(
-    key: String,
-    name: String = "",
-    category: String = "",
-    description: String = "",
-    editable: Boolean = true,
-    clazz: Class[_] = EmptyBeanItemClass.ClazzOf): BeanItem = {
+      key: String,
+      name: String = "",
+      category: String = "",
+      description: String = "",
+      editable: Boolean = true,
+      clazz: Class[_] = EmptyBeanItemClass.ClazzOf
+  ): BeanItem = {
     val beanItem = BeanItem(beanItemBean, key, name, category, description, editable, clazz)
     itemBuffer.add(beanItem)
     beanItem

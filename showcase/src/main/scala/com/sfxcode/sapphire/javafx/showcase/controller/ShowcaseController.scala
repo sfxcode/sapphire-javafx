@@ -98,7 +98,7 @@ abstract class ShowcaseController extends ViewController {
       ): Unit = {
         val option = showcaseItems.find(item =>
           item.name == newValue.getValue &&
-            item.group == newValue.parentProperty().get().getValue
+          item.group == newValue.parentProperty().get().getValue
         )
         option.foreach(item => changeShowcaseItem(item))
       }
