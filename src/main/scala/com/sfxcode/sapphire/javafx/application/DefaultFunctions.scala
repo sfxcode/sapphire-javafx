@@ -3,7 +3,7 @@ package com.sfxcode.sapphire.javafx.application
 import java.util.Date
 
 import com.sfxcode.sapphire.data.el.FunctionHelper
-import com.sfxcode.sapphire.javafx.{ ConfigValues, ResourceBundleHolder }
+import com.sfxcode.sapphire.javafx.{ConfigValues, ResourceBundleHolder}
 import com.sfxcode.sapphire.data.FieldProperties.defaultDateConverter
 
 import scala.annotation.varargs
@@ -27,7 +27,8 @@ object DefaultFunctions extends ConfigValues {
       "boolString",
       classOf[Boolean],
       classOf[String],
-      classOf[String])
+      classOf[String]
+    )
     helper.addFunction(SapphireFunctionPrefix, "configString", clazz, "configString", classOf[String])
     helper.addFunction(SapphireFunctionPrefix, "i18n", clazz, "i18n", classOf[String], classOf[Array[Any]])
     helper.addFunction(
@@ -36,7 +37,8 @@ object DefaultFunctions extends ConfigValues {
       classOf[java.lang.String],
       "format",
       classOf[String],
-      classOf[Array[Any]])
+      classOf[Array[Any]]
+    )
     helper
   }
 
@@ -60,7 +62,7 @@ object DefaultFunctions extends ConfigValues {
   def dateString(date: AnyRef): String = {
     println(date)
     val s = date match {
-      case d: java.util.Date => defaultDateConverter.toString(d)
+      case d: java.util.Date     => defaultDateConverter.toString(d)
       case c: java.util.Calendar => defaultDateConverter.toString(c.getTime)
       case c: javax.xml.datatype.XMLGregorianCalendar =>
         defaultDateConverter.toString(c.toGregorianCalendar.getTime)

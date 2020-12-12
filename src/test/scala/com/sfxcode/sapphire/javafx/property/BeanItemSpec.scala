@@ -3,7 +3,7 @@ package com.sfxcode.sapphire.javafx.property
 import java.util
 
 import com.sfxcode.sapphire.javafx.value.FXBean
-import com.sfxcode.sapphire.javafx.test.{ Person, PersonDatabase }
+import com.sfxcode.sapphire.javafx.test.{Person, PersonDatabase}
 import com.typesafe.scalalogging.LazyLogging
 import org.specs2.mutable.Specification
 
@@ -60,7 +60,7 @@ class BeanItemSpec extends Specification with LazyLogging {
       map.put("name", "ABC")
       map.put("age", 42)
       map.put("isActive", true)
-      val person = FXBean(map)
+      val person   = FXBean(map)
       val nameItem = BeanItem(FXBean(Map()), "name", clazz = classOf[String])
       nameItem.getType.toString must be equalTo "class java.lang.String"
       nameItem.bean = person

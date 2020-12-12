@@ -4,7 +4,7 @@ import javafx.fxml.FXML
 
 import com.sfxcode.sapphire.javafx.control.DualDataListView
 import com.sfxcode.sapphire.javafx.showcase.controller.BaseController
-import com.sfxcode.sapphire.javafx.showcase.model.{ PersonDatabase, Friend }
+import com.sfxcode.sapphire.javafx.showcase.model.{Friend, PersonDatabase}
 import com.typesafe.scalalogging.LazyLogging
 
 class DualListFormController extends BaseController with LazyLogging {
@@ -13,12 +13,10 @@ class DualListFormController extends BaseController with LazyLogging {
   @FXML
   var dualDataList: DualDataListView[R] = _
 
-  override def didGainVisibilityFirstTime(): Unit = {
+  override def didGainVisibilityFirstTime(): Unit =
     dualDataList.setItems(PersonDatabase.friends)
-  }
 
-  override def willGainVisibility(): Unit = {
+  override def willGainVisibility(): Unit =
     super.willGainVisibility()
-  }
 
 }

@@ -4,7 +4,7 @@ import javafx.scene.control.SkinBase
 import com.sfxcode.sapphire.javafx.control.FXListCellFactory
 import com.sfxcode.sapphire.javafx.control.DataListView
 import javafx.scene.control._
-import javafx.scene.layout.{ HBox, VBox }
+import javafx.scene.layout.{HBox, VBox}
 class DataListViewSkin[S <: AnyRef](view: DataListView[S]) extends SkinBase[DataListView[S]](view) {
 
   val contentBox = new VBox()

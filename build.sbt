@@ -34,7 +34,7 @@ lazy val demo_login = Project(id = "sapphire-javafx-login", base = file("demos/l
     name := "sapphire-javafx-login",
     description := "Sapphire Login Demo",
     libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-          .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName),
+      .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName),
     libraryDependencies += "ch.qos.logback" % "logback-classic" % LogbackVersion,
     mainClass := Some("com.sfxcode.sapphire.javafx.demo.login.Application")
   )
@@ -48,7 +48,7 @@ lazy val demo_issues = Project(id = "sapphire-javafx-issues", base = file("demos
     name := "sapphire-javafx-issues",
     description := "Sapphire Issues Demo",
     libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-          .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName),
+      .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName),
     libraryDependencies += "ch.qos.logback"                % "logback-classic"        % LogbackVersion,
     libraryDependencies += "org.scalafx"                  %% "scalafx"                % "14-R19",
     libraryDependencies += "javax.enterprise"              % "cdi-api"                % "2.0",
@@ -69,7 +69,7 @@ lazy val tutorial = Project(id = "sapphire-javafx-tutorial", base = file("demos/
     name := "sapphire-javafx-tutorial",
     description := "Sapphire Tutorial",
     libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-          .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName),
+      .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName),
     libraryDependencies += "ch.qos.logback" % "logback-classic" % LogbackVersion,
     mainClass := Some("com.sfxcode.sapphire.javafx.demo.tutorial.Application")
   )
@@ -81,7 +81,7 @@ lazy val windows = Project(id = "sapphire-javafx-windows", base = file("demos/wi
     name := "sapphire-javafx-windows",
     description := "Sapphire Windows",
     libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-          .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName),
+      .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName),
     libraryDependencies += "ch.qos.logback" % "logback-classic" % LogbackVersion,
     mainClass := Some("com.sfxcode.sapphire.javafx.demo.windows.Application")
   )
@@ -94,7 +94,7 @@ lazy val showcase =
       name := "sapphire-javafx-showcase",
       description := "Sapphire JavaFX Showcase",
       libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-            .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName),
+        .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName),
       libraryDependencies += "org.json4s"    %% "json4s-native"   % Json4sVersion,
       libraryDependencies += "ch.qos.logback" % "logback-classic" % LogbackVersion,
       resolvers += "sandec" at "https://sandec.bintray.com/repo",
@@ -117,7 +117,7 @@ lazy val sapphire_extension_scenebuilder = Project(
   description := "Sapphire JavaFX Scenebuilder",
   crossPaths := false,
   libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-        .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName)
+    .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName)
 )
 
 lazy val docs = (project in file("docs"))
@@ -135,7 +135,7 @@ lazy val docs = (project in file("docs"))
 
     },
     (Compile / paradoxMarkdownToHtml / excludeFilter) := (Compile / paradoxMarkdownToHtml / excludeFilter).value ||
-          ParadoxPlugin.InDirectoryFilter((Compile / paradox / sourceDirectory).value / "includes")
+    ParadoxPlugin.InDirectoryFilter((Compile / paradox / sourceDirectory).value / "includes")
   )
 
 val JavaFXVersion = "15.0.1"

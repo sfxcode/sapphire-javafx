@@ -1,6 +1,6 @@
 package com.sfxcode.sapphire.javafx.control
 
-import javafx.scene.control.{ Control, Skin }
+import javafx.scene.control.{Control, Skin}
 
 import com.sfxcode.sapphire.javafx.skin.DualDataListViewSkin
 

@@ -10,24 +10,26 @@ import com.sfxcode.sapphire.javafx.scene.NodeLocator
 import com.typesafe.scalalogging.LazyLogging
 import javafx.beans.property.SimpleObjectProperty
 import javafx.collections.ObservableMap
-import javafx.scene.{ Parent, Scene }
+import javafx.scene.{Parent, Scene}
 import javafx.stage.Stage
 
 case class SceneControllerWillChangeEvent(
-  windowController: WindowController,
-  newController: ViewController,
-  oldController: ViewController)
+    windowController: WindowController,
+    newController: ViewController,
+    oldController: ViewController
+)
 
 case class SceneControllerDidChangeEvent(
-  windowController: WindowController,
-  newController: ViewController,
-  oldController: ViewController)
+    windowController: WindowController,
+    newController: ViewController,
+    oldController: ViewController
+)
 
 abstract class WindowController extends FxmlLoading with NodeLocator with Expressions with LazyLogging {
   val sceneMap: ObservableMap[Parent, Scene] = Map[Parent, Scene]()
 
-  var stageProperty = new SimpleObjectProperty[Stage]()
-  var sceneProperty = new SimpleObjectProperty[Scene]()
+  var stageProperty           = new SimpleObjectProperty[Stage]()
+  var sceneProperty           = new SimpleObjectProperty[Scene]()
   var sceneControllerProperty = new SimpleObjectProperty[ViewController]()
 
   implicit def simpleObjectPropertyToOption[T <: AnyRef](prop: SimpleObjectProperty[T]): Option[T] =
@@ -59,8 +61,10 @@ abstract class WindowController extends FxmlLoading with NodeLocator with Expres
 
   def replaceSceneContent(newController: ViewController, resize: Boolean = true) {
     val oldController = actualSceneController
-    if (newController != null && newController != oldController && newController.canGainVisibility
-      && (oldController == null || oldController.shouldLooseVisibility)) {
+    if (
+      newController != null && newController != oldController && newController.canGainVisibility
+      && (oldController == null || oldController.shouldLooseVisibility)
+    ) {
       if (oldController != null)
         try oldController.willLooseVisibility()
         catch {
@@ -69,7 +73,8 @@ abstract class WindowController extends FxmlLoading with NodeLocator with Expres
       try {
         newController.windowController.set(this)
         newController.willGainVisibility()
-      } catch {
+      }
+      catch {
         case e: Exception => logger.error(e.getMessage, e)
       }
       replaceSceneContentWithNode(newController.rootPane, resize)
@@ -100,10 +105,11 @@ abstract class WindowController extends FxmlLoading with NodeLocator with Expres
 
     val newScene = sceneMap.getOrElse(
       content, {
-      val scene = new Scene(content)
-      sceneMap.put(content, scene)
-      scene
-    })
+        val scene = new Scene(content)
+        sceneMap.put(content, scene)
+        scene
+      }
+    )
 
     stage.setScene(newScene)
     sceneProperty.set(newScene)
