@@ -24,7 +24,7 @@ parallelExecution in Test := false
 val Json4sVersion     = "3.6.10"
 val LogbackVersion    = "1.2.3"
 val DeltaspikeVersion = "1.9.4"
-val IkonliVersion     = "12.0.0"
+val IkonliVersion     = "12.1.0"
 
 addCommandAlias("run-showcase", "sapphire-javafx-showcase/run")
 
