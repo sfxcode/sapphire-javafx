@@ -49,7 +49,7 @@ class BeanItem(
       }
       else {
         val memberInfo = FieldMetaRegistry.fieldMeta(underlying, key)
-        clazz = memberInfo.field.getType
+        clazz = memberInfo.field.get.getType
         classOption = Some(clazz)
       }
     }
