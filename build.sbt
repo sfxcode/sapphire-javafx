@@ -50,7 +50,7 @@ lazy val demo_issues = Project(id = "sapphire-javafx-issues", base = file("demos
     libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
       .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName),
     libraryDependencies += "ch.qos.logback"                % "logback-classic"        % LogbackVersion,
-    libraryDependencies += "org.scalafx"                  %% "scalafx"                % "14-R19",
+    libraryDependencies += "org.scalafx"                  %% "scalafx"                % "15.0.1-R21",
     libraryDependencies += "javax.enterprise"              % "cdi-api"                % "2.0",
     libraryDependencies += "javax.annotation"              % "javax.annotation-api"   % "1.3.2",
     libraryDependencies += "org.apache.openwebbeans"       % "openwebbeans-impl"      % "2.0.17",
