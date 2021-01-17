@@ -173,7 +173,7 @@ libraryDependencies += "org.kordamp.ikonli" % "ikonli-fontawesome-pack" % Ikonli
 
 // extension akka
 
-libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.10" % Provided
+libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.11" % Provided
 
 // extension showcase
 
