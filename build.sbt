@@ -151,7 +151,7 @@ addCommandAlias("run-tutorial", "sapphire-tutorial/run")
 
 // Test
 
-libraryDependencies += "org.specs2" %% "specs2-core" % "4.10.5" % Test
+libraryDependencies += "org.specs2" %% "specs2-core" % "4.10.6" % Test
 
 libraryDependencies += "org.json4s" %% "json4s-native" % Json4sVersion % Test
 
