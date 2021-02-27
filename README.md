@@ -8,9 +8,9 @@ It provides a solid base for Rapid Application Development with JavaFX and Scala
 
 Examples of using [ScalaFX](http://www.scalafx.org/) and [JFoenix](http://www.jfoenix.com/) are provided.
 
-Also there is an example of using it with a CDI Framework ([Deltaspke](https://deltaspike.apache.org/)).
+Also there is an example of using it with a CDI Framework ([Deltasipke](https://deltaspike.apache.org/)).
 
-If you like to try an easy way to setup a desktop app withh scala, give it a try.
+If you like to try an easy way to setup a desktop app with scala, give it a try.
 
 ## Documentation
 
