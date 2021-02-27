@@ -1,7 +1,11 @@
 # Migrations
 
-## 2.0.0 to 2.1.x
+## 2.0.x to sapphire-javafx 1.*
+* replace sapphire.core with sapphire.javafx
 * data handling is extracted to a new project: sapphire-data
+* CDI, ScalaFX usages please follow the exampes in the sapphire-java demo applications
+
+# Migration for old sapphire-core project
 
 ## 1.6.x to 2.0.0
 * CDI dependencies are removed
