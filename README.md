@@ -1,6 +1,16 @@
-# Sapphire
+# Sapphire JavaFX
 
 A JavaFX Application Framework for Scala User.
+
+This project replaces [sapphire-core](https://sfxcode.github.io/sapphire-core) and [sapphire-extension](https://sfxcode.github.io/sapphire-extension).
+
+It provides a solid base for Rapid Application Development with JavaFX and Scala and is a good place for start development.
+
+Examples of using [ScalaFX](http://www.scalafx.org/) and [JFoenix](http://www.jfoenix.com/) are provided.
+
+Also there is an example of using it with a CDI Framework ([Deltaspke](https://deltaspike.apache.org/)).
+
+If you like to try an easy way to setup a desktop app withh scala, give it a try.
 
 ## Documentation
 
