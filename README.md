@@ -81,6 +81,9 @@ usage of multiple window controller
 
 Showcase Demo as visual reference for sapphire-core key concepts.
 
+### JFoenix Demo
+
+[JFoenix Demo](https://github.com/sfxcode/sapphire-jfoenix-demo)
 
 ## Technology Stack
 

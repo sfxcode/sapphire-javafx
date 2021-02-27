@@ -3,7 +3,7 @@ package com.sfxcode.sapphire.javafx.property
 import java.util
 
 import com.sfxcode.sapphire.javafx.value.FXBean
-import com.sfxcode.sapphire.javafx.test.{Friend, Person, PersonDatabase}
+import com.sfxcode.sapphire.javafx.test.{ Friend, Person, PersonDatabase }
 import com.typesafe.scalalogging.LazyLogging
 import org.specs2.mutable.Specification
 import scala.jdk.CollectionConverters._
@@ -16,7 +16,7 @@ class BeanItemsSpec extends Specification with LazyLogging {
     "add Items" in {
 
       val friend: FXBean[Friend] = PersonDatabase.testFriend(2)
-      val beanItems              = BeanItems(friend)
+      val beanItems = BeanItems(friend)
 
       beanItems.addItem("id")
       beanItems.addItem("name")
