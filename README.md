@@ -16,6 +16,12 @@ If you like to try an easy way to setup a desktop app with scala, give it a try.
 
 Documentation under [https://sfxcode.github.io/sapphire-javafx](https://sfxcode.github.io/sapphire-javafx)
 
+## Showcase
+
+A showcase can be found in the showcase folder inside this project.
+
+The showcase show some of the common pattern used by this project.
+
 ## Migrate from sapphire-core
 
 Migration from sapphire-core (and sapphire-extension) by replace:
