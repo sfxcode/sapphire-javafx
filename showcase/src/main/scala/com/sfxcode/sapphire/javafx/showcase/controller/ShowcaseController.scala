@@ -143,7 +143,8 @@ abstract class ShowcaseController extends ViewController {
       val source        = Source.fromURL(item.documentationPath)
       val docs          = source.getLines().mkString("\n")
       val documentation = "# %s - %s\n%s".format(item.group, item.name, docs)
-      val markdown      = new MDFXNode(documentation)
+
+      val markdown = new MDFXNode(documentation)
       markdown.getStylesheets.add(markdownCss)
       markdown.setPadding(new Insets(4))
       documentationBox.getChildren.add(markdown)

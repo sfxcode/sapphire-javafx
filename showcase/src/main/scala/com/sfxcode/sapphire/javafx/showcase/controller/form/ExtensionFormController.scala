@@ -4,7 +4,7 @@ import javafx.fxml.FXML
 import javafx.scene.Node
 import javafx.scene.layout.Pane
 
-import com.sfxcode.sapphire.javafx.value.{FXBean, FXBeanAdapter, KeyBindings}
+import com.sfxcode.sapphire.javafx.value.{ FXBean, FXBeanAdapter, KeyBindings }
 import com.sfxcode.sapphire.javafx.showcase.controller.BaseController
 import com.sfxcode.sapphire.javafx.showcase.model.BookRating
 
@@ -21,7 +21,7 @@ class ExtensionFormController extends BaseController {
   override def didGainVisibilityFirstTime() {
     super.didGainVisibilityFirstTime()
 
-    val bindingList  = List("name", "rating", "pages")
+    val bindingList = List("name", "rating", "pages")
     val formBindings = KeyBindings(bindingList, "form1_")
     formBindings.add(bindingList, "form2_")
     formAdapter.addBindings(formBindings)

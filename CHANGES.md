@@ -2,6 +2,10 @@
 
 ## Versions
 
+### 1.0.2
+* MasterController takes doubleClick action only for TableRow (not TableHeader)
+
+
 ### 1.0.1
 * scala 2.13.5
 * Dependency Updates
