@@ -7,7 +7,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity"
             prefHeight="40.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="com.sfxcode.sapphire.javafx.demo.tutorial.controller.NavigationController">
+            fx:controller="com.sfxcode.sapphire.javafx.demo.tutorial.controller.app.NavigationController">
     <children>
         <HBox layoutY="-10.0" prefHeight="40.0" prefWidth="600.0" spacing="10.0" styleClass="navigation"
               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
@@ -24,6 +24,6 @@
         </HBox>
     </children>
     <stylesheets>
-        <URL value="@default.css"/>
+        <URL value="@../../../../../../windows/src/main/resources/fxml/default.css"/>
     </stylesheets>
 </AnchorPane>

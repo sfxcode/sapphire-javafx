@@ -46,7 +46,11 @@ trait FxmlLoading extends ConfigValues {
       val basePath = configStringValue("sapphire.javafx.fxml.basePath")
       if (basePath.isEmpty) {
         // use runtime package name
-        val guessed = ct.runtimeClass.getName.replace(".", "/").replace("Controller", "")
+        val replacementKey   = configStringValue("sapphire.javafx.fxml.package.replacement.key")
+        val replacementValue = configStringValue("sapphire.javafx.fxml.package.replacement.value")
+
+        val classAsPath = ct.runtimeClass.getName.replace(replacementKey, replacementValue).replace(".", "/")
+        val guessed     = classAsPath.replace("Controller", "")
         result = "/%s.fxml".format(guessed)
       }
       else {

@@ -1,5 +1,6 @@
-package com.sfxcode.sapphire.javafx.demo.tutorial.controller
+package com.sfxcode.sapphire.javafx.demo.tutorial.controller.app
 
+import com.sfxcode.sapphire.javafx.demo.tutorial.controller.base.AbstractViewController
 import javafx.collections.{FXCollections, ObservableList}
 import javafx.fxml.FXML
 import javafx.scene.chart.PieChart

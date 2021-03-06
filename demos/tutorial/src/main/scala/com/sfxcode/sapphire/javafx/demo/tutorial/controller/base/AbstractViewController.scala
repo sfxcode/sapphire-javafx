@@ -1,8 +1,9 @@
-package com.sfxcode.sapphire.javafx.demo.tutorial.controller
+package com.sfxcode.sapphire.javafx.demo.tutorial.controller.base
 
-import com.sfxcode.sapphire.javafx.application.{ApplicationEnvironment, BaseApplication}
+import com.sfxcode.sapphire.javafx.application.ApplicationEnvironment
 import com.sfxcode.sapphire.javafx.controller.ViewController
 import com.sfxcode.sapphire.javafx.demo.tutorial.ApplicationController
+import com.sfxcode.sapphire.javafx.demo.tutorial.controller.app.{MainViewController, StatusBarController}
 import com.sfxcode.sapphire.javafx.scene.ContentManager
 import com.typesafe.scalalogging.LazyLogging
 

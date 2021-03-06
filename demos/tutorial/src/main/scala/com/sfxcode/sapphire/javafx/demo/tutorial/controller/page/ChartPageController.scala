@@ -1,9 +1,10 @@
-package com.sfxcode.sapphire.javafx.demo.tutorial.controller
+package com.sfxcode.sapphire.javafx.demo.tutorial.controller.page
 
+import com.sfxcode.sapphire.javafx.demo.tutorial.controller.base.AbstractViewController
 import javafx.collections.{FXCollections, ObservableList}
 import javafx.fxml.FXML
 import javafx.scene.chart.XYChart
-class BarChartController extends AbstractViewController {
+class ChartPageController extends AbstractViewController {
 
   @FXML
   var chart: javafx.scene.chart.BarChart[String, Number] = _

@@ -1,6 +1,6 @@
-package com.sfxcode.sapphire.javafx.demo.tutorial.controller
+package com.sfxcode.sapphire.javafx.demo.tutorial.controller.app
 
-import com.sfxcode.sapphire.javafx.demo.tutorial.ApplicationController
+import com.sfxcode.sapphire.javafx.demo.tutorial.controller.base.AbstractViewController
 import javafx.event.ActionEvent
 import javafx.scene.control.Button
 
