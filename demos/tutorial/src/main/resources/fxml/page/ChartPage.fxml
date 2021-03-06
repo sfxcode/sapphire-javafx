@@ -10,9 +10,7 @@
             AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
             xmlns="http://javafx.com/javafx/11.0.1"
             fx:controller="com.sfxcode.sapphire.javafx.demo.tutorial.controller.page.ChartPageController">
-    <stylesheets>
-        <URL value="@../../../../../../windows/src/main/resources/fxml/default.css"/>
-    </stylesheets>
+
     <children>
         <BarChart fx:id="chart" title="BarChart">
             <xAxis>
@@ -23,4 +21,7 @@
             </yAxis>
         </BarChart>
     </children>
+    <stylesheets>
+        <URL value="@../../fxml/default.css"/>
+    </stylesheets>
 </AnchorPane>
