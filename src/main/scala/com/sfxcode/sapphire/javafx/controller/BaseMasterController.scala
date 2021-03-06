@@ -1,12 +1,13 @@
 package com.sfxcode.sapphire.javafx.controller
 
+import com.sfxcode.sapphire.javafx.control.event.EventHelper
 import com.sfxcode.sapphire.javafx.filter.DataTableFilter
 import com.sfxcode.sapphire.javafx.value.FXBean
 import javafx.scene.Node
 import javafx.scene.control.TableRow
-import javafx.scene.control.skin.TableHeaderRow
+import javafx.scene.control.skin.{TableColumnHeader, TableHeaderRow}
 
-abstract class BaseMasterController extends DataTableController {
+abstract class BaseMasterController extends DataTableController with EventHelper {
 
   var detailController: Option[BaseDetailController] = None
   var lastSelected: Int                              = 0
@@ -14,24 +15,14 @@ abstract class BaseMasterController extends DataTableController {
   override def initTable(filter: DataTableFilter[R]): Unit = {
     super.initTable(filter)
     table.setOnMouseClicked { event =>
-      if (event.getClickCount == 2 && isEventTargetTableRow(event.getTarget)) {
-        onDoubleClick(filter.selectedBean)
-        lastSelected = filter.getTable.getSelectionModel.selectedIndexProperty().intValue()
-      }
-    }
-  }
-
-  def isEventTargetTableRow(target: Any): Boolean = {
-    val node = target.asInstanceOf[Node]
-    node match {
-      case _: TableRow[_]    => true
-      case _: TableHeaderRow => false
-      case _ =>
-        node.getParent match {
-          case _: TableRow[_]    => true
-          case _: TableHeaderRow => false
-          case _                 => false
+      val clickCount = event.getClickCount
+      if (clickCount == 2) {
+        val isHeaderClicked = isEventTargetTableHeader(event.getTarget)
+        if (!isHeaderClicked) {
+          onDoubleClick(filter.selectedBean)
+          lastSelected = filter.getTable.getSelectionModel.selectedIndexProperty().intValue()
         }
+      }
     }
   }
 
