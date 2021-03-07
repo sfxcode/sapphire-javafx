@@ -1,9 +1,9 @@
 package com.sfxcode.sapphire.javafx.showcase.code
 
-import org.fxmisc.richtext.model.{StyleSpans, StyleSpansBuilder}
+import org.fxmisc.richtext.model.{ StyleSpans, StyleSpansBuilder }
 
 import java.util
-import java.util.regex.{Matcher, Pattern}
+import java.util.regex.{ Matcher, Pattern }
 import scala.jdk.CollectionConverters._
 
 object ScalaHighlighter {
@@ -11,8 +11,8 @@ object ScalaHighlighter {
   def listFromString(value: String): List[String] = List(value)
 
   def computeHighlighting(text: String): StyleSpans[util.Collection[String]] = {
-    val matcher: Matcher                                         = PATTERN.matcher(text)
-    var lastKwEnd: Int                                           = 0
+    val matcher: Matcher = PATTERN.matcher(text)
+    var lastKwEnd: Int = 0
     val spansBuilder: StyleSpansBuilder[util.Collection[String]] = new StyleSpansBuilder
     while (matcher.find) {
 
@@ -97,8 +97,7 @@ object ScalaHighlighter {
       "var",
       "while",
       "with",
-      "yield"
-    )
+      "yield")
   private val KEYWORD_PATTERN: String =
     "\\b(" + KEYWORDS.mkString("|") + ")\\b"
   private val PAREN_PATTERN: String =
@@ -115,7 +114,6 @@ object ScalaHighlighter {
     "//[^\n]*" + "|" + "/\\*(.|\\R)*?\\*/"
   private val PATTERN: Pattern =
     Pattern.compile(
-      "(?<KEYWORD>" + KEYWORD_PATTERN + ")" + "|(?<PAREN>" + PAREN_PATTERN + ")" + "|(?<BRACE>" + BRACE_PATTERN + ")" + "|(?<BRACKET>" + BRACKET_PATTERN + ")" + "|(?<SEMICOLON>" + SEMICOLON_PATTERN + ")" + "|(?<STRING>" + STRING_PATTERN + ")" + "|(?<COMMENT>" + COMMENT_PATTERN + ")"
-    )
+      "(?<KEYWORD>" + KEYWORD_PATTERN + ")" + "|(?<PAREN>" + PAREN_PATTERN + ")" + "|(?<BRACE>" + BRACE_PATTERN + ")" + "|(?<BRACKET>" + BRACKET_PATTERN + ")" + "|(?<SEMICOLON>" + SEMICOLON_PATTERN + ")" + "|(?<STRING>" + STRING_PATTERN + ")" + "|(?<COMMENT>" + COMMENT_PATTERN + ")")
 
 }

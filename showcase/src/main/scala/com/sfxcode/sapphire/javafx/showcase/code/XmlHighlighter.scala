@@ -1,8 +1,8 @@
 package com.sfxcode.sapphire.javafx.showcase.code
 
-import org.fxmisc.richtext.model.{StyleSpans, StyleSpansBuilder}
+import org.fxmisc.richtext.model.{ StyleSpans, StyleSpansBuilder }
 
-import java.util.regex.{Matcher, Pattern}
+import java.util.regex.{ Matcher, Pattern }
 import scala.jdk.CollectionConverters._
 
 object XmlHighlighter {
@@ -10,19 +10,19 @@ object XmlHighlighter {
     Pattern.compile("(?<ELEMENT>(</?\\h*)(\\w+)([^<>]*)(\\h*/?>))" + "|(?<COMMENT><!--[^<>]+-->)")
   private val ATTRIBUTES: Pattern = Pattern.compile("(\\w+\\h*)(=)(\\h*\"[^\"]+\")")
 
-  private val GROUP_OPEN_BRACKET: Int       = 2
-  private val GROUP_ELEMENT_NAME: Int       = 3
+  private val GROUP_OPEN_BRACKET: Int = 2
+  private val GROUP_ELEMENT_NAME: Int = 3
   private val GROUP_ATTRIBUTES_SECTION: Int = 4
-  private val GROUP_CLOSE_BRACKET: Int      = 5
-  private val GROUP_ATTRIBUTE_NAME: Int     = 1
-  private val GROUP_EQUAL_SYMBOL: Int       = 2
-  private val GROUP_ATTRIBUTE_VALUE: Int    = 3
+  private val GROUP_CLOSE_BRACKET: Int = 5
+  private val GROUP_ATTRIBUTE_NAME: Int = 1
+  private val GROUP_EQUAL_SYMBOL: Int = 2
+  private val GROUP_ATTRIBUTE_VALUE: Int = 3
 
   val EmptyList = List[String]().asJava
 
   def computeHighlighting(text: String): StyleSpans[java.util.Collection[String]] = {
     val matcher: Matcher = XML_TAG.matcher(text)
-    var lastKwEnd: Int   = 0
+    var lastKwEnd: Int = 0
     val spansBuilder: StyleSpansBuilder[java.util.Collection[String]] =
       new StyleSpansBuilder[java.util.Collection[String]]()
     while (matcher.find) {
@@ -40,16 +40,13 @@ object XmlHighlighter {
             spansBuilder.add(EmptyList, amatcher.start - lastKwEnd)
             spansBuilder.add(
               listFromString("attribute"),
-              amatcher.end(GROUP_ATTRIBUTE_NAME) - amatcher.start(GROUP_ATTRIBUTE_NAME)
-            )
+              amatcher.end(GROUP_ATTRIBUTE_NAME) - amatcher.start(GROUP_ATTRIBUTE_NAME))
             spansBuilder.add(
               listFromString("tagmark"),
-              amatcher.end(GROUP_EQUAL_SYMBOL) - amatcher.end(GROUP_ATTRIBUTE_NAME)
-            )
+              amatcher.end(GROUP_EQUAL_SYMBOL) - amatcher.end(GROUP_ATTRIBUTE_NAME))
             spansBuilder.add(
               listFromString("value"),
-              amatcher.end(GROUP_ATTRIBUTE_VALUE) - amatcher.end(GROUP_EQUAL_SYMBOL)
-            )
+              amatcher.end(GROUP_ATTRIBUTE_VALUE) - amatcher.end(GROUP_EQUAL_SYMBOL))
             lastKwEnd = amatcher.end
           }
           if (attributesText.length > lastKwEnd) spansBuilder.add(EmptyList, attributesText.length - lastKwEnd)

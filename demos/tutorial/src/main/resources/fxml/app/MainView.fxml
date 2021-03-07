@@ -3,8 +3,8 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1" styleClass="workspace"
-           minWidth="700" xmlns="http://javafx.com/javafx/11.0.1"
-           fx:controller="com.sfxcode.sapphire.javafx.demo.tutorial.controller.MainViewController">
+           minHeight="580" minWidth="800" xmlns="http://javafx.com/javafx/11.0.1"
+           fx:controller="com.sfxcode.sapphire.javafx.demo.tutorial.controller.app.MainViewController">
     <children>
         <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                     AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -21,6 +21,6 @@
         </BorderPane>
     </children>
     <stylesheets>
-        <URL value="@default.css"/>
+        <URL value="@../../fxml/default.css"/>
     </stylesheets>
 </StackPane>

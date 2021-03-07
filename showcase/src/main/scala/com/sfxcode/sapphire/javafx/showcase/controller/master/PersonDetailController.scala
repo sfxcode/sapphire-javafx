@@ -1,7 +1,7 @@
 package com.sfxcode.sapphire.javafx.showcase.controller.master
 
 import com.sfxcode.sapphire.javafx.value.KeyBindings
-import com.sfxcode.sapphire.javafx.controller.{BaseDetailController, BaseMasterController}
+import com.sfxcode.sapphire.javafx.controller.{ BaseDetailController, BaseMasterController }
 import com.sfxcode.sapphire.javafx.showcase.controller.BaseController
 import com.sfxcode.sapphire.javafx.showcase.model.Person
 

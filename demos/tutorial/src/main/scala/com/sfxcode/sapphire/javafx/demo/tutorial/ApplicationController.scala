@@ -1,22 +1,20 @@
 package com.sfxcode.sapphire.javafx.demo.tutorial
 
 import java.util.{Locale, ResourceBundle}
-
 import com.sfxcode.sapphire.javafx.application.ApplicationEnvironment
 import com.sfxcode.sapphire.javafx.controller.BaseApplicationController
-import com.sfxcode.sapphire.javafx.demo.tutorial.controller.MainViewController
+import com.sfxcode.sapphire.javafx.demo.tutorial.controller.app.MainViewController
 
 class ApplicationController extends BaseApplicationController {
 
-  lazy val mainViewController: MainViewController =
-    getController[MainViewController]()
+  var mainViewController: MainViewController = _
 
   def applicationDidLaunch() {
     logger.info("start " + this)
     // #Resources
     ApplicationEnvironment.loadResourceBundle("bundles/application")
     // #Resources
-    replaceSceneContent(mainViewController)
+    reload()
   }
 
   def reload(): Unit = {
@@ -26,8 +24,9 @@ class ApplicationController extends BaseApplicationController {
     ApplicationEnvironment.clearResourceBundleCache()
     ApplicationEnvironment.loadResourceBundle("bundles/application")
     // FXML
-    val newMainViewController = getController[MainViewController]()
-    replaceSceneContent(newMainViewController)
+    mainViewController = getController[MainViewController]()
+    replaceSceneContent(mainViewController)
+    // do some other stuff
   }
 
   def applicationName: ApplicationName =

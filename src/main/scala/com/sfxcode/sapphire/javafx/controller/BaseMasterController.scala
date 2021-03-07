@@ -1,7 +1,10 @@
 package com.sfxcode.sapphire.javafx.controller
 
-import com.sfxcode.sapphire.javafx.value.FXBean
 import com.sfxcode.sapphire.javafx.filter.DataTableFilter
+import com.sfxcode.sapphire.javafx.value.FXBean
+import javafx.scene.Node
+import javafx.scene.control.TableRow
+import javafx.scene.control.skin.TableHeaderRow
 
 abstract class BaseMasterController extends DataTableController {
 
@@ -11,10 +14,24 @@ abstract class BaseMasterController extends DataTableController {
   override def initTable(filter: DataTableFilter[R]): Unit = {
     super.initTable(filter)
     table.setOnMouseClicked { event =>
-      if (event.getClickCount == 2) {
+      if (event.getClickCount == 2 && isEventTargetTableRow(event.getTarget)) {
         onDoubleClick(filter.selectedBean)
         lastSelected = filter.getTable.getSelectionModel.selectedIndexProperty().intValue()
       }
+    }
+  }
+
+  def isEventTargetTableRow(target: Any): Boolean = {
+    val node = target.asInstanceOf[Node]
+    node match {
+      case _: TableRow[_]    => true
+      case _: TableHeaderRow => false
+      case _ =>
+        node.getParent match {
+          case _: TableRow[_]    => true
+          case _: TableHeaderRow => false
+          case _                 => false
+        }
     }
   }
 

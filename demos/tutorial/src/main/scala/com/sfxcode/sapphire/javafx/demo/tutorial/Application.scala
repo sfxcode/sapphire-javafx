@@ -7,9 +7,9 @@ object Application extends BaseApplication {
 
   val applicationController: BaseApplicationController = new ApplicationController
 
-  override def height: Int = 555
+  override def height: Int = 600
 
-  override def width: Int = 700
+  override def width: Int = 800
 
   override def forceMaxWidth: Boolean = true
 

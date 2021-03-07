@@ -6,9 +6,9 @@ import javafx.fxml.FXML
 import javafx.scene.control.ComboBox
 import com.sfxcode.sapphire.javafx.control.DataListView
 import com.sfxcode.sapphire.javafx.showcase.controller.BaseController
-import com.sfxcode.sapphire.javafx.showcase.model.{Friend, Person, PersonDatabase}
+import com.sfxcode.sapphire.javafx.showcase.model.{ Friend, Person, PersonDatabase }
 import com.typesafe.scalalogging.LazyLogging
-import javafx.collections.{FXCollections, ObservableList}
+import javafx.collections.{ FXCollections, ObservableList }
 
 import scala.jdk.CollectionConverters._
 class ListFormController extends BaseController with BeanConversions with LazyLogging {
@@ -25,7 +25,7 @@ class ListFormController extends BaseController with BeanConversions with LazyLo
   var dataList: DataListView[R] = _
 
   val personsMap: Map[String, Person] = PersonDatabase.smallPersonList.map(value => (value.bean.name, value)).toMap
-  val buffer: ObservableList[String]  = FXCollections.observableArrayList[String]
+  val buffer: ObservableList[String] = FXCollections.observableArrayList[String]
   buffer.addAll(personsMap.keys.toList.asJava)
 
   override def didGainVisibilityFirstTime(): Unit = {

@@ -1,4 +1,4 @@
-package com.sfxcode.sapphire.javafx.demo.tutorial.controller
+package com.sfxcode.sapphire.javafx.demo.tutorial.controller.app
 
 import com.sfxcode.sapphire.javafx.controller.ViewController
 import com.typesafe.scalalogging.LazyLogging

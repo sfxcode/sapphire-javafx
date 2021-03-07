@@ -1,5 +1,6 @@
-package com.sfxcode.sapphire.javafx.demo.tutorial.controller
+package com.sfxcode.sapphire.javafx.demo.tutorial.controller.page
 
+import com.sfxcode.sapphire.javafx.demo.tutorial.controller.base.AbstractViewController
 import com.sfxcode.sapphire.javafx.demo.tutorial.model.{Person, PersonFactory}
 import com.sfxcode.sapphire.javafx.fxml.FxmlLocation
 import com.sfxcode.sapphire.javafx.value.{BeanConversions, FXBean, FXBeanAdapter, KeyBindings}
@@ -9,8 +10,8 @@ import javafx.fxml.FXML
 import javafx.scene.control.TableView
 import javafx.scene.layout.VBox
 
-@FxmlLocation(path = "/fxml/widget/Person.fxml")
-class PersonController extends AbstractViewController with BeanConversions {
+@FxmlLocation(path = "/fxml/custom/path/Person.fxml")
+class PersonPageController extends AbstractViewController with BeanConversions {
 
   // second parameter parent Node is optional,
   // but sometimes needed for the correct NodeLocator lookup

@@ -21,7 +21,7 @@ scalacOptions += "-deprecation"
 
 parallelExecution in Test := false
 
-val Json4sVersion     = "3.6.10"
+val Json4sVersion     = "3.6.11"
 val LogbackVersion    = "1.2.3"
 val DeltaspikeVersion = "1.9.4"
 val IkonliVersion     = "12.2.0"
@@ -98,7 +98,7 @@ lazy val showcase =
       libraryDependencies += "org.json4s"    %% "json4s-native"   % Json4sVersion,
       libraryDependencies += "ch.qos.logback" % "logback-classic" % LogbackVersion,
       resolvers += "sandec" at "https://sandec.bintray.com/repo",
-      libraryDependencies += "com.sandec"            % "mdfx"         % "0.1.6",
+      libraryDependencies += "com.sandec"            % "mdfx"         % "0.1.7",
       libraryDependencies += "com.jfoenix"           % "jfoenix"      % "9.0.10",
       libraryDependencies += "org.fxmisc.richtext"   % "richtextfx"   % "0.10.3",
       libraryDependencies += "com.github.pathikrit" %% "better-files" % "3.9.1",
@@ -138,7 +138,7 @@ lazy val docs = (project in file("docs"))
     ParadoxPlugin.InDirectoryFilter((Compile / paradox / sourceDirectory).value / "includes")
   )
 
-val JavaFXVersion = "17-ea+2"
+val JavaFXVersion = "15.0.1"
 
 val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Linux")   => "linux"

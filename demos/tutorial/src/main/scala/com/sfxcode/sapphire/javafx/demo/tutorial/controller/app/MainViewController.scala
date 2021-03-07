@@ -1,6 +1,7 @@
-package com.sfxcode.sapphire.javafx.demo.tutorial.controller
+package com.sfxcode.sapphire.javafx.demo.tutorial.controller.app
 
 import com.sfxcode.sapphire.javafx.controller.ViewController
+import com.sfxcode.sapphire.javafx.demo.tutorial.controller.page.{ChartPageController, PersonPageController}
 import com.sfxcode.sapphire.javafx.scene.ContentManager
 import com.typesafe.scalalogging.LazyLogging
 import javafx.fxml.FXML
@@ -11,10 +12,10 @@ class MainViewController extends ViewController with LazyLogging {
   // #controllerLoading
   lazy val workspaceController: WorkspaceController =
     getController[WorkspaceController]()
-  lazy val barChartController: BarChartController =
-    getController[BarChartController]()
-  lazy val personController: PersonController =
-    getController[PersonController]()
+  lazy val barChartController: ChartPageController =
+    getController[ChartPageController]()
+  lazy val personController: PersonPageController =
+    getController[PersonPageController]()
   lazy val navigationController: NavigationController =
     getController[NavigationController]()
   lazy val statusBarController: StatusBarController =

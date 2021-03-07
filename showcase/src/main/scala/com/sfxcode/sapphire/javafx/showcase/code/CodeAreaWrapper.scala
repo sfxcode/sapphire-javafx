@@ -1,7 +1,7 @@
 package com.sfxcode.sapphire.javafx.showcase.code
 
 import com.sfxcode.sapphire.javafx.showcase.code.CodeAreaWrapper._
-import org.fxmisc.richtext.{CodeArea, LineNumberFactory}
+import org.fxmisc.richtext.{ CodeArea, LineNumberFactory }
 
 case class CodeAreaWrapper(codeArea: CodeArea, highlighter: String = "") {
   codeArea.setParagraphGraphicFactory(LineNumberFactory.get(codeArea))
@@ -19,8 +19,7 @@ case class CodeAreaWrapper(codeArea: CodeArea, highlighter: String = "") {
             if (event.isControlDown)
               event.consume()
           }
-        }
-        else {
+        } else {
           // do nothing
         }
 
@@ -38,5 +37,5 @@ case class CodeAreaWrapper(codeArea: CodeArea, highlighter: String = "") {
 object CodeAreaWrapper {
 
   val HighlightScala = "Scala"
-  val HighlightXML   = "XML"
+  val HighlightXML = "XML"
 }

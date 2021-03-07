@@ -38,16 +38,16 @@ class ShowcaseViewController extends ShowcaseController with LazyLogging {
   private val controlTreeTableValueItem =
     ShowcaseItem("Control", "TreeTable", () => getController[TreeTableValueController]())
 
-  private val formItem         = ShowcaseItem("Form", "Basic Form", () => getController[FormController]())
-  private val listFormItem     = ShowcaseItem("Form", "List Form", () => getController[ListFormController]())
+  private val formItem = ShowcaseItem("Form", "Basic Form", () => getController[FormController]())
+  private val listFormItem = ShowcaseItem("Form", "List Form", () => getController[ListFormController]())
   private val dualListFormItem = ShowcaseItem("Form", "Dual List Form", () => getController[DualListFormController]())
   private val propertiesFormItem =
     ShowcaseItem("Form", "Properties Form", () => getController[PropertiesFormController]())
   private val controlsfxFormItem = ShowcaseItem("Form", "ControlsFX", () => getController[ExtensionFormController]())
   private val controllerMasterItem =
     ShowcaseItem("Controller", "Master / Detail", () => getController[PersonMasterController]())
-  private val fontIconItem      = ShowcaseItem("Font", "Icons", () => getController[IconFontController]())
-  private val tableBaseItem     = ShowcaseItem("Table", "Base", () => getController[SimplePersonTableController]())
+  private val fontIconItem = ShowcaseItem("Font", "Icons", () => getController[IconFontController]())
+  private val tableBaseItem = ShowcaseItem("Table", "Base", () => getController[SimplePersonTableController]())
   private val dataTableBaseItem = ShowcaseItem("DataTable", "Base", () => getController[FriendTableController]())
   private val dataTableExtendedItem =
     ShowcaseItem("DataTable", "Extended", () => getController[PersonTableController]())
@@ -66,8 +66,7 @@ class ShowcaseViewController extends ShowcaseController with LazyLogging {
     controllerMasterItem,
     tableBaseItem,
     dataTableBaseItem,
-    dataTableExtendedItem
-  )
+    dataTableExtendedItem)
 
   override def didGainVisibilityFirstTime(): Unit = {
     super.didGainVisibilityFirstTime()
