@@ -2,6 +2,10 @@
 
 ## Versions
 
+### 1.0.4
+* FXValueFactory Date / DateTime format added
+
+
 ### 1.0.3
 * EventHelper added
 

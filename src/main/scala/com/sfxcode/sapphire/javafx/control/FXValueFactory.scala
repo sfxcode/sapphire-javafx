@@ -1,17 +1,21 @@
 package com.sfxcode.sapphire.javafx.control
 
-import java.text.DecimalFormat
-
+import java.text.{DecimalFormat, SimpleDateFormat}
 import com.sfxcode.sapphire.javafx.value.FXBean
 import com.sfxcode.sapphire.data.reflect.ReflectionTools
 import javafx.beans.property._
 import javafx.beans.value.ObservableValue
 
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Date
 import scala.beans.BeanProperty
 
 trait FXValueFactory[S, T] {
 
-  lazy val numberFormatter = new DecimalFormat(format)
+  lazy val numberFormatter: DecimalFormat       = new DecimalFormat(format)
+  lazy val dateFormatter: SimpleDateFormat      = new SimpleDateFormat(format)
+  lazy val dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern(format)
 
   @BeanProperty
   var property = ""
@@ -30,6 +34,10 @@ trait FXValueFactory[S, T] {
             case floatProperty: FloatProperty => p = new SimpleStringProperty(numberFormatter.format(floatProperty.get))
             case doubleProperty: DoubleProperty =>
               p = new SimpleStringProperty(numberFormatter.format(doubleProperty.get))
+            case _: StringProperty if bean.get(property).isInstanceOf[Date] =>
+              p = new SimpleStringProperty(dateFormatter.format(bean.get(property)))
+            case _: StringProperty if bean.get(property).isInstanceOf[LocalDate] =>
+              p = new SimpleStringProperty(dateTimeFormatter.format(bean.get(property).asInstanceOf[LocalDate]))
             case _ =>
           }
         p.asInstanceOf[ObservableValue[T]]
