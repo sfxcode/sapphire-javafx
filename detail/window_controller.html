@@ -185,7 +185,7 @@ sfxcode/sapphire-javafx
 <ul style="display: none">
 <li class="md-nav__item md-version" id="project.version">
 <label class="md-nav__link" for="__version">
-<i class="md-icon" title="Version">label_outline</i> 1.0.1*
+<i class="md-icon" title="Version">label_outline</i> 1.0.5*
 </label>
 </li>
 </ul>
@@ -242,7 +242,7 @@ sfxcode/sapphire-javafx
 </ul>
 <h3><a href="#application" name="application" class="anchor"><span class="anchor-link"></span></a>Application</h3>
 <p>Sample Code:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/issues/src/main/scala/com/sfxcode/sapphire/javafx/demo/issues/Application.scala#L14-L21" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object Application extends BaseApplication with DeltaspikeBeanResolver {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/issues/src/main/scala/com/sfxcode/sapphire/javafx/demo/issues/Application.scala#L14-L21" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>object Application extends BaseApplication with DeltaspikeBeanResolver {
 
   DeltaspikeLauncher.init()
   ApplicationEnvironment.documentLoader = getBean[DeltaspikeDocumentLoader]()
@@ -250,7 +250,7 @@ sfxcode/sapphire-javafx
   override val applicationController: BaseApplicationController = getBean[ApplicationController]()
 }</code></pre>
 <p>BaseApplication Code:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/src/main/scala/com/sfxcode/sapphire/javafx/application/BaseApplication.scala#L9-L26" target="_blank" title="Go to snippet source"></a><code class="language-scala">abstract class BaseApplication extends StageSupport with LazyLogging {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/src/main/scala/com/sfxcode/sapphire/javafx/application/BaseApplication.scala#L9-L26" target="_blank" title="Go to snippet source">source</a><code class="language-scala">abstract class BaseApplication extends StageSupport with LazyLogging {
   val startTime: Long = System.currentTimeMillis()
 
   def main(args: Array[String]): Unit = {
@@ -271,7 +271,7 @@ sfxcode/sapphire-javafx
 <h3><a href="#applicationcontroller" name="applicationcontroller" class="anchor"><span class="anchor-link"></span></a>ApplicationController</h3>
 <p>Base class for your Application (extends normally DefaultWindowController). Is is used for setting the content view and holds application wide information.</p>
 <p>Sample Code:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/issues/src/main/scala/com/sfxcode/sapphire/javafx/demo/issues/Application.scala#L25-L42" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>@Named
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/issues/src/main/scala/com/sfxcode/sapphire/javafx/demo/issues/Application.scala#L25-L42" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>@Named
 @ApplicationScoped
 class ApplicationController extends BaseApplicationController {
 
@@ -292,7 +292,7 @@ class ApplicationController extends BaseApplicationController {
 <p>Multiple Windows are supported by extending AdditionalWindowController.</p>
 <p>Example Usage:</p>
 <h3><a href="#create-a-cdi-bean-that-extends-additionalwindowcontroller" name="create-a-cdi-bean-that-extends-additionalwindowcontroller" class="anchor"><span class="anchor-link"></span></a>Create a CDI Bean that extends AdditionalWindowController</h3>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/applicationController.scala#L28-L44" target="_blank" title="Go to snippet source"></a><code class="language-scala">abstract class AbstractWindowController extends AdditionalWindowController {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/applicationController.scala#L28-L44" target="_blank" title="Go to snippet source">source</a><code class="language-scala">abstract class AbstractWindowController extends AdditionalWindowController {
 
   lazy val viewController: AdditionalViewController =
     getController[AdditionalViewController]()
@@ -310,28 +310,28 @@ class ApplicationController extends BaseApplicationController {
 
 }</code></pre>
 <h3><a href="#create-a-variable-in-your-applicationcontroller-for-example-" name="create-a-variable-in-your-applicationcontroller-for-example-" class="anchor"><span class="anchor-link"></span></a>Create a variable (in your ApplicationController for example)</h3>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/applicationController.scala#L13" target="_blank" title="Go to snippet source"></a><code class="language-scala">lazy val secondWindowController = new SecondWindowController</code></pre>
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/applicationController.scala#L13" target="_blank" title="Go to snippet source">source</a><code class="language-scala">lazy val secondWindowController = new SecondWindowController</code></pre>
 <h3><a href="#show-second-window" name="show-second-window" class="anchor"><span class="anchor-link"></span></a>Show second Window</h3>
 <p>Use x and y coordinates for window position.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/controller/MainViewController.scala#L41-L45" target="_blank" title="Go to snippet source"></a><code class="language-scala">def actionShowSecondWindow(event: ActionEvent): Unit = {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/controller/MainViewController.scala#L41-L45" target="_blank" title="Go to snippet source">source</a><code class="language-scala">def actionShowSecondWindow(event: ActionEvent): Unit = {
   val x = applicationController.stage.getX + applicationController.stage.getWidth
   val y = applicationController.stage.getY
   applicationController.secondWindowController.show(x, y)
 }</code></pre>
 <h3><a href="#close-second-window" name="close-second-window" class="anchor"><span class="anchor-link"></span></a>Close second Window</h3>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/controller/MainViewController.scala#L49-L50" target="_blank" title="Go to snippet source"></a><code class="language-scala">def actionCloseSecondWindow(event: ActionEvent): Unit =
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/controller/MainViewController.scala#L49-L50" target="_blank" title="Go to snippet source">source</a><code class="language-scala">def actionCloseSecondWindow(event: ActionEvent): Unit =
   applicationController.secondWindowController.close()</code></pre>
 <h2><a href="#modalwindowcontroller" name="modalwindowcontroller" class="anchor"><span class="anchor-link"></span></a>ModalWindowController</h2>
 <p>Modal Window is basically a special Instance of an AdditionalWindowController. It can be used for custom dialogs, preferences panes and so on. You only have to overwrite modality like in the sample code below:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/applicationController.scala#L52-L57" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>class ModalWindowController extends AbstractWindowController {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/applicationController.scala#L52-L57" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>class ModalWindowController extends AbstractWindowController {
   override def modality: Modality     = Modality.APPLICATION_MODAL
   override def stageStyle: StageStyle = StageStyle.UTILITY
 
 }</code></pre>
 <h3><a href="#create-a-variable-in-your-applicationcontroller-for-example-" name="create-a-variable-in-your-applicationcontroller-for-example-" class="anchor"><span class="anchor-link"></span></a>Create a variable (in your ApplicationController for example)</h3>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/applicationController.scala#L17" target="_blank" title="Go to snippet source"></a><code class="language-scala">lazy val modalWindowController = new ModalWindowController</code></pre>
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/applicationController.scala#L17" target="_blank" title="Go to snippet source">source</a><code class="language-scala">lazy val modalWindowController = new ModalWindowController</code></pre>
 <h3><a href="#open-modal-window" name="open-modal-window" class="anchor"><span class="anchor-link"></span></a>Open Modal Window</h3>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/controller/MainViewController.scala#L54-L55" target="_blank" title="Go to snippet source"></a><code class="language-scala">def actionShowModalWindow(event: ActionEvent): Unit =
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/controller/MainViewController.scala#L54-L55" target="_blank" title="Go to snippet source">source</a><code class="language-scala">def actionShowModalWindow(event: ActionEvent): Unit =
   applicationController.modalWindowController.showAndWait()</code></pre>
 </div>
 <div>
@@ -341,7 +341,7 @@ Edit this page
 </div>
 <div class="print-only">
 <span class="md-source-file md-version">
-1.0.1*
+1.0.5*
 </span>
 </div>
 </article>

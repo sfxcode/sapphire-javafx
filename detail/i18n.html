@@ -183,7 +183,7 @@ sfxcode/sapphire-javafx
 <ul style="display: none">
 <li class="md-nav__item md-version" id="project.version">
 <label class="md-nav__link" for="__version">
-<i class="md-icon" title="Version">label_outline</i> 1.0.1*
+<i class="md-icon" title="Version">label_outline</i> 1.0.5*
 </label>
 </li>
 </ul>
@@ -219,14 +219,14 @@ sfxcode/sapphire-javafx
 </ul>
 <h2><a href="#adding-default-application-resource-bundle" name="adding-default-application-resource-bundle" class="anchor"><span class="anchor-link"></span></a>Adding Default (Application) Resource Bundle</h2>
 <p>Normally you will add resources in the ApplicationController.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/ApplicationController.scala#L17" target="_blank" title="Go to snippet source"></a><code class="language-scala">ApplicationEnvironment.loadResourceBundle(&quot;bundles/application&quot;)</code></pre>
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/ApplicationController.scala#L15" target="_blank" title="Go to snippet source">source</a><code class="language-scala">ApplicationEnvironment.loadResourceBundle(&quot;bundles/application&quot;)</code></pre>
 <p>The ApplicationEnvironment will hold the reference to the loaded resources.</p>
 <h2><a href="#fxml-support" name="fxml-support" class="anchor"><span class="anchor-link"></span></a>FXML Support</h2>
 <p>If there is a loaded resource, you can use it in the fxml files with the following pattern: %<key></p>
 <pre class="prettyprint"><code class="language-xml">&lt;Button mnemonicParsing=&quot;false&quot; onAction=&quot;#actionToggleWorkspace&quot; text=&quot;%navigation.toggle&quot; /&gt;
 </code></pre>
 <p>If you want a special resource bundle for one or more fxml files,<br/>you have to override <strong>resourceBundleForView</strong> in the ApplicationController.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/ApplicationController.scala#L37-L46" target="_blank" title="Go to snippet source"></a><code class="language-scala">// only example values ...
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/ApplicationController.scala#L36-L45" target="_blank" title="Go to snippet source">source</a><code class="language-scala">// only example values ...
 override def resourceBundleForView(viewPath: String): ResourceBundle =
   if (viewPath.contains(&quot;mySpecialViewName&quot;)) {
     val path        = &quot;myCustomResourcePath&quot;
@@ -244,7 +244,7 @@ Edit this page
 </div>
 <div class="print-only">
 <span class="md-source-file md-version">
-1.0.1*
+1.0.5*
 </span>
 </div>
 </article>

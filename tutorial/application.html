@@ -184,7 +184,7 @@ sfxcode/sapphire-javafx
 <ul style="display: none">
 <li class="md-nav__item md-version" id="project.version">
 <label class="md-nav__link" for="__version">
-<i class="md-icon" title="Version">label_outline</i> 1.0.1*
+<i class="md-icon" title="Version">label_outline</i> 1.0.5*
 </label>
 </li>
 </ul>
@@ -215,7 +215,7 @@ sfxcode/sapphire-javafx
 <h1><a href="#tutorial-application" name="tutorial-application" class="anchor"><span class="anchor-link"></span></a>Tutorial Application</h1>
 <h2><a href="#application-object" name="application-object" class="anchor"><span class="anchor-link"></span></a>Application object</h2>
 <p>A sapphire application must contain an Application object that extends BaseApplication.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/Application.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package com.sfxcode.sapphire.javafx.demo.tutorial
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/Application.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package com.sfxcode.sapphire.javafx.demo.tutorial
 
 import com.sfxcode.sapphire.javafx.application.BaseApplication
 import com.sfxcode.sapphire.javafx.controller.BaseApplicationController
@@ -224,9 +224,9 @@ object Application extends BaseApplication {
 
   val applicationController: BaseApplicationController = new ApplicationController
 
-  override def height: Int = 555
+  override def height: Int = 600
 
-  override def width: Int = 700
+  override def width: Int = 800
 
   override def forceMaxWidth: Boolean = true
 
@@ -236,25 +236,23 @@ object Application extends BaseApplication {
 <p>Application controller is used for startup purposes.</p>
 <p>Normally the main scene content is replaced by a ViewController.</p>
 <p>Here we will use a MainViewController and later we connect a Navigation-, Workspace- and StatusBarController.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/ApplicationController.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package com.sfxcode.sapphire.javafx.demo.tutorial
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/ApplicationController.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package com.sfxcode.sapphire.javafx.demo.tutorial
 
 import java.util.{Locale, ResourceBundle}
-
 import com.sfxcode.sapphire.javafx.application.ApplicationEnvironment
 import com.sfxcode.sapphire.javafx.controller.BaseApplicationController
-import com.sfxcode.sapphire.javafx.demo.tutorial.controller.MainViewController
+import com.sfxcode.sapphire.javafx.demo.tutorial.controller.app.MainViewController
 
 class ApplicationController extends BaseApplicationController {
 
-  lazy val mainViewController: MainViewController =
-    getController[MainViewController]()
+  var mainViewController: MainViewController = _
 
   def applicationDidLaunch() {
     logger.info(&quot;start &quot; + this)
     // #Resources
     ApplicationEnvironment.loadResourceBundle(&quot;bundles/application&quot;)
     // #Resources
-    replaceSceneContent(mainViewController)
+    reload()
   }
 
   def reload(): Unit = {
@@ -264,8 +262,9 @@ class ApplicationController extends BaseApplicationController {
     ApplicationEnvironment.clearResourceBundleCache()
     ApplicationEnvironment.loadResourceBundle(&quot;bundles/application&quot;)
     // FXML
-    val newMainViewController = getController[MainViewController]()
-    replaceSceneContent(newMainViewController)
+    mainViewController = getController[MainViewController]()
+    replaceSceneContent(mainViewController)
+    // do some other stuff
   }
 
   def applicationName: ApplicationName =
@@ -301,7 +300,7 @@ Edit this page
 </div>
 <div class="print-only">
 <span class="md-source-file md-version">
-1.0.1*
+1.0.5*
 </span>
 </div>
 </article>
