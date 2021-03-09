@@ -28,17 +28,17 @@ class PersonPageController extends AbstractViewController with BeanConversions {
   override def didGainVisibilityFirstTime(): Unit = {
     super.didGainVisibilityFirstTime()
 
-    // #bindingList #labels
+    // #bindingList
     val bindings = KeyBindings("id", "name", "age", "test")
     // Expression Binding Example
     bindings.add("person", "${sf:i18n('personText', _self.name(), _self.age())}")
 
     adapter.addBindings(bindings)
-    // #bindingList #labels
+    // #bindingList
 
-    // #addConverter  #labels
+    // #addConverter
     adapter.addIntConverter("age")
-    // #addConverter  #labels
+    // #addConverter
 
     tableView.setItems(items)                                                                                // #labels
     tableView.getSelectionModel.selectedItemProperty.addListener((_, _, newValue) => selectPerson(newValue)) // #labels

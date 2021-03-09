@@ -21,16 +21,16 @@ For adding SubController and displaying their UI content following steps are nee
 
 ### Prepare SubController
 
-@@snip [MainViewController](../../../../../demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/controller/MainViewController.scala) { #controllerLoading }
+@@snip [MainViewController.scala](../../../../../demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/controller/app/MainViewController.scala) { #controllerLoading }
 
 ### Connect with FXML identifier
 
-@@snip [MainViewController](../../../../../demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial//controller/MainViewController.scala) { #fxmlBinding }
+@@snip [MainViewController.scala](../../../../../demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/controller/app/MainViewController.scala) { #fxmlBinding }
 
 ### ContentManager
 
-@@snip [MainViewController](../../../../../demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial//controller/MainViewController.scala) { #contentManager }
+@@snip [MainViewController.scala](../../../../../demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/controller/app/MainViewController.scala) { #contentManager }
 
 ### Init Controller
 
-@@snip [MainViewController](../../../../../demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial//controller/MainViewController.scala) { #didGainVisibilityFirstTime}
+@@snip [MainViewController.scala](../../../../../demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/controller/app/MainViewController.scala) { #didGainVisibilityFirstTime}

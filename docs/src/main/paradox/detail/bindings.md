@@ -15,7 +15,7 @@ It contains convenience functions for adding keys to @ref:[FXBean Adapter](fxbea
 ```
 ### Scala ViewController Snippet
 
-@@snip [PersonController.scala](../../../../../demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/controller/PersonController.scala) { #bindingList }
+@@snip [PersonPageController.scala](../../../../../demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/controller/page/PersonPageController.scala) { #bindingList }
 
 ## Create Bindings
 
@@ -25,7 +25,7 @@ Bindings are created by the value of the id or fx:id  attributes in the fxml fil
 
 If node lookup from appication root node does not work, you can fix it by adding a parent Node to FXBeanAdapter.
 
-@@snip [PersonController.scala](../../../../../demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/controller/PersonController.scala) { #adapter_create}
+@@snip [PersonPageController.scala](../../../../../demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/controller/page/PersonPageController.scala) { #adapter_create}
 
 @@@
 
@@ -33,4 +33,4 @@ If node lookup from appication root node does not work, you can fix it by adding
 
 ## Add Converter
 
-@@snip [PersonController.scala](../../../../../demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/controller/PersonController.scala) { #addConverter }
+@@snip [PersonPageController.scala](../../../../../demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/controller/page/PersonPageController.scala) { #addConverter }
