@@ -20,8 +20,6 @@ trait StageSupport extends ConfigValues {
     if (forceMaxHeight)
       stage.setMaxHeight(height)
     stage.setTitle(title)
-    val scene = new Scene(new HBox())
-    stage.setScene(scene)
     stage.initModality(modality)
     stage.initStyle(stageStyle)
     initStage(stage)
