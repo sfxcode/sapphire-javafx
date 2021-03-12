@@ -1,7 +1,6 @@
 package com.sfxcode.sapphire.javafx.controller
 
 import java.util.ResourceBundle
-
 import com.sfxcode.sapphire.javafx.CollectionExtensions._
 import com.sfxcode.sapphire.javafx.application.ApplicationEnvironment
 import com.sfxcode.sapphire.data.el.Expressions
@@ -10,20 +9,9 @@ import com.sfxcode.sapphire.javafx.scene.NodeLocator
 import com.typesafe.scalalogging.LazyLogging
 import javafx.beans.property.SimpleObjectProperty
 import javafx.collections.ObservableMap
+import javafx.scene.layout.StackPane
 import javafx.scene.{Parent, Scene}
 import javafx.stage.Stage
-
-case class SceneControllerWillChangeEvent(
-    windowController: WindowController,
-    newController: ViewController,
-    oldController: ViewController
-)
-
-case class SceneControllerDidChangeEvent(
-    windowController: WindowController,
-    newController: ViewController,
-    oldController: ViewController
-)
 
 abstract class WindowController extends FxmlLoading with NodeLocator with Expressions with LazyLogging {
   val sceneMap: ObservableMap[Parent, Scene] = Map[Parent, Scene]()
@@ -46,7 +34,7 @@ abstract class WindowController extends FxmlLoading with NodeLocator with Expres
 
   def setStage(stage: Stage): Unit = {
     stageProperty.set(stage)
-    sceneProperty.set(stage.getScene)
+    sceneProperty.set(createScene())
   }
 
   def name: String = getClass.getSimpleName
@@ -101,20 +89,13 @@ abstract class WindowController extends FxmlLoading with NodeLocator with Expres
 
   def actualSceneController: ViewController = sceneControllerProperty.getValue
 
-  private def replaceSceneContentWithNode(content: Parent, resize: Boolean = true) {
+  protected def createScene(): Scene = new Scene(new StackPane())
 
-    val newScene = sceneMap.getOrElse(
-      content, {
-        val scene = new Scene(content)
-        sceneMap.put(content, scene)
-        scene
-      }
-    )
-
-    stage.setScene(newScene)
-    sceneProperty.set(newScene)
-    stage.sizeToScene()
-
+  protected def replaceSceneContentWithNode(content: Parent, resize: Boolean = true) {
+    scene.setRoot(content)
+    stage.setScene(scene)
+    if (resize)
+      stage.sizeToScene()
   }
 
 }
