@@ -1,5 +1,6 @@
 package com.sfxcode.sapphire.javafx.concurrent.akka
 
+import java.util
 import java.util.Collections
 import java.util.concurrent.{AbstractExecutorService, TimeUnit}
 
@@ -8,11 +9,11 @@ abstract class GUIExecutorService extends AbstractExecutorService {
 
   def shutdown(): Unit = ()
 
-  def shutdownNow() = Collections.emptyList[Runnable]
+  def shutdownNow(): util.List[Runnable] = Collections.emptyList[Runnable]
 
-  def isShutdown = false
+  def isShutdown: Boolean = false
 
-  def isTerminated = false
+  def isTerminated: Boolean = false
 
-  def awaitTermination(l: Long, timeUnit: TimeUnit) = true
+  def awaitTermination(l: Long, timeUnit: TimeUnit): Boolean = true
 }
