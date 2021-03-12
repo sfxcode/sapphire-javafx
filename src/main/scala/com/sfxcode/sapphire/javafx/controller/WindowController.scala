@@ -94,6 +94,10 @@ abstract class WindowController extends FxmlLoading with NodeLocator with Expres
   protected def replaceSceneContentWithNode(content: Parent, resize: Boolean = true) {
     scene.setRoot(content)
     stage.setScene(scene)
+
+    if (!stage.isShowing)
+      stage.show()
+
     if (resize)
       stage.sizeToScene()
   }

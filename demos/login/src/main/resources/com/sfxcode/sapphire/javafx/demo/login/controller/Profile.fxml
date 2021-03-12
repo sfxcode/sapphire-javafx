@@ -41,7 +41,7 @@
             prefWidth="500.0" styleClass="background" xmlns="http://javafx.com/javafx/2.2"
             fx:controller="com.sfxcode.sapphire.javafx.demo.login.controller.ProfileController">
     <children>
-        <AnchorPane id="anchorPane1" prefHeight="371.0" prefWidth="500.0" styleClass="top-segment"
+        <AnchorPane id="anchorPane1" minHeight="500.0" minWidth="800.0" styleClass="top-segment"
                     AnchorPane.bottomAnchor="129.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                     AnchorPane.topAnchor="0.0">
             <children>

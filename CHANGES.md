@@ -2,6 +2,9 @@
 
 ## Versions
 
+### 1.0.6
+* WindowsController Cleanup
+* WindowsController: createScene,  replaceSceneContentWithNode can now be overwritten
 ### 1.0.5
 Update to "sapphire-data" % "1.0.4"
 
