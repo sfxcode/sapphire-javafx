@@ -1,6 +1,6 @@
 # Samples Advanced
 
-Advanced [sapphire-core](https://github.com/sfxcode/sapphire-core) examples.
+Advanced [sapphire-javafx](https://github.com/sfxcode/sapphire-javafx) examples.
 
 ## sapphire-jfoenix-demo
 

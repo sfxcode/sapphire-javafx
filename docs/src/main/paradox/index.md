@@ -6,27 +6,8 @@ A JavaFX  Application Framework for Scala User. It combines scala programming pa
 
 Build and tested against Scala 2.12/2.13 and JDK 11/12
 
-## Migrate from sapphire-core
 
-Migration from sapphire-core (and sapphire-extension) by replace:
-
-```
-sapphire.core (sapphire.extension)
-```
-
-with
-
-```
-sapphire.javafx
-```
-
-This should make all problems in packages work again.
-
-Additional Migraion Steps in Migration.md file.
-
-
-## Frameworks
-
+## Used Frameworks
 
 ### JavaFX
 
@@ -38,7 +19,12 @@ JavaFX Code Samples Samles under [CatalogJavaFX](http://www.java2s.com/Code/Java
 
 [https://openjfx.io](https://openjfx.io)
 
-### Dependency Injection
+### Data Framework (sapphire-data)
+
+[sapphire-data](https://sfxcode.github.io/sapphire-data/) is used for reflection based property handling.
+
+
+### Dependency Injection (Optional)
 
 Sapphire use [Apache Deltaspike](http://deltaspike.apache.org) as CDI Abstraction Layer (1.9.x).
 
@@ -48,10 +34,13 @@ The default [CDI](https://de.wikipedia.org/wiki/Contexts_and_Dependency_Injectio
 
 Expressions are resolved by EL 3 [Tomcat Expression Language](https://tomcat.apache.org/tomcat-8.0-doc/elapi/index.html).
 
+Expression lookup imported from [sapphire-data](https://sfxcode.github.io/sapphire-data/)
+
+Expressions can be used in code and FXML files.
+
 ## Maven
 
 Sapphire is published to Bintray and linked to Maven Central.
-
 
 ### Repository
 
@@ -64,7 +53,7 @@ resolvers += "sfxcode-bintray" at "https://dl.bintray.com/sfxcode/maven"
 
 @@dependency[sbt,Maven,Gradle] {
   group="com.sfxcode.sapphire"
-  artifact="sapphire-core_2.12"
+  artifact="sapphire-javafx_2.13"
   version="$project.version$"
 }
 
@@ -73,10 +62,9 @@ resolvers += "sfxcode-bintray" at "https://dl.bintray.com/sfxcode/maven"
 Explore demos and Tutorial in project demo directory.
 
 
-
 ## Licence
 
-[Apache 2](https://github.com/sfxcode/sapphire-core/blob/master/LICENSE)
+[Apache 2](https://github.com/sfxcode/sapphire-javafx/blob/master/LICENSE)
 
 @@@ index
 
@@ -88,6 +76,6 @@ Explore demos and Tutorial in project demo directory.
  - [Examples](sample/index.md)
  - [ScalaFX](scalafx.md)
  - [Changes ](changes.md)
-
+ - [migration](migration.md)
 
 @@@

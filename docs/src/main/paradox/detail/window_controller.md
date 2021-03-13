@@ -1,4 +1,4 @@
-# WindowController
+# SFXApplicationController
 
 @@include[window_controller_text](../includes/window_controller_text.md)
 

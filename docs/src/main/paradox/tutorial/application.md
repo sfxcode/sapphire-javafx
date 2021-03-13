@@ -21,7 +21,7 @@ Here we will use a MainViewController and later we connect a Navigation-, Worksp
 
 ## MainViewController
 
-The following code snippet loads the MainViewController by the [FXMLoader](https://github.com/sfxcode/sapphire-core/blob/master/src/main/scala/com/sfxcode/ssapphire/javafx/fxml/FxmlLoading.scala) from the CDI managed ApplicationController Bean.
+The following code snippet loads the MainViewController by the [FXMLoader](https://github.com/sfxcode/sapphire-javafx/blob/master/src/main/scala/com/sfxcode/sapphire/javafx/fxml/FxmlLoading.scala) from the CDI managed ApplicationController Bean.
 
 ```scala
   lazy val mainViewController = getController[MainViewController]()

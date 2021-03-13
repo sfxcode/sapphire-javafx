@@ -22,7 +22,7 @@ places to find useful information.
 Include following snippet in your build.sbt file:
 
 ```
-libraryDependencies += "org.scalafx" %% "scalafx" % "12.0.2-R18"
+libraryDependencies += "org.scalafx" %% "scalafx" % "15.0.1-R21"
 ```
 
 In your classes add scalafx Includes to your imports:
@@ -35,7 +35,7 @@ import scalafx.Includes._
 
 ### IssueTrackingLite
 
-Sapphire IssueTrackingLite Demo in the sapphire-core demo section use ScalaFX.
+Sapphire IssueTrackingLite Demo in the sapphire-javafx demo section use ScalaFX.
 
 ### Reasons to use ScalaFX
 
