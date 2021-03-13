@@ -6,8 +6,8 @@ import javafx.scene.control.TableColumn.CellDataFeatures
 import javafx.util.Callback
 
 class SFXTableValueFactory[S <: AnyRef, T]
-  extends Callback[TableColumn.CellDataFeatures[S, T], ObservableValue[T]]
-  with SFXFXValueFactory[S, T] {
+    extends Callback[TableColumn.CellDataFeatures[S, T], ObservableValue[T]]
+    with SFXFXValueFactory[S, T] {
 
   def call(features: CellDataFeatures[S, T]): ObservableValue[T] = {
     val value: S = features.getValue

@@ -1,9 +1,9 @@
 package com.sfxcode.sapphire.javafx.skin
 
 import javafx.scene.control.SkinBase
-import com.sfxcode.sapphire.javafx.control.{ SFXDataListView, SFXListCellFactory }
+import com.sfxcode.sapphire.javafx.control.{SFXDataListView, SFXListCellFactory}
 import javafx.scene.control._
-import javafx.scene.layout.{ HBox, VBox }
+import javafx.scene.layout.{HBox, VBox}
 class SFXDataListViewSkin[S <: AnyRef](view: SFXDataListView[S]) extends SkinBase[SFXDataListView[S]](view) {
 
   val contentBox = new VBox()

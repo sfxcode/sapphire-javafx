@@ -4,11 +4,11 @@ import com.sfxcode.sapphire.javafx.value.SFXBean
 import com.sfxcode.sapphire.javafx.control.SFXDataListView
 import javafx.beans.property.ReadOnlyObjectProperty
 import javafx.collections.ObservableList
-import javafx.scene.control.{ ListView, TextField }
+import javafx.scene.control.{ListView, TextField}
 import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
 
 class SFXDataListFilter[S <: AnyRef](dataList: SFXDataListView[S])
-  extends SFXDataFilter[S](dataList.items, dataList.header) {
+    extends SFXDataFilter[S](dataList.items, dataList.header) {
   var sortFiltered = true
 
   var searchField: TextField = addSearchField(dataList.cellProperty.get)

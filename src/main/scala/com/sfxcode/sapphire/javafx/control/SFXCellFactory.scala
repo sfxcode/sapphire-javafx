@@ -3,7 +3,7 @@ package com.sfxcode.sapphire.javafx.control
 import com.sfxcode.sapphire.javafx.application.SFXApplicationEnvironment
 import javafx.geometry.Pos
 import javafx.scene.control.IndexedCell
-import javafx.scene.control.cell.{ TextFieldTableCell, TextFieldTreeTableCell }
+import javafx.scene.control.cell.{TextFieldTableCell, TextFieldTreeTableCell}
 import javafx.scene.text.TextAlignment
 import javafx.util.StringConverter
 
@@ -35,7 +35,7 @@ trait SFXCellFactory[S, T] {
 
     if (converter != null)
       cell match {
-        case textFieldCell: TextFieldTableCell[S, T] => textFieldCell.setConverter(getConverterForName(converter))
+        case textFieldCell: TextFieldTableCell[S, T]     => textFieldCell.setConverter(getConverterForName(converter))
         case textFieldCell: TextFieldTreeTableCell[S, T] => textFieldCell.setConverter(getConverterForName(converter))
       }
 

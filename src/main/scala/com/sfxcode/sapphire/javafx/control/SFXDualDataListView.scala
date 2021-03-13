@@ -1,7 +1,7 @@
 package com.sfxcode.sapphire.javafx.control
 
 import com.sfxcode.sapphire.javafx.assets.SFXResourceLoader
-import javafx.scene.control.{ Control, Skin }
+import javafx.scene.control.{Control, Skin}
 import com.sfxcode.sapphire.javafx.skin.SFXDualDataListViewSkin
 
 class SFXDualDataListView[S <: AnyRef] extends Control {

@@ -11,7 +11,7 @@ import com.sfxcode.sapphire.javafx.fxml.FxmlLoading
 import com.sfxcode.sapphire.javafx.scene.SFXNodeLocator
 import com.typesafe.scalalogging.LazyLogging
 import javafx.beans.property.SimpleObjectProperty
-import javafx.collections.{ FXCollections, ObservableList }
+import javafx.collections.{FXCollections, ObservableList}
 import javafx.fxml.Initializable
 import javafx.scene.Scene
 import javafx.scene.layout.Pane
@@ -20,12 +20,12 @@ import javafx.stage.Stage
 import scala.language.implicitConversions
 
 abstract class SFXViewController
-  extends FxmlLoading
-  with SFXActionEvents
-  with Initializable
-  with Expressions
-  with LazyLogging
-  with SFXNodeLocator {
+    extends FxmlLoading
+    with SFXActionEvents
+    with Initializable
+    with Expressions
+    with LazyLogging
+    with SFXNodeLocator {
 
   implicit def stringListToMap(list: List[String]): Map[String, String] = list.map(s => (s, s)).toMap
 
@@ -102,10 +102,12 @@ abstract class SFXViewController
     if (pane == null) {
       logger.warn("contentPane is NULL")
       false
-    } else if (viewController == null) {
+    }
+    else if (viewController == null) {
       logger.warn("viewController is NULL")
       false
-    } else if (viewController.canGainVisibility)
+    }
+    else if (viewController.canGainVisibility)
       try {
         viewController.managedParent.setValue(this)
         viewController.windowController.set(windowController.get)
@@ -115,7 +117,8 @@ abstract class SFXViewController
         viewController.didGainVisibility()
         unmanagedChildren.add(viewController)
         true
-      } catch {
+      }
+      catch {
         case e: Exception =>
           logger.error(e.getMessage, e)
           false
@@ -136,5 +139,6 @@ abstract class SFXViewController
       this.getClass.getSimpleName,
       hashCode(),
       isLoadedFromFXML,
-      gainedVisibility)
+      gainedVisibility
+    )
 }

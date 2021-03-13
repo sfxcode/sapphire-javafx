@@ -12,9 +12,8 @@ case class SFXResourceBundleHolder(underlying: ResourceBundle) extends AnyVal {
       .getOrElse(s"!!--$key--!!")
 
   private def format(s: String, params: Any*): String =
-    params.zipWithIndex.foldLeft(s) {
-      case (res, (value, index)) =>
-        res.replace("{" + index + "}", value.toString)
+    params.zipWithIndex.foldLeft(s) { case (res, (value, index)) =>
+      res.replace("{" + index + "}", value.toString)
     }
 
 }

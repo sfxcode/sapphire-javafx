@@ -1,41 +1,43 @@
 package com.sfxcode.sapphire.javafx.filter
 
 import javafx.scene.layout.Pane
-import com.sfxcode.sapphire.javafx.control.{ SFXTableCellFactory, SFXTableValueFactory }
+import com.sfxcode.sapphire.javafx.control.{SFXTableCellFactory, SFXTableValueFactory}
 import com.sfxcode.sapphire.javafx.value.SFXBean
 import com.sfxcode.sapphire.javafx.control.table.SFXTableColumnFactory
 import javafx.beans.property.ReadOnlyObjectProperty
 
 import scala.collection.mutable
 import scala.reflect.ClassTag
-import scala.reflect.runtime.{ universe => ru }
+import scala.reflect.runtime.{universe => ru}
 import javafx.beans.property.ObjectProperty
 import javafx.collections.ObservableList
-import javafx.scene.control.{ TableView, _ }
+import javafx.scene.control.{TableView, _}
 import javafx.scene.text.TextAlignment
 import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
 
 class SFXDataTableFilter[S <: AnyRef](
-  table: TableView[SFXBean[S]],
-  items: ObjectProperty[ObservableList[SFXBean[S]]],
-  pane: ObjectProperty[Pane])(implicit ct: ClassTag[S])
-  extends SFXDataFilter[S](items, pane) {
+    table: TableView[SFXBean[S]],
+    items: ObjectProperty[ObservableList[SFXBean[S]]],
+    pane: ObjectProperty[Pane]
+)(implicit ct: ClassTag[S])
+    extends SFXDataFilter[S](items, pane) {
 
   // columns
   val columnMapping = new mutable.HashMap[String, TableColumn[SFXBean[S], _]]()
 
   val columnPropertyMap = new mutable.HashMap[String, String]()
-  val columnHeaderMap = new mutable.HashMap[String, String]()
+  val columnHeaderMap   = new mutable.HashMap[String, String]()
 
   // reflection
-  private val mirror = ru.runtimeMirror(ct.runtimeClass.getClassLoader)
+  private val mirror  = ru.runtimeMirror(ct.runtimeClass.getClassLoader)
   private val members = mirror.classSymbol(ct.runtimeClass).asType.typeSignature.members.toList.reverse
   logger.debug(
     members
       .collect({ case x if x.isTerm => x.asTerm })
       .filter(t => t.isVal || t.isVar)
       .map(m => m.name.toString)
-      .toString())
+      .toString()
+  )
 
   filterResult.addChangeListener { _ =>
     table.getItems.clear()
@@ -57,24 +59,27 @@ class SFXDataTableFilter[S <: AnyRef](
   }
 
   def addColumns[T](
-    editable: Boolean = false,
-    numberFormat: String = "#,##0",
-    decimalFormat: String = "#,##0.00"): Unit = {
+      editable: Boolean = false,
+      numberFormat: String = "#,##0",
+      decimalFormat: String = "#,##0.00"
+  ): Unit = {
     val columnList = SFXTableColumnFactory.columnListFromMembers[S, T](
       members,
       columnHeaderMap.toMap,
       columnPropertyMap.toMap,
       editable,
       numberFormat,
-      decimalFormat)
+      decimalFormat
+    )
 
     columnList._1.foreach(key => addColumn(key, columnList._2(key)))
   }
 
   def addColumn[T](
-    header: String,
-    property: String,
-    alignment: TextAlignment = TextAlignment.LEFT): TableColumn[SFXBean[S], T] = {
+      header: String,
+      property: String,
+      alignment: TextAlignment = TextAlignment.LEFT
+  ): TableColumn[SFXBean[S], T] = {
     val valueFactory = new SFXTableValueFactory[SFXBean[S], T]()
     valueFactory.setProperty(columnPropertyMap.getOrElse(property, property))
     val cellFactory = new SFXTableCellFactory[SFXBean[S], T]()

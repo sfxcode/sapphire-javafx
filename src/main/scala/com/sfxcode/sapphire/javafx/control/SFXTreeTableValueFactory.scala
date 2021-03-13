@@ -5,8 +5,8 @@ import javafx.scene.control.TreeTableColumn
 import javafx.util.Callback
 
 class SFXTreeTableValueFactory[S <: AnyRef, T]
-  extends Callback[TreeTableColumn.CellDataFeatures[S, T], ObservableValue[T]]
-  with SFXFXValueFactory[S, T] {
+    extends Callback[TreeTableColumn.CellDataFeatures[S, T], ObservableValue[T]]
+    with SFXFXValueFactory[S, T] {
 
   def call(features: TreeTableColumn.CellDataFeatures[S, T]): ObservableValue[T] = {
     val value: S = features.getValue.getValue
