@@ -20,7 +20,7 @@
 
 <meta name="description" content="sapphire-javafx-docs">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>KeyBindings · Sapphire JavaFX</title>
+<title>SFXKeyBindings · Sapphire JavaFX (SFX)</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -43,7 +43,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <nav class="md-header-nav md-grid">
 <div class="md-flex">
 <div class="md-flex__cell md-flex__cell--shrink">
-<a href="../index.html" title="Sapphire JavaFX" class="md-header-nav__button md-logo">
+<a href="../index.html" title="Sapphire JavaFX (SFX)" class="md-header-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
 </div>
@@ -53,10 +53,10 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <div class="md-flex__cell md-flex__cell--stretch">
 <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
 <span class="md-header-nav__topic">
-Sapphire JavaFX
+Sapphire JavaFX (SFX)
 </span>
 <span class="md-header-nav__topic">
-KeyBindings
+SFXKeyBindings
 </span>
 </div>
 </div>
@@ -112,12 +112,12 @@ sfxcode/sapphire-javafx
 <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
 <label class="md-nav__title md-nav__title--site" for="drawer">
-<a href="../index.html" title="Sapphire JavaFX" class="md-nav__button md-logo">
+<a href="../index.html" title="Sapphire JavaFX (SFX)" class="md-nav__button md-logo">
 <span class="md-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
-<a href="../index.html" title="Sapphire JavaFX">
-Sapphire JavaFX
+<a href="../index.html" title="Sapphire JavaFX (SFX)">
+Sapphire JavaFX (SFX)
 </a>
 </label>
 <div class="md-nav__source">
@@ -139,11 +139,11 @@ sfxcode/sapphire-javafx
   <li><a href="../getting_started.html" class="page">Getting Started</a></li>
   <li><a href="../detail/index.html" class="page">Core Concepts</a>
   <ul>
-    <li><a href="../detail/window_controller.html" class="page">WindowController</a></li>
-    <li><a href="../detail/view_controller.html" class="page">ViewController</a></li>
-    <li><a href="../detail/fxbean.html" class="page">FXBean</a></li>
+    <li><a href="../detail/window_controller.html" class="page">SFXApplicationController</a></li>
+    <li><a href="../detail/view_controller.html" class="page">SFXViewController</a></li>
+    <li><a href="../detail/fxbean.html" class="page">SFXBean</a></li>
     <li><a href="../detail/fxbean_adapter.html" class="page">FXBean Adapter</a></li>
-    <li><a href="../detail/bindings.html" class="active page">KeyBindings</a></li>
+    <li><a href="../detail/bindings.html" class="active page">SFXKeyBindings</a></li>
     <li><a href="../detail/fxml_loading.html" class="page">FxmlLoading</a></li>
     <li><a href="../detail/expression_language.html" class="page">Expression Language</a></li>
     <li><a href="../detail/i18n.html" class="page">I18n Support</a></li>
@@ -162,16 +162,18 @@ sfxcode/sapphire-javafx
   </ul></li>
   <li><a href="../sample/index.html" class="page">Examples</a>
   <ul>
+    <li><a href="../sample/showcase.html" class="page">Showcase</a></li>
     <li><a href="../sample/basic.html" class="page">Samples Basic</a></li>
     <li><a href="../sample/advanced.html" class="page">Samples Advanced</a></li>
   </ul></li>
   <li><a href="../scalafx.html" class="page">ScalaFX</a></li>
   <li><a href="../changes.html" class="page">Version History</a></li>
+  <li><a href="../migration.html" class="page">Migration</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../detail/bindings.html#keybindings" class="header">KeyBindings</a>
+  <li><a href="../detail/bindings.html#sfxkeybindings" class="header">SFXKeyBindings</a>
   <ul>
     <li><a href="../detail/bindings.html#code-sample" class="header">Code Sample</a></li>
     <li><a href="../detail/bindings.html#create-bindings" class="header">Create Bindings</a></li>
@@ -184,7 +186,7 @@ sfxcode/sapphire-javafx
 <ul style="display: none">
 <li class="md-nav__item md-version" id="project.version">
 <label class="md-nav__link" for="__version">
-<i class="md-icon" title="Version">label_outline</i> 1.0.5*
+<i class="md-icon" title="Version">label_outline</i> 1.1.1*
 </label>
 </li>
 </ul>
@@ -197,7 +199,7 @@ sfxcode/sapphire-javafx
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../detail/bindings.html#keybindings" class="header">KeyBindings</a>
+  <li><a href="../detail/bindings.html#sfxkeybindings" class="header">SFXKeyBindings</a>
   <ul>
     <li><a href="../detail/bindings.html#code-sample" class="header">Code Sample</a></li>
     <li><a href="../detail/bindings.html#create-bindings" class="header">Create Bindings</a></li>
@@ -212,8 +214,8 @@ sfxcode/sapphire-javafx
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#keybindings" name="keybindings" class="anchor"><span class="anchor-link"></span></a>KeyBindings</h1>
-<p>KeyBindings is a helper class for <a href="fxbean_adapter.html">FXBean Adapter</a>. It provides Bindings from beans to ui representations.</p>
+<h1><a href="#sfxkeybindings" name="sfxkeybindings" class="anchor"><span class="anchor-link"></span></a>SFXKeyBindings</h1>
+<p>SFXKeyBindings is a helper class for <a href="fxbean_adapter.html">SFXBeanAdapter</a>. It provides Bindings from beans to ui representations.</p>
 <p>It contains convenience functions for adding keys to <a href="fxbean_adapter.html">FXBean Adapter</a> and for conversion.</p>
 <h2><a href="#code-sample" name="code-sample" class="anchor"><span class="anchor-link"></span></a>Code Sample</h2>
 <h3><a href="#fxml-snippet" name="fxml-snippet" class="anchor"><span class="anchor-link"></span></a>FXML Snippet</h3>
@@ -223,9 +225,9 @@ sfxcode/sapphire-javafx
 
 </code></pre>
 <h3><a href="#scala-viewcontroller-snippet" name="scala-viewcontroller-snippet" class="anchor"><span class="anchor-link"></span></a>Scala ViewController Snippet</h3>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/controller/page/PersonPageController.scala#L32-L36" target="_blank" title="Go to snippet source">source</a><code class="language-scala">val bindings = KeyBindings(&quot;id&quot;, &quot;name&quot;, &quot;age&quot;, &quot;test&quot;)
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/controller/page/PersonPageController.scala#L32-L36" target="_blank" title="Go to snippet source">source</a><code class="language-scala">val bindings = SFXKeyBindings(&quot;id&quot;, &quot;name&quot;, &quot;age&quot;, &quot;test&quot;)
 // Expression Binding Example
-bindings.add(&quot;person&quot;, &quot;${sf:i18n(&#39;personText&#39;, _self.name(), _self.age())}&quot;)
+bindings.add(&quot;person&quot;, &quot;${sfx:i18n(&#39;personText&#39;, _self.name(), _self.age())}&quot;)
 
 adapter.addBindings(bindings)</code></pre>
 <h2><a href="#create-bindings" name="create-bindings" class="anchor"><span class="anchor-link"></span></a>Create Bindings</h2>
@@ -244,7 +246,7 @@ Edit this page
 </div>
 <div class="print-only">
 <span class="md-source-file md-version">
-1.0.5*
+1.1.1*
 </span>
 </div>
 </article>

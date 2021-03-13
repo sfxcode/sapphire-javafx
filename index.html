@@ -20,7 +20,7 @@
 
 <meta name="description" content="sapphire-javafx-docs">
 <link rel="shortcut icon" href="assets/images/favicon.png">
-<title>Sapphire JavaFX</title>
+<title>Sapphire JavaFX (SFX)</title>
 <link rel="stylesheet" href="assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="lib/prettify/prettify.css">
@@ -43,7 +43,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <nav class="md-header-nav md-grid">
 <div class="md-flex">
 <div class="md-flex__cell md-flex__cell--shrink">
-<a href="index.html" title="Sapphire JavaFX" class="md-header-nav__button md-logo">
+<a href="index.html" title="Sapphire JavaFX (SFX)" class="md-header-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
 </div>
@@ -52,7 +52,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 </div>
 <div class="md-flex__cell md-flex__cell--stretch">
 <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-Sapphire JavaFX
+Sapphire JavaFX (SFX)
 </div>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
@@ -107,12 +107,12 @@ sfxcode/sapphire-javafx
 <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
 <label class="md-nav__title md-nav__title--site" for="drawer">
-<a href="index.html" title="Sapphire JavaFX" class="md-nav__button md-logo">
+<a href="index.html" title="Sapphire JavaFX (SFX)" class="md-nav__button md-logo">
 <span class="md-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
-<a href="index.html" title="Sapphire JavaFX">
-Sapphire JavaFX
+<a href="index.html" title="Sapphire JavaFX (SFX)">
+Sapphire JavaFX (SFX)
 </a>
 </label>
 <div class="md-nav__source">
@@ -134,11 +134,11 @@ sfxcode/sapphire-javafx
   <li><a href="getting_started.html" class="page">Getting Started</a></li>
   <li><a href="detail/index.html" class="page">Core Concepts</a>
   <ul>
-    <li><a href="detail/window_controller.html" class="page">WindowController</a></li>
-    <li><a href="detail/view_controller.html" class="page">ViewController</a></li>
-    <li><a href="detail/fxbean.html" class="page">FXBean</a></li>
+    <li><a href="detail/window_controller.html" class="page">SFXApplicationController</a></li>
+    <li><a href="detail/view_controller.html" class="page">SFXViewController</a></li>
+    <li><a href="detail/fxbean.html" class="page">SFXBean</a></li>
     <li><a href="detail/fxbean_adapter.html" class="page">FXBean Adapter</a></li>
-    <li><a href="detail/bindings.html" class="page">KeyBindings</a></li>
+    <li><a href="detail/bindings.html" class="page">SFXKeyBindings</a></li>
     <li><a href="detail/fxml_loading.html" class="page">FxmlLoading</a></li>
     <li><a href="detail/expression_language.html" class="page">Expression Language</a></li>
     <li><a href="detail/i18n.html" class="page">I18n Support</a></li>
@@ -157,20 +157,21 @@ sfxcode/sapphire-javafx
   </ul></li>
   <li><a href="sample/index.html" class="page">Examples</a>
   <ul>
+    <li><a href="sample/showcase.html" class="page">Showcase</a></li>
     <li><a href="sample/basic.html" class="page">Samples Basic</a></li>
     <li><a href="sample/advanced.html" class="page">Samples Advanced</a></li>
   </ul></li>
   <li><a href="scalafx.html" class="page">ScalaFX</a></li>
   <li><a href="changes.html" class="page">Version History</a></li>
+  <li><a href="migration.html" class="page">Migration</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="index.html#sapphire-javafx" class="header">Sapphire JavaFX</a>
+  <li><a href="index.html#sapphire-javafx-sfx-" class="header">Sapphire JavaFX (SFX)</a>
   <ul>
     <li><a href="index.html#cross-build" class="header">Cross Build</a></li>
-    <li><a href="index.html#migrate-from-sapphire-core" class="header">Migrate from sapphire-core</a></li>
-    <li><a href="index.html#frameworks" class="header">Frameworks</a></li>
+    <li><a href="index.html#used-frameworks" class="header">Used Frameworks</a></li>
     <li><a href="index.html#maven" class="header">Maven</a></li>
     <li><a href="index.html#licence" class="header">Licence</a></li>
   </ul></li>
@@ -181,7 +182,7 @@ sfxcode/sapphire-javafx
 <ul style="display: none">
 <li class="md-nav__item md-version" id="project.version">
 <label class="md-nav__link" for="__version">
-<i class="md-icon" title="Version">label_outline</i> 1.0.5*
+<i class="md-icon" title="Version">label_outline</i> 1.1.1*
 </label>
 </li>
 </ul>
@@ -194,11 +195,10 @@ sfxcode/sapphire-javafx
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="index.html#sapphire-javafx" class="header">Sapphire JavaFX</a>
+  <li><a href="index.html#sapphire-javafx-sfx-" class="header">Sapphire JavaFX (SFX)</a>
   <ul>
     <li><a href="index.html#cross-build" class="header">Cross Build</a></li>
-    <li><a href="index.html#migrate-from-sapphire-core" class="header">Migrate from sapphire-core</a></li>
-    <li><a href="index.html#frameworks" class="header">Frameworks</a></li>
+    <li><a href="index.html#used-frameworks" class="header">Used Frameworks</a></li>
     <li><a href="index.html#maven" class="header">Maven</a></li>
     <li><a href="index.html#licence" class="header">Licence</a></li>
   </ul></li>
@@ -211,48 +211,45 @@ sfxcode/sapphire-javafx
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#sapphire-javafx" name="sapphire-javafx" class="anchor"><span class="anchor-link"></span></a>Sapphire JavaFX</h1>
+<h1><a href="#sapphire-javafx-sfx-" name="sapphire-javafx-sfx-" class="anchor"><span class="anchor-link"></span></a>Sapphire JavaFX (SFX)</h1>
 <p>A JavaFX Application Framework for Scala User. It combines scala programming patterns with MVC for building complex JavaFX Applications.</p>
 <h2><a href="#cross-build" name="cross-build" class="anchor"><span class="anchor-link"></span></a>Cross Build</h2>
 <p>Build and tested against Scala 2.12/2.13 and JDK 11/12</p>
-<h2><a href="#migrate-from-sapphire-core" name="migrate-from-sapphire-core" class="anchor"><span class="anchor-link"></span></a>Migrate from sapphire-core</h2>
-<p>Migration from sapphire-core (and sapphire-extension) by replace:</p>
-<pre><code>sapphire.core (sapphire.extension)
-</code></pre>
-<p>with</p>
-<pre><code>sapphire.javafx
-</code></pre>
-<p>This should make all problems in packages work again.</p>
-<h2><a href="#frameworks" name="frameworks" class="anchor"><span class="anchor-link"></span></a>Frameworks</h2>
+<h2><a href="#used-frameworks" name="used-frameworks" class="anchor"><span class="anchor-link"></span></a>Used Frameworks</h2>
 <h3><a href="#javafx" name="javafx" class="anchor"><span class="anchor-link"></span></a>JavaFX</h3>
 <p>Java UI Application Framework as replacement for Swing.</p>
 <p>Sapphire depends on OpenJFX 11/12.</p>
 <p>JavaFX Code Samples Samles under <a href="http://www.java2s.com/Code/Java/JavaFX/CatalogJavaFX.htm">CatalogJavaFX</a></p>
 <p><a href="https://openjfx.io">https://openjfx.io</a></p>
-<h3><a href="#dependency-injection" name="dependency-injection" class="anchor"><span class="anchor-link"></span></a>Dependency Injection</h3>
+<h3><a href="#data-framework-sapphire-data-" name="data-framework-sapphire-data-" class="anchor"><span class="anchor-link"></span></a>Data Framework (sapphire-data)</h3>
+<p><a href="https://sfxcode.github.io/sapphire-data/">sapphire-data</a> is used for reflection based property handling.</p>
+<h3><a href="#dependency-injection-optional-" name="dependency-injection-optional-" class="anchor"><span class="anchor-link"></span></a>Dependency Injection (Optional)</h3>
 <p>Sapphire use <a href="http://deltaspike.apache.org">Apache Deltaspike</a> as CDI Abstraction Layer (1.9.x).</p>
 <p>The default <a href="https://de.wikipedia.org/wiki/Contexts_and_Dependency_Injection">CDI</a> implementation depends on <a href="http://openwebbeans.apache.org">Apache OpenWebBeans</a> (2.0.x).</p>
 <h3><a href="#expression-language" name="expression-language" class="anchor"><span class="anchor-link"></span></a>Expression Language</h3>
 <p>Expressions are resolved by EL 3 <a href="https://tomcat.apache.org/tomcat-8.0-doc/elapi/index.html">Tomcat Expression Language</a>.</p>
+<p>Expression lookup imported from <a href="https://sfxcode.github.io/sapphire-data/">sapphire-data</a></p>
+<p>Expressions can be used in code and FXML files.</p>
 <h2><a href="#maven" name="maven" class="anchor"><span class="anchor-link"></span></a>Maven</h2>
 <p>Sapphire is published to Bintray and linked to Maven Central.</p>
 <h3><a href="#repository" name="repository" class="anchor"><span class="anchor-link"></span></a>Repository</h3>
 <pre><code>resolvers += &quot;sfxcode-bintray&quot; at &quot;https://dl.bintray.com/sfxcode/maven&quot;
 
 </code></pre>
-<h3><a href="#artifact" name="artifact" class="anchor"><span class="anchor-link"></span></a>Artifact</h3><dl class="dependency"><dt>sbt</dt><dd><pre class="prettyprint"><code class="language-scala">libraryDependencies += "com.sfxcode.sapphire" % "sapphire-core_2.12" % "1.0.5-SNAPSHOT"</code></pre></dd><dt>Maven</dt><dd><pre class="prettyprint"><code class="language-xml">&lt;dependencies&gt
+<h3><a href="#artifact" name="artifact" class="anchor"><span class="anchor-link"></span></a>Artifact</h3><dl class="dependency"><dt>sbt</dt><dd><pre class="prettyprint"><code class="language-scala">libraryDependencies += "com.sfxcode.sapphire" %% "sapphire-javafx" % "1.1.1-SNAPSHOT"</code></pre></dd><dt>Maven</dt><dd><pre class="prettyprint"><code class="language-xml">&lt;dependencies&gt
   &lt;dependency&gt;
     &lt;groupId&gt;com.sfxcode.sapphire&lt;/groupId&gt;
-    &lt;artifactId&gt;sapphire-core_2.12&lt;/artifactId&gt;
-    &lt;version&gt;1.0.5-SNAPSHOT&lt;/version&gt;
+    &lt;artifactId&gt;sapphire-javafx_2.13&lt;/artifactId&gt;
+    &lt;version&gt;1.1.1-SNAPSHOT&lt;/version&gt;
   &lt;/dependency&gt
 &lt;/dependencies&gt;</code></pre></dd><dt>Gradle</dt><dd><pre class="prettyprint"><code class="language-gradle">dependencies {
-  implementation "com.sfxcode.sapphire:sapphire-core_2.12:1.0.5-SNAPSHOT"
+  implementation "com.sfxcode.sapphire:sapphire-javafx_2.13:1.1.1-SNAPSHOT"
 }</code></pre></dd></dl>
 <h3><a href="#demos" name="demos" class="anchor"><span class="anchor-link"></span></a>Demos</h3>
 <p>Explore demos and Tutorial in project demo directory.</p>
+<p>Also there is a showcase for commonly used pattern.</p>
 <h2><a href="#licence" name="licence" class="anchor"><span class="anchor-link"></span></a>Licence</h2>
-<p><a href="https://github.com/sfxcode/sapphire-core/blob/master/LICENSE">Apache 2</a></p>
+<p><a href="https://github.com/sfxcode/sapphire-javafx/blob/master/LICENSE">Apache 2</a></p>
 </div>
 <div>
 <a href="https://github.com/sfxcode/sapphire-javafx/tree/master/docs/src/main/paradox/index.md" title="Edit this page" class="md-source-file md-edit">
@@ -261,7 +258,7 @@ Edit this page
 </div>
 <div class="print-only">
 <span class="md-source-file md-version">
-1.0.5*
+1.1.1*
 </span>
 </div>
 </article>

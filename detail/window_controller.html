@@ -20,7 +20,7 @@
 
 <meta name="description" content="sapphire-javafx-docs">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>WindowController · Sapphire JavaFX</title>
+<title>SFXApplicationController · Sapphire JavaFX (SFX)</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -43,7 +43,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <nav class="md-header-nav md-grid">
 <div class="md-flex">
 <div class="md-flex__cell md-flex__cell--shrink">
-<a href="../index.html" title="Sapphire JavaFX" class="md-header-nav__button md-logo">
+<a href="../index.html" title="Sapphire JavaFX (SFX)" class="md-header-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
 </div>
@@ -53,10 +53,10 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <div class="md-flex__cell md-flex__cell--stretch">
 <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
 <span class="md-header-nav__topic">
-Sapphire JavaFX
+Sapphire JavaFX (SFX)
 </span>
 <span class="md-header-nav__topic">
-WindowController
+SFXApplicationController
 </span>
 </div>
 </div>
@@ -112,12 +112,12 @@ sfxcode/sapphire-javafx
 <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
 <label class="md-nav__title md-nav__title--site" for="drawer">
-<a href="../index.html" title="Sapphire JavaFX" class="md-nav__button md-logo">
+<a href="../index.html" title="Sapphire JavaFX (SFX)" class="md-nav__button md-logo">
 <span class="md-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
-<a href="../index.html" title="Sapphire JavaFX">
-Sapphire JavaFX
+<a href="../index.html" title="Sapphire JavaFX (SFX)">
+Sapphire JavaFX (SFX)
 </a>
 </label>
 <div class="md-nav__source">
@@ -139,11 +139,11 @@ sfxcode/sapphire-javafx
   <li><a href="../getting_started.html" class="page">Getting Started</a></li>
   <li><a href="../detail/index.html" class="page">Core Concepts</a>
   <ul>
-    <li><a href="../detail/window_controller.html" class="active page">WindowController</a></li>
-    <li><a href="../detail/view_controller.html" class="page">ViewController</a></li>
-    <li><a href="../detail/fxbean.html" class="page">FXBean</a></li>
+    <li><a href="../detail/window_controller.html" class="active page">SFXApplicationController</a></li>
+    <li><a href="../detail/view_controller.html" class="page">SFXViewController</a></li>
+    <li><a href="../detail/fxbean.html" class="page">SFXBean</a></li>
     <li><a href="../detail/fxbean_adapter.html" class="page">FXBean Adapter</a></li>
-    <li><a href="../detail/bindings.html" class="page">KeyBindings</a></li>
+    <li><a href="../detail/bindings.html" class="page">SFXKeyBindings</a></li>
     <li><a href="../detail/fxml_loading.html" class="page">FxmlLoading</a></li>
     <li><a href="../detail/expression_language.html" class="page">Expression Language</a></li>
     <li><a href="../detail/i18n.html" class="page">I18n Support</a></li>
@@ -162,20 +162,22 @@ sfxcode/sapphire-javafx
   </ul></li>
   <li><a href="../sample/index.html" class="page">Examples</a>
   <ul>
+    <li><a href="../sample/showcase.html" class="page">Showcase</a></li>
     <li><a href="../sample/basic.html" class="page">Samples Basic</a></li>
     <li><a href="../sample/advanced.html" class="page">Samples Advanced</a></li>
   </ul></li>
   <li><a href="../scalafx.html" class="page">ScalaFX</a></li>
   <li><a href="../changes.html" class="page">Version History</a></li>
+  <li><a href="../migration.html" class="page">Migration</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../detail/window_controller.html#windowcontroller" class="header">WindowController</a>
+  <li><a href="../detail/window_controller.html#sfxapplicationcontroller" class="header">SFXApplicationController</a>
   <ul>
     <li><a href="../detail/window_controller.html#features" class="header">Features</a></li>
     <li><a href="../detail/window_controller.html#baseapplicationcontroller" class="header">BaseApplicationController</a></li>
-    <li><a href="../detail/window_controller.html#additionalwindowcontroller" class="header">AdditionalWindowController</a></li>
+    <li><a href="../detail/window_controller.html#sfxadditionalwindowcontroller" class="header">SFXAdditionalWindowController</a></li>
     <li><a href="../detail/window_controller.html#modalwindowcontroller" class="header">ModalWindowController</a></li>
   </ul></li>
 </ul>
@@ -185,7 +187,7 @@ sfxcode/sapphire-javafx
 <ul style="display: none">
 <li class="md-nav__item md-version" id="project.version">
 <label class="md-nav__link" for="__version">
-<i class="md-icon" title="Version">label_outline</i> 1.0.5*
+<i class="md-icon" title="Version">label_outline</i> 1.1.1*
 </label>
 </li>
 </ul>
@@ -198,11 +200,11 @@ sfxcode/sapphire-javafx
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../detail/window_controller.html#windowcontroller" class="header">WindowController</a>
+  <li><a href="../detail/window_controller.html#sfxapplicationcontroller" class="header">SFXApplicationController</a>
   <ul>
     <li><a href="../detail/window_controller.html#features" class="header">Features</a></li>
     <li><a href="../detail/window_controller.html#baseapplicationcontroller" class="header">BaseApplicationController</a></li>
-    <li><a href="../detail/window_controller.html#additionalwindowcontroller" class="header">AdditionalWindowController</a></li>
+    <li><a href="../detail/window_controller.html#sfxadditionalwindowcontroller" class="header">SFXAdditionalWindowController</a></li>
     <li><a href="../detail/window_controller.html#modalwindowcontroller" class="header">ModalWindowController</a></li>
   </ul></li>
 </ul>
@@ -214,9 +216,9 @@ sfxcode/sapphire-javafx
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#windowcontroller" name="windowcontroller" class="anchor"><span class="anchor-link"></span></a>WindowController</h1><p>The WindowController combines JavaFX Stage and Scene. Creates a stage and a scene. Scene content can be exchanged by replaceSceneContent function.</p>
+<h1><a href="#sfxapplicationcontroller" name="sfxapplicationcontroller" class="anchor"><span class="anchor-link"></span></a>SFXApplicationController</h1><p>The WindowController combines JavaFX Stage and Scene. Creates a stage and a scene. Scene content can be exchanged by replaceSceneContent function.</p>
 <p>Sample with scene content switching can be found in the login demo.</p>
-<pre class="prettyprint"><code class="language-scala">class ApplicationController extends BaseApplicationController {
+<pre class="prettyprint"><code class="language-scala">class ApplicationController extends SFXApplicationController {
   // Content here
 }
 </code></pre>
@@ -242,23 +244,23 @@ sfxcode/sapphire-javafx
 </ul>
 <h3><a href="#application" name="application" class="anchor"><span class="anchor-link"></span></a>Application</h3>
 <p>Sample Code:</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/issues/src/main/scala/com/sfxcode/sapphire/javafx/demo/issues/Application.scala#L14-L21" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>object Application extends BaseApplication with DeltaspikeBeanResolver {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/issues/src/main/scala/com/sfxcode/sapphire/javafx/demo/issues/Application.scala#L14-L21" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>object Application extends SFXApplication with DeltaspikeBeanResolver {
 
   DeltaspikeLauncher.init()
-  ApplicationEnvironment.documentLoader = getBean[DeltaspikeDocumentLoader]()
+  SFXApplicationEnvironment.documentLoader = getBean[DeltaspikeDocumentLoader]()
 
-  override val applicationController: BaseApplicationController = getBean[ApplicationController]()
+  override val applicationController: SFXApplicationController = getBean[ApplicationController]()
 }</code></pre>
 <p>BaseApplication Code:</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/src/main/scala/com/sfxcode/sapphire/javafx/application/BaseApplication.scala#L9-L26" target="_blank" title="Go to snippet source">source</a><code class="language-scala">abstract class BaseApplication extends StageSupport with LazyLogging {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/src/main/scala/com/sfxcode/sapphire/javafx/application/SFXApplication.scala#L9-L26" target="_blank" title="Go to snippet source">source</a><code class="language-scala">abstract class SFXApplication extends SFXStageSupport with LazyLogging {
   val startTime: Long = System.currentTimeMillis()
 
   def main(args: Array[String]): Unit = {
-    ApplicationEnvironment.setApplication(this)
-    Application.launch(classOf[FXApplication], args: _*)
+    SFXApplicationEnvironment.setApplication(this)
+    Application.launch(classOf[SFXJavaApplication], args: _*)
   }
 
-  val applicationController: BaseApplicationController
+  val applicationController: SFXApplicationController
 
   def applicationWillLaunch(): Unit = {}
 
@@ -269,11 +271,11 @@ sfxcode/sapphire-javafx
 
 }</code></pre>
 <h3><a href="#applicationcontroller" name="applicationcontroller" class="anchor"><span class="anchor-link"></span></a>ApplicationController</h3>
-<p>Base class for your Application (extends normally DefaultWindowController). Is is used for setting the content view and holds application wide information.</p>
+<p>Base class for your Application (extends normally SFXApplicationController). Is is used for setting the content view and holds application wide information.</p>
 <p>Sample Code:</p>
 <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/issues/src/main/scala/com/sfxcode/sapphire/javafx/demo/issues/Application.scala#L25-L42" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>@Named
 @ApplicationScoped
-class ApplicationController extends BaseApplicationController {
+class ApplicationController extends SFXApplicationController {
 
   lazy val mainController: IssueTrackingLiteController = getController[IssueTrackingLiteController]()
 
@@ -288,11 +290,11 @@ class ApplicationController extends BaseApplicationController {
 
 }
 </code></pre>
-<h2><a href="#additionalwindowcontroller" name="additionalwindowcontroller" class="anchor"><span class="anchor-link"></span></a>AdditionalWindowController</h2>
-<p>Multiple Windows are supported by extending AdditionalWindowController.</p>
+<h2><a href="#sfxadditionalwindowcontroller" name="sfxadditionalwindowcontroller" class="anchor"><span class="anchor-link"></span></a>SFXAdditionalWindowController</h2>
+<p>Multiple Windows are supported by extending SFXAdditionalWindowController.</p>
 <p>Example Usage:</p>
 <h3><a href="#create-a-cdi-bean-that-extends-additionalwindowcontroller" name="create-a-cdi-bean-that-extends-additionalwindowcontroller" class="anchor"><span class="anchor-link"></span></a>Create a CDI Bean that extends AdditionalWindowController</h3>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/applicationController.scala#L28-L44" target="_blank" title="Go to snippet source">source</a><code class="language-scala">abstract class AbstractWindowController extends AdditionalWindowController {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/applicationController.scala#L28-L44" target="_blank" title="Go to snippet source">source</a><code class="language-scala">abstract class AbstractWindowController extends SFXAdditionalWindowController {
 
   lazy val viewController: AdditionalViewController =
     getController[AdditionalViewController]()
@@ -322,9 +324,9 @@ class ApplicationController extends BaseApplicationController {
 <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/controller/MainViewController.scala#L49-L50" target="_blank" title="Go to snippet source">source</a><code class="language-scala">def actionCloseSecondWindow(event: ActionEvent): Unit =
   applicationController.secondWindowController.close()</code></pre>
 <h2><a href="#modalwindowcontroller" name="modalwindowcontroller" class="anchor"><span class="anchor-link"></span></a>ModalWindowController</h2>
-<p>Modal Window is basically a special Instance of an AdditionalWindowController. It can be used for custom dialogs, preferences panes and so on. You only have to overwrite modality like in the sample code below:</p>
+<p>Modal Window is basically a special Instance of a SFXAdditionalWindowController. It can be used for custom dialogs, preferences panes and so on. You only have to overwrite modality like in the sample code below:</p>
 <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/sfxcode/sapphire-javafx/tree/master/demos/windows/src/main/scala/com/sfxcode/sapphire/javafx/demo/windows/applicationController.scala#L52-L57" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>class ModalWindowController extends AbstractWindowController {
-  override def modality: Modality     = Modality.APPLICATION_MODAL
+  override def modality: Modality = Modality.APPLICATION_MODAL
   override def stageStyle: StageStyle = StageStyle.UTILITY
 
 }</code></pre>
@@ -341,7 +343,7 @@ Edit this page
 </div>
 <div class="print-only">
 <span class="md-source-file md-version">
-1.0.5*
+1.1.1*
 </span>
 </div>
 </article>
@@ -364,13 +366,13 @@ Core Concepts
 </span>
 </div>
 </a>
-<a href="../detail/view_controller.html" title="ViewController" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../detail/view_controller.html" title="SFXViewController" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-ViewController
+SFXViewController
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
