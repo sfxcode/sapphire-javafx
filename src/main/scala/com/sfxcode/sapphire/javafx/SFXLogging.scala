@@ -2,8 +2,6 @@ package com.sfxcode.sapphire.javafx
 
 import com.typesafe.scalalogging.LazyLogging
 
-import scala.reflect.runtime.{universe => ru}
-
 trait SFXLogging extends LazyLogging {
 
   def withErrorLogging(fn: => Unit): Unit =
@@ -20,14 +18,5 @@ trait SFXLogging extends LazyLogging {
     }
     result
   }
-
-  def debugMembers(members: List[ru.Symbol]): Unit =
-    logger.debug(
-      members
-        .collect({ case x if x.isTerm => x.asTerm })
-        .filter(t => t.isVal || t.isVar)
-        .map(m => m.name.toString)
-        .toString()
-    )
 
 }

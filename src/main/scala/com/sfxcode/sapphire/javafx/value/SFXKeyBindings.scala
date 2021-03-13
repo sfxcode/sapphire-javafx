@@ -6,7 +6,6 @@ import javafx.collections.{FXCollections, ObservableMap}
 import scala.jdk.CollectionConverters._
 import scala.collection.mutable
 import scala.reflect.ClassTag
-import scala.reflect.runtime.universe._
 
 class SFXKeyBindings {
   val bindingMap: ObservableMap[String, String] = FXCollections.observableHashMap[String, String]()

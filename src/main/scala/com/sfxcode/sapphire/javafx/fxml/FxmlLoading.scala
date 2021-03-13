@@ -40,7 +40,7 @@ trait FxmlLoading extends Configuration {
 
     // check annotatation value
     if (result.isEmpty)
-      result = FxmlLocation.pathValue(ct)
+      result = FxmlLocationResolver.pathValue(ct)
 
     if (result.isEmpty) {
       // check configuration base path

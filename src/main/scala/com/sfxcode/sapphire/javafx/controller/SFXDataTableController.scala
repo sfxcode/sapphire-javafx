@@ -1,5 +1,6 @@
 package com.sfxcode.sapphire.javafx.controller
 
+import com.sfxcode.sapphire.data.reflect.FieldRegistry
 import com.sfxcode.sapphire.javafx.value.SFXBean
 import com.sfxcode.sapphire.javafx.filter.SFXDataTableFilter
 import javafx.beans.property.SimpleObjectProperty
@@ -10,19 +11,16 @@ import javafx.scene.layout.HBox
 import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
 import com.sfxcode.sapphire.javafx.SFXLogging
 
-import scala.reflect.runtime.{universe => ru}
+import java.lang.reflect.Field
 import scala.reflect.ClassTag
 
 abstract class SFXDataTableController extends SFXViewController with SFXLogging {
-  val mirror: ru.Mirror = ru.runtimeMirror(this.getClass.getClassLoader)
 
   type R <: AnyRef
 
   def ct: ClassTag[R]
 
-  // reflection
-  val members: List[ru.Symbol] = mirror.classSymbol(ct.runtimeClass).asType.typeSignature.members.toList.reverse
-  debugMembers(members)
+  val fieldMap: Map[String, Field] = FieldRegistry.fieldMap(ct.runtimeClass)
 
   @FXML
   var table: TableView[SFXBean[R]] = _

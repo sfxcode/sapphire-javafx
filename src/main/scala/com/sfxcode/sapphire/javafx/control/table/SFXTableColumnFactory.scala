@@ -3,17 +3,19 @@ package com.sfxcode.sapphire.javafx.control.table
 import com.sfxcode.sapphire.data.Configuration
 import com.sfxcode.sapphire.javafx.control.{SFXTableCellFactory, SFXTableValueFactory}
 import com.sfxcode.sapphire.javafx.value.SFXBean
-
-import scala.collection.mutable
-import scala.collection.mutable.ArrayBuffer
-import scala.reflect.runtime.{universe => ru}
 import javafx.scene.control.TableColumn
 import javafx.scene.text.TextAlignment
 
-object SFXTableColumnFactory extends Configuration {
-  val rightAlignmentList = List("Date", "Calendar", "Int", "Long", "Double", "Float")
+import java.lang.reflect.Field
+import scala.collection.mutable
+import scala.collection.mutable.ArrayBuffer
 
-  val PrefWidth: Double = configDoubleValue("sapphire.javafx.TableColumnFactory.prefWidth", 80.0)
+object SFXTableColumnFactory extends Configuration {
+  val rightAlignmentList = List("int", "long", "double", "float")
+
+  val PrefWidth: Double            = configDoubleValue("sapphire.javafx.TableColumnFactory.prefWidth", 80.0)
+  val DefaultNumberFormat: String  = configStringValue("defaultNumberFormat", "#,##0")
+  val DefaultDecimalFormat: String = configStringValue("defaultDecimalFormat", "#,##0.00")
 
   def columnFromFactories[S <: AnyRef, T](
       header: String,
@@ -30,21 +32,22 @@ object SFXTableColumnFactory extends Configuration {
   }
 
   def columnListFromMembers[S <: AnyRef, T](
-      members: List[ru.Symbol],
+      fieldMap: Map[String, Field],
       columnHeaderMap: Map[String, String],
       columnPropertyMap: Map[String, String],
       editable: Boolean = false,
-      numberFormat: String = "#,##0",
-      decimalFormat: String = "#,##0.00"
+      numberFormat: String = DefaultNumberFormat,
+      decimalFormat: String = DefaultDecimalFormat
   ): (List[String], Map[String, TableColumn[SFXBean[S], T]]) = {
-    val buffer  = new ArrayBuffer[String]()
-    val map     = mutable.HashMap[String, TableColumn[SFXBean[S], T]]()
-    val symbols = members.collect({ case x if x.isTerm => x.asTerm }).filter(t => t.isVal || t.isVar).map(_.asTerm)
-    symbols.foreach { symbol =>
-      val name = symbol.name.toString.trim
+    val buffer = new ArrayBuffer[String]()
+    val map    = mutable.HashMap[String, TableColumn[SFXBean[S], T]]()
+
+    fieldMap.keySet.foreach { name =>
+      val field: Field = fieldMap(name)
+      val signature    = field.getGenericType.getTypeName.toLowerCase
+
       buffer.+=(name)
       val cellFactory = new SFXTableCellFactory[SFXBean[S], T]()
-      val signature   = symbol.typeSignature.toString
       if (editable)
         cellFactory.setConverter(signature.replace("Int", "Integer"))
 
@@ -54,11 +57,11 @@ object SFXTableColumnFactory extends Configuration {
       val property     = columnPropertyMap.getOrElse(name, name)
       val valueFactory = new SFXTableValueFactory[SFXBean[S], T]()
       valueFactory.setProperty(property)
-      if (editable)
-        if (signature.contains("Int") || signature.contains("Long"))
-          valueFactory.format = numberFormat
-        else if (signature.contains("Double") || signature.contains("Float"))
-          valueFactory.format = decimalFormat
+
+      if (signature.contains("int") || signature.contains("long"))
+        valueFactory.format = numberFormat
+      else if (signature.contains("double") || signature.contains("float"))
+        valueFactory.format = decimalFormat
 
       map.put(
         property,

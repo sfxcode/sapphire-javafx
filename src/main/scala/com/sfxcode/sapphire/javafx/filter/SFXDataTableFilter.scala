@@ -9,12 +9,13 @@ import javafx.beans.property.ReadOnlyObjectProperty
 
 import scala.collection.mutable
 import scala.reflect.ClassTag
-import scala.reflect.runtime.{universe => ru}
 import javafx.beans.property.ObjectProperty
 import javafx.collections.ObservableList
 import javafx.scene.control.{TableView, _}
 import javafx.scene.text.TextAlignment
 import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
+
+import java.lang.reflect.Field
 
 class SFXDataTableFilter[S <: AnyRef](
     table: TableView[SFXBean[S]],
@@ -29,10 +30,7 @@ class SFXDataTableFilter[S <: AnyRef](
   val columnPropertyMap = new mutable.HashMap[String, String]()
   val columnHeaderMap   = new mutable.HashMap[String, String]()
 
-  // reflection
-  private val mirror  = ru.runtimeMirror(ct.runtimeClass.getClassLoader)
-  private val members = mirror.classSymbol(ct.runtimeClass).asType.typeSignature.members.toList.reverse
-  debugMembers(members)
+  val fieldMap: Map[String, Field] = FieldRegistry.fieldMap(ct.runtimeClass)
 
   filterResult.addChangeListener { _ =>
     table.getItems.clear()
@@ -55,11 +53,11 @@ class SFXDataTableFilter[S <: AnyRef](
 
   def addColumns[T](
       editable: Boolean = false,
-      numberFormat: String = "#,##0",
-      decimalFormat: String = "#,##0.00"
+      numberFormat: String = SFXTableColumnFactory.DefaultNumberFormat,
+      decimalFormat: String = SFXTableColumnFactory.DefaultDecimalFormat
   ): Unit = {
     val columnList = SFXTableColumnFactory.columnListFromMembers[S, T](
-      members,
+      fieldMap,
       columnHeaderMap.toMap,
       columnPropertyMap.toMap,
       editable,
