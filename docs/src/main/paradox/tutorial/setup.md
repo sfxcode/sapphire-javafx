@@ -2,14 +2,14 @@
 
 ## Sources
 
-The sources for this tutorial are in the [Github Tutorial Directory](https://github.com/sfxcode/sapphire-javafx/tree/master/demos/tutorial) of sapphire-core in the appdemo package.
+The sources for this tutorial are in the [Github Tutorial Directory](https://github.com/sfxcode/sapphire-javafx/tree/master/demos/tutorial) of sapphire-javafx in the appdemo package.
 
 ## Setup
 
 Easy Project Setup by using the sapphire-javafx giter8 template.
 See giter8 Documentation for g8 setup.
 
-[Giter8 template](http://www.foundweekends.org/giter8/) for [sapphire-core](https://sfxcode.github.io/sapphire-core).
+[Giter8 template](http://www.foundweekends.org/giter8/) for [sapphire-javafx](https://sfxcode.github.io/sapphire-javafx).
 
 ### Usage
 

@@ -12,6 +12,20 @@ Also there is an example of using it with a CDI Framework ([Deltaspike](https://
 
 If you like to try an easy way to setup a desktop app with scala, give it a try.
 
+## History
+
+I started JavaFX GUI develpment with the project sapphire-core, because for every application almost the same pattern were needed.
+
+As my projects need better datalist support and more stuff, i created another project named sapphire-extension and called it experimental.
+
+With the time i wanted to have all code, demos and showcase to be at one place. This was the start of sapphire-javafx.
+
+All data-handling was refactored out in another project called sapphire-data, because this date and expression handling is also useful in non JavaFX projects.
+
+This project replaces [sapphire-core](https://sfxcode.github.io/sapphire-core) and [sapphire-extension](https://sfxcode.github.io/sapphire-extension).
+
+At this time i decided to add a clear namespace prefix: SFX (for Sapphire JavaFX).
+
 ## Documentation
 
 Documentation under [https://sfxcode.github.io/sapphire-javafx](https://sfxcode.github.io/sapphire-javafx)

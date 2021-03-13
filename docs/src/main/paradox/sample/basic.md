@@ -1,6 +1,6 @@
 # Samples Basic
 
-Basic [sapphire-core](https://github.com/sfxcode/sapphire-core) examples.
+Basic [sapphire-javafx](https://github.com/sfxcode/sapphire-javafx) examples.
 
 ### Tutorial
 

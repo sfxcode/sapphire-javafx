@@ -110,7 +110,7 @@ lazy val showcase =
     .dependsOn(sapphire_javafx)
 
 lazy val sapphire_extension_scenebuilder = Project(
-  id = "sapphire-extension-scenebuilder",
+  id = "sapphire-javafx-scenebuilder",
   base = file("scenebuilder")
 ).settings(
   name := "sapphire-javafx-scenebuilder",
