@@ -1,24 +1,27 @@
 package com.sfxcode.sapphire.javafx.application
 
-import javafx.stage.Stage
+import com.sfxcode.sapphire.javafx.controller.SFXApplicationController
+import com.sfxcode.sapphire.javafx.stage.SFXStageSupport
+import com.typesafe.scalalogging.LazyLogging
+import javafx.application.Application
 
-class SFXApplication extends javafx.application.Application {
-  var applicationStage: Stage = _
+// #BaseApplication
+abstract class SFXApplication extends SFXStageSupport with LazyLogging {
+  val startTime: Long = System.currentTimeMillis()
 
-  def start(stage: javafx.stage.Stage): Unit = {
-    SFXApplicationEnvironment.wrappedApplication = this
-    val application = SFXApplicationEnvironment.application
-    applicationStage = application.createDefaultStage()
-    application.applicationWillLaunch()
-
-    val windowController = application.applicationController
-    windowController.onApplicationStartup(applicationStage)
-
-    application.applicationDidLaunch()
-
-    applicationStage.show()
+  def main(args: Array[String]): Unit = {
+    SFXApplicationEnvironment.setApplication(this)
+    Application.launch(classOf[SFXJavaApplication], args: _*)
   }
 
-  override def stop(): Unit =
-    SFXApplicationEnvironment.application.applicationWillTerminate()
+  val applicationController: SFXApplicationController
+
+  def applicationWillLaunch(): Unit = {}
+
+  def applicationDidLaunch(): Unit =
+    logger.info("Application Startup in %s ms".format(System.currentTimeMillis() - startTime))
+
+  def applicationWillTerminate(): Unit = {}
+
 }
+// #BaseApplication

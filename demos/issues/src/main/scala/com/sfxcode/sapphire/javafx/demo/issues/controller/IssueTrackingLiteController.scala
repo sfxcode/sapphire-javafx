@@ -2,12 +2,12 @@ package com.sfxcode.sapphire.javafx.demo.issues.controller
 
 import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import com.sfxcode.sapphire.javafx.demo.issues.EmptyName
-import com.sfxcode.sapphire.javafx.demo.issues.model.{Issue, IssueDataBase}
+import com.sfxcode.sapphire.javafx.demo.issues.model.{ Issue, IssueDataBase }
 import com.sfxcode.sapphire.javafx.value._
 import com.typesafe.scalalogging.LazyLogging
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
-import javafx.scene.control.{Button, ListView, TableView}
+import javafx.scene.control.{ Button, ListView, TableView }
 import javafx.scene.layout.AnchorPane
 import javax.inject.Inject
 import scalafx.Includes._
@@ -37,7 +37,7 @@ class IssueTrackingLiteController extends SFXViewController with LazyLogging {
   lazy val issueAdapter = SFXBeanAdapter[Issue](this, detailPane)
 
   val displayedProjectNames = new ObservableBuffer[String]()
-  val displayedIssues       = new ObservableBuffer[String]()
+  val displayedIssues = new ObservableBuffer[String]()
 
   override def didGainVisibilityFirstTime(): Unit = {
     super.didGainVisibilityFirstTime()

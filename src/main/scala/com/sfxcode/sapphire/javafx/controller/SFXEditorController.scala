@@ -1,7 +1,7 @@
 package com.sfxcode.sapphire.javafx.controller
 
 import com.sfxcode.sapphire.javafx.controller.SFXViewController
-import com.sfxcode.sapphire.javafx.value.{SFXBean, SFXBeanAdapter, SFXKeyBindings}
+import com.sfxcode.sapphire.javafx.value.{ SFXBean, SFXBeanAdapter, SFXKeyBindings }
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
 import javafx.scene.Node
@@ -9,7 +9,7 @@ import javafx.scene.layout.Pane
 
 import scala.reflect.ClassTag
 
-abstract class SFXBaseEditorController extends SFXViewController {
+abstract class SFXEditorController extends SFXViewController {
 
   type R <: AnyRef
 

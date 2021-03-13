@@ -2,13 +2,13 @@ package com.sfxcode.sapphire.javafx.property
 
 import com.sfxcode.sapphire.data.Configuration
 
-import java.time.{Instant, LocalDate, LocalDateTime, ZoneId}
-import java.util.{Date, Optional}
-import com.sfxcode.sapphire.data.reflect.{FieldMetaRegistry, FieldRegistry}
+import java.time.{ Instant, LocalDate, LocalDateTime, ZoneId }
+import java.util.{ Date, Optional }
+import com.sfxcode.sapphire.data.reflect.{ FieldMetaRegistry, FieldRegistry }
 import com.sfxcode.sapphire.javafx.SFXConfigValues
 import com.sfxcode.sapphire.javafx.value._
 import javafx.beans.value.ObservableValue
-import javafx.collections.{FXCollections, ObservableList}
+import javafx.collections.{ FXCollections, ObservableList }
 import org.controlsfx.control.PropertySheet.Item
 
 import scala.reflect.ClassTag
@@ -22,15 +22,14 @@ private object EmptyBeanItemClass {
 }
 
 class BeanItem(
-    var bean: SFXBean[_ <: AnyRef],
-    key: String,
-    name: String = "",
-    category: String = "",
-    description: String = "",
-    editable: Boolean = true,
-    clazz: Class[_] = EmptyBeanItemClass.ClazzOf
-) extends Item
-    with Configuration {
+  var bean: SFXBean[_ <: AnyRef],
+  key: String,
+  name: String = "",
+  category: String = "",
+  description: String = "",
+  editable: Boolean = true,
+  clazz: Class[_] = EmptyBeanItemClass.ClazzOf) extends Item
+  with Configuration {
   var classOption: Option[Class[_]] = Some(clazz)
 
   def getKey: String = key
@@ -47,8 +46,7 @@ class BeanItem(
         if (valueOption.isDefined)
           clazz = valueOption.get.getClass
         classOption = Some(clazz)
-      }
-      else {
+      } else {
         val memberInfo = FieldMetaRegistry.fieldMeta(underlying, key)
         clazz = memberInfo.field.get.getType
         classOption = Some(clazz)
@@ -115,18 +113,17 @@ class BeanItem(
 object BeanItem {
 
   def apply(
-      bean: SFXBean[_ <: AnyRef],
-      key: String,
-      name: String = "",
-      category: String = "",
-      description: String = "",
-      editable: Boolean = true,
-      clazz: Class[_] = EmptyBeanItemClass.ClazzOf
-  ): BeanItem =
+    bean: SFXBean[_ <: AnyRef],
+    key: String,
+    name: String = "",
+    category: String = "",
+    description: String = "",
+    editable: Boolean = true,
+    clazz: Class[_] = EmptyBeanItemClass.ClazzOf): BeanItem =
     new BeanItem(bean, key, name, category, description, editable, clazz)
 
   def beanItems[T <: AnyRef](bean: SFXBean[T])(implicit ct: ClassTag[T]): ObservableList[Item] = {
-    val result   = FXCollections.observableArrayList[Item]()
+    val result = FXCollections.observableArrayList[Item]()
     val fieldMap = FieldRegistry.fieldMap(ct.runtimeClass)
     fieldMap.keys.foreach { key =>
       result.add(BeanItem(bean, key))

@@ -1,7 +1,7 @@
 package com.sfxcode.sapphire.javafx.value
 
 import com.sfxcode.sapphire.javafx.controller.SFXViewController
-import com.sfxcode.sapphire.javafx.test.{Person, PersonDatabase, TestViewController}
+import com.sfxcode.sapphire.javafx.test.{ Person, PersonDatabase, TestViewController }
 import org.specs2.mutable.Specification
 
 class SFXBeanAdapterSpec extends Specification {

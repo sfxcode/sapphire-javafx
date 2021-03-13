@@ -1,13 +1,13 @@
 package com.sfxcode.sapphire.javafx.demo.login
 
-import com.sfxcode.sapphire.javafx.application.SFXBaseApplication
-import com.sfxcode.sapphire.javafx.controller.SFXBaseApplicationController
-import com.sfxcode.sapphire.javafx.demo.login.controller.{LoginController, ProfileController}
+import com.sfxcode.sapphire.javafx.application.SFXApplication
+import com.sfxcode.sapphire.javafx.controller.SFXApplicationController
+import com.sfxcode.sapphire.javafx.demo.login.controller.{ LoginController, ProfileController }
 import com.sfxcode.sapphire.javafx.demo.login.model.User
 import com.sfxcode.sapphire.javafx.value.SFXBean
 import javafx.stage.Stage
 
-object Application extends SFXBaseApplication {
+object Application extends SFXApplication {
 
   override def width: Int = 500
 
@@ -20,11 +20,11 @@ object Application extends SFXBaseApplication {
     stage.setResizable(false)
   }
 
-  override val applicationController: SFXBaseApplicationController = new LoginApplicationController
+  override val applicationController: SFXApplicationController = new LoginApplicationController
 }
 
-class LoginApplicationController extends SFXBaseApplicationController {
-  lazy val loginController: LoginController     = getController[LoginController]()
+class LoginApplicationController extends SFXApplicationController {
+  lazy val loginController: LoginController = getController[LoginController]()
   lazy val profileController: ProfileController = getController[ProfileController]()
 
   var applicationUser: Option[SFXBean[User]] = None

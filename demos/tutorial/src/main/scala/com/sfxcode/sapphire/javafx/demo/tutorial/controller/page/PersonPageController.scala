@@ -1,9 +1,9 @@
 package com.sfxcode.sapphire.javafx.demo.tutorial.controller.page
 
 import com.sfxcode.sapphire.javafx.demo.tutorial.controller.base.AbstractViewController
-import com.sfxcode.sapphire.javafx.demo.tutorial.model.{Person, PersonFactory}
+import com.sfxcode.sapphire.javafx.demo.tutorial.model.{ Person, PersonFactory }
 import com.sfxcode.sapphire.javafx.fxml.FxmlLocation
-import com.sfxcode.sapphire.javafx.value.{SFXBean, SFXBeanAdapter, SFXBeanConversions, SFXKeyBindings}
+import com.sfxcode.sapphire.javafx.value.{ SFXBean, SFXBeanAdapter, SFXBeanConversions, SFXKeyBindings }
 import javafx.collections.ObservableList
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
@@ -40,7 +40,7 @@ class PersonPageController extends AbstractViewController with SFXBeanConversion
     adapter.addIntConverter("age")
     // #addConverter
 
-    tableView.setItems(items)                                                                                // #labels
+    tableView.setItems(items) // #labels
     tableView.getSelectionModel.selectedItemProperty.addListener((_, _, newValue) => selectPerson(newValue)) // #labels
     personBox.visibleProperty().bind(adapter.hasBeanProperty)
   }

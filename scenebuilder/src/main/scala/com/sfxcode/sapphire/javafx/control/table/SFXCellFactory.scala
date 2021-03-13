@@ -1,8 +1,8 @@
 package com.sfxcode.sapphire.javafx.control.table
 
-import javafx.scene.control.cell.{CheckBoxTableCell, TextFieldTableCell}
-import javafx.scene.control.{TableCell, TableColumn}
-import javafx.util.{Callback}
+import javafx.scene.control.cell.{ CheckBoxTableCell, TextFieldTableCell }
+import javafx.scene.control.{ TableCell, TableColumn }
+import javafx.util.{ Callback }
 
 import scala.beans.BeanProperty
 

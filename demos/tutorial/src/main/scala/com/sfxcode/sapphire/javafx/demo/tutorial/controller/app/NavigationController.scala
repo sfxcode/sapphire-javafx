@@ -8,8 +8,8 @@ class NavigationController extends AbstractViewController {
 
   def actionToggleWorkspace(event: ActionEvent) {
     actionClickButton(event)
-    val actualController    = workspaceManager.actualController
-    val barChartController  = mainViewController.barChartController
+    val actualController = workspaceManager.actualController
+    val barChartController = mainViewController.barChartController
     val workspaceController = mainViewController.workspaceController
     if (actualController == workspaceController)
       workspaceManager.updatePaneContent(barChartController)

@@ -1,13 +1,13 @@
 package com.sfxcode.sapphire.javafx.showcase.bean
 
 import com.sfxcode.sapphire.javafx.showcase.controller.BaseController
-import com.sfxcode.sapphire.javafx.showcase.model.{Person, PersonDatabase}
-import com.sfxcode.sapphire.javafx.value.{SFXBean, SFXBeanAdapter, SFXBeanConversions, SFXKeyBindings}
+import com.sfxcode.sapphire.javafx.showcase.model.{ Person, PersonDatabase }
+import com.sfxcode.sapphire.javafx.value.{ SFXBean, SFXBeanAdapter, SFXBeanConversions, SFXKeyBindings }
 
 import scala.util.Random
 
 class SimpleBeanController extends BaseController with SFXBeanConversions {
-  val random      = new Random()
+  val random = new Random()
   val RandomRange = 100
 
   lazy val adapter: SFXBeanAdapter[Person] = SFXBeanAdapter[Person](this)

@@ -1,12 +1,12 @@
 package com.sfxcode.sapphire.javafx.control
 
 import javafx.scene.layout.Pane
-import com.sfxcode.sapphire.javafx.value.{SFXBean, SFXBeanConversions}
+import com.sfxcode.sapphire.javafx.value.{ SFXBean, SFXBeanConversions }
 import com.sfxcode.sapphire.javafx.filter.SFXDataListFilter
 import com.sfxcode.sapphire.javafx.skin.SFXDataListViewSkin
 import javafx.beans.property._
-import javafx.collections.{FXCollections, ObservableList}
-import javafx.scene.control.{Control, Label, ListView, Skin}
+import javafx.collections.{ FXCollections, ObservableList }
+import javafx.scene.control.{ Control, Label, ListView, Skin }
 import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
 import com.sfxcode.sapphire.javafx.assets.SFXResourceLoader
 
@@ -21,27 +21,26 @@ class SFXDataListView[S <: AnyRef] extends Control with SFXBeanConversions {
   val items = new SimpleObjectProperty[ObservableList[SFXBean[S]]](
     this,
     "listViewItems",
-    FXCollections.observableArrayList[SFXBean[S]]()
-  )
+    FXCollections.observableArrayList[SFXBean[S]]())
 
   val listView = new ListView[SFXBean[S]]()
 
   val showHeader = new SimpleBooleanProperty(true)
-  val header     = new SimpleObjectProperty[Pane](this, "listViewHeader")
+  val header = new SimpleObjectProperty[Pane](this, "listViewHeader")
 
   val showFooter = new SimpleBooleanProperty(false)
-  val footer     = new SimpleObjectProperty[Pane](this, "listViewFooter")
+  val footer = new SimpleObjectProperty[Pane](this, "listViewFooter")
 
-  val footerLabel        = new SimpleObjectProperty[Label](this, "listViewFooterLabel")
+  val footerLabel = new SimpleObjectProperty[Label](this, "listViewFooterLabel")
   val footerTextProperty = new SimpleStringProperty("%s of %s items")
 
   val cellProperty = new SimpleStringProperty("${_self.toString()}")
 
-  val sortProperty       = new SimpleStringProperty("")
+  val sortProperty = new SimpleStringProperty("")
   val shouldSortProperty = new SimpleBooleanProperty(true)
 
   val filterPromptProperty = new SimpleStringProperty("type to filter")
-  val filter               = new SimpleObjectProperty(new SFXDataListFilter[S](this))
+  val filter = new SimpleObjectProperty(new SFXDataListFilter[S](this))
 
   protected override def createDefaultSkin: Skin[SFXDataListView[S]] =
     new SFXDataListViewSkin[S](this)

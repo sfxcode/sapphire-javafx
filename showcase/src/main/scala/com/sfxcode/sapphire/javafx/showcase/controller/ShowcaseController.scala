@@ -1,15 +1,15 @@
 package com.sfxcode.sapphire.javafx.showcase.controller
 
-import com.jfoenix.controls.{JFXTabPane, JFXTreeView}
+import com.jfoenix.controls.{ JFXTabPane, JFXTreeView }
 import com.sandec.mdfx.MDFXNode
 import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import com.sfxcode.sapphire.javafx.scene.SFXContentManager
 import com.sfxcode.sapphire.javafx.showcase.code.CodeAreaWrapper
-import javafx.beans.value.{ChangeListener, ObservableValue}
+import javafx.beans.value.{ ChangeListener, ObservableValue }
 import javafx.fxml.FXML
 import javafx.geometry.Insets
-import javafx.scene.control.{Label, Tab, TreeItem}
-import javafx.scene.layout.{HBox, StackPane}
+import javafx.scene.control.{ Label, Tab, TreeItem }
+import javafx.scene.layout.{ HBox, StackPane }
 import org.fxmisc.richtext.CodeArea
 
 import scala.io.Source
@@ -28,8 +28,8 @@ abstract class ShowcaseController extends SFXViewController {
 
   lazy val markdownCss = getClass.getResource("/com/sfxcode/sapphire/javafx/showcase/markdown.css").toExternalForm
 
-  @FXML var infoLabel: Label                       = _
-  @FXML var statusLabel: Label                     = _
+  @FXML var infoLabel: Label = _
+  @FXML var statusLabel: Label = _
   @FXML var selectionTreeview: JFXTreeView[String] = _
 
   @FXML var showcasePane: StackPane = _
@@ -37,18 +37,18 @@ abstract class ShowcaseController extends SFXViewController {
 
   var showcaseItemManager: SFXContentManager = _
 
-  @FXML var tabPane: JFXTabPane   = _
-  @FXML var showcaseTab: Tab      = _
-  @FXML var sourceTab: Tab        = _
-  @FXML var fxmlTab: Tab          = _
+  @FXML var tabPane: JFXTabPane = _
+  @FXML var showcaseTab: Tab = _
+  @FXML var sourceTab: Tab = _
+  @FXML var fxmlTab: Tab = _
   @FXML var documentationTab: Tab = _
 
   @FXML var sourceStackPane: StackPane = _
-  @FXML var fxmlStackPane: StackPane   = _
-  @FXML var documentationBox: HBox     = _
+  @FXML var fxmlStackPane: StackPane = _
+  @FXML var documentationBox: HBox = _
 
   val scalaCodeAreaWrapper: CodeAreaWrapper = CodeAreaWrapper(new CodeArea, CodeAreaWrapper.HighlightScala)
-  val fxmlCodeAreaWrapper: CodeAreaWrapper  = CodeAreaWrapper(new CodeArea, CodeAreaWrapper.HighlightXML)
+  val fxmlCodeAreaWrapper: CodeAreaWrapper = CodeAreaWrapper(new CodeArea, CodeAreaWrapper.HighlightXML)
 
   var currentShowcaseItem: Option[ShowcaseItem] = None
 
@@ -72,7 +72,7 @@ abstract class ShowcaseController extends SFXViewController {
     val rootTreeNode = new TreeItem[String]("Showcase Items")
     items.foreach { item =>
       val nameLeaf = new TreeItem[String](item.name)
-      var found    = false
+      var found = false
       rootTreeNode.getChildren.asScala.foreach { groupNode =>
         if (!found && groupNode.getValue.contentEquals(item.group)) {
           groupNode.getChildren.add(nameLeaf)
@@ -92,14 +92,12 @@ abstract class ShowcaseController extends SFXViewController {
     selectionTreeview.setRoot(rootTreeNode)
     selectionTreeview.getSelectionModel.selectedItemProperty.addListener(new ChangeListener[TreeItem[String]] {
       override def changed(
-          observableValue: ObservableValue[_ <: TreeItem[String]],
-          oldValue: TreeItem[String],
-          newValue: TreeItem[String]
-      ): Unit = {
+        observableValue: ObservableValue[_ <: TreeItem[String]],
+        oldValue: TreeItem[String],
+        newValue: TreeItem[String]): Unit = {
         val option = showcaseItems.find(item =>
           item.name == newValue.getValue &&
-          item.group == newValue.parentProperty().get().getValue
-        )
+            item.group == newValue.parentProperty().get().getValue)
         option.foreach(item => changeShowcaseItem(item))
       }
     })
@@ -124,14 +122,14 @@ abstract class ShowcaseController extends SFXViewController {
     scalaCodeAreaWrapper.replaceText("not available")
     Try {
       val source = Source.fromURL(item.sourcePath)
-      val code   = source.getLines().mkString("\n")
+      val code = source.getLines().mkString("\n")
       source.close()
       scalaCodeAreaWrapper.replaceText(code)
     }
     fxmlCodeAreaWrapper.replaceText("not available")
     Try {
       val source = Source.fromURL(item.fxmlPath)
-      val fxml   = source.getLines().mkString("\n")
+      val fxml = source.getLines().mkString("\n")
       source.close()
       fxmlCodeAreaWrapper.replaceText(fxml)
     }
@@ -140,8 +138,8 @@ abstract class ShowcaseController extends SFXViewController {
       documentationBox.getChildren.clear()
       showcaseBottomBox.getChildren.clear()
 
-      val source        = Source.fromURL(item.documentationPath)
-      val docs          = source.getLines().mkString("\n")
+      val source = Source.fromURL(item.documentationPath)
+      val docs = source.getLines().mkString("\n")
       val documentation = "# %s - %s\n%s".format(item.group, item.name, docs)
 
       val markdown = new MDFXNode(documentation)

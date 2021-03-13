@@ -1,10 +1,10 @@
 package com.sfxcode.sapphire.javafx.demo.windows
 
-import com.sfxcode.sapphire.javafx.application.SFXBaseApplication
-import com.sfxcode.sapphire.javafx.controller.SFXBaseApplicationController
+import com.sfxcode.sapphire.javafx.application.SFXApplication
+import com.sfxcode.sapphire.javafx.controller.SFXApplicationController
 
-object Application extends SFXBaseApplication {
+object Application extends SFXApplication {
 
-  val applicationController: SFXBaseApplicationController = new ApplicationController
+  val applicationController: SFXApplicationController = new ApplicationController
 
 }

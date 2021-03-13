@@ -1,7 +1,7 @@
 package com.sfxcode.sapphire.javafx.value
 
-import com.sfxcode.sapphire.data.reflect.{FieldRegistry, ReflectionTools}
-import javafx.collections.{FXCollections, ObservableMap}
+import com.sfxcode.sapphire.data.reflect.{ FieldRegistry, ReflectionTools }
+import javafx.collections.{ FXCollections, ObservableMap }
 
 import scala.jdk.CollectionConverters._
 import scala.collection.mutable

@@ -1,14 +1,14 @@
 package com.sfxcode.sapphire.javafx.application
 
-import java.util.{Locale, ResourceBundle}
+import java.util.{ Locale, ResourceBundle }
 
-import com.sfxcode.sapphire.javafx.controller.SFXBaseApplicationController
+import com.sfxcode.sapphire.javafx.controller.SFXApplicationController
 import com.sfxcode.sapphire.javafx.fxml.FxmlExpressionResolver
-import com.sfxcode.sapphire.javafx.fxml.loader.{BaseDocumentLoader, DocumentLoader}
+import com.sfxcode.sapphire.javafx.fxml.loader.{ BaseDocumentLoader, DocumentLoader }
 import com.sfxcode.sapphire.javafx.scene.SFXNodePropertyResolver
 import com.sfxcode.sapphire.data.el.Expressions
 import com.typesafe.scalalogging.LazyLogging
-import javafx.collections.{FXCollections, ObservableMap}
+import javafx.collections.{ FXCollections, ObservableMap }
 import javafx.util.StringConverter
 import javafx.util.converter.DefaultStringConverter
 
@@ -17,22 +17,20 @@ object SFXApplicationEnvironment extends Serializable with LazyLogging {
   val functionHelper = Expressions.functionHelper
   SFXDefaultFunctions.addDefaultFunctions(functionHelper)
 
-  private var app: SFXBaseApplication                     = _
-  private var appController: SFXBaseApplicationController = _
+  private var app: SFXApplication = _
+  private var appController: SFXApplicationController = _
 
   var documentLoader: BaseDocumentLoader = new DocumentLoader
 
-  def setApplication(application: SFXBaseApplication): Unit = app = application
-  def setApplicationController(applicationController: SFXBaseApplicationController): Unit =
+  def setApplication(application: SFXApplication): Unit = app = application
+  def setApplicationController(applicationController: SFXApplicationController): Unit =
     appController = applicationController
 
-  var wrappedApplication: SFXApplication = _
+  var wrappedApplication: SFXJavaApplication = _
 
-  def application[T <: SFXBaseApplication](implicit e: T DefaultsTo SFXBaseApplication): T = app.asInstanceOf[T]
+  def application[T <: SFXApplication](implicit e: T DefaultsTo SFXApplication): T = app.asInstanceOf[T]
 
-  def applicationController[T <: SFXBaseApplicationController](implicit
-      e: T DefaultsTo SFXBaseApplicationController
-  ): T =
+  def applicationController[T <: SFXApplicationController](implicit e: T DefaultsTo SFXApplicationController): T =
     appController.asInstanceOf[T]
 
   var nodePropertyResolver: SFXNodePropertyResolver = SFXNodePropertyResolver()
@@ -68,11 +66,10 @@ object SFXApplicationEnvironment extends Serializable with LazyLogging {
 
       try {
         val converterClass = Class.forName(className)
-        val converter      = converterClass.getDeclaredConstructor().newInstance()
+        val converter = converterClass.getDeclaredConstructor().newInstance()
         if (converter != null)
           result = converter.asInstanceOf[StringConverter[T]]
-      }
-      catch {
+      } catch {
         case e: Exception =>
           logger.warn(e.getMessage)
           logger.warn("use default converter for name: " + className)

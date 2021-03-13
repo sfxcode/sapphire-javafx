@@ -1,10 +1,10 @@
 package com.sfxcode.sapphire.javafx.demo.windows
 
-import com.sfxcode.sapphire.javafx.controller.{SFXAdditionalWindowController, SFXBaseApplicationController}
-import com.sfxcode.sapphire.javafx.demo.windows.controller.{AdditionalViewController, MainViewController}
-import javafx.stage.{Modality, StageStyle}
+import com.sfxcode.sapphire.javafx.controller.{ SFXAdditionalWindowController, SFXApplicationController }
+import com.sfxcode.sapphire.javafx.demo.windows.controller.{ AdditionalViewController, MainViewController }
+import javafx.stage.{ Modality, StageStyle }
 
-class ApplicationController extends SFXBaseApplicationController {
+class ApplicationController extends SFXApplicationController {
 
   lazy val mainViewController: MainViewController =
     getController[MainViewController]()
@@ -51,7 +51,7 @@ class SecondWindowController extends AbstractWindowController
 // #ModalWindowController
 
 class ModalWindowController extends AbstractWindowController {
-  override def modality: Modality     = Modality.APPLICATION_MODAL
+  override def modality: Modality = Modality.APPLICATION_MODAL
   override def stageStyle: StageStyle = StageStyle.UTILITY
 
 }

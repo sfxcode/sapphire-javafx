@@ -1,7 +1,7 @@
 package com.sfxcode.sapphire.javafx.showcase.controller.control
 
 import com.sfxcode.sapphire.javafx.showcase.controller.BaseController
-import com.sfxcode.sapphire.javafx.showcase.model.{Person, PersonDatabase}
+import com.sfxcode.sapphire.javafx.showcase.model.{ Person, PersonDatabase }
 import com.sfxcode.sapphire.javafx.value.SFXBean
 import javafx.fxml.FXML
 import javafx.scene.control.TableView
@@ -9,7 +9,7 @@ import javafx.scene.control.TableView
 import scala.util.Random
 
 class TableValueController extends BaseController {
-  val random      = new Random()
+  val random = new Random()
   val RandomRange = 10
 
   @FXML

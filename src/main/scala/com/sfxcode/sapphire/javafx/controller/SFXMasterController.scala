@@ -5,12 +5,12 @@ import com.sfxcode.sapphire.javafx.filter.SFXDataTableFilter
 import com.sfxcode.sapphire.javafx.value.SFXBean
 import javafx.scene.Node
 import javafx.scene.control.TableRow
-import javafx.scene.control.skin.{TableColumnHeader, TableHeaderRow}
+import javafx.scene.control.skin.{ TableColumnHeader, TableHeaderRow }
 
-abstract class SFXBaseMasterController extends DataTableController with SFXEventHelper {
+abstract class SFXMasterController extends DataTableController with SFXEventHelper {
 
-  var detailController: Option[SFXBaseDetailController] = None
-  var lastSelected: Int                                 = 0
+  var detailController: Option[SFXDetailController] = None
+  var lastSelected: Int = 0
 
   override def initTable(filter: SFXDataTableFilter[R]): Unit = {
     super.initTable(filter)
@@ -49,6 +49,6 @@ abstract class SFXBaseMasterController extends DataTableController with SFXEvent
       detailController.updateBean(bean.asInstanceOf[SFXBean[detailController.R]])
     }
 
-  def navigateToDetailController(detailController: SFXBaseDetailController): Unit
+  def navigateToDetailController(detailController: SFXDetailController): Unit
 
 }

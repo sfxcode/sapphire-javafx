@@ -1,14 +1,14 @@
 package com.sfxcode.sapphire.javafx.showcase.controller.table
 
-import com.sfxcode.sapphire.javafx.value.{SFXBean, SFXBeanConversions}
+import com.sfxcode.sapphire.javafx.value.{ SFXBean, SFXBeanConversions }
 import com.sfxcode.sapphire.javafx.controller.DataTableController
-import com.sfxcode.sapphire.javafx.showcase.model.{Person, PersonDatabase}
+import com.sfxcode.sapphire.javafx.showcase.model.{ Person, PersonDatabase }
 import com.sfxcode.sapphire.javafx.filter.SFXDataTableFilter
 import com.sfxcode.sapphire.javafx.showcase.controller.BaseController
 import javafx.collections.ObservableList
 import javafx.event.ActionEvent
-import better.files.{File, Resource}
-import com.sfxcode.sapphire.data.report.{AdapterDataSource, PdfExporter}
+import better.files.{ File, Resource }
+import com.sfxcode.sapphire.data.report.{ AdapterDataSource, PdfExporter }
 import javafx.scene.control.SelectionMode
 
 import sys.process._
@@ -46,8 +46,7 @@ class PersonTableController extends DataTableController with BaseController with
       val exportResult = exporter.exportReport(
         File.newTemporaryFile(),
         Map("text" -> "All Persons"),
-        AdapterDataSource.fromList[Person](tableFilter.selectedItems.toList)
-      )
+        AdapterDataSource.fromList[Person](tableFilter.selectedItems.toList))
       // open report
       if (exportResult.completed)
         if (System.getProperty("os.name").contains("Mac"))
@@ -56,8 +55,7 @@ class PersonTableController extends DataTableController with BaseController with
           "xdg-open %s".format(exportResult.exportFile.pathAsString) !
       // #Export
 
-    }
-    else
+    } else
       logger.warn("empty selection")
 
 }

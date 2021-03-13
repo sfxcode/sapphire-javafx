@@ -3,7 +3,7 @@ package com.sfxcode.sapphire.javafx.demo.tutorial.controller.app
 import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import com.typesafe.scalalogging.LazyLogging
 import javafx.geometry.Insets
-import javafx.scene.control.{Button, Label}
+import javafx.scene.control.{ Button, Label }
 import javafx.scene.layout.HBox
 
 class StatusBarController extends SFXViewController with LazyLogging {

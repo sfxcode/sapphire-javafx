@@ -4,7 +4,7 @@ import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import javafx.fxml.FXML
 import javafx.scene.control._
 
-abstract class SFXBaseTabController extends SFXViewController {
+abstract class SFXTabController extends SFXViewController {
 
   @FXML var tabPane: TabPane = _
 

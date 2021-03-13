@@ -1,6 +1,6 @@
 package com.sfxcode.sapphire.javafx.control
 
-import java.text.{DecimalFormat, SimpleDateFormat}
+import java.text.{ DecimalFormat, SimpleDateFormat }
 import com.sfxcode.sapphire.javafx.value.SFXBean
 import com.sfxcode.sapphire.data.reflect.ReflectionTools
 import javafx.beans.property._
@@ -13,8 +13,8 @@ import scala.beans.BeanProperty
 
 trait SFXFXValueFactory[S, T] {
 
-  lazy val numberFormatter: DecimalFormat       = new DecimalFormat(format)
-  lazy val dateFormatter: SimpleDateFormat      = new SimpleDateFormat(format)
+  lazy val numberFormatter: DecimalFormat = new DecimalFormat(format)
+  lazy val dateFormatter: SimpleDateFormat = new SimpleDateFormat(format)
   lazy val dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern(format)
 
   @BeanProperty
@@ -30,7 +30,7 @@ trait SFXFXValueFactory[S, T] {
         if (format.length > 0)
           p match {
             case intProperty: IntegerProperty => p = new SimpleStringProperty(numberFormatter.format(intProperty.get))
-            case longProperty: LongProperty   => p = new SimpleStringProperty(numberFormatter.format(longProperty.get))
+            case longProperty: LongProperty => p = new SimpleStringProperty(numberFormatter.format(longProperty.get))
             case floatProperty: FloatProperty => p = new SimpleStringProperty(numberFormatter.format(floatProperty.get))
             case doubleProperty: DoubleProperty =>
               p = new SimpleStringProperty(numberFormatter.format(doubleProperty.get))
@@ -45,7 +45,7 @@ trait SFXFXValueFactory[S, T] {
         val reflectedValue = ReflectionTools.getFieldValue(value, property)
         reflectedValue match {
           case ov: ObservableValue[T] => ov
-          case _                      => null
+          case _ => null
         }
     }
 

@@ -2,9 +2,9 @@ package com.sfxcode.sapphire.javafx.controller
 
 import javafx.event.ActionEvent
 
-abstract class SFXBaseDetailController extends SFXBaseEditorController {
+abstract class SFXDetailController extends SFXEditorController {
 
-  var masterTableController: Option[SFXBaseMasterController] = None
+  var masterTableController: Option[SFXMasterController] = None
 
   def actionSaveAndReturn(event: ActionEvent): Unit = {
     actionSave(event)
@@ -22,6 +22,6 @@ abstract class SFXBaseDetailController extends SFXBaseEditorController {
       masterController.table.getSelectionModel.select(masterController.lastSelected)
     }
 
-  def navigateToMasterController(masterController: SFXBaseMasterController): Unit
+  def navigateToMasterController(masterController: SFXMasterController): Unit
 
 }

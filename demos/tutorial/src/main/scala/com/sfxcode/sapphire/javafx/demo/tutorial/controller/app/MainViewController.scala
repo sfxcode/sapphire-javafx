@@ -1,7 +1,7 @@
 package com.sfxcode.sapphire.javafx.demo.tutorial.controller.app
 
 import com.sfxcode.sapphire.javafx.controller.SFXViewController
-import com.sfxcode.sapphire.javafx.demo.tutorial.controller.page.{ChartPageController, PersonPageController}
+import com.sfxcode.sapphire.javafx.demo.tutorial.controller.page.{ ChartPageController, PersonPageController }
 import com.sfxcode.sapphire.javafx.scene.SFXContentManager
 import com.typesafe.scalalogging.LazyLogging
 import javafx.fxml.FXML
@@ -32,9 +32,9 @@ class MainViewController extends SFXViewController with LazyLogging {
   // #fxmlBinding
 
   // #contentManager
-  var workspaceManager: SFXContentManager  = _
+  var workspaceManager: SFXContentManager = _
   var navigationManager: SFXContentManager = _
-  var statusBarManager: SFXContentManager  = _
+  var statusBarManager: SFXContentManager = _
   // #contentManager
 
   // #didGainVisibilityFirstTime

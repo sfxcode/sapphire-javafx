@@ -1,7 +1,7 @@
 package com.sfxcode.sapphire.javafx.demo.tutorial.controller.page
 
 import com.sfxcode.sapphire.javafx.demo.tutorial.controller.base.AbstractViewController
-import javafx.collections.{FXCollections, ObservableList}
+import javafx.collections.{ FXCollections, ObservableList }
 import javafx.fxml.FXML
 import javafx.scene.chart.XYChart
 class ChartPageController extends AbstractViewController {
@@ -16,9 +16,9 @@ class ChartPageController extends AbstractViewController {
 
   private def createChartData(): ObservableList[javafx.scene.chart.XYChart.Series[String, Number]] = {
     var javaValue = 17.56
-    var cValue    = 17.06
-    var cppValue  = 8.25
-    val answer    = FXCollections.observableArrayList[javafx.scene.chart.XYChart.Series[String, Number]]()
+    var cValue = 17.06
+    var cppValue = 8.25
+    val answer = FXCollections.observableArrayList[javafx.scene.chart.XYChart.Series[String, Number]]()
 
     val java = new XYChart.Series[String, Number]()
     java.setName("Java")

@@ -7,9 +7,10 @@
 * Styleclasses and styles also get the prefix **sfx-**
 
 ### Migration Steps:
-* Global Replace 'BaseApplication' with 'SFXBaseApplication'
+* Global Replace 'BaseApplication' with 'SFXApplication'
 * Global Replace ' ViewController' with 'SFXViewController'
 * Global Replace '.ViewController' with '.SFXViewController'
+* Global Replace 'SFXBase' with 'SFX'
 * Add to all other unknown classes SFX Prefix (or replace FX Prefix with SFX if exists)
 * (FXML) Global Replace FXTableValueFactory with SFXTableValueFactory
 * Replace ConfigValues with Configuration from sapphire-data

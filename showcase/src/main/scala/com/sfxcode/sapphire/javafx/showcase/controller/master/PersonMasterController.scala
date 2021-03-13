@@ -1,15 +1,15 @@
 package com.sfxcode.sapphire.javafx.showcase.controller.master
 
-import com.sfxcode.sapphire.javafx.value.{SFXBean, SFXBeanConversions}
-import com.sfxcode.sapphire.javafx.controller.{SFXBaseDetailController, SFXBaseMasterController}
-import com.sfxcode.sapphire.javafx.showcase.model.{Person, PersonDatabase}
+import com.sfxcode.sapphire.javafx.value.{ SFXBean, SFXBeanConversions }
+import com.sfxcode.sapphire.javafx.controller.{ SFXDetailController, SFXMasterController }
+import com.sfxcode.sapphire.javafx.showcase.model.{ Person, PersonDatabase }
 import com.sfxcode.sapphire.javafx.filter.SFXDataTableFilter
 import com.sfxcode.sapphire.javafx.showcase.controller.BaseController
 import javafx.collections.ObservableList
 
 import scala.reflect._
 
-class PersonMasterController extends SFXBaseMasterController with BaseController with SFXBeanConversions {
+class PersonMasterController extends SFXMasterController with BaseController with SFXBeanConversions {
   lazy val personDetailController = getController[PersonDetailController]()
 
   type R = Person
@@ -35,7 +35,7 @@ class PersonMasterController extends SFXBaseMasterController with BaseController
     tableFilter.addSearchBox("fruitFilter", "favoriteFruit", "all fruits")
   }
 
-  override def navigateToDetailController(detailController: SFXBaseDetailController): Unit =
+  override def navigateToDetailController(detailController: SFXDetailController): Unit =
     updateShowcaseContent(detailController)
 
 }

@@ -1,10 +1,10 @@
 package com.sfxcode.sapphire.javafx.showcase.controller.table
 
-import com.sfxcode.sapphire.javafx.value.{SFXBean, SFXBeanConversions}
+import com.sfxcode.sapphire.javafx.value.{ SFXBean, SFXBeanConversions }
 import com.sfxcode.sapphire.javafx.controller.DataTableController
 import com.sfxcode.sapphire.javafx.filter.SFXDataTableFilter
 import com.sfxcode.sapphire.javafx.showcase.controller.BaseController
-import com.sfxcode.sapphire.javafx.showcase.model.{Friend, PersonDatabase}
+import com.sfxcode.sapphire.javafx.showcase.model.{ Friend, PersonDatabase }
 import javafx.collections.ObservableList
 import javafx.event.ActionEvent
 

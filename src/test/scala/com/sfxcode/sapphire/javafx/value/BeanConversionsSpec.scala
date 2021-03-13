@@ -17,7 +17,7 @@ class BeanConversionsSpec extends Specification with SFXBeanConversions {
 
     "convert Bean List to ObservableList " in {
       val testBean = TestBean()
-      val list     = List[TestBean](testBean)
+      val list = List[TestBean](testBean)
 
       val observableList: ObservableList[SFXBean[TestBean]] = list
 

@@ -5,7 +5,7 @@ import com.sun.javafx.css.StyleManager
 import javafx.application.Platform
 import javafx.stage.Stage
 
-abstract class SFXBaseApplicationController extends SFXWindowController {
+abstract class SFXApplicationController extends SFXWindowController {
 
   override def isMainWindow: Boolean = true
 

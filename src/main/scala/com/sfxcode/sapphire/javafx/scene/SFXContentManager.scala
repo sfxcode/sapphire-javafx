@@ -2,20 +2,20 @@ package com.sfxcode.sapphire.javafx.scene
 
 import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import com.typesafe.scalalogging.LazyLogging
-import javafx.beans.property.{SimpleBooleanProperty, SimpleIntegerProperty}
+import javafx.beans.property.{ SimpleBooleanProperty, SimpleIntegerProperty }
 import javafx.scene.Node
 import javafx.scene.layout.Pane
 
 class SFXContentManager extends LazyLogging {
-  val stackSize               = new SimpleIntegerProperty(0)
+  val stackSize = new SimpleIntegerProperty(0)
   private val controllerStack = ControllerStack(this)
-  var useStack                = new SimpleBooleanProperty(false)
+  var useStack = new SimpleBooleanProperty(false)
 
   var contentPane: Pane = _
 
   var parentController: SFXViewController = _
   var actualController: SFXViewController = _
-  var lastController: SFXViewController   = _
+  var lastController: SFXViewController = _
 
   def addToStack(viewController: SFXViewController): Unit = {
     controllerStack.push(viewController)
@@ -43,10 +43,8 @@ class SFXContentManager extends LazyLogging {
 
   def updatePaneContent(newController: SFXViewController, pushToStack: Boolean = true) {
     val oldController = actualController
-    if (
-      newController != null && newController != oldController && newController.canGainVisibility()
-      && (oldController == null || oldController.shouldLooseVisibility)
-    ) {
+    if (newController != null && newController != oldController && newController.canGainVisibility()
+      && (oldController == null || oldController.shouldLooseVisibility)) {
       if (oldController != null)
         try oldController.willLooseVisibility()
         catch {
@@ -56,8 +54,7 @@ class SFXContentManager extends LazyLogging {
       try {
         newController.windowController.set(parentController.windowController.getValue)
         newController.willGainVisibility()
-      }
-      catch {
+      } catch {
         case e: Exception => logger.error(e.getMessage, e)
       }
 
@@ -89,8 +86,7 @@ class SFXContentManager extends LazyLogging {
       try {
         newController.didGainVisibility()
         parentController.addChildViewController(newController)
-      }
-      catch {
+      } catch {
         case e: Exception => logger.error(e.getMessage, e)
       }
 
@@ -111,10 +107,9 @@ class SFXContentManager extends LazyLogging {
 object SFXContentManager {
 
   def apply(
-      contentPane: Pane,
-      parentController: SFXViewController,
-      startController: SFXViewController = null
-  ): SFXContentManager = {
+    contentPane: Pane,
+    parentController: SFXViewController,
+    startController: SFXViewController = null): SFXContentManager = {
 
     if (contentPane == null)
       throw new IllegalArgumentException("contentPane must not be NULL")

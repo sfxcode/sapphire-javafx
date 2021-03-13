@@ -15,7 +15,7 @@ class DefaultFunctionsSpec extends Specification {
 
       Expressions.getValue("${sfx:frameworkName()}").get must be equalTo "sapphire-javafx"
 
-      val df   = new SimpleDateFormat("yyyy-MM-dd")
+      val df = new SimpleDateFormat("yyyy-MM-dd")
       val date = df.parse("2015-01-01")
 
       Expressions.register("testDate", date)

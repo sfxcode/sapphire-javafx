@@ -1,11 +1,11 @@
 package com.sfxcode.sapphire.javafx.demo.tutorial
 
-import java.util.{Locale, ResourceBundle}
+import java.util.{ Locale, ResourceBundle }
 import com.sfxcode.sapphire.javafx.application.SFXApplicationEnvironment
-import com.sfxcode.sapphire.javafx.controller.SFXBaseApplicationController
+import com.sfxcode.sapphire.javafx.controller.SFXApplicationController
 import com.sfxcode.sapphire.javafx.demo.tutorial.controller.app.MainViewController
 
-class ApplicationController extends SFXBaseApplicationController {
+class ApplicationController extends SFXApplicationController {
 
   var mainViewController: MainViewController = _
 
@@ -36,11 +36,10 @@ class ApplicationController extends SFXBaseApplicationController {
   // only example values ...
   override def resourceBundleForView(viewPath: String): ResourceBundle =
     if (viewPath.contains("mySpecialViewName")) {
-      val path        = "myCustomResourcePath"
+      val path = "myCustomResourcePath"
       val classLoader = Thread.currentThread().getContextClassLoader
       ResourceBundle.getBundle(path, Locale.getDefault(), classLoader)
-    }
-    else
+    } else
       super.resourceBundleForView(viewPath) // =  applicationEnvironment.resourceBundle
 
   // #CustomBundle
