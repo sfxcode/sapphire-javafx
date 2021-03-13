@@ -61,6 +61,9 @@ resolvers += "sfxcode-bintray" at "https://dl.bintray.com/sfxcode/maven"
 
 Explore demos and Tutorial in project demo directory.
 
+Also there is a showcase for commonly used pattern.
+
+
 
 ## Licence
 
