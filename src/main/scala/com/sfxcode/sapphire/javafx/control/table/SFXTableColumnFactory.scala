@@ -1,5 +1,6 @@
 package com.sfxcode.sapphire.javafx.control.table
 
+import com.sfxcode.sapphire.data.Configuration
 import com.sfxcode.sapphire.javafx.control.{SFXTableCellFactory, SFXTableValueFactory}
 import com.sfxcode.sapphire.javafx.value.SFXBean
 
@@ -9,8 +10,10 @@ import scala.reflect.runtime.{universe => ru}
 import javafx.scene.control.TableColumn
 import javafx.scene.text.TextAlignment
 
-object SFXTableColumnFactory {
+object SFXTableColumnFactory extends Configuration {
   val rightAlignmentList = List("Date", "Calendar", "Int", "Long", "Double", "Float")
+
+  val PrefWidth: Double = configDoubleValue("sapphire.javafx.TableColumnFactory.prefWidth", 80.0)
 
   def columnFromFactories[S <: AnyRef, T](
       header: String,
@@ -18,7 +21,7 @@ object SFXTableColumnFactory {
       cellFactory: Option[SFXTableCellFactory[SFXBean[S], T]] = None
   ): TableColumn[SFXBean[S], T] = {
     val column = new TableColumn[SFXBean[S], T](header)
-    column.setPrefWidth(80)
+    column.setPrefWidth(PrefWidth)
     column.setCellValueFactory(valueFactory)
     if (cellFactory.isDefined)
       column.setCellFactory(cellFactory.get)

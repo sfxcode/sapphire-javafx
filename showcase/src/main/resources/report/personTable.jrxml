@@ -7,7 +7,7 @@
 	</queryString>
 	<field name="id" class="java.lang.Long"/>
 	<field name="name" class="java.lang.String"/>
-	<field name="SELF_name()_END" class="java.lang.String"/>
+	<field name="#SELF_name()@" class="java.lang.String"/>
 	<background>
 		<band/>
 	</background>

@@ -8,8 +8,9 @@ abstract class SFXAdditionalWindowController extends SFXWindowController with SF
   override def isMainWindow: Boolean = false
 
   def createStage(): Unit =
-    if (stageProperty.isEmpty)
+    if (stageProperty.isEmpty) {
       setStage(createDefaultStage())
+    }
 
   def show(x: Double = 0.0, y: Double = 0.0): Unit =
     stageProperty.foreach { stage =>
@@ -29,16 +30,19 @@ abstract class SFXAdditionalWindowController extends SFXWindowController with SF
 
   def close(): Unit =
     stageProperty.foreach { stage =>
-      if (stage.isShowing)
+      if (stage.isShowing) {
         stage.close()
+      }
 
     }
 
   private def setStagePosition(myStage: Stage, x: Double, y: Double): Unit = {
-    if (x > 0)
+    if (x > 0) {
       myStage.setX(x)
-    if (y > 0)
+    }
+    if (y > 0) {
       myStage.setY(y)
+    }
   }
 
 }

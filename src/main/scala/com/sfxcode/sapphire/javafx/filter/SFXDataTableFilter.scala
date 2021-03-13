@@ -1,5 +1,6 @@
 package com.sfxcode.sapphire.javafx.filter
 
+import com.sfxcode.sapphire.data.reflect.FieldRegistry
 import javafx.scene.layout.Pane
 import com.sfxcode.sapphire.javafx.control.{SFXTableCellFactory, SFXTableValueFactory}
 import com.sfxcode.sapphire.javafx.value.SFXBean
@@ -31,13 +32,7 @@ class SFXDataTableFilter[S <: AnyRef](
   // reflection
   private val mirror  = ru.runtimeMirror(ct.runtimeClass.getClassLoader)
   private val members = mirror.classSymbol(ct.runtimeClass).asType.typeSignature.members.toList.reverse
-  logger.debug(
-    members
-      .collect({ case x if x.isTerm => x.asTerm })
-      .filter(t => t.isVal || t.isVar)
-      .map(m => m.name.toString)
-      .toString()
-  )
+  debugMembers(members)
 
   filterResult.addChangeListener { _ =>
     table.getItems.clear()

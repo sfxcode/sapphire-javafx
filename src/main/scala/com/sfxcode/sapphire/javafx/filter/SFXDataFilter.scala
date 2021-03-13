@@ -14,11 +14,12 @@ import javafx.beans.property.ObjectProperty
 import javafx.collections.{FXCollections, ObservableList}
 import javafx.scene.control.{ComboBox, Control, TextField}
 import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
+import com.sfxcode.sapphire.javafx.SFXLogging
 
 import scala.jdk.CollectionConverters._
 
 class SFXDataFilter[S <: AnyRef](items: ObjectProperty[ObservableList[SFXBean[S]]], pane: ObjectProperty[Pane])
-    extends LazyLogging {
+    extends SFXLogging {
   val conf: Config = ConfigFactory.load()
 
   protected val controlList: ObservableList[Node] = FXCollections.observableArrayList[Node]()

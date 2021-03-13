@@ -1,22 +1,19 @@
 package com.sfxcode.sapphire.javafx.controller
 
-import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import com.sfxcode.sapphire.javafx.value.SFXBean
 import com.sfxcode.sapphire.javafx.filter.SFXDataTableFilter
-import com.typesafe.scalalogging.LazyLogging
 import javafx.beans.property.SimpleObjectProperty
 import javafx.collections.ObservableList
 import javafx.fxml.FXML
 import javafx.scene.control.TableView
 import javafx.scene.layout.HBox
 import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
-import scala.reflect.runtime.{universe => ru}
+import com.sfxcode.sapphire.javafx.SFXLogging
 
+import scala.reflect.runtime.{universe => ru}
 import scala.reflect.ClassTag
 
-abstract class BaseDataTableController extends DataTableController
-
-abstract class DataTableController extends SFXViewController with LazyLogging {
+abstract class SFXDataTableController extends SFXViewController with SFXLogging {
   val mirror: ru.Mirror = ru.runtimeMirror(this.getClass.getClassLoader)
 
   type R <: AnyRef
@@ -24,14 +21,8 @@ abstract class DataTableController extends SFXViewController with LazyLogging {
   def ct: ClassTag[R]
 
   // reflection
-  val members = mirror.classSymbol(ct.runtimeClass).asType.typeSignature.members.toList.reverse
-  logger.debug(
-    members
-      .collect({ case x if x.isTerm => x.asTerm })
-      .filter(t => t.isVal || t.isVar)
-      .map(m => m.name.toString)
-      .toString()
-  )
+  val members: List[ru.Symbol] = mirror.classSymbol(ct.runtimeClass).asType.typeSignature.members.toList.reverse
+  debugMembers(members)
 
   @FXML
   var table: TableView[SFXBean[R]] = _
@@ -49,8 +40,9 @@ abstract class DataTableController extends SFXViewController with LazyLogging {
     val itemsProperty = new SimpleObjectProperty[ObservableList[SFXBean[R]]](this, "", items)
     tableFilter = new SFXDataTableFilter[R](table, itemsProperty, new SimpleObjectProperty(this, "", searchBox))(ct)
 
-    if (shouldAddColunns)
+    if (shouldAddColunns) {
       tableFilter.addColumns()
+    }
 
     initTable(tableFilter)
 
@@ -58,7 +50,7 @@ abstract class DataTableController extends SFXViewController with LazyLogging {
     tableFilter.selectedItems.addChangeListener(_ => selectedTableViewItemsDidChange(tableFilter.selectedItems))
   }
 
-  def shouldAddColunns = true
+  def shouldAddColunns: Boolean = true
 
   def initTable(tableFilter: SFXDataTableFilter[R]): Unit = {}
 
@@ -67,10 +59,12 @@ abstract class DataTableController extends SFXViewController with LazyLogging {
 
   def selectedTableViewItemDidChange(oldValue: SFXBean[R], newValue: SFXBean[R]): Unit =
     logger.debug("new value: %s".format({
-      if (newValue != null)
+      if (newValue != null) {
         newValue.bean
-      else
+      }
+      else {
         null
+      }
     }))
 
 }

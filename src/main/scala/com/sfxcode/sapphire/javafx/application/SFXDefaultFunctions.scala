@@ -51,17 +51,18 @@ object SFXDefaultFunctions extends Configuration {
   def i18n(key: String, params: Any*): String = recourceBundleHolder.message(key, params: _*)
 
   def boolString(value: Boolean, trueValue: String, falseValue: String): String =
-    if (value)
+    if (value) {
       trueValue
-    else
+    }
+    else {
       falseValue
+    }
 
   def now: Date = new Date
 
   def nowAsString: String = dateString(new java.util.Date)
 
   def dateString(date: AnyRef): String = {
-    println(date)
     val s = date match {
       case d: java.util.Date     => defaultDateConverter.toString(d)
       case c: java.util.Calendar => defaultDateConverter.toString(c.getTime)

@@ -4,7 +4,6 @@ import java.net.URL
 import java.util.ResourceBundle
 
 import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
-import com.sfxcode.sapphire.javafx.SFXConfigValues
 import com.sfxcode.sapphire.data.el._
 import com.sfxcode.sapphire.javafx.control.event.SFXActionEvents
 import com.sfxcode.sapphire.javafx.fxml.FxmlLoading
@@ -48,12 +47,14 @@ abstract class SFXViewController
   def parent: SFXViewController = managedParent.getValue
 
   def addChildViewController(viewController: SFXViewController): Unit =
-    if (!managedChildren.contains(viewController))
+    if (!managedChildren.contains(viewController)) {
       managedChildren.add(viewController)
+    }
 
   def removeChildViewController(viewController: SFXViewController): Unit =
-    if (!managedChildren.contains(viewController))
+    if (!managedChildren.contains(viewController)) {
       managedChildren.remove(viewController)
+    }
 
   // bean lifecycle
 
@@ -70,7 +71,7 @@ abstract class SFXViewController
 
   // controller lifecycle
 
-  def didInitialize() {}
+  def didInitialize(): Unit = {}
 
   def canGainVisibility(): Boolean = true
 

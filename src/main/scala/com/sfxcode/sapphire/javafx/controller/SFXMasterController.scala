@@ -7,7 +7,7 @@ import javafx.scene.Node
 import javafx.scene.control.TableRow
 import javafx.scene.control.skin.{TableColumnHeader, TableHeaderRow}
 
-abstract class SFXMasterController extends DataTableController with SFXEventHelper {
+abstract class SFXMasterController extends SFXDataTableController with SFXEventHelper {
 
   var detailController: Option[SFXDetailController] = None
   var lastSelected: Int                             = 0

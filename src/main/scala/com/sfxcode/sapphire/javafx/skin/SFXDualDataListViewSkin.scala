@@ -1,24 +1,23 @@
 package com.sfxcode.sapphire.javafx.skin
 
 import com.sfxcode.sapphire.data.Configuration
+import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
+import com.sfxcode.sapphire.javafx.control.SFXIconTools._
+import com.sfxcode.sapphire.javafx.control.{SFXDataListView, SFXDualDataListView}
+import com.sfxcode.sapphire.javafx.scene.SFXSceneExtensions._
+import com.sfxcode.sapphire.javafx.value.{SFXBean, SFXBeanConversions}
 import javafx.beans.binding.Bindings
+import javafx.collections.{FXCollections, ObservableList}
+import javafx.geometry.Pos
 import javafx.scene.control.SelectionMode._
 import javafx.scene.control.{Button, MultipleSelectionModel, SkinBase}
-import com.sfxcode.sapphire.javafx.value.{SFXBean, SFXBeanConversions}
-import com.sfxcode.sapphire.javafx.control.{SFXDataListView, SFXDualDataListView}
-import javafx.geometry.Pos
 import javafx.scene.layout._
-import com.sfxcode.sapphire.javafx.control.SFXIconTools._
-import javafx.collections.{FXCollections, ObservableList}
-import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
-import com.sfxcode.sapphire.javafx.SFXConfigValues
-import com.sfxcode.sapphire.javafx.scene.SFXSceneExtensions._
 
 class SFXDualDataListViewSkin[S <: AnyRef](view: SFXDualDataListView[S])
     extends SkinBase[SFXDualDataListView[S]](view)
     with SFXBeanConversions
     with Configuration {
-  val IconConfigPath = "com.sfxcode.sapphire.javafx.skin.icon."
+  val IconConfigPath = "sapphire.javafx.DualDataList.icon."
 
   val contentGridPane: GridPane = new GridPane() {
     getStyleClass.add("sfx-dual-data-list-content-grid")

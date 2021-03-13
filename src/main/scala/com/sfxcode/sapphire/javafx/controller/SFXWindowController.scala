@@ -1,19 +1,20 @@
 package com.sfxcode.sapphire.javafx.controller
 
-import java.util.ResourceBundle
-import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
-import com.sfxcode.sapphire.javafx.application.SFXApplicationEnvironment
 import com.sfxcode.sapphire.data.el.Expressions
+import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
+import com.sfxcode.sapphire.javafx.SFXLogging
+import com.sfxcode.sapphire.javafx.application.SFXApplicationEnvironment
 import com.sfxcode.sapphire.javafx.fxml.FxmlLoading
 import com.sfxcode.sapphire.javafx.scene.SFXNodeLocator
-import com.typesafe.scalalogging.LazyLogging
 import javafx.beans.property.SimpleObjectProperty
 import javafx.collections.ObservableMap
 import javafx.scene.layout.StackPane
 import javafx.scene.{Parent, Scene}
 import javafx.stage.Stage
 
-abstract class SFXWindowController extends FxmlLoading with SFXNodeLocator with Expressions with LazyLogging {
+import java.util.ResourceBundle
+
+abstract class SFXWindowController extends FxmlLoading with SFXNodeLocator with Expressions with SFXLogging {
   val sceneMap: ObservableMap[Parent, Scene] = Map[Parent, Scene]()
 
   var stageProperty           = new SimpleObjectProperty[Stage]()
@@ -49,42 +50,36 @@ abstract class SFXWindowController extends FxmlLoading with SFXNodeLocator with 
 
   def replaceSceneContent(newController: SFXViewController, resize: Boolean = true) {
     val oldController = actualSceneController
+
     if (
       newController != null && newController != oldController && newController.canGainVisibility
       && (oldController == null || oldController.shouldLooseVisibility)
     ) {
-      if (oldController != null)
-        try oldController.willLooseVisibility()
-        catch {
-          case e: Exception => logger.error(e.getMessage, e)
-        }
-      try {
+      // old willLooseVisibility
+      if (oldController != null) {
+        withErrorLogging(oldController.willLooseVisibility())
+      }
+      // new willGainVisibility
+      withErrorLogging({
         newController.windowController.set(this)
         newController.willGainVisibility()
-      }
-      catch {
-        case e: Exception => logger.error(e.getMessage, e)
-      }
+      })
+      // replace content
       replaceSceneContentWithNode(newController.rootPane, resize)
       sceneControllerProperty.set(newController)
-      if (oldController != null)
-        try oldController.didLooseVisibility()
-        catch {
-          case e: Exception => logger.error(e.getMessage, e)
-        }
+      // old didLooseVisibility
+      if (oldController != null) {
+        withErrorLogging(oldController.didLooseVisibility())
+      }
     }
     if (!newController.gainedVisibility) {
-      try newController.didGainVisibilityFirstTime()
-      catch {
-        case e: Exception => logger.error(e.getMessage, e)
-      }
+      // new didGainVisibilityFirstTime
+      withErrorLogging(newController.didGainVisibilityFirstTime())
       newController.gainedVisibility = true
     }
+    // new didGainVisibility
+    withErrorLogging(newController.didGainVisibility())
 
-    try newController.didGainVisibility()
-    catch {
-      case e: Exception => logger.error(e.getMessage, e)
-    }
   }
 
   def actualSceneController: SFXViewController = sceneControllerProperty.getValue
@@ -95,11 +90,13 @@ abstract class SFXWindowController extends FxmlLoading with SFXNodeLocator with 
     scene.setRoot(content)
     stage.setScene(scene)
 
-    if (!stage.isShowing)
+    if (!stage.isShowing) {
       stage.show()
+    }
 
-    if (resize)
+    if (resize) {
       stage.sizeToScene()
+    }
   }
 
 }

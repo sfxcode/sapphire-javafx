@@ -1,7 +1,7 @@
 package com.sfxcode.sapphire.javafx.showcase.controller.table
 
 import com.sfxcode.sapphire.javafx.value.{ SFXBean, SFXBeanConversions }
-import com.sfxcode.sapphire.javafx.controller.DataTableController
+import com.sfxcode.sapphire.javafx.controller.SFXDataTableController
 import com.sfxcode.sapphire.javafx.filter.SFXDataTableFilter
 import com.sfxcode.sapphire.javafx.showcase.controller.BaseController
 import com.sfxcode.sapphire.javafx.showcase.model.{ Friend, PersonDatabase }
@@ -10,7 +10,7 @@ import javafx.event.ActionEvent
 
 import scala.reflect._
 
-class FriendTableController extends DataTableController with BaseController with SFXBeanConversions {
+class FriendTableController extends SFXDataTableController with BaseController with SFXBeanConversions {
 
   type R = Friend
 

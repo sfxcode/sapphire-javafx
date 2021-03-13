@@ -1,12 +1,12 @@
 package com.sfxcode.sapphire.javafx.scene
 
+import com.sfxcode.sapphire.javafx.SFXLogging
 import com.sfxcode.sapphire.javafx.controller.SFXViewController
-import com.typesafe.scalalogging.LazyLogging
 import javafx.beans.property.{SimpleBooleanProperty, SimpleIntegerProperty}
 import javafx.scene.Node
 import javafx.scene.layout.Pane
 
-class SFXContentManager extends LazyLogging {
+class SFXContentManager extends SFXLogging {
   val stackSize               = new SimpleIntegerProperty(0)
   private val controllerStack = ControllerStack(this)
   var useStack                = new SimpleBooleanProperty(false)
@@ -42,60 +42,56 @@ class SFXContentManager extends LazyLogging {
     updatePaneContent(lastController)
 
   def updatePaneContent(newController: SFXViewController, pushToStack: Boolean = true) {
-    val oldController = actualController
-    if (
-      newController != null && newController != oldController && newController.canGainVisibility()
-      && (oldController == null || oldController.shouldLooseVisibility)
-    ) {
-      if (oldController != null)
-        try oldController.willLooseVisibility()
-        catch {
-          case e: Exception => logger.error(e.getMessage, e)
-        }
+    val oldController         = actualController
+    val isDifferentController = newController != oldController
+    val canChange             = oldController == null || oldController.shouldLooseVisibility
 
-      try {
-        newController.windowController.set(parentController.windowController.getValue)
-        newController.willGainVisibility()
-      }
-      catch {
-        case e: Exception => logger.error(e.getMessage, e)
-      }
+    if (newController != null && isDifferentController && newController.canGainVisibility() && canChange) {
 
       if (oldController != null) {
-        removePaneContent(oldController.rootPane)
-        oldController.managedParent.setValue(null)
-        parentController.removeChildViewController(oldController)
-        try oldController.didLooseVisibility()
-        catch {
-          case e: Exception => logger.error(e.getMessage, e)
-        }
+        withErrorLogging(oldController.willLooseVisibility())
+      }
+
+      withErrorLogging({
+        newController.windowController.set(parentController.windowController.getValue)
+        newController.willGainVisibility()
+      })
+
+      if (oldController != null) {
+        removeOldController(oldController)
       }
 
       lastController = oldController
-      if (useStack.getValue && pushToStack)
+      if (useStack.getValue && pushToStack) {
         controllerStack.push(oldController)
-
-      addPaneContent(newController.rootPane)
-      newController.managedParent.setValue(parentController)
-
-      if (!newController.gainedVisibility) {
-        try newController.didGainVisibilityFirstTime()
-        catch {
-          case e: Exception => logger.error(e.getMessage, e)
-        }
-        newController.gainedVisibility = true
       }
 
-      try {
-        newController.didGainVisibility()
-        parentController.addChildViewController(newController)
-      }
-      catch {
-        case e: Exception => logger.error(e.getMessage, e)
-      }
+      addNewController(newController)
 
       actualController = newController
     }
+  }
+
+  private def removeOldController(oldController: SFXViewController): Unit = {
+    removePaneContent(oldController.rootPane)
+    oldController.managedParent.setValue(null)
+    parentController.removeChildViewController(oldController)
+    withErrorLogging(oldController.didLooseVisibility())
+  }
+
+  private def addNewController(newController: SFXViewController): Unit = {
+    addPaneContent(newController.rootPane)
+    newController.managedParent.setValue(parentController)
+
+    if (!newController.gainedVisibility) {
+      withErrorLogging(newController.didGainVisibilityFirstTime())
+      newController.gainedVisibility = true
+    }
+
+    withErrorLogging({
+      newController.didGainVisibility()
+      parentController.addChildViewController(newController)
+    })
   }
 
   private def removePaneContent(node: Node) {

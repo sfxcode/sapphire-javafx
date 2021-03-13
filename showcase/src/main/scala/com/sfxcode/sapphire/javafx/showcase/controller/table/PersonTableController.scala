@@ -1,7 +1,7 @@
 package com.sfxcode.sapphire.javafx.showcase.controller.table
 
 import com.sfxcode.sapphire.javafx.value.{ SFXBean, SFXBeanConversions }
-import com.sfxcode.sapphire.javafx.controller.DataTableController
+import com.sfxcode.sapphire.javafx.controller.SFXDataTableController
 import com.sfxcode.sapphire.javafx.showcase.model.{ Person, PersonDatabase }
 import com.sfxcode.sapphire.javafx.filter.SFXDataTableFilter
 import com.sfxcode.sapphire.javafx.showcase.controller.BaseController
@@ -15,7 +15,7 @@ import sys.process._
 import scala.language.postfixOps
 import scala.reflect._
 
-class PersonTableController extends DataTableController with BaseController with SFXBeanConversions {
+class PersonTableController extends SFXDataTableController with BaseController with SFXBeanConversions {
 
   type R = Person
 
