@@ -1,6 +1,6 @@
-# KeyBindings
+# SFXKeyBindings
 
-KeyBindings is a helper class for @ref:[FXBean Adapter](fxbean_adapter.md).
+SFXKeyBindings is a helper class for @ref:[SFXBeanAdapter](fxbean_adapter.md).
 It provides Bindings from beans to ui representations.
 
 It contains convenience functions for adding keys to @ref:[FXBean Adapter](fxbean_adapter.md) and for conversion.

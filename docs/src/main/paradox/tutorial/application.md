@@ -2,17 +2,18 @@
 
 ## Application object
 
-A sapphire application must contain an Application object that extends BaseApplication.
+A sapphire application must contain an Application object that extends SFXApplication.
+
+All startup code is inside this SFXApplication pattern.
 
 
 @@snip [Application.scala](../../../../../demos/tutorial/src/main/scala/com/sfxcode/sapphire/javafx/demo/tutorial/Application.scala)
 
-
-## ApplicationController
+## SFXApplicationController
 
 Application controller is used for startup purposes.
 
-Normally the main scene content is replaced by a ViewController.
+Normally the main scene content is replaced by a SFXViewController.
 
 Here we will use a MainViewController and later we connect a Navigation-, Workspace- and StatusBarController.
 
@@ -27,4 +28,4 @@ The following code snippet loads the MainViewController by the [FXMLoader](https
 
 ```
 
-This pattern for Controller-Loading is commonly used in sapphire-core Framework.
+This pattern for Controller-Loading is commonly used in sapphire-javafx Framework.

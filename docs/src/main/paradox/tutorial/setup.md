@@ -6,7 +6,7 @@ The sources for this tutorial are in the [Github Tutorial Directory](https://git
 
 ## Setup
 
-Easy Project Setup by usibg the sapphire-core giter8 template.
+Easy Project Setup by using the sapphire-core giter8 template.
 See giter8 Documentation for g8 setup.
 
 [Giter8 template](http://www.foundweekends.org/giter8/) for [sapphire-core](https://sfxcode.github.io/sapphire-core).
@@ -20,10 +20,9 @@ See giter8 Documentation for g8 setup.
 ![](../images/tutorial/stucture.png)
 
 
-
 ## IDE
 
-[IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download) or other IDE with Scala support.
+[IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download) or other IDE with Scala ana JavaFX support.
 
 ## FXML Editor
 
@@ -31,5 +30,4 @@ Helpful for FXML Editing is the [Scene Builder](http://gluonhq.com/products/scen
 
 ## Scene Graph Visualization
 
-For understanding of the sccene graph there is a tool called [Scenic View
-](http://fxexperience.com/scenic-view/).
+For understanding of the scene graph there is a tool called [Scenic View](http://fxexperience.com/scenic-view/).

@@ -1,6 +1,6 @@
-# ViewController
+# SFXViewController
 
-The ViewController is the core pattern for component based application design.
+The SFXViewController is the core pattern for component based application design.
 
 ## Features
 
@@ -10,7 +10,7 @@ The ViewController is the core pattern for component based application design.
 
 ## Controller Lifecycle
 
-Main Part of the ViewController pattern is the exchange of the actual presented view.
+Main Part of the SFXViewController pattern is the exchange of the actual presented view.
 Building a dynamic UI is all about build actual screen display from different
 views (like Lego) and to exchange parts of the screen in case of navigation or other activities.
 

@@ -4,7 +4,7 @@
 
 
 ```scala
-class ApplicationController extends BaseApplicationController {
+class ApplicationController extends SFXApplicationController {
   // Content here
 }
 ```
@@ -44,19 +44,19 @@ Sample Code:
 
 BaseApplication Code:
 
-@@snip [BaseApplication.scala](../../../../../src/main/scala/com/sfxcode/sapphire/javafx/application/BaseApplication.scala) { #BaseApplication }
+@@snip [BaseApplication.scala](../../../../../src/main/scala/com/sfxcode/sapphire/javafx/application/SFXApplication.scala) { #BaseApplication }
 
 ### ApplicationController
 
-Base class for your Application (extends normally DefaultWindowController). Is is used for setting the content view and holds application wide information.
+Base class for your Application (extends normally SFXApplicationController). Is is used for setting the content view and holds application wide information.
 
 Sample Code:
 
 @@snip [Application.scala](../../../../../demos/issues/src/main/scala/com/sfxcode/sapphire/javafx/demo/issues/Application.scala) { #ApplicationController }
 
-##  AdditionalWindowController
+##  SFXAdditionalWindowController
 
-Multiple Windows are supported by extending AdditionalWindowController.
+Multiple Windows are supported by extending SFXAdditionalWindowController.
 
 Example Usage:
 
@@ -81,7 +81,7 @@ Use x and y coordinates for window position.
 
 ## ModalWindowController
 
-Modal Window is basically a special Instance of an AdditionalWindowController.
+Modal Window is basically a special Instance of a SFXAdditionalWindowController.
 It can be used for custom dialogs, preferences panes and so on.
 You only have to overwrite modality like in the sample code below:
 

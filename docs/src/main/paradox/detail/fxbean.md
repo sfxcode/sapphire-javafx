@@ -1,19 +1,19 @@
-# FXBean
+# SFXBean
 
-FXBean is one of the core concepts of this framework.
-It is an adapter for Java/Scala Beans (Maps) for automatic JavaFX Binding. FXBean does all the JavaFX Property Binding for your Application.
+SFXBean is one of the core concepts of this framework.
+It is an adapter for Java/Scala Beans (Maps) for automatic JavaFX Binding. SFXBean does all the JavaFX Property Binding for your Application.
 
 ## Features
 
-- Every Java / Scala Bean  can be used for FXBean
-- FXBean has additional support for Java / Scala Maps
-- FXBean resolves Expressions on bean
-- FXBean creates Properties needed for Binding on demand
-- FXBean has change management by default
+- Every Java / Scala Bean  can be used for SFXBean
+- SFXBean has additional support for Java / Scala Maps
+- SFXBean resolves Expressions on bean
+- SFXBean creates Properties needed for Binding on demand
+- SFXBean has change management by default
 
 @@@ note { title=Hint }
 
-Use Sapphire Includes for implicit Bean to FXBean Conversion
+Use Sapphire Includes for implicit Bean to SFXBean Conversion
 
 @@@
 
@@ -23,9 +23,9 @@ Use Sapphire Includes for implicit Bean to FXBean Conversion
 case class Author(name: String)
 case class Book(id: Long, title: String, pages: Int, author: Author)
 
-// create FXBean for sample case class
+// create SFXBean for sample case class
 val scalaBook = Book(1, "Programming In Scala", 852, Author("Martin Odersky"))
-val book = FXBean[Book](scalaBook)
+val book = SFXBean[Book](scalaBook)
 
 // getValue and updateValue are used for bean property access and modification
 // getProperty, getStringProperty ... 

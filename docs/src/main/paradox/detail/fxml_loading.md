@@ -3,15 +3,14 @@
 ## Features
 
 - load fxml by different pattern (convention over configuration)
-- CDI powered ViewController (FXMLLoader, FXMLLoaderProvider)
-- ViewController rootPane is bound to fxml root element
+- SFXViewController rootPane is bound to fxml root element
 
 ## Example
 
 ViewController extends FxmlLoading trait.
 FxmlLoading provide the
 ```scala
-getController[T <: ViewController](fxml: String = "")
+getController[T <: SFXViewController](fxml: String = "")
 ```
 method. The package path of the controller is the default fxml directory.
 [name]Controller is converted to [name].fxml (WorkspaceController -> Workspace.fxml).
@@ -21,7 +20,7 @@ method. The package path of the controller is the default fxml directory.
 
 package controller
 
-class MainViewController extends ViewController with LazyLogging {
+class MainViewController extends SFXViewController with LazyLogging {
 
   // workspaces
   lazy val workspaceController = getController[WorkspaceController]()
