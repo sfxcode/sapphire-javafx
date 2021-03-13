@@ -6,6 +6,14 @@
 * Classes with existing Prefix **FX** renamed to **SFX** Prefix (e.g. FXApplication -> SFXApplication)
 * Styleclasses and styles also get the prefix **sfx-**
 
+### Migration Steps:
+* Global Replace 'BaseApplication' with 'SFXBaseApplication'
+* Global Replace ' ViewController' with 'SFXViewController'
+* Global Replace '.ViewController' with '.SFXViewController'
+* Add to all other unknown classes SFX Prefix (or replace FX Prefix with SFX if exists)
+* (FXML) Global Replace FXTableValueFactory with SFXTableValueFactory
+* Replace ConfigValues with Configuration from sapphire-data
+
 ## 2.0.x to sapphire-javafx 1.*
 * replace sapphire.core with sapphire.javafx
 * data handling is extracted to a new project: sapphire-data

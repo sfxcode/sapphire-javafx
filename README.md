@@ -1,4 +1,4 @@
-# Sapphire JavaFX
+# Sapphire JavaFX (SFX)
 
 A JavaFX Application Framework for Scala User.
 

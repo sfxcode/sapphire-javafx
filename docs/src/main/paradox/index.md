@@ -22,6 +22,8 @@ sapphire.javafx
 
 This should make all problems in packages work again.
 
+Additional Migraion Steps in Migration.md file.
+
 
 ## Frameworks
 
