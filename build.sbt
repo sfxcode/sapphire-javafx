@@ -163,7 +163,7 @@ libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "sw
   "org.openjfx" % s"javafx-$m" % JavaFXVersion % Provided classifier osName
 )
 
-libraryDependencies += "com.sfxcode.sapphire" %% "sapphire-data" % "1.0.4"
+libraryDependencies += "com.sfxcode.sapphire" %% "sapphire-data" % "1.0.5"
 
 libraryDependencies += "org.controlsfx" % "controlsfx" % "11.1.0" intransitive ()
 
