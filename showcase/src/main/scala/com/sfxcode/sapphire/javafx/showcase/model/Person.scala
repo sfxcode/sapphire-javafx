@@ -3,7 +3,7 @@ package com.sfxcode.sapphire.javafx.showcase.model
 import java.text.SimpleDateFormat
 import java.util.Date
 
-import com.sfxcode.sapphire.javafx.value.FXBean
+import com.sfxcode.sapphire.javafx.value.SFXBean
 import org.json4s.DefaultFormats
 import org.json4s.native.Serialization._
 
@@ -11,24 +11,25 @@ import scala.collection.mutable.ArrayBuffer
 import scala.io.Source
 
 case class Person(
-  id: Long,
-  guid: String,
-  isActive: Boolean,
-  company: String,
-  balance: Double,
-  picture: String,
-  var age: Int,
-  var name: String,
-  gender: String,
-  email: String,
-  phone: String,
-  address: String,
-  about: String,
-  registered: Date,
-  tags: List[String],
-  friends: List[Friend],
-  greeting: String,
-  favoriteFruit: String)
+    id: Long,
+    guid: String,
+    isActive: Boolean,
+    company: String,
+    balance: Double,
+    picture: String,
+    var age: Int,
+    var name: String,
+    gender: String,
+    email: String,
+    phone: String,
+    address: String,
+    about: String,
+    registered: Date,
+    tags: List[String],
+    friends: List[Friend],
+    greeting: String,
+    favoriteFruit: String
+)
 
 case class Friend(id: Long, name: String)
 
@@ -58,9 +59,9 @@ object PersonDatabase {
     Source.fromInputStream(is, "UTF-8").getLines().mkString
   }
 
-  def testPerson(id: Int) = FXBean(persons(id))
+  def testPerson(id: Int) = SFXBean(persons(id))
 
-  def testFriend(id: Int) = FXBean(friends(id))
+  def testFriend(id: Int) = SFXBean(friends(id))
 
   def smallPersonList = persons.take(10)
 

@@ -1,7 +1,7 @@
 package com.sfxcode.sapphire.javafx.demo.issues
 
-import com.sfxcode.sapphire.javafx.application.{ApplicationEnvironment, BaseApplication}
-import com.sfxcode.sapphire.javafx.controller.BaseApplicationController
+import com.sfxcode.sapphire.javafx.application.{SFXApplicationEnvironment, SFXBaseApplication}
+import com.sfxcode.sapphire.javafx.controller.SFXBaseApplicationController
 import com.sfxcode.sapphire.javafx.demo.issues.controller.IssueTrackingLiteController
 import com.sfxcode.sapphire.javafx.demo.issues.deltaspike._
 import javax.enterprise.context.ApplicationScoped
@@ -12,12 +12,12 @@ case class EmptyName(name: String)
 
 // #Application
 
-object Application extends BaseApplication with DeltaspikeBeanResolver {
+object Application extends SFXBaseApplication with DeltaspikeBeanResolver {
 
   DeltaspikeLauncher.init()
-  ApplicationEnvironment.documentLoader = getBean[DeltaspikeDocumentLoader]()
+  SFXApplicationEnvironment.documentLoader = getBean[DeltaspikeDocumentLoader]()
 
-  override val applicationController: BaseApplicationController = getBean[ApplicationController]()
+  override val applicationController: SFXBaseApplicationController = getBean[ApplicationController]()
 }
 // #Application
 
@@ -25,7 +25,7 @@ object Application extends BaseApplication with DeltaspikeBeanResolver {
 
 @Named
 @ApplicationScoped
-class ApplicationController extends BaseApplicationController {
+class ApplicationController extends SFXBaseApplicationController {
 
   lazy val mainController: IssueTrackingLiteController = getController[IssueTrackingLiteController]()
 

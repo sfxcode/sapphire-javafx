@@ -4,12 +4,12 @@ import com.sfxcode.sapphire.javafx.test.TestBean
 import javafx.collections.ObservableList
 import org.specs2.mutable.Specification
 
-class BeanConversionsSpec extends Specification with BeanConversions {
+class BeanConversionsSpec extends Specification with SFXBeanConversions {
 
   "BeanConversions" should {
 
     "convert Bean To FXBean and back " in {
-      val bean: FXBean[TestBean] = TestBean()
+      val bean: SFXBean[TestBean] = TestBean()
       bean.getValue("name") must be equalTo "test"
       val convertedBean: TestBean = bean
       convertedBean.name must be equalTo "test"
@@ -17,9 +17,9 @@ class BeanConversionsSpec extends Specification with BeanConversions {
 
     "convert Bean List to ObservableList " in {
       val testBean = TestBean()
-      val list = List[TestBean](testBean)
+      val list     = List[TestBean](testBean)
 
-      val observableList: ObservableList[FXBean[TestBean]] = list
+      val observableList: ObservableList[SFXBean[TestBean]] = list
 
       observableList.head must be equalTo testBean
 

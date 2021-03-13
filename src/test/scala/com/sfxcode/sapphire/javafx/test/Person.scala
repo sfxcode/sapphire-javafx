@@ -3,30 +3,31 @@ package com.sfxcode.sapphire.javafx.test
 import java.text.SimpleDateFormat
 import java.util.Date
 
-import com.sfxcode.sapphire.javafx.value.FXBean
+import com.sfxcode.sapphire.javafx.value.SFXBean
 import org.json4s.DefaultFormats
 import org.json4s.native.Serialization._
 
 import scala.io.Source
 
 case class Person(
-  id: Long,
-  guid: String,
-  isActive: Boolean,
-  balance: Double,
-  picture: String,
-  age: Int,
-  name: String,
-  gender: String,
-  email: String,
-  phone: String,
-  address: String,
-  about: String,
-  registered: Date,
-  tags: List[String],
-  friends: List[Friend],
-  greeting: String,
-  favoriteFruit: String)
+    id: Long,
+    guid: String,
+    isActive: Boolean,
+    balance: Double,
+    picture: String,
+    age: Int,
+    name: String,
+    gender: String,
+    email: String,
+    phone: String,
+    address: String,
+    about: String,
+    registered: Date,
+    tags: List[String],
+    friends: List[Friend],
+    greeting: String,
+    favoriteFruit: String
+)
 
 case class Friend(id: Long, name: String)
 
@@ -45,11 +46,11 @@ object PersonDatabase {
     Source.fromInputStream(is, "UTF-8").getLines().mkString
   }
 
-  def testPerson(id: Int) = FXBean(personen(id))
+  def testPerson(id: Int) = SFXBean(personen(id))
 
-  def testFriend(id: Int) = FXBean(friends(id))
+  def testFriend(id: Int) = SFXBean(friends(id))
 
-  def testPersonen: List[FXBean[Person]] = personen.map(item => FXBean[Person](item))
+  def testPersonen: List[SFXBean[Person]] = personen.map(item => SFXBean[Person](item))
 
-  def testFriends: List[FXBean[Friend]] = friends.map(item => FXBean[Friend](item))
+  def testFriends: List[SFXBean[Friend]] = friends.map(item => SFXBean[Friend](item))
 }

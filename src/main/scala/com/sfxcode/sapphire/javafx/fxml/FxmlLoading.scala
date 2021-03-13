@@ -1,18 +1,19 @@
 package com.sfxcode.sapphire.javafx.fxml
 
+import com.sfxcode.sapphire.data.Configuration
+
 import java.net.URL
 import java.util.ResourceBundle
-
-import com.sfxcode.sapphire.javafx.application.ApplicationEnvironment
-import com.sfxcode.sapphire.javafx.controller.ViewController
-import com.sfxcode.sapphire.javafx.{ConfigValues, ResourceBundleHolder}
+import com.sfxcode.sapphire.javafx.application.SFXApplicationEnvironment
+import com.sfxcode.sapphire.javafx.controller.SFXViewController
+import com.sfxcode.sapphire.javafx.{SFXConfigValues, SFXResourceBundleHolder}
 import javafx.scene.layout.Pane
 
 import scala.reflect.ClassTag
 
-trait FxmlLoading extends ConfigValues {
-  private lazy val recourceBundleHolder = ResourceBundleHolder(
-    resources.getOrElse(ApplicationEnvironment.resourceBundle)
+trait FxmlLoading extends Configuration {
+  private lazy val recourceBundleHolder = SFXResourceBundleHolder(
+    resources.getOrElse(SFXApplicationEnvironment.resourceBundle)
   )
 
   var rootPane: Pane                    = _
@@ -22,11 +23,11 @@ trait FxmlLoading extends ConfigValues {
   def i18n(key: String, params: Any*): String =
     recourceBundleHolder.message(key, params: _*)
 
-  def getController[T <: ViewController](fxml: String = "")(implicit ct: ClassTag[T]): T = {
+  def getController[T <: SFXViewController](fxml: String = "")(implicit ct: ClassTag[T]): T = {
     val fxmlPath = guessFxmlPath(fxml, ct)
 
-    val documentLoader = ApplicationEnvironment.documentLoader
-    documentLoader.updateNamespace("expression", ApplicationEnvironment.fxmlExpressionResolver)
+    val documentLoader = SFXApplicationEnvironment.documentLoader
+    documentLoader.updateNamespace("expression", SFXApplicationEnvironment.fxmlExpressionResolver)
     val loadResult = documentLoader.loadFromDocument(fxmlPath)
 
     val controller = loadResult._1.asInstanceOf[T]
@@ -34,7 +35,7 @@ trait FxmlLoading extends ConfigValues {
     controller
   }
 
-  protected def guessFxmlPath[T <: ViewController](path: String, ct: ClassTag[T]): String = {
+  protected def guessFxmlPath[T <: SFXViewController](path: String, ct: ClassTag[T]): String = {
     var result = path
 
     // check annotatation value

@@ -2,8 +2,8 @@ package com.sfxcode.sapphire.javafx.demo.issues.model
 
 import java.util.concurrent.atomic.AtomicInteger
 
-import com.sfxcode.sapphire.javafx.value.FXBeanCollections._
-import com.sfxcode.sapphire.javafx.value.{BeanConversions, FXBean}
+import com.sfxcode.sapphire.javafx.value.SFXBeanCollections._
+import com.sfxcode.sapphire.javafx.value.{SFXBean, SFXBeanConversions}
 import javafx.collections.{FXCollections, ObservableList}
 import scalafx.Includes._
 import scalafx.collections.ObservableMap._
@@ -11,11 +11,11 @@ import scalafx.collections.{ObservableBuffer, ObservableMap}
 
 case class Issue(id: String, projectName: String, var status: String, var synopsis: String, var description: String)
 
-object IssueDataBase extends BeanConversions {
+object IssueDataBase extends SFXBeanConversions {
 
   val issueCounter = new AtomicInteger(0)
-  val projectsMap: ObservableMap[String, ObservableList[FXBean[Issue]]] =
-    FXCollections.observableHashMap[String, ObservableList[FXBean[Issue]]]
+  val projectsMap: ObservableMap[String, ObservableList[SFXBean[Issue]]] =
+    FXCollections.observableHashMap[String, ObservableList[SFXBean[Issue]]]
 
   List("Project1", "Project2", "Project3", "Project4").foreach(projectsMap.put(_, observableList[Issue]))
 
@@ -38,12 +38,12 @@ object IssueDataBase extends BeanConversions {
     }
   }
 
-  def createIssue(projectName: String, synopsis: String = "", description: String = ""): FXBean[Issue] = {
+  def createIssue(projectName: String, synopsis: String = "", description: String = ""): SFXBean[Issue] = {
     assert(projectNames.contains(projectName))
     val issue = Issue("TT-%s".format(issueCounter.incrementAndGet()), projectName, "NEW", synopsis, description)
     assert(!issuesMap.containsKey(issue.id))
     assert(!projectsMap(projectName).contains(issue.id))
-    val bean: FXBean[Issue] = issue
+    val bean: SFXBean[Issue] = issue
     issuesMap.put(issue.id, bean)
     bean
   }

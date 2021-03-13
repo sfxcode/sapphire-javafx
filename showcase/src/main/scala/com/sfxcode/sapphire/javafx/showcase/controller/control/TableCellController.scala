@@ -1,15 +1,15 @@
 package com.sfxcode.sapphire.javafx.showcase.controller.control
 
 import com.sfxcode.sapphire.javafx.showcase.controller.BaseController
-import com.sfxcode.sapphire.javafx.showcase.model.{ Person, PersonDatabase }
-import com.sfxcode.sapphire.javafx.value.{ BeanConversions, FXBean }
+import com.sfxcode.sapphire.javafx.showcase.model.{Person, PersonDatabase}
+import com.sfxcode.sapphire.javafx.value.{SFXBean, SFXBeanConversions}
 import javafx.fxml.FXML
 import javafx.scene.control.TableView
 
-class TableCellController extends BaseController with BeanConversions {
+class TableCellController extends BaseController with SFXBeanConversions {
 
   @FXML
-  var tableView: TableView[FXBean[Person]] = _
+  var tableView: TableView[SFXBean[Person]] = _
 
   override def didGainVisibilityFirstTime(): Unit = {
     super.didGainVisibilityFirstTime()

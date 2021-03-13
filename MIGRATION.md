@@ -1,5 +1,11 @@
 # Migrations
 
+## 1.0.x to sapphire-javafx 1.1*
+* Refactoring for a valid prexix:
+* Namespace **SFX** is added as prefix to all Classes (e.g. DataListView -> SFXDataListView)
+* Classes with existing Prefix **FX** renamed to **SFX** Prefix (e.g. FXApplication -> SFXApplication)
+* Styleclasses and styles also get the prefix **sfx-**
+
 ## 2.0.x to sapphire-javafx 1.*
 * replace sapphire.core with sapphire.javafx
 * data handling is extracted to a new project: sapphire-data

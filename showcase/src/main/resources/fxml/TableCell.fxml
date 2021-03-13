@@ -17,28 +17,28 @@
 
                         <TableColumn text="Name">
                             <cellValueFactory>
-                                <FXTableValueFactory property="name"/>
+                                <SFXTableValueFactory property="name"/>
                             </cellValueFactory>
                         </TableColumn>
                         <TableColumn  text="Balance">
                             <cellValueFactory>
-                                <FXTableValueFactory property="balance" format="#,##0.00" />
+                                <SFXTableValueFactory property="balance" format="#,##0.00" />
                             </cellValueFactory>
                             <cellFactory>
-                                <FXTableCellFactory alignment="right"/>
+                                <SFXTableCellFactory alignment="right"/>
                             </cellFactory>
                         </TableColumn>
                         <TableColumn  text="Active">
                             <cellValueFactory>
-                                <FXTableValueFactory property="isActive" />
+                                <SFXTableValueFactory property="isActive" />
                             </cellValueFactory>
                         </TableColumn>
                         <TableColumn  text="Checkbox Active">
                             <cellValueFactory>
-                                <FXTableValueFactory property="isActive" />
+                                <SFXTableValueFactory property="isActive" />
                             </cellValueFactory>
                             <cellFactory>
-                                <FXTableCellFactory simpleClassName="CheckBoxTableCell" alignment="right"/>
+                                <SFXTableCellFactory simpleClassName="CheckBoxTableCell" alignment="right"/>
                             </cellFactory>
                         </TableColumn>
                     </columns>

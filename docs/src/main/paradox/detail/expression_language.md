@@ -13,14 +13,14 @@ Functions can have a prefix. The Sapphire Javafx Functions has the prefix: sf.
 
 | function         | sample                                 | info                        |
 |:-----------------|:---------------------------------------|:----------------------------|
-| frameworkName    | ${sf:frameworkName()}                  |                             |
-| frameworkVersion | ${sf:frameworkVersion()}               |                             |
-| dateString       | ${sf:dateString(testDate)}             | Default Pattern: YYYY-MM-dd |
-| now              | ${sf:frameworkName()}                  |                             |
-| nowAsString      | ${sf:nowAsString()}").toString         | Default Pattern: YYYY-MM-dd |
-| boolString       | ${sf:boolString(testBoolean,'Y', 'N')} |                             |
-| configString     | ${sf:configString('test.string')}      |                             |
-| i18n             | ${sf:i18n('personText')}               |                             |
+| frameworkName    | ${sfx:frameworkName()}                  |                             |
+| frameworkVersion | ${sfx:frameworkVersion()}               |                             |
+| dateString       | ${sfx:dateString(testDate)}             | Default Pattern: YYYY-MM-dd |
+| now              | ${sfx:frameworkName()}                  |                             |
+| nowAsString      | ${sfx:nowAsString()}").toString         | Default Pattern: YYYY-MM-dd |
+| boolString       | ${sfx:boolString(testBoolean,'Y', 'N')} |                             |
+| configString     | ${sfx:configString('test.string')}      |                             |
+| i18n             | ${sfx:i18n('personText')}               |                             |
 
 
 ### Custom Functions

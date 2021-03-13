@@ -28,8 +28,8 @@
                     </GridPane.margin>
                 </Button>
 
-                <DataListView fx:id="dataList" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <DataListView fx:id="listView" GridPane.rowIndex="1" />
+                <SFXDataListView fx:id="dataList" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <SFXDataListView fx:id="listView" GridPane.rowIndex="1" />
                 <ComboBox fx:id="comboBox" prefWidth="150.0" />
             </children>
          <padding>

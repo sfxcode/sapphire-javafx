@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.sfxcode.sapphire.javafx.control.FXTableValueFactory?>
+<?import com.sfxcode.sapphire.javafx.control.SFXTableValueFactory?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
-<?import com.sfxcode.sapphire.javafx.control.FXTreeTableValueFactory?>
-<?import com.sfxcode.sapphire.javafx.control.FXTreeTableCellFactory?>
+<?import com.sfxcode.sapphire.javafx.control.SFXTreeTableValueFactory?>
+<?import com.sfxcode.sapphire.javafx.control.SFXTreeTableCellFactory?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" styleClass="person" AnchorPane.bottomAnchor="0.0"
             AnchorPane.leftAnchor="0.0"
             AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1"
@@ -19,20 +19,20 @@
                     <columns>
                         <TreeTableColumn prefWidth="200.0" text="Name">
                             <cellValueFactory>
-                                <FXTreeTableValueFactory property="name"/>
+                                <SFXTreeTableValueFactory property="name"/>
                             </cellValueFactory>
                         </TreeTableColumn>
                         <TreeTableColumn prefWidth="250.0" text="Expression">
                             <cellValueFactory>
-                                <FXTreeTableValueFactory property="Name: !{_self.name()} Age: !{_self.age()} (!{_self.id()}) "/>
+                                <SFXTreeTableValueFactory property="Name: !{_self.name()} Age: !{_self.age()} (!{_self.id()}) "/>
                             </cellValueFactory>
                         </TreeTableColumn>
                         <TreeTableColumn  text="Balance">
                             <cellValueFactory>
-                                <FXTreeTableValueFactory property="balance" format="#,##0.00" />
+                                <SFXTreeTableValueFactory property="balance" format="#,##0.00" />
                             </cellValueFactory>
                             <cellFactory>
-                                <FXTreeTableCellFactory alignment="right"/>
+                                <SFXTreeTableCellFactory alignment="right"/>
                             </cellFactory>
                         </TreeTableColumn>
                     </columns>

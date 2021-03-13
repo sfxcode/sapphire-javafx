@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.sfxcode.sapphire.javafx.control.FXTableValueFactory?>
+<?import com.sfxcode.sapphire.javafx.control.SFXTableValueFactory?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -17,22 +17,22 @@
                     <columns>
                         <TableColumn prefWidth="50.0" text="ID">
                             <cellValueFactory>
-                                <FXTableValueFactory property="id"/>
+                                <SFXTableValueFactory property="id"/>
                             </cellValueFactory>
                         </TableColumn>
                         <TableColumn prefWidth="100.0" text="Name">
                             <cellValueFactory>
-                                <FXTableValueFactory property="name"/>
+                                <SFXTableValueFactory property="name"/>
                             </cellValueFactory>
                         </TableColumn>
                         <TableColumn prefWidth="50.0" text="Age">
                             <cellValueFactory>
-                                <FXTableValueFactory property="age"/>
+                                <SFXTableValueFactory property="age"/>
                             </cellValueFactory>
                         </TableColumn>
                         <TableColumn prefWidth="200.0" text="Description">
                             <cellValueFactory>
-                                <FXTableValueFactory property="Name: !{_self.name()} Age: !{_self.age()} (!{_self.id()}) "/>
+                                <SFXTableValueFactory property="Name: !{_self.name()} Age: !{_self.age()} (!{_self.id()}) "/>
                             </cellValueFactory>
                         </TableColumn>
                     </columns>

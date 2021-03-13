@@ -1,9 +1,9 @@
 package com.sfxcode.sapphire.javafx.test
 
-import com.sfxcode.sapphire.javafx.controller.ViewController
+import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import javafx.scene.layout.HBox
 
-class TestViewController extends ViewController {
+class TestViewController extends SFXViewController {
 
   var name: String = ""
 

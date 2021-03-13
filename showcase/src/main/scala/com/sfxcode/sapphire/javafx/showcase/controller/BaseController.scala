@@ -1,15 +1,16 @@
 package com.sfxcode.sapphire.javafx.showcase.controller
 
-import com.sfxcode.sapphire.javafx.application.ApplicationEnvironment
-import com.sfxcode.sapphire.javafx.controller.ViewController
+import com.sfxcode.sapphire.javafx.application.SFXApplicationEnvironment
+import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import com.sfxcode.sapphire.javafx.showcase.ApplicationController
 
-trait BaseController extends ViewController {
+trait BaseController extends SFXViewController {
 
-  def applicationController: ApplicationController = ApplicationEnvironment.applicationController[ApplicationController]
+  def applicationController: ApplicationController =
+    SFXApplicationEnvironment.applicationController[ApplicationController]
 
   def showcaseController: ShowcaseViewController = applicationController.showcaseController
 
-  def updateShowcaseContent(controller: ViewController): Unit =
+  def updateShowcaseContent(controller: SFXViewController): Unit =
     showcaseController.updateShowcaseContent(controller)
 }

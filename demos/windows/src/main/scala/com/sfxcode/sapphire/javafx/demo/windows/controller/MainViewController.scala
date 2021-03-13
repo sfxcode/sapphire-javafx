@@ -1,8 +1,8 @@
 package com.sfxcode.sapphire.javafx.demo.windows.controller
 
-import com.sfxcode.sapphire.javafx.controller.ViewController
+import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import com.sfxcode.sapphire.javafx.demo.windows.ApplicationController
-import com.sfxcode.sapphire.javafx.value.FXBean
+import com.sfxcode.sapphire.javafx.value.SFXBean
 import com.typesafe.scalalogging.LazyLogging
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
@@ -10,7 +10,7 @@ import javafx.scene.control.Label
 
 import scala.beans.BeanProperty
 
-class MainViewController extends ViewController with LazyLogging {
+class MainViewController extends SFXViewController with LazyLogging {
 
   @FXML
   var windowLabel: Label = _
@@ -22,7 +22,7 @@ class MainViewController extends ViewController with LazyLogging {
   var name: String = "MainView"
 
   @BeanProperty
-  var bean: FXBean[ViewController] = FXBean(this)
+  var bean: SFXBean[SFXViewController] = SFXBean(this)
 
   override def startup() {
     logger.debug("class: " + this)

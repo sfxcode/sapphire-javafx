@@ -5,9 +5,9 @@ import javafx.fxml.FXML
 import javafx.scene.Node
 import javafx.scene.layout.Pane
 
-import com.sfxcode.sapphire.javafx.value.{ FXBean, FXBeanAdapter, KeyBindings }
+import com.sfxcode.sapphire.javafx.value.{SFXBean, SFXBeanAdapter, SFXKeyBindings}
 import com.sfxcode.sapphire.javafx.showcase.controller.BaseController
-import com.sfxcode.sapphire.javafx.showcase.model.{ Person, PersonDatabase }
+import com.sfxcode.sapphire.javafx.showcase.model.{Person, PersonDatabase}
 
 import scala.util.Random
 
@@ -15,19 +15,19 @@ class FormController extends BaseController {
   @FXML
   var formPane: Pane = _
 
-  lazy val formAdapter: FXBeanAdapter[Person] = FXBeanAdapter[Person](this, formPane.asInstanceOf[Node])
-  lazy val adapter: FXBeanAdapter[Person] = FXBeanAdapter[Person](this)
+  lazy val formAdapter: SFXBeanAdapter[Person] = SFXBeanAdapter[Person](this, formPane.asInstanceOf[Node])
+  lazy val adapter: SFXBeanAdapter[Person]     = SFXBeanAdapter[Person](this)
 
   val random = new Random()
 
   override def didGainVisibilityFirstTime() {
     super.didGainVisibilityFirstTime()
-    val bindings = KeyBindings()
+    val bindings = SFXKeyBindings()
     bindings.add("person", "Person ${_self.name()} with age of ${_self.age()} is active: ${_self.isActive()}")
     adapter.addBindings(bindings)
 
-    val bindingList = List("name", "age", "address", "isActive")
-    val formBindings = KeyBindings(bindingList, "form1_")
+    val bindingList  = List("name", "age", "address", "isActive")
+    val formBindings = SFXKeyBindings(bindingList, "form1_")
     formBindings.add(bindingList, "form2_")
     formAdapter.addBindings(formBindings)
     formAdapter.addConverter("form1_age", "IntegerStringConverter")
@@ -45,7 +45,7 @@ class FormController extends BaseController {
     setRandomPerson()
 
   def setRandomPerson(): Unit = {
-    val person: FXBean[Person] = PersonDatabase.testPerson(random.nextInt(100))
+    val person: SFXBean[Person] = PersonDatabase.testPerson(random.nextInt(100))
     formAdapter.set(person)
     adapter.set(person)
   }

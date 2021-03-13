@@ -1,18 +1,18 @@
 package com.sfxcode.sapphire.javafx.demo.tutorial
 
 import java.util.{Locale, ResourceBundle}
-import com.sfxcode.sapphire.javafx.application.ApplicationEnvironment
-import com.sfxcode.sapphire.javafx.controller.BaseApplicationController
+import com.sfxcode.sapphire.javafx.application.SFXApplicationEnvironment
+import com.sfxcode.sapphire.javafx.controller.SFXBaseApplicationController
 import com.sfxcode.sapphire.javafx.demo.tutorial.controller.app.MainViewController
 
-class ApplicationController extends BaseApplicationController {
+class ApplicationController extends SFXBaseApplicationController {
 
   var mainViewController: MainViewController = _
 
   def applicationDidLaunch() {
     logger.info("start " + this)
     // #Resources
-    ApplicationEnvironment.loadResourceBundle("bundles/application")
+    SFXApplicationEnvironment.loadResourceBundle("bundles/application")
     // #Resources
     reload()
   }
@@ -21,8 +21,8 @@ class ApplicationController extends BaseApplicationController {
     // Styling
     reloadStyles()
     // Resources
-    ApplicationEnvironment.clearResourceBundleCache()
-    ApplicationEnvironment.loadResourceBundle("bundles/application")
+    SFXApplicationEnvironment.clearResourceBundleCache()
+    SFXApplicationEnvironment.loadResourceBundle("bundles/application")
     // FXML
     mainViewController = getController[MainViewController]()
     replaceSceneContent(mainViewController)

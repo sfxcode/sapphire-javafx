@@ -1,19 +1,19 @@
 package com.sfxcode.sapphire.javafx.demo.login.controller
 
-import com.sfxcode.sapphire.javafx.controller.ViewController
+import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import com.sfxcode.sapphire.javafx.demo.login.LoginApplicationController
 import com.sfxcode.sapphire.javafx.demo.login.model.User
 import com.sfxcode.sapphire.javafx.value._
 import javafx.event.ActionEvent
 import javafx.scene.control.CheckBox
 
-class ProfileController extends ViewController {
+class ProfileController extends SFXViewController {
 
-  lazy val userAdapter: FXBeanAdapter[User] = FXBeanAdapter[User](this)
+  lazy val userAdapter: SFXBeanAdapter[User] = SFXBeanAdapter[User](this)
 
   override def didGainVisibility() {
     super.didGainVisibility()
-    val bindings = KeyBindings("email", "phone", "address", "subscribed")
+    val bindings = SFXKeyBindings("email", "phone", "address", "subscribed")
     bindings.add("user", "User: ${_self.name()} Mailsize: (${_self.email().length()})")
     userAdapter.addBindings(bindings)
 

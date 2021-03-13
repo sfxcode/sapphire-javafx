@@ -2,8 +2,8 @@ package com.sfxcode.sapphire.javafx.showcase.controller
 
 import com.jfoenix.controls.{JFXTabPane, JFXTreeView}
 import com.sandec.mdfx.MDFXNode
-import com.sfxcode.sapphire.javafx.controller.ViewController
-import com.sfxcode.sapphire.javafx.scene.ContentManager
+import com.sfxcode.sapphire.javafx.controller.SFXViewController
+import com.sfxcode.sapphire.javafx.scene.SFXContentManager
 import com.sfxcode.sapphire.javafx.showcase.code.CodeAreaWrapper
 import javafx.beans.value.{ChangeListener, ObservableValue}
 import javafx.fxml.FXML
@@ -16,7 +16,7 @@ import scala.io.Source
 import scala.jdk.CollectionConverters._
 import scala.util.Try
 
-abstract class ShowcaseController extends ViewController {
+abstract class ShowcaseController extends SFXViewController {
 
   lazy val jfoenixCss =
     getClass.getResource("/com/sfxcode/sapphire/javafx/showcase/showcase-jfoenix.css").toExternalForm
@@ -35,7 +35,7 @@ abstract class ShowcaseController extends ViewController {
   @FXML var showcasePane: StackPane = _
   @FXML var showcaseBottomBox: HBox = _
 
-  var showcaseItemManager: ContentManager = _
+  var showcaseItemManager: SFXContentManager = _
 
   @FXML var tabPane: JFXTabPane   = _
   @FXML var showcaseTab: Tab      = _
@@ -63,7 +63,7 @@ abstract class ShowcaseController extends ViewController {
     fxmlStackPane.getChildren.add(fxmlCodeAreaWrapper.codeArea)
     sourceStackPane.getStylesheets.add(scalaCss)
     sourceStackPane.getChildren.add(scalaCodeAreaWrapper.codeArea)
-    showcaseItemManager = ContentManager(showcasePane, this)
+    showcaseItemManager = SFXContentManager(showcasePane, this)
 
   }
 
@@ -108,7 +108,7 @@ abstract class ShowcaseController extends ViewController {
 
   }
 
-  def updateShowcaseContent(controller: ViewController): Unit =
+  def updateShowcaseContent(controller: SFXViewController): Unit =
     showcaseItemManager.updatePaneContent(controller)
 
   def changeShowcaseItem(item: ShowcaseItem): Unit = {

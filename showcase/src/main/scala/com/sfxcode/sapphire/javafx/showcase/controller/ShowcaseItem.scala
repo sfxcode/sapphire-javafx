@@ -1,11 +1,11 @@
 package com.sfxcode.sapphire.javafx.showcase.controller
 
-import com.sfxcode.sapphire.javafx.controller.ViewController
+import com.sfxcode.sapphire.javafx.controller.SFXViewController
 
 import java.net.URL
 
-case class ShowcaseItem(group: String, name: String, callback: () => ViewController) {
-  lazy val controller: ViewController = callback()
+case class ShowcaseItem(group: String, name: String, callback: () => SFXViewController) {
+  lazy val controller: SFXViewController = callback()
 
   def fxmlPath: URL = controller.location.get
 

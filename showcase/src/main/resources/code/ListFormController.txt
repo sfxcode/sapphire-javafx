@@ -4,7 +4,7 @@ import com.sfxcode.sapphire.javafx.value.BeanConversions
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
 import javafx.scene.control.ComboBox
-import com.sfxcode.sapphire.javafx.control.DataListView
+import com.sfxcode.sapphire.javafx.control.SFXDataListView
 import com.sfxcode.sapphire.javafx.showcase.controller.AbstractBaseController
 import com.sfxcode.sapphire.javafx.showcase.model.{ Friend, Person, PersonDatabase }
 import com.typesafe.scalalogging.LazyLogging

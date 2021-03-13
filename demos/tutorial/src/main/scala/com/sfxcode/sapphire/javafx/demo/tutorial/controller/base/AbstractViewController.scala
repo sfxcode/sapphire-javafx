@@ -1,19 +1,20 @@
 package com.sfxcode.sapphire.javafx.demo.tutorial.controller.base
 
-import com.sfxcode.sapphire.javafx.application.ApplicationEnvironment
-import com.sfxcode.sapphire.javafx.controller.ViewController
+import com.sfxcode.sapphire.javafx.application.SFXApplicationEnvironment
+import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import com.sfxcode.sapphire.javafx.demo.tutorial.ApplicationController
 import com.sfxcode.sapphire.javafx.demo.tutorial.controller.app.{MainViewController, StatusBarController}
-import com.sfxcode.sapphire.javafx.scene.ContentManager
+import com.sfxcode.sapphire.javafx.scene.SFXContentManager
 import com.typesafe.scalalogging.LazyLogging
 
-abstract class AbstractViewController extends ViewController with LazyLogging {
+abstract class AbstractViewController extends SFXViewController with LazyLogging {
 
   override def didGainVisibility(): Unit =
     statusBarController.statusLabel.setText("%s loaded".format(getClass.getSimpleName))
 
   // load applicationController by Application Environment
-  def applicationController: ApplicationController = ApplicationEnvironment.applicationController[ApplicationController]
+  def applicationController: ApplicationController =
+    SFXApplicationEnvironment.applicationController[ApplicationController]
 
   // load applicationController by Expression
   def applicationControllerByExpression: ApplicationController = {
@@ -26,6 +27,6 @@ abstract class AbstractViewController extends ViewController with LazyLogging {
 
   def statusBarController: StatusBarController = mainViewController.statusBarController
 
-  def workspaceManager: ContentManager = mainViewController.workspaceManager
+  def workspaceManager: SFXContentManager = mainViewController.workspaceManager
 
 }

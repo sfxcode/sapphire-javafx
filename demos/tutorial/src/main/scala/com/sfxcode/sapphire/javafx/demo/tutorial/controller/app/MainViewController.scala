@@ -1,13 +1,13 @@
 package com.sfxcode.sapphire.javafx.demo.tutorial.controller.app
 
-import com.sfxcode.sapphire.javafx.controller.ViewController
+import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import com.sfxcode.sapphire.javafx.demo.tutorial.controller.page.{ChartPageController, PersonPageController}
-import com.sfxcode.sapphire.javafx.scene.ContentManager
+import com.sfxcode.sapphire.javafx.scene.SFXContentManager
 import com.typesafe.scalalogging.LazyLogging
 import javafx.fxml.FXML
 import javafx.scene.layout.Pane
 
-class MainViewController extends ViewController with LazyLogging {
+class MainViewController extends SFXViewController with LazyLogging {
 
   // #controllerLoading
   lazy val workspaceController: WorkspaceController =
@@ -32,17 +32,17 @@ class MainViewController extends ViewController with LazyLogging {
   // #fxmlBinding
 
   // #contentManager
-  var workspaceManager: ContentManager  = _
-  var navigationManager: ContentManager = _
-  var statusBarManager: ContentManager  = _
+  var workspaceManager: SFXContentManager  = _
+  var navigationManager: SFXContentManager = _
+  var statusBarManager: SFXContentManager  = _
   // #contentManager
 
   // #didGainVisibilityFirstTime
   override def didGainVisibilityFirstTime() {
     super.didGainVisibility()
-    navigationManager = ContentManager(navigationPane, this, navigationController)
-    statusBarManager = ContentManager(statusPane, this, statusBarController)
-    workspaceManager = ContentManager(workspacePane, this, workspaceController)
+    navigationManager = SFXContentManager(navigationPane, this, navigationController)
+    statusBarManager = SFXContentManager(statusPane, this, statusBarController)
+    workspaceManager = SFXContentManager(workspacePane, this, workspaceController)
   }
   // #didGainVisibilityFirstTime
 

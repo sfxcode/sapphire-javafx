@@ -1,6 +1,6 @@
 package com.sfxcode.sapphire.javafx.demo.issues.controller
 
-import com.sfxcode.sapphire.javafx.controller.ViewController
+import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import com.sfxcode.sapphire.javafx.demo.issues.EmptyName
 import com.sfxcode.sapphire.javafx.demo.issues.model.{Issue, IssueDataBase}
 import com.sfxcode.sapphire.javafx.value._
@@ -14,13 +14,13 @@ import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.control.SelectionMode
 
-class IssueTrackingLiteController extends ViewController with LazyLogging {
+class IssueTrackingLiteController extends SFXViewController with LazyLogging {
 
   @Inject
   var emptyName: EmptyName = _
 
   @FXML
-  var table: TableView[FXBean[Issue]] = _
+  var table: TableView[SFXBean[Issue]] = _
 
   @FXML
   var list: ListView[String] = _
@@ -34,7 +34,7 @@ class IssueTrackingLiteController extends ViewController with LazyLogging {
   @FXML
   var detailPane: AnchorPane = _
 
-  lazy val issueAdapter = FXBeanAdapter[Issue](this, detailPane)
+  lazy val issueAdapter = SFXBeanAdapter[Issue](this, detailPane)
 
   val displayedProjectNames = new ObservableBuffer[String]()
   val displayedIssues       = new ObservableBuffer[String]()
@@ -53,7 +53,7 @@ class IssueTrackingLiteController extends ViewController with LazyLogging {
 
   override def didGainVisibility() {
     super.didGainVisibility()
-    issueAdapter.addBindings(KeyBindings("synopsis", "description"))
+    issueAdapter.addBindings(SFXKeyBindings("synopsis", "description"))
     issueAdapter.addBinding(saveButton.visibleProperty(), "_hasChanges")
 
     // issueAdapter.parent = detailPane
@@ -90,9 +90,9 @@ class IssueTrackingLiteController extends ViewController with LazyLogging {
     issueAdapter.clearChanges()
   }
 
-  def selectIssue(issue: FXBean[Issue]) {
+  def selectIssue(issue: SFXBean[Issue]) {
     issue match {
-      case issue: FXBean[Issue] =>
+      case issue: SFXBean[Issue] =>
         issueAdapter.revert()
         issueAdapter.beanProperty.value = issue
       case _ =>

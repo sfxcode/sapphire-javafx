@@ -1,6 +1,6 @@
 package com.sfxcode.sapphire.javafx.fxml
 
-import com.sfxcode.sapphire.javafx.value.FXBean
+import com.sfxcode.sapphire.javafx.value.SFXBean
 
 class FxmlExpressionResolver[String, Any] extends java.util.HashMap[String, Any] {
 
@@ -22,7 +22,7 @@ class FxmlExpressionResolver[String, Any] extends java.util.HashMap[String, Any]
 }
 
 object FxmlExpressionResolver {
-  val bean = new FXBean[ExpressionBean](new ExpressionBean())
+  val bean = new SFXBean[ExpressionBean](new ExpressionBean())
 
   class ExpressionBean
 

@@ -1,11 +1,11 @@
 package com.sfxcode.sapphire.javafx.demo.tutorial
 
-import com.sfxcode.sapphire.javafx.application.BaseApplication
-import com.sfxcode.sapphire.javafx.controller.BaseApplicationController
+import com.sfxcode.sapphire.javafx.application.SFXBaseApplication
+import com.sfxcode.sapphire.javafx.controller.SFXBaseApplicationController
 
-object Application extends BaseApplication {
+object Application extends SFXBaseApplication {
 
-  val applicationController: BaseApplicationController = new ApplicationController
+  val applicationController: SFXBaseApplicationController = new ApplicationController
 
   override def height: Int = 600
 

@@ -2,7 +2,7 @@ package com.sfxcode.sapphire.javafx.fxml.loader
 
 import java.io.{IOException, InputStream}
 
-import com.sfxcode.sapphire.javafx.application.ApplicationEnvironment
+import com.sfxcode.sapphire.javafx.application.SFXApplicationEnvironment
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.layout.Pane
@@ -34,7 +34,7 @@ abstract class BaseDocumentLoader {
     try {
       inputStream = getResourceAsStream(path)
       fxmlLoader.setLocation(getClass.getResource(path))
-      fxmlLoader.setResources(ApplicationEnvironment.applicationController.resourceBundleForView(path))
+      fxmlLoader.setResources(SFXApplicationEnvironment.applicationController.resourceBundleForView(path))
 
       fxmlLoader.load(inputStream).asInstanceOf[Parent]
 

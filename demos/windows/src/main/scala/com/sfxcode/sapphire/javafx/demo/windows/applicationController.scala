@@ -1,10 +1,10 @@
 package com.sfxcode.sapphire.javafx.demo.windows
 
-import com.sfxcode.sapphire.javafx.controller.{AdditionalWindowController, BaseApplicationController}
+import com.sfxcode.sapphire.javafx.controller.{SFXAdditionalWindowController, SFXBaseApplicationController}
 import com.sfxcode.sapphire.javafx.demo.windows.controller.{AdditionalViewController, MainViewController}
 import javafx.stage.{Modality, StageStyle}
 
-class ApplicationController extends BaseApplicationController {
+class ApplicationController extends SFXBaseApplicationController {
 
   lazy val mainViewController: MainViewController =
     getController[MainViewController]()
@@ -25,7 +25,7 @@ class ApplicationController extends BaseApplicationController {
 }
 
 // #AdditionalWindowController
-abstract class AbstractWindowController extends AdditionalWindowController {
+abstract class AbstractWindowController extends SFXAdditionalWindowController {
 
   lazy val viewController: AdditionalViewController =
     getController[AdditionalViewController]()
