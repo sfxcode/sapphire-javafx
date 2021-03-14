@@ -2,7 +2,7 @@
 
 A JavaFX Application Framework for Scala User.
 
-This project replaces [sapphire-core](https://sfxcode.github.io/sapphire-core) and [sapphire-extension](https://sfxcode.github.io/sapphire-extension).
+This project replaces [sapphire-core](https://github.com/sfxcode/sapphire-core) and [sapphire-extension](https://github.com/sfxcode/sapphire-extension).
 
 It provides a solid base for Rapid Application Development with JavaFX and Scala and is a good place for start development.
 
