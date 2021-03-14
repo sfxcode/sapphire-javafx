@@ -41,7 +41,19 @@ class SFXContentManager extends SFXLogging {
   def switchToLast(): Unit =
     updatePaneContent(lastController)
 
-  def updatePaneContent(newController: SFXViewController, pushToStack: Boolean = true) {
+  def updateWithTransition(
+      newController: SFXViewController,
+      transition: SFXTransition = SFXEaseInTransition(),
+      pushToStack: Boolean = true
+  ): Unit =
+    updatePaneContent(newController, Some(transition), pushToStack)
+
+  def updatePaneContent(
+      newController: SFXViewController,
+      transition: Option[SFXTransition] = None,
+      pushToStack: Boolean = true
+  ) {
+
     val oldController         = actualController
     val isDifferentController = newController != oldController
     val canChange             = oldController == null || oldController.shouldLooseVisibility
@@ -57,41 +69,58 @@ class SFXContentManager extends SFXLogging {
         newController.willGainVisibility()
       })
 
-      if (oldController != null) {
-        removeOldController(oldController)
+      switchController(newController, oldController, transition, pushToStack)
+      if (!newController.gainedVisibility) {
+        withErrorLogging(newController.didGainVisibilityFirstTime())
+        newController.gainedVisibility = true
       }
-
-      lastController = oldController
-      if (useStack.getValue && pushToStack) {
-        controllerStack.push(oldController)
-      }
-
-      addNewController(newController)
-
+      withErrorLogging({
+        newController.didGainVisibility()
+        parentController.addChildViewController(newController)
+      })
       actualController = newController
     }
   }
 
-  private def removeOldController(oldController: SFXViewController): Unit = {
+  protected def switchController(
+      newController: SFXViewController,
+      oldController: SFXViewController,
+      transition: Option[SFXTransition],
+      pushToStack: Boolean
+  ): Unit =
+    if (oldController != null) {
+      if (transition.isDefined) {
+        val timeline = transition.get.createTimeline(newController.rootPane, oldController.rootPane)
+        timeline.setOnFinished { _ =>
+          removeOldController(oldController, pushToStack)
+        }
+        addNewController(newController)
+        timeline.play()
+      }
+      else {
+        addNewController(newController)
+        removeOldController(oldController, pushToStack)
+      }
+    }
+    else {
+      addNewController(newController)
+    }
+
+  protected def addNewController(newController: SFXViewController): Unit =
+    withErrorLogging({
+      addPaneContent(newController.rootPane)
+      newController.managedParent.setValue(parentController)
+    })
+
+  protected def removeOldController(oldController: SFXViewController, pushToStack: Boolean): Unit = {
+    lastController = oldController
+    if (useStack.getValue && pushToStack) {
+      controllerStack.push(oldController)
+    }
     removePaneContent(oldController.rootPane)
     oldController.managedParent.setValue(null)
     parentController.removeChildViewController(oldController)
     withErrorLogging(oldController.didLooseVisibility())
-  }
-
-  private def addNewController(newController: SFXViewController): Unit = {
-    addPaneContent(newController.rootPane)
-    newController.managedParent.setValue(parentController)
-
-    if (!newController.gainedVisibility) {
-      withErrorLogging(newController.didGainVisibilityFirstTime())
-      newController.gainedVisibility = true
-    }
-
-    withErrorLogging({
-      newController.didGainVisibility()
-      parentController.addChildViewController(newController)
-    })
   }
 
   private def removePaneContent(node: Node) {
@@ -99,7 +128,9 @@ class SFXContentManager extends SFXLogging {
   }
 
   private def addPaneContent(node: Node) {
-    contentPane.getChildren.add(node)
+    if (!contentPane.getChildren.contains(node)) {
+      contentPane.getChildren.add(node)
+    }
   }
 
 }

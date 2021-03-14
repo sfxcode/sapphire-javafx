@@ -1,6 +1,7 @@
 package com.sfxcode.sapphire.javafx.demo.tutorial.controller.app
 
 import com.sfxcode.sapphire.javafx.demo.tutorial.controller.base.AbstractViewController
+import com.sfxcode.sapphire.javafx.scene.SFXEaseInTransition
 import javafx.event.ActionEvent
 import javafx.scene.control.Button
 
@@ -12,15 +13,15 @@ class NavigationController extends AbstractViewController {
     val barChartController = mainViewController.barChartController
     val workspaceController = mainViewController.workspaceController
     if (actualController == workspaceController)
-      workspaceManager.updatePaneContent(barChartController)
+      workspaceManager.updateWithTransition(barChartController)
     else
-      workspaceManager.updatePaneContent(workspaceController)
+      workspaceManager.updateWithTransition(workspaceController)
   }
 
   def actionShowPersonController(event: ActionEvent): Unit = {
     actionClickButton(event)
     val personController = mainViewController.personController
-    workspaceManager.updatePaneContent(personController)
+    workspaceManager.updateWithTransition(personController)
   }
 
   def actionClickButton(event: ActionEvent) {
