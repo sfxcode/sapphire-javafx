@@ -151,9 +151,11 @@ A DSL for JavaFX written in Scala.
 
 ScalaFX plays very nice on top of sapphire-core applications.
 
-ScalaFX support Scala versions up to 2.12.x
-
 ## Features
+
+sapphire-java makes rapid UI Development easy.
+Multiple pre-build pattern help to fulfill most data centric parts.
+Demo applications and showcase available as blueprints.
 
 ### Application Environment
 
@@ -177,14 +179,23 @@ ScalaFX support Scala versions up to 2.12.x
 - Adapter Pattern (FXBean Adapter)
 
 ### ViewController
-
+- ContentManager for component exchange
+- View Transitions
 - Controller Lifecycle
 - Node Locator
+- DataTable  Controller (Filter Support)
+- Master/Detail Controller
 
 ### FXML Support
 
 - Easy Connect FXML with ViewController
 - Different FXML path options
+- Expression Language Support
+- Custom Table Cell / Column Factories
+
+### UI Widgets
+- Searchable DataList
+- Dual DataList
 
 ## maven
 
