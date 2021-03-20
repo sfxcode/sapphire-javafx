@@ -14,8 +14,8 @@ object SFXTableColumnFactory extends Configuration {
   val rightAlignmentList = List("int", "long", "double", "float")
 
   val PrefWidth: Double            = configDoubleValue("sapphire.javafx.TableColumnFactory.prefWidth", 80.0)
-  val DefaultNumberFormat: String  = configStringValue("defaultNumberFormat", "#,##0")
-  val DefaultDecimalFormat: String = configStringValue("defaultDecimalFormat", "#,##0.00")
+  val DefaultNumberFormat: String  = configStringValue("sapphire.defaultNumberFormat", "#,##0")
+  val DefaultDecimalFormat: String = configStringValue("sapphire.defaultDecimalFormat", "#,##0.00")
 
   def columnFromFactories[S <: AnyRef, T](
       header: String,

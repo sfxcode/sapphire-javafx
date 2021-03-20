@@ -163,7 +163,7 @@ libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "sw
   "org.openjfx" % s"javafx-$m" % JavaFXVersion % Provided classifier osName
 )
 
-libraryDependencies += "com.sfxcode.sapphire" %% "sapphire-data" % "1.0.5"
+dependencyOverrides += "com.sfxcode.sapphire" %% "sapphire-data" % "1.0.6"
 
 libraryDependencies += "org.controlsfx" % "controlsfx" % "11.1.0" intransitive ()
 
@@ -179,7 +179,7 @@ libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.13" % Provided
 
 libraryDependencies += "com.jfoenix" % "jfoenix" % "9.0.10" % Provided
 
-libraryDependencies += "org.fxmisc.richtext" % "richtextfx" % "0.10.5" % Provided
+libraryDependencies += "org.fxmisc.richtext" % "richtextfx" % "0.10.6" % Provided
 
 licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
 
