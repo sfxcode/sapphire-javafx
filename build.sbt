@@ -179,7 +179,7 @@ libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.13" % Provided
 
 libraryDependencies += "com.jfoenix" % "jfoenix" % "9.0.10" % Provided
 
-libraryDependencies += "org.fxmisc.richtext" % "richtextfx" % "0.10.5" % Provided
+libraryDependencies += "org.fxmisc.richtext" % "richtextfx" % "0.10.6" % Provided
 
 licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
 
