@@ -1,6 +1,6 @@
 package com.sfxcode.sapphire.javafx.filter
 
-import com.sfxcode.sapphire.data.FieldProperties.defaultDateConverter
+import com.sfxcode.sapphire.data.wrapper.FieldProperties.defaultDateConverter
 import javafx.scene.Node
 import javafx.scene.layout.Pane
 import com.sfxcode.sapphire.javafx.value.SFXBean

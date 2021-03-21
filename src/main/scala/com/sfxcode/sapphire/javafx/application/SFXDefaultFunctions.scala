@@ -5,7 +5,7 @@ import com.sfxcode.sapphire.data.Configuration
 import java.util.Date
 import com.sfxcode.sapphire.data.el.FunctionHelper
 import com.sfxcode.sapphire.javafx.SFXResourceBundleHolder
-import com.sfxcode.sapphire.data.FieldProperties.defaultDateConverter
+import com.sfxcode.sapphire.data.wrapper.FieldProperties.defaultDateConverter
 
 import scala.annotation.varargs
 

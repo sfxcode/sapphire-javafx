@@ -1,7 +1,7 @@
 package com.sfxcode.sapphire.javafx.value
 
-import com.sfxcode.sapphire.javafx.application.{SFXApplicationEnvironment, SFXDefaultFunctions}
-import com.sfxcode.sapphire.data.FieldProperties.{defaultDateConverter, defaultDateTimeConverter}
+import com.sfxcode.sapphire.data.wrapper.FieldProperties.{defaultDateConverter, defaultDateTimeConverter}
+import com.sfxcode.sapphire.javafx.application.SFXApplicationEnvironment
 import javafx.beans.property.{Property, StringProperty}
 import javafx.collections.{FXCollections, ObservableMap}
 import javafx.util.StringConverter
