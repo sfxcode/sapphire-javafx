@@ -2,10 +2,13 @@
 
 ## Versions
 
+### 1.1.2
+* Update to "sapphire-data" % "1.1.0"
+* fixed [https://github.com/sfxcode/sapphire-javafx/issues/23](https://github.com/sfxcode/sapphire-javafx/issues/23)
 
 ### 1.1.1
 * fixed [https://github.com/sfxcode/sapphire-javafx/issues/21](https://github.com/sfxcode/sapphire-javafx/issues/21)
-* 
+
 ### 1.1.0
 * BREAKING CHANGE: Namespace **SFX** is added as prefix to all Classes and Styles (see Migration.md)
 * SFXConfigValues is deprecated use: com.sfxcode.sapphire.data.Configuration
