@@ -39,7 +39,7 @@ abstract class SFXDataTableController extends SFXViewController with SFXLogging 
     tableFilter = new SFXDataTableFilter[R](table, itemsProperty, new SimpleObjectProperty(this, "", searchBox))(ct)
 
     if (shouldAddColunns) {
-      tableFilter.addColumns()
+      tableFilter.addColumns(shouldAddEditableColunns)
     }
 
     initTable(tableFilter)
@@ -49,6 +49,8 @@ abstract class SFXDataTableController extends SFXViewController with SFXLogging 
   }
 
   def shouldAddColunns: Boolean = true
+
+  def shouldAddEditableColunns: Boolean = false
 
   def initTable(tableFilter: SFXDataTableFilter[R]): Unit = {}
 

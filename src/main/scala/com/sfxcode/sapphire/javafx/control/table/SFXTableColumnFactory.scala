@@ -47,21 +47,24 @@ object SFXTableColumnFactory extends Configuration {
       val signature    = field.getGenericType.getTypeName.toLowerCase
 
       buffer.+=(name)
+
       val cellFactory = new SFXTableCellFactory[SFXBean[S], T]()
+
+      val valueFactory = new SFXTableValueFactory[SFXBean[S], T]()
+      val property     = columnPropertyMap.getOrElse(name, name)
+      valueFactory.setProperty(property)
+
       if (editable)
-        cellFactory.setConverter(signature.replace("Int", "Integer"))
+        cellFactory.setConverter(converterForSignature(signature))
+      else {
+        if (signature.contains("int") || signature.contains("long"))
+          valueFactory.format = numberFormat
+        else if (signature.contains("double") || signature.contains("float"))
+          valueFactory.format = decimalFormat
+      }
 
       if (shouldAlignRight(signature))
         cellFactory.setAlignment(TextAlignment.RIGHT)
-
-      val property     = columnPropertyMap.getOrElse(name, name)
-      val valueFactory = new SFXTableValueFactory[SFXBean[S], T]()
-      valueFactory.setProperty(property)
-
-      if (signature.contains("int") || signature.contains("long"))
-        valueFactory.format = numberFormat
-      else if (signature.contains("double") || signature.contains("float"))
-        valueFactory.format = decimalFormat
 
       map.put(
         property,
@@ -97,5 +100,41 @@ object SFXTableColumnFactory extends Configuration {
     }
     false
   }
+
+  private def converterForSignature(signature: String): String =
+    if (signature.contains("bigdecimal"))
+      "BigDecimalStringConverter"
+    else if (signature.contains("biginteger"))
+      "BigIntegerStringConverter"
+    else if (signature.contains("int"))
+      "IntegerStringConverter"
+    else if (signature.contains("long"))
+      "LongStringConverter"
+    else if (signature.contains("float"))
+      "FloatStringConverter"
+    else if (signature.contains("double"))
+      "DoubleStringConverter"
+    else if (signature.contains("number"))
+      "NumberStringConverter"
+    else if (signature.contains("bool"))
+      "BooleanStringConverter"
+    else if (signature.contains("byte"))
+      "ByteStringConverter"
+    else if (signature.contains("char"))
+      "CharacterStringConverter"
+    else if (signature.contains("localdatetime"))
+      "LocalDateTimeStringConverter"
+    else if (signature.contains("localtime"))
+      "LocalTimeStringConverter"
+    else if (signature.contains("localdate"))
+      "LocalDateStringConverter"
+    else if (signature.contains("datetime"))
+      "DateTimeStringConverter"
+    else if (signature.contains("date"))
+      "DateStringConverter"
+    else if (signature.contains("short"))
+      "ShortStringConverter"
+    else
+      "DefaultStringConverter"
 
 }

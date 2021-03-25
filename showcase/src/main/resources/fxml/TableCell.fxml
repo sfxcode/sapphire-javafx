@@ -12,30 +12,33 @@
         <BorderPane maxHeight="300" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                     AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <center>
-                <TableView fx:id="tableView" BorderPane.alignment="CENTER">
+                <TableView fx:id="tableView" BorderPane.alignment="CENTER" editable="true">
                     <columns>
 
                         <TableColumn text="Name">
                             <cellValueFactory>
                                 <SFXTableValueFactory property="name"/>
                             </cellValueFactory>
+                            <cellFactory>
+                                <SFXTableCellFactory converter="Default"/>
+                            </cellFactory>
                         </TableColumn>
                         <TableColumn  text="Balance">
                             <cellValueFactory>
-                                <SFXTableValueFactory property="balance" format="#,##0.00" />
+                                <SFXTableValueFactory property="balance"/>
                             </cellValueFactory>
                             <cellFactory>
-                                <SFXTableCellFactory alignment="right"/>
+                                <SFXTableCellFactory alignment="right" converter="Double"/>
                             </cellFactory>
                         </TableColumn>
-                        <TableColumn  text="Active">
+                        <TableColumn text="Active">
                             <cellValueFactory>
-                                <SFXTableValueFactory property="isActive" />
+                                <SFXTableValueFactory property="isActive"/>
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn  text="Checkbox Active">
+                        <TableColumn text="Checkbox Active" editable="true">
                             <cellValueFactory>
-                                <SFXTableValueFactory property="isActive" />
+                                <SFXTableValueFactory property="isActive"/>
                             </cellValueFactory>
                             <cellFactory>
                                 <SFXTableCellFactory simpleClassName="CheckBoxTableCell" alignment="right"/>
