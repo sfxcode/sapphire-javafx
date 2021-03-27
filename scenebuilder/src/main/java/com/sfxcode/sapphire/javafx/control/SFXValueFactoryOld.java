@@ -8,11 +8,11 @@ import javafx.util.Callback;
 /**
  * Created by tom on 11.10.15.
  */
-public class SFXValueFactory<S,T> implements Callback<TableColumn.CellDataFeatures<S, T>, ObservableValue<T>> {
+public class SFXValueFactoryOld<S, T> implements Callback<TableColumn.CellDataFeatures<S, T>, ObservableValue<T>> {
     public String property = "";
     public String format = "";
 
-    public SFXValueFactory() {
+    public SFXValueFactoryOld() {
     }
 
     @Override

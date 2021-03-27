@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <?import com.sfxcode.sapphire.javafx.control.SFXTableValueFactory?>
-<?import com.sfxcode.sapphire.javafx.control.SFXListCellFactory?>
 <?import com.sfxcode.sapphire.javafx.control.SFXTableCellFactory?>
 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sfxcode.sapphire.javafx.showcase.controller.table.SimplePersonTableController">
     <children>

@@ -1,7 +1,10 @@
 # SFXBean
 
 SFXBean is one of the core concepts of this framework.
-It is an adapter for Java/Scala Beans (Maps) for automatic JavaFX Binding. SFXBean does all the JavaFX Property Binding for your Application.
+It is an adapter for Java/Scala Beans (Maps) for automatic JavaFX Binding.  
+SFXBean does all the JavaFX Property Binding for your Application.
+
+SFXBean extends DataAdapter class form [sapphire-data](https://sfxcode.github.io/sapphire-data/adapter.html).
 
 ## Features
 

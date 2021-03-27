@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter
 import java.util.Date
 import scala.beans.BeanProperty
 
-trait SFXFXValueFactory[S, T] {
+trait SFXValueFactory[S, T] {
 
   lazy val numberFormatter: DecimalFormat       = new DecimalFormat(format)
   lazy val dateFormatter: SimpleDateFormat      = new SimpleDateFormat(format)

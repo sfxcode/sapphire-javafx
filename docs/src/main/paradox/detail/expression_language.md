@@ -1,6 +1,26 @@
 # Expression Language
 
-Expression Language is based on [Tomcat Expression Language](https://tomcat.apache.org/tomcat-8.0-doc/elapi/index.html) .
+Expression Language is based on [Tomcat Expression Language](https://tomcat.apache.org/tomcat-8.0-doc/elapi/index.html).
+
+## Usage
+
+### Sample
+
+@@snip [PersonBeanSpec.scala](../../../../../src/test/scala/com/sfxcode/sapphire/javafx/value/PersonBeanSpec.scala) { #expression }
+
+### FXML
+
+Usage in FXML is supported, but because of the actual use of the Dollar Char ($) you have to use ! instead.
+
+So ```${_self.name()}``` and ```!{_self.name()}``` are evaluated equal.
+
+```
+<TableColumn prefWidth="200.0" text="Description">
+   <cellValueFactory>
+       <SFXTableValueFactory property="Name: !{_self.name()} Age: !{_self.age()} (!{_self.id()}) "/>
+   </cellValueFactory>
+</TableColumn>
+```
 
 ## Functions
 
@@ -23,11 +43,9 @@ Functions can have a prefix. The Sapphire Javafx Functions has the prefix: sf.
 | i18n             | ${sfx:i18n('personText')}               |                             |
 
 
-### Custom Functions
+## Default Usage
 
-## Base Usage
-
-## EL in WindowController / ViewController
+### EL in WindowController / ViewController
 
 WindowController- and ViewController-Beans are automatically registered by name
 

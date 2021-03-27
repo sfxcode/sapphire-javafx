@@ -4,10 +4,10 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
 
-public class SFXListCellFactory<S> implements Callback<ListView<S>, ListCell<S>> {
+public class SFXListCellFactoryOld<S> implements Callback<ListView<S>, ListCell<S>> {
     public String property = "";
 
-    public SFXListCellFactory() {
+    public SFXListCellFactoryOld() {
 
     }
 
