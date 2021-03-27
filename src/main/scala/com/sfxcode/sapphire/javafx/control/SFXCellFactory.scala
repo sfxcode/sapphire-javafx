@@ -11,6 +11,8 @@ import scala.beans.BeanProperty
 
 trait SFXCellFactory[S, T] {
 
+  def defaultClassName: String
+
   @BeanProperty
   var packageName: String = "javafx.scene.control.cell."
 
@@ -22,8 +24,6 @@ trait SFXCellFactory[S, T] {
 
   @BeanProperty
   var converter: String = _
-
-  def defaultClassName: String
 
   protected def updateCell(cell: IndexedCell[T]): Unit = {
     if (alignment == TextAlignment.CENTER || alignment.toString.equalsIgnoreCase("center"))

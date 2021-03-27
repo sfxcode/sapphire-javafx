@@ -74,6 +74,7 @@ Also there is a showcase for commonly used pattern.
  - [Features](features.md)
  - [getting_started](getting_started.md)
  - [Core Concepts](detail/index.md)
+ - [control](control/index.md)
  - [Tutorial](tutorial/index.md)
  - [Development](development/index.md)
  - [Examples](sample/index.md)
