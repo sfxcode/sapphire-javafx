@@ -20,7 +20,7 @@
 
 <meta name="description" content="sapphire-javafx-docs">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Development Tools · Sapphire JavaFX (SFX)</title>
+<title>Value Factory · Sapphire JavaFX (SFX)</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Sapphire JavaFX (SFX)
 </span>
 <span class="md-header-nav__topic">
-Development Tools
+Value Factory
 </span>
 </div>
 </div>
@@ -151,7 +151,7 @@ sfxcode/sapphire-javafx
   <li><a href="../control/index.html" class="page">Controls</a>
   <ul>
     <li><a href="../control/cell_factory.html" class="page">Cell Factory</a></li>
-    <li><a href="../control/value_factory.html" class="page">Value Factory</a></li>
+    <li><a href="../control/value_factory.html" class="active page">Value Factory</a></li>
     <li><a href="../control/table_view.html" class="page">TableView</a></li>
     <li><a href="../control/list_view.html" class="page">ListView</a></li>
   </ul></li>
@@ -164,7 +164,7 @@ sfxcode/sapphire-javafx
   </ul></li>
   <li><a href="../development/index.html" class="page">Development</a>
   <ul>
-    <li><a href="../development/tools.html" class="active page">Development Tools</a></li>
+    <li><a href="../development/tools.html" class="page">Development Tools</a></li>
     <li><a href="../development/hot_reload.html" class="page">Hot Reloading</a></li>
   </ul></li>
   <li><a href="../sample/index.html" class="page">Examples</a>
@@ -180,12 +180,11 @@ sfxcode/sapphire-javafx
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../development/tools.html#development-tools" class="header">Development Tools</a>
+  <li><a href="../control/value_factory.html#value-factory" class="header">Value Factory</a>
   <ul>
-    <li><a href="../development/tools.html#intellij-ide" class="header">IntelliJ IDE</a></li>
-    <li><a href="../development/tools.html#scenebuilder" class="header">SceneBuilder</a></li>
-    <li><a href="../development/tools.html#scenicview" class="header">ScenicView</a></li>
-    <li><a href="../development/tools.html#sbt-plugins" class="header">SBT Plugins</a></li>
+    <li><a href="../control/value_factory.html#format" class="header">Format</a></li>
+    <li><a href="../control/value_factory.html#property" class="header">Property</a></li>
+    <li><a href="../control/value_factory.html#sample" class="header">Sample</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -207,12 +206,11 @@ sfxcode/sapphire-javafx
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../development/tools.html#development-tools" class="header">Development Tools</a>
+  <li><a href="../control/value_factory.html#value-factory" class="header">Value Factory</a>
   <ul>
-    <li><a href="../development/tools.html#intellij-ide" class="header">IntelliJ IDE</a></li>
-    <li><a href="../development/tools.html#scenebuilder" class="header">SceneBuilder</a></li>
-    <li><a href="../development/tools.html#scenicview" class="header">ScenicView</a></li>
-    <li><a href="../development/tools.html#sbt-plugins" class="header">SBT Plugins</a></li>
+    <li><a href="../control/value_factory.html#format" class="header">Format</a></li>
+    <li><a href="../control/value_factory.html#property" class="header">Property</a></li>
+    <li><a href="../control/value_factory.html#sample" class="header">Sample</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -223,24 +221,31 @@ sfxcode/sapphire-javafx
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#development-tools" name="development-tools" class="anchor"><span class="anchor-link"></span></a>Development Tools</h1>
-<p>Some useful tools.</p>
-<h2><a href="#intellij-ide" name="intellij-ide" class="anchor"><span class="anchor-link"></span></a>IntelliJ IDE</h2>
-<p><a href="https://www.jetbrains.com/idea/download">IntelliJ</a> is my favorite IDE for Scala / JavaFX Coding. Even the Community Edition has all features for developing JavaFX Applications.</p>
-<p><img src="../images/intellij.png" /></p>
-<h2><a href="#scenebuilder" name="scenebuilder" class="anchor"><span class="anchor-link"></span></a>SceneBuilder</h2>
-<p>Scenebuilder (backed by Gluon) can be found at the <a href="http://gluonhq.com/products/scene-builder/">Gluon Site</a>.</p>
-<p><img src="../images/scenebuilder.png" /></p>
-<h2><a href="#scenicview" name="scenicview" class="anchor"><span class="anchor-link"></span></a>ScenicView</h2>
-<p><a href="http://fxexperience.com/scenic-view/">Scenic View</a> is a JavaFX application designed to make it simple to understand the current state of your application scenegraph, and to also easily manipulate properties of the scenegraph without having to keep editing your code. This lets you find bugs, and get things pixel perfect without having to do the compile-check-compile dance.</p>
-<h2><a href="#sbt-plugins" name="sbt-plugins" class="anchor"><span class="anchor-link"></span></a>SBT Plugins</h2>
-<h3><a href="#sbt-javafx" name="sbt-javafx" class="anchor"><span class="anchor-link"></span></a>sbt-javafx</h3>
-<p>(Simple Build Tool) plugin for building JavaFx Application</p>
-<p><a href="https://quadstingray.github.io/sbt-javafx/">Documentation</a></p>
-<p><a href="https://bintray.com/quadstingray/sbt-plugins/sbt-javafx/_latestVersion"> <img src="https://api.bintray.com/packages/quadstingray/sbt-plugins/sbt-javafx/images/download.svg" alt="Download" /> </a>  <a href="https://travis-ci.org/QuadStingray/sbt-javafx"><img src="https://travis-ci.org/QuadStingray/sbt-javafx.svg?branch=master" alt="Build Status" /></a> <a href="https://www.codacy.com/app/QuadStingray/sbt-javafx?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=QuadStingray/sbt-javafx&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/b18d8cb66b5a47f3ad5485c848c5bda7" alt="Codacy Badge" /></a></p>
+<h1><a href="#value-factory" name="value-factory" class="anchor"><span class="anchor-link"></span></a>Value Factory</h1>
+<p>SFX ValueFactories supports property and format.</p>
+<ul>
+  <li>SFXTableCellFactory</li>
+  <li>SFXTreeTableCellFactory</li>
+</ul>
+<h2><a href="#format" name="format" class="anchor"><span class="anchor-link"></span></a>Format</h2>
+<ul>
+  <li>Date and Number formats are supported</li>
+</ul>
+<h2><a href="#property" name="property" class="anchor"><span class="anchor-link"></span></a>Property</h2>
+<p>Property defines the key, that is used to resolve the value for a key in SFXBean objects.</p><div class="callout note "><div class="callout-title">Hint</div>
+<p>Expressions in property are supported, but you have to use ! as expression prefix</p></div>
+<h2><a href="#sample" name="sample" class="anchor"><span class="anchor-link"></span></a>Sample</h2>
+<pre><code> &lt;cellValueFactory&gt;
+      &lt;SFXTreeTableValueFactory property=&quot;balance&quot; format=&quot;#,##0.00&quot; /&gt;
+&lt;/cellValueFactory&gt;
+</code></pre>
+<pre><code>&lt;cellValueFactory&gt;
+      &lt;SFXTableValueFactory property=&quot;!{_self.age()} / !{_self.gender()}&quot; /&gt;
+&lt;/cellValueFactory&gt;
+</code></pre>
 </div>
 <div>
-<a href="https://github.com/sfxcode/sapphire-javafx/tree/master/docs/src/main/paradox/development/tools.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/sfxcode/sapphire-javafx/tree/master/docs/src/main/paradox/control/value_factory.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -256,7 +261,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../development/index.html" title="Development" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../control/cell_factory.html" title="Cell Factory" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -265,17 +270,17 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Development
+Cell Factory
 </span>
 </div>
 </a>
-<a href="../development/hot_reload.html" title="Hot Reloading" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../control/table_view.html" title="TableView" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Hot Reloading
+TableView
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
