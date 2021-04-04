@@ -138,7 +138,7 @@ lazy val docs = (project in file("docs"))
     ParadoxPlugin.InDirectoryFilter((Compile / paradox / sourceDirectory).value / "includes")
   )
 
-val JavaFXVersion = "16"
+val JavaFXVersion = "17-ea+6"
 
 val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Linux")   => "linux"
