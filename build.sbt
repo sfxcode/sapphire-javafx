@@ -7,7 +7,7 @@ name := "sapphire-javafx"
 
 organization := "com.sfxcode.sapphire"
 
-crossScalaVersions := Seq("2.13.5", "2.12.12")
+crossScalaVersions := Seq("2.13.6", "2.12.12")
 
 scalaVersion := crossScalaVersions.value.head
 
@@ -15,11 +15,11 @@ compileOrder := CompileOrder.JavaThenScala
 
 lazy val sapphire_javafx = Project(id = "sapphire-javafx", base = file("."))
 
-javacOptions in test += "-Dorg.apache.deltaspike.ProjectStage=Test"
+test / javacOptions += "-Dorg.apache.deltaspike.ProjectStage=Test"
 
 scalacOptions += "-deprecation"
 
-parallelExecution in Test := false
+test / parallelExecution := false
 
 val Json4sVersion     = "3.6.11"
 val LogbackVersion    = "1.2.3"
@@ -151,7 +151,7 @@ addCommandAlias("run-tutorial", "sapphire-tutorial/run")
 
 // Test
 
-libraryDependencies += "org.specs2" %% "specs2-core" % "4.10.6" % Test
+libraryDependencies += "org.specs2" %% "specs2-core" % "4.11.0" % Test
 
 libraryDependencies += "org.json4s" %% "json4s-native" % Json4sVersion % Test
 
@@ -163,7 +163,7 @@ libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "sw
   "org.openjfx" % s"javafx-$m" % JavaFXVersion % Provided classifier osName
 )
 
-libraryDependencies += "com.sfxcode.sapphire" %% "sapphire-data" % "1.1.0"
+libraryDependencies += "com.sfxcode.sapphire" %% "sapphire-data" % "1.1.2"
 
 libraryDependencies += "org.controlsfx" % "controlsfx" % "11.1.0" intransitive ()
 
@@ -173,7 +173,7 @@ libraryDependencies += "org.kordamp.ikonli" % "ikonli-fontawesome-pack" % Ikonli
 
 // extension akka
 
-libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.13" % Provided
+libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.14" % Provided
 
 // extension showcase
 
@@ -213,7 +213,7 @@ pomPostProcess := { node: XmlNode =>
 
 releaseCrossBuild := true
 
-bintrayReleaseOnPublish in ThisBuild := true
+ThisBuild / bintrayReleaseOnPublish := true
 
 publishMavenStyle := true
 
