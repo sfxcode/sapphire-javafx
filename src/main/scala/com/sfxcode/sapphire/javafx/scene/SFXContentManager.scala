@@ -52,7 +52,7 @@ class SFXContentManager extends SFXLogging {
       newController: SFXViewController,
       transition: Option[SFXTransition] = None,
       pushToStack: Boolean = true
-  ) {
+  ): Unit = {
 
     val oldController         = actualController
     val isDifferentController = newController != oldController
@@ -123,15 +123,13 @@ class SFXContentManager extends SFXLogging {
     withErrorLogging(oldController.didLooseVisibility())
   }
 
-  private def removePaneContent(node: Node) {
+  private def removePaneContent(node: Node): Unit =
     contentPane.getChildren.remove(node)
-  }
 
-  private def addPaneContent(node: Node) {
+  private def addPaneContent(node: Node): Unit =
     if (!contentPane.getChildren.contains(node)) {
       contentPane.getChildren.add(node)
     }
-  }
 
 }
 

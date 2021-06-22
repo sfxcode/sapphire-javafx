@@ -52,10 +52,10 @@ object SFXTableColumnFactory extends Configuration {
 
       val valueFactory = new SFXTableValueFactory[SFXBean[S], T]()
       val property     = columnPropertyMap.getOrElse(name, name)
-      valueFactory.setProperty(property)
+      valueFactory.property = property
 
       if (editable)
-        cellFactory.setConverter(converterForSignature(signature))
+        cellFactory.converter = converterForSignature(signature)
       else {
         if (signature.contains("int") || signature.contains("long"))
           valueFactory.format = numberFormat
@@ -64,7 +64,7 @@ object SFXTableColumnFactory extends Configuration {
       }
 
       if (shouldAlignRight(signature))
-        cellFactory.setAlignment(TextAlignment.RIGHT)
+        cellFactory.alignment = TextAlignment.RIGHT
 
       map.put(
         property,

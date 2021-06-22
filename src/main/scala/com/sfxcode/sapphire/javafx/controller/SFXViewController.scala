@@ -61,7 +61,7 @@ abstract class SFXViewController
   registerBean(this)
   startup()
 
-  def startup() {}
+  def startup(): Unit = {}
 
   override def initialize(loc: URL, res: ResourceBundle): Unit = {
     location = Some(loc)
@@ -76,27 +76,27 @@ abstract class SFXViewController
   def canGainVisibility(): Boolean = true
 
   def willGainVisibility(): Unit = {
-    managedChildren.foreach(_.willGainVisibility())
-    unmanagedChildren.foreach(_.willGainVisibility())
+    managedChildren.foreach(controller => controller.willGainVisibility())
+    unmanagedChildren.foreach(controller => controller.willGainVisibility())
   }
 
   def didGainVisibilityFirstTime(): Unit = {}
 
   def didGainVisibility(): Unit = {
-    managedChildren.foreach(_.didGainVisibility())
-    unmanagedChildren.foreach(_.didGainVisibility())
+    managedChildren.foreach(controller => controller.didGainVisibility())
+    unmanagedChildren.foreach(controller => controller.didGainVisibility())
   }
 
   def shouldLooseVisibility: Boolean = true
 
   def willLooseVisibility(): Unit = {
-    managedChildren.foreach(_.willLooseVisibility())
-    unmanagedChildren.foreach(_.willLooseVisibility())
+    managedChildren.foreach(controller => controller.willLooseVisibility())
+    unmanagedChildren.foreach(controller => controller.willLooseVisibility())
   }
 
   def didLooseVisibility(): Unit = {
-    managedChildren.foreach(_.didLooseVisibility())
-    unmanagedChildren.foreach(_.didLooseVisibility())
+    managedChildren.foreach(controller => controller.didLooseVisibility())
+    unmanagedChildren.foreach(controller => controller.didLooseVisibility())
   }
 
   def updatePaneContent(pane: Pane, viewController: SFXViewController): Boolean =
@@ -108,7 +108,7 @@ abstract class SFXViewController
       logger.warn("viewController is NULL")
       false
     }
-    else if (viewController.canGainVisibility)
+    else if (viewController.canGainVisibility())
       try {
         viewController.managedParent.setValue(this)
         viewController.windowController.set(windowController.get)

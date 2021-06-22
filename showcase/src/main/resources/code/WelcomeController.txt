@@ -40,7 +40,7 @@ class WelcomeController extends BaseController with LazyLogging {
   }
 
   // called only once
-  override def didGainVisibilityFirstTime() {
+  override def didGainVisibilityFirstTime():Unit = {
     super.didGainVisibilityFirstTime()
     val docs     = Source.fromURL(getClass.getResource("/markdown/SapphireCoreShowcase.md")).getLines.mkString("\n")
     val css      = applicationController.showcaseController.markdownCss

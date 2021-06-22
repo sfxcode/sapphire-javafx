@@ -10,11 +10,10 @@ class AdditionalViewController extends SFXViewController with LazyLogging {
   @FXML
   var windowLabel: Label = _
 
-  override def startup() {
+  override def startup(): Unit =
     logger.debug("class: " + this)
-  }
 
-  override def didGainVisibilityFirstTime() {
+  override def didGainVisibilityFirstTime(): Unit = {
     super.didGainVisibility()
     windowLabel.setText(windowController.get.name)
   }

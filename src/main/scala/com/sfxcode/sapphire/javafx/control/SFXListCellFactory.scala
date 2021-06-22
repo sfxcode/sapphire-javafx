@@ -19,7 +19,7 @@ object FXListCellFactory {
 
   def apply[S <: AnyRef](property: String): SFXListCellFactory[S] = {
     val result = new SFXListCellFactory[S]()
-    result.setProperty(property)
+    result.property = property
     result
   }
 }

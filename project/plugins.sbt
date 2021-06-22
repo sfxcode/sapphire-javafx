@@ -4,7 +4,7 @@ addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
 
 addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.8.3")
 
-addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.1")
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.8.2")
 
 addSbtPlugin("org.foundweekends" % "sbt-bintray" % "0.6.1")
 
@@ -16,11 +16,9 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")
 
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.2")
 
-addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.9.26")
+addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.9.29")
 
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.5.2")
-
-addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.10.0-RC1")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.5.3")
 
 // Paradox handling
 

@@ -38,7 +38,7 @@ class MainViewController extends SFXViewController with LazyLogging {
   // #contentManager
 
   // #didGainVisibilityFirstTime
-  override def didGainVisibilityFirstTime() {
+  override def didGainVisibilityFirstTime(): Unit = {
     super.didGainVisibility()
     navigationManager = SFXContentManager(navigationPane, this, navigationController)
     statusBarManager = SFXContentManager(statusPane, this, statusBarController)

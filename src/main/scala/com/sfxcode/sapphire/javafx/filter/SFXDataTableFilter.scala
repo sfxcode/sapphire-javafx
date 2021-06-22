@@ -74,9 +74,9 @@ class SFXDataTableFilter[S <: AnyRef](
       alignment: TextAlignment = TextAlignment.LEFT
   ): TableColumn[SFXBean[S], T] = {
     val valueFactory = new SFXTableValueFactory[SFXBean[S], T]()
-    valueFactory.setProperty(columnPropertyMap.getOrElse(property, property))
+    valueFactory.property = columnPropertyMap.getOrElse(property, property)
     val cellFactory = new SFXTableCellFactory[SFXBean[S], T]()
-    cellFactory.setAlignment(alignment)
+    cellFactory.alignment = alignment
 
     val result = SFXTableColumnFactory.columnFromFactories[S, T](header, valueFactory, Some(cellFactory))
     addColumn(header, result)

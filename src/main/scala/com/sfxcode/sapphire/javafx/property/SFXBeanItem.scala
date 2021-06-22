@@ -5,7 +5,6 @@ import com.sfxcode.sapphire.data.Configuration
 import java.time.{Instant, LocalDate, LocalDateTime, ZoneId}
 import java.util.{Date, Optional}
 import com.sfxcode.sapphire.data.reflect.{FieldMetaRegistry, FieldRegistry}
-import com.sfxcode.sapphire.javafx.SFXConfigValues
 import com.sfxcode.sapphire.javafx.value._
 import javafx.beans.value.ObservableValue
 import javafx.collections.{FXCollections, ObservableList}

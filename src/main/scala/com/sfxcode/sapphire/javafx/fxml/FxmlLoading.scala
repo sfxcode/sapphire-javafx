@@ -6,7 +6,7 @@ import java.net.URL
 import java.util.ResourceBundle
 import com.sfxcode.sapphire.javafx.application.SFXApplicationEnvironment
 import com.sfxcode.sapphire.javafx.controller.SFXViewController
-import com.sfxcode.sapphire.javafx.{SFXConfigValues, SFXResourceBundleHolder}
+import com.sfxcode.sapphire.javafx.SFXResourceBundleHolder
 import javafx.scene.layout.Pane
 
 import scala.reflect.ClassTag

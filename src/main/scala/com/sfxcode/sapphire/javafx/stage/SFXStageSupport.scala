@@ -1,7 +1,6 @@
 package com.sfxcode.sapphire.javafx.stage
 
 import com.sfxcode.sapphire.data.Configuration
-import com.sfxcode.sapphire.javafx.SFXConfigValues
 import javafx.scene.Scene
 import javafx.scene.layout.HBox
 import javafx.stage.{Modality, Stage, StageStyle}

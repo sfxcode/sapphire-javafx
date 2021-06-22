@@ -1,11 +1,10 @@
 package com.sfxcode.sapphire.javafx.control.event
 
-import com.sfxcode.sapphire.javafx.value.SFXBeanConversions
 import javafx.event.ActionEvent
 import javafx.scene.Node
 import javafx.scene.control._
 
-trait SFXActionEvents extends SFXBeanConversions {
+trait SFXActionEvents {
 
   def selectionFromActionEvent[S <: Any](event: ActionEvent): Option[S] =
     actionSource[Node](event) match {

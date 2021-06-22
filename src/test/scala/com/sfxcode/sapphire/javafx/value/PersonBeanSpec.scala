@@ -1,6 +1,6 @@
 package com.sfxcode.sapphire.javafx.value
 
-import com.sfxcode.sapphire.javafx.test.{Person, PersonDatabase}
+import com.sfxcode.sapphire.javafx.test.{ Person, PersonDatabase }
 import org.specs2.mutable.Specification
 
 class PersonBeanSpec extends Specification {

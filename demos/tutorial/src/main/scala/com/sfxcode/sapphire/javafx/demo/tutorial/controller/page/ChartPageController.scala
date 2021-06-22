@@ -9,8 +9,8 @@ class ChartPageController extends AbstractViewController {
   @FXML
   var chart: javafx.scene.chart.BarChart[String, Number] = _
 
-  override def didInitialize(): Unit = {
-    super.didInitialize()
+  override def didInitialize: Unit = {
+    super.didInitialize
     chart.setData(createChartData())
   }
 

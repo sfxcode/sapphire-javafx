@@ -26,7 +26,7 @@ class PropertiesFormController extends BaseController {
   val beanItems = SFXBeanItems[Person]()
   // #BeanItemsInit
 
-  override def didGainVisibilityFirstTime() {
+  override def didGainVisibilityFirstTime(): Unit = {
     super.didGainVisibilityFirstTime()
 
     // #BeanItems

@@ -25,21 +25,20 @@ abstract class SFXKeyConverter {
   def addCurrencyConverter(keys: String*): Unit =
     keys.foreach(addConverter(_, classOf[CurrencyStringConverter].getSimpleName))
 
-  def addConverter(key: String, converterName: String, forceNew: Boolean = false) {
+  def addConverter(key: String, converterName: String, forceNew: Boolean = false): Unit = {
     val converter =
       SFXApplicationEnvironment.getConverterByName(converterName, forceNew).asInstanceOf[StringConverter[_]]
     addConverter(key, converter)
   }
 
-  def addConverter[S](beanKey: String, converter: StringConverter[S]) {
+  def addConverter[S](beanKey: String, converter: StringConverter[S]): Unit = {
     val property = guessPropertyForNode(beanKey)
     if (property.isDefined && property.get.isInstanceOf[StringProperty])
       addConverter(property.get.asInstanceOf[StringProperty], converter)
   }
 
-  def addConverter[S](property: StringProperty, converter: StringConverter[S]) {
+  def addConverter[S](property: StringProperty, converter: StringConverter[S]): Unit =
     converterMap.put(property, converter)
-  }
 
   def addIntConverter(keys: String*): Unit =
     keys.foreach(addConverter(_, classOf[IntegerStringConverter].getSimpleName))

@@ -1,12 +1,10 @@
 package com.sfxcode.sapphire.javafx.showcase.model
 
-import java.text.SimpleDateFormat
-import java.util.Date
-
 import com.sfxcode.sapphire.javafx.value.SFXBean
-import org.json4s.DefaultFormats
-import org.json4s.native.Serialization._
+import io.circe.generic.auto._
+import io.circe.parser._
 
+import java.util.Date
 import scala.collection.mutable.ArrayBuffer
 import scala.io.Source
 
@@ -30,15 +28,14 @@ case class Person(
   greeting: String,
   favoriteFruit: String)
 
-case class Friend(id: Long, name: String)
+case class Friend(id: Long, name: String) {
+  def getValue(s: String): String = s
+}
 
-object PersonDatabase {
+object PersonDatabase extends CirceSchema {
 
-  implicit val formats = new DefaultFormats {
-    override def dateFormatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
-  }
-
-  val persons = read[List[Person]](fromJson("/data.json"))
+  private val jsonString: String = fromJson("/data.json")
+  val persons: List[Person] = decode[List[Person]](jsonString).getOrElse(List())
 
   val smallPersonTable =
     persons.take(10)

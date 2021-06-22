@@ -40,19 +40,18 @@ class SFXBeanAdapter[T <: AnyRef](val viewController: SFXViewController, var par
 
   def set(newValue: SFXBean[T]): Unit = beanProperty.setValue(newValue)
 
-  def addBinding(property: Property[_], beanKey: String, converter: Option[StringConverter[T]] = None) {
+  def addBinding(property: Property[_], beanKey: String, converter: Option[StringConverter[T]] = None): Unit = {
     if (converter.isDefined && property.isInstanceOf[StringProperty])
       converterMap.put(property.asInstanceOf[StringProperty], converter.get)
     bindingMap.put(property.asInstanceOf[Property[Any]], beanKey)
   }
 
-  def addBindings(keyBindings: SFXKeyBindings) {
+  def addBindings(keyBindings: SFXKeyBindings): Unit =
     keyBindings.keys.foreach { key =>
       val property = guessPropertyForNode(key)
       if (property.isDefined)
         bindingMap.put(property.get, keyBindings(key))
     }
-  }
 
   def guessPropertyForNode(key: String): Option[Property[_]] = {
     val node = nodeCache.asScala.getOrElse(key, viewController.locate(key, parent))
@@ -70,15 +69,13 @@ class SFXBeanAdapter[T <: AnyRef](val viewController: SFXViewController, var par
 
   }
 
-  def revert() {
+  def revert(): Unit =
     if (hasValue)
       beanProperty.getValue.revert()
-  }
 
-  def clearChanges() {
+  def clearChanges(): Unit =
     if (hasValue)
       beanProperty.getValue.clearChanges()
-  }
 
   def hasValue: Boolean = hasBeanProperty.get
 
@@ -87,7 +84,7 @@ class SFXBeanAdapter[T <: AnyRef](val viewController: SFXViewController, var par
     bindAll(newValue)
   }
 
-  protected def unbindAll() {
+  protected def unbindAll(): Unit = {
     boundProperties.keySet.asScala.foreach { p =>
       val p1 = p.asInstanceOf[jfxbp.Property[Any]]
       val p2 = boundProperties.get(p).asInstanceOf[jfxbp.Property[Any]]
@@ -96,12 +93,11 @@ class SFXBeanAdapter[T <: AnyRef](val viewController: SFXViewController, var par
     boundProperties.clear()
   }
 
-  protected def bindAll(bean: SFXBean[T]) {
+  protected def bindAll(bean: SFXBean[T]): Unit =
     if (hasValue)
       bindingMap.keySet().asScala.foreach(property => bindBidirectional(bean, property, bindingMap.get(property)))
-  }
 
-  protected def bindBidirectional[S](bean: SFXBean[T], property: Property[S], beanKey: String) {
+  protected def bindBidirectional[S](bean: SFXBean[T], property: Property[S], beanKey: String): Unit = {
     val observable = bean.getProperty(beanKey)
     observable match {
       case beanProperty: Property[_] =>
@@ -110,7 +106,7 @@ class SFXBeanAdapter[T <: AnyRef](val viewController: SFXViewController, var par
             bindBidirectionalFromStringProperty(stringProperty, observable, beanKey)
           case p: Property[S] => bindBidirectionalFromProperty[S](p, beanProperty.asInstanceOf[Property[S]])
         }
-      case _ =>
+      case null =>
     }
   }
 
@@ -118,7 +114,7 @@ class SFXBeanAdapter[T <: AnyRef](val viewController: SFXViewController, var par
       stringProperty: StringProperty,
       beanProperty: Property[S],
       beanKey: String
-  ) {
+  ): Unit = {
     val converter = converterMap.asScala.get(stringProperty)
     if (converter.isDefined) {
       val c  = converter.get
@@ -135,7 +131,7 @@ class SFXBeanAdapter[T <: AnyRef](val viewController: SFXViewController, var par
       }
   }
 
-  protected def bindBidirectionalFromProperty[S](nodeProperty: Property[S], beanProperty: Property[S]) {
+  protected def bindBidirectionalFromProperty[S](nodeProperty: Property[S], beanProperty: Property[S]): Unit = {
     nodeProperty.bindBidirectional(beanProperty)
     boundProperties.put(nodeProperty, beanProperty)
   }

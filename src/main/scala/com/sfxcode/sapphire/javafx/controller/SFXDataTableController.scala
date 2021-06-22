@@ -32,7 +32,7 @@ abstract class SFXDataTableController extends SFXViewController with SFXLogging 
 
   def items: ObservableList[SFXBean[R]]
 
-  override def didGainVisibilityFirstTime() {
+  override def didGainVisibilityFirstTime(): Unit = {
     super.didGainVisibilityFirstTime()
 
     val itemsProperty = new SimpleObjectProperty[ObservableList[SFXBean[R]]](this, "", items)

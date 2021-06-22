@@ -9,16 +9,16 @@ abstract class SFXApplicationController extends SFXWindowController {
 
   override def isMainWindow: Boolean = true
 
-  def onApplicationStartup(stage: Stage) {
+  def onApplicationStartup(stage: Stage): Unit = {
     applicationWillLaunch()
     setStage(stage)
     SFXApplicationEnvironment.setApplicationController(this)
     applicationDidLaunch()
   }
 
-  def applicationWillLaunch() {}
+  def applicationWillLaunch(): Unit = {}
 
-  def applicationDidLaunch()
+  def applicationDidLaunch(): Unit
 
   def reloadStyles(): Unit =
     StyleManager.getInstance().stylesheetContainerMap.clear()

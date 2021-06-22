@@ -1,11 +1,8 @@
 package com.sfxcode.sapphire.javafx.test
 
-import java.text.SimpleDateFormat
-import java.util.Date
-
 import com.sfxcode.sapphire.javafx.value.SFXBean
-import org.json4s.DefaultFormats
-import org.json4s.native.Serialization._
+import io.circe.generic.auto._
+import io.circe.parser._
 
 import scala.io.Source
 
@@ -22,21 +19,19 @@ case class Person(
   phone: String,
   address: String,
   about: String,
-  registered: Date,
   tags: List[String],
   friends: List[Friend],
   greeting: String,
   favoriteFruit: String)
 
-case class Friend(id: Long, name: String)
+case class Friend(id: Long, name: String) {
+  def getValue(s: String): String = s
+}
 
 object PersonDatabase {
 
-  implicit val formats = new DefaultFormats {
-    override def dateFormatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
-  }
-
-  val personen: List[Person] = read[List[Person]](fromJson("/test_data.json"))
+  private val jsonString: String = fromJson("/test_data.json")
+  val personen: List[Person] = decode[List[Person]](jsonString).getOrElse(List())
 
   val friends: List[Friend] = personen.head.friends
 

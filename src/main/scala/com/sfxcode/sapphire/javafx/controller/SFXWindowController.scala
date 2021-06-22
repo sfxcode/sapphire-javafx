@@ -29,9 +29,9 @@ abstract class SFXWindowController extends FxmlLoading with SFXNodeLocator with 
   registerBean(this)
   startup()
 
-  def startup() {}
+  def startup(): Unit = {}
 
-  def shutdown() {}
+  def shutdown(): Unit = {}
 
   def setStage(stage: Stage): Unit = {
     stageProperty.set(stage)
@@ -48,11 +48,11 @@ abstract class SFXWindowController extends FxmlLoading with SFXNodeLocator with 
 
   def isMainWindow: Boolean
 
-  def replaceSceneContent(newController: SFXViewController, resize: Boolean = true) {
+  def replaceSceneContent(newController: SFXViewController, resize: Boolean = true): Unit = {
     val oldController = actualSceneController
 
     if (
-      newController != null && newController != oldController && newController.canGainVisibility
+      newController != null && newController != oldController && newController.canGainVisibility()
       && (oldController == null || oldController.shouldLooseVisibility)
     ) {
       // old willLooseVisibility
@@ -86,7 +86,7 @@ abstract class SFXWindowController extends FxmlLoading with SFXNodeLocator with 
 
   protected def createScene(): Scene = new Scene(new StackPane())
 
-  protected def replaceSceneContentWithNode(content: Parent, resize: Boolean = true) {
+  protected def replaceSceneContentWithNode(content: Parent, resize: Boolean = true): Unit = {
     scene.setRoot(content)
     stage.setScene(scene)
 

@@ -50,7 +50,7 @@ class SFXDataListViewSkin[S <: AnyRef](view: SFXDataListView[S]) extends SkinBas
 
   def updateCellFactory(): Unit = {
     val cellFactory = new SFXListCellFactory[S]
-    cellFactory.setProperty(view.cellProperty.get)
+    cellFactory.property = view.cellProperty.get
     view.listView.setCellFactory(cellFactory)
   }
 

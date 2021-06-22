@@ -21,9 +21,8 @@ scalacOptions += "-deprecation"
 
 test / parallelExecution := false
 
-val Json4sVersion     = "3.6.11"
 val LogbackVersion    = "1.2.3"
-val DeltaspikeVersion = "1.9.4"
+val DeltaspikeVersion = "1.9.5"
 val IkonliVersion     = "12.2.0"
 
 addCommandAlias("run-showcase", "sapphire-javafx-showcase/run")
@@ -44,16 +43,16 @@ addCommandAlias("run-login", "sapphire-login-demo/run")
 
 lazy val demo_issues = Project(id = "sapphire-javafx-issues", base = file("demos/issues"))
   .settings(
-    scalaVersion := "2.13.5",
+    scalaVersion := "2.13.6",
     name := "sapphire-javafx-issues",
     description := "Sapphire Issues Demo",
     libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
       .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName),
     libraryDependencies += "ch.qos.logback"                % "logback-classic"        % LogbackVersion,
-    libraryDependencies += "org.scalafx"                  %% "scalafx"                % "15.0.1-R21",
+    libraryDependencies += "org.scalafx"                  %% "scalafx"                % "16.0.0-R24",
     libraryDependencies += "javax.enterprise"              % "cdi-api"                % "2.0",
     libraryDependencies += "javax.annotation"              % "javax.annotation-api"   % "1.3.2",
-    libraryDependencies += "org.apache.openwebbeans"       % "openwebbeans-impl"      % "2.0.17",
+    libraryDependencies += "org.apache.openwebbeans"       % "openwebbeans-impl"      % "2.0.22",
     libraryDependencies += "org.apache.deltaspike.core"    % "deltaspike-core-impl"   % DeltaspikeVersion,
     libraryDependencies += "org.apache.deltaspike.cdictrl" % "deltaspike-cdictrl-api" % DeltaspikeVersion,
     libraryDependencies += "org.apache.deltaspike.cdictrl" % "deltaspike-cdictrl-owb" % DeltaspikeVersion,
@@ -95,7 +94,11 @@ lazy val showcase =
       description := "Sapphire JavaFX Showcase",
       libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
         .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName),
-      libraryDependencies += "org.json4s"    %% "json4s-native"   % Json4sVersion,
+      libraryDependencies ++= Seq(
+        "io.circe" %% "circe-core",
+        "io.circe" %% "circe-generic",
+        "io.circe" %% "circe-parser"
+      ).map(_ % circeVersion),
       libraryDependencies += "ch.qos.logback" % "logback-classic" % LogbackVersion,
       resolvers += "sandec" at "https://sandec.bintray.com/repo",
       libraryDependencies += "com.sandec"            % "mdfx"         % "0.1.7",
@@ -151,11 +154,17 @@ addCommandAlias("run-tutorial", "sapphire-tutorial/run")
 
 // Test
 
-libraryDependencies += "org.specs2" %% "specs2-core" % "4.11.0" % Test
-
-libraryDependencies += "org.json4s" %% "json4s-native" % Json4sVersion % Test
+libraryDependencies += "org.scalameta" %% "munit" % "0.7.26" % Test
 
 libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3" % Test
+
+val circeVersion = "0.14.1"
+
+libraryDependencies ++= Seq(
+  "io.circe" %% "circe-core",
+  "io.circe" %% "circe-generic",
+  "io.circe" %% "circe-parser"
+).map(_ % circeVersion % Test)
 
 // Compile
 
@@ -163,7 +172,7 @@ libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "sw
   "org.openjfx" % s"javafx-$m" % JavaFXVersion % Provided classifier osName
 )
 
-libraryDependencies += "com.sfxcode.sapphire" %% "sapphire-data" % "1.1.2"
+libraryDependencies += "com.sfxcode.sapphire" %% "sapphire-data" % "1.2.0"
 
 libraryDependencies += "org.controlsfx" % "controlsfx" % "11.1.0" intransitive ()
 
@@ -173,7 +182,7 @@ libraryDependencies += "org.kordamp.ikonli" % "ikonli-fontawesome-pack" % Ikonli
 
 // extension akka
 
-libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.14" % Provided
+libraryDependencies += ("com.typesafe.akka" %% "akka-actor" % "2.6.15" % Provided).cross(CrossVersion.for3Use2_13)
 
 // extension showcase
 

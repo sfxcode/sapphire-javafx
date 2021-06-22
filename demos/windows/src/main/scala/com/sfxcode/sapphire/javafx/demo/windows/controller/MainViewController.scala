@@ -24,11 +24,10 @@ class MainViewController extends SFXViewController with LazyLogging {
   @BeanProperty
   var bean: SFXBean[SFXViewController] = SFXBean(this)
 
-  override def startup() {
+  override def startup(): Unit =
     logger.debug("class: " + this)
-  }
 
-  override def didGainVisibilityFirstTime() {
+  override def didGainVisibilityFirstTime(): Unit = {
     super.didGainVisibilityFirstTime()
     val expressionResult =
       evaluateExpressionOnObject[String](this, "result: [${_self.windowLabel().getText()}]").getOrElse("")

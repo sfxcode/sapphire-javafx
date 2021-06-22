@@ -18,7 +18,7 @@ class ExtensionFormController extends BaseController {
 
   val random = new Random()
 
-  override def didGainVisibilityFirstTime() {
+  override def didGainVisibilityFirstTime(): Unit = {
     super.didGainVisibilityFirstTime()
 
     val bindingList = List("name", "rating", "pages")

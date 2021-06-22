@@ -20,7 +20,7 @@ class FormController extends BaseController {
 
   val random = new Random()
 
-  override def didGainVisibilityFirstTime() {
+  override def didGainVisibilityFirstTime(): Unit = {
     super.didGainVisibilityFirstTime()
     val bindings = SFXKeyBindings()
     bindings.add("person", "Person ${_self.name()} with age of ${_self.age()} is active: ${_self.isActive()}")
