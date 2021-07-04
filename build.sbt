@@ -21,7 +21,7 @@ scalacOptions += "-deprecation"
 
 parallelExecution in Test := false
 
-val Json4sVersion     = "3.6.11"
+val Json4sVersion     = "4.0.1"
 val LogbackVersion    = "1.2.3"
 val DeltaspikeVersion = "1.9.4"
 val IkonliVersion     = "12.2.0"
