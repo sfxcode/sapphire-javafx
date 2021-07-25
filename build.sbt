@@ -155,7 +155,7 @@ libraryDependencies += "org.specs2" %% "specs2-core" % "4.10.6" % Test
 
 libraryDependencies += "org.json4s" %% "json4s-native" % Json4sVersion % Test
 
-libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3" % Test
+libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.4" % Test
 
 // Compile
 
