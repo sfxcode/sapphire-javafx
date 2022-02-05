@@ -1,13 +1,13 @@
 package com.sfxcode.sapphire.javafx.value
 
 import com.sfxcode.sapphire.data.reflect.FieldMeta._
-import com.sfxcode.sapphire.data.{Configuration, DataAdapter}
+import com.sfxcode.sapphire.data.{ Configuration, DataAdapter }
 import com.sfxcode.sapphire.data.reflect.FieldMeta
 import com.typesafe.scalalogging.LazyLogging
 
 class SFXBean[T <: AnyRef](val bean: T, typeHints: List[FieldMeta] = EmptyTypeHints)
-    extends DataAdapter[T](bean, typeHints)
-    with LazyLogging {
+  extends DataAdapter[T](bean, typeHints)
+  with LazyLogging {
 
   def getBean: AnyRef = wrappedData
 

@@ -3,20 +3,20 @@ package com.sfxcode.sapphire.javafx.skin
 import com.sfxcode.sapphire.data.Configuration
 import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
 import com.sfxcode.sapphire.javafx.control.SFXIconTools._
-import com.sfxcode.sapphire.javafx.control.{SFXDataListView, SFXDualDataListView}
+import com.sfxcode.sapphire.javafx.control.{ SFXDataListView, SFXDualDataListView }
 import com.sfxcode.sapphire.javafx.scene.SFXSceneExtensions._
-import com.sfxcode.sapphire.javafx.value.{SFXBean, SFXBeanConversions}
+import com.sfxcode.sapphire.javafx.value.{ SFXBean, SFXBeanConversions }
 import javafx.beans.binding.Bindings
-import javafx.collections.{FXCollections, ObservableList}
+import javafx.collections.{ FXCollections, ObservableList }
 import javafx.geometry.Pos
 import javafx.scene.control.SelectionMode._
-import javafx.scene.control.{Button, MultipleSelectionModel, SkinBase}
+import javafx.scene.control.{ Button, MultipleSelectionModel, SkinBase }
 import javafx.scene.layout._
 
 class SFXDualDataListViewSkin[S <: AnyRef](view: SFXDualDataListView[S])
-    extends SkinBase[SFXDualDataListView[S]](view)
-    with SFXBeanConversions
-    with Configuration {
+  extends SkinBase[SFXDualDataListView[S]](view)
+  with SFXBeanConversions
+  with Configuration {
   val IconConfigPath = "sapphire.javafx.DualDataList.icon."
 
   val contentGridPane: GridPane = new GridPane() {
@@ -24,15 +24,12 @@ class SFXDualDataListViewSkin[S <: AnyRef](view: SFXDualDataListView[S])
   }
 
   val buttonMoveToTarget: Button = decoratedFontIconButton(
-    configStringValue(IconConfigPath + "right", "fa-angle-right")
-  )
+    configStringValue(IconConfigPath + "right", "fa-angle-right"))
   val buttonMoveToTargetAll: Button = decoratedFontIconButton(
-    configStringValue(IconConfigPath + "double-right", "fa-angle-double-right")
-  )
+    configStringValue(IconConfigPath + "double-right", "fa-angle-double-right"))
   val buttonMoveToSource: Button = decoratedFontIconButton(configStringValue(IconConfigPath + "left", "fa-angle-left"))
   val buttonMoveToSourceAll: Button = decoratedFontIconButton(
-    configStringValue(IconConfigPath + "double-left", "fa-angle-double-left")
-  )
+    configStringValue(IconConfigPath + "double-left", "fa-angle-double-left"))
 
   buttonMoveToTarget.setOnAction(_ => moveToTarget())
   buttonMoveToSource.setOnAction(_ => moveToSource())
@@ -119,8 +116,7 @@ class SFXDualDataListViewSkin[S <: AnyRef](view: SFXDualDataListView[S])
     move(
       view.leftDataListView,
       view.rightDataListView,
-      FXCollections.observableArrayList(leftSelectionModel.getSelectedItem)
-    )
+      FXCollections.observableArrayList(leftSelectionModel.getSelectedItem))
     leftSelectionModel.clearSelection()
   }
 
@@ -128,8 +124,7 @@ class SFXDualDataListViewSkin[S <: AnyRef](view: SFXDualDataListView[S])
     move(
       view.rightDataListView,
       view.leftDataListView,
-      FXCollections.observableArrayList(rightSelectionModel.getSelectedItem)
-    )
+      FXCollections.observableArrayList(rightSelectionModel.getSelectedItem))
     rightSelectionModel.clearSelection()
   }
 

@@ -2,7 +2,7 @@ package com.sfxcode.sapphire.javafx.filter
 
 import com.sfxcode.sapphire.data.reflect.FieldRegistry
 import javafx.scene.layout.Pane
-import com.sfxcode.sapphire.javafx.control.{SFXTableCellFactory, SFXTableValueFactory}
+import com.sfxcode.sapphire.javafx.control.{ SFXTableCellFactory, SFXTableValueFactory }
 import com.sfxcode.sapphire.javafx.value.SFXBean
 import com.sfxcode.sapphire.javafx.control.table.SFXTableColumnFactory
 import javafx.beans.property.ReadOnlyObjectProperty
@@ -11,24 +11,23 @@ import scala.collection.mutable
 import scala.reflect.ClassTag
 import javafx.beans.property.ObjectProperty
 import javafx.collections.ObservableList
-import javafx.scene.control.{TableView, _}
+import javafx.scene.control.{ TableView, _ }
 import javafx.scene.text.TextAlignment
 import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
 
 import java.lang.reflect.Field
 
 class SFXDataTableFilter[S <: AnyRef](
-    table: TableView[SFXBean[S]],
-    items: ObjectProperty[ObservableList[SFXBean[S]]],
-    pane: ObjectProperty[Pane]
-)(implicit ct: ClassTag[S])
-    extends SFXDataFilter[S](items, pane) {
+  table: TableView[SFXBean[S]],
+  items: ObjectProperty[ObservableList[SFXBean[S]]],
+  pane: ObjectProperty[Pane])(implicit ct: ClassTag[S])
+  extends SFXDataFilter[S](items, pane) {
 
   // columns
   val columnMapping = new mutable.HashMap[String, TableColumn[SFXBean[S], _]]()
 
   val columnPropertyMap = new mutable.HashMap[String, String]()
-  val columnHeaderMap   = new mutable.HashMap[String, String]()
+  val columnHeaderMap = new mutable.HashMap[String, String]()
 
   val fieldMap: Map[String, Field] = FieldRegistry.fieldMap(ct.runtimeClass)
 
@@ -52,27 +51,24 @@ class SFXDataTableFilter[S <: AnyRef](
   }
 
   def addColumns[T](
-      editable: Boolean = false,
-      numberFormat: String = SFXTableColumnFactory.DefaultNumberFormat,
-      decimalFormat: String = SFXTableColumnFactory.DefaultDecimalFormat
-  ): Unit = {
+    editable: Boolean = false,
+    numberFormat: String = SFXTableColumnFactory.DefaultNumberFormat,
+    decimalFormat: String = SFXTableColumnFactory.DefaultDecimalFormat): Unit = {
     val columnList = SFXTableColumnFactory.columnListFromMembers[S, T](
       fieldMap,
       columnHeaderMap.toMap,
       columnPropertyMap.toMap,
       editable,
       numberFormat,
-      decimalFormat
-    )
+      decimalFormat)
 
     columnList._1.foreach(key => addColumn(key, columnList._2(key)))
   }
 
   def addColumn[T](
-      header: String,
-      property: String,
-      alignment: TextAlignment = TextAlignment.LEFT
-  ): TableColumn[SFXBean[S], T] = {
+    header: String,
+    property: String,
+    alignment: TextAlignment = TextAlignment.LEFT): TableColumn[SFXBean[S], T] = {
     val valueFactory = new SFXTableValueFactory[SFXBean[S], T]()
     valueFactory.property = columnPropertyMap.getOrElse(property, property)
     val cellFactory = new SFXTableCellFactory[SFXBean[S], T]()

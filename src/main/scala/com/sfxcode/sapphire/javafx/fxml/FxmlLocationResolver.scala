@@ -3,7 +3,7 @@ package com.sfxcode.sapphire.javafx.fxml
 object FxmlLocationResolver {
 
   def pathValue(clazzTag: scala.reflect.ClassTag[_]): String = {
-    var result       = ""
+    var result = ""
     val runtimeClass = clazzTag.runtimeClass
 
     if (runtimeClass.isAnnotationPresent(classOf[FxmlLocation])) {

@@ -2,7 +2,7 @@ package com.sfxcode.sapphire.javafx.concurrent.akka
 
 import java.util
 import java.util.Collections
-import java.util.concurrent.{AbstractExecutorService, TimeUnit}
+import java.util.concurrent.{ AbstractExecutorService, TimeUnit }
 
 abstract class SFXAbstractExecutorService extends AbstractExecutorService {
   def execute(command: Runnable): Unit

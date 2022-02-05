@@ -7,7 +7,7 @@ name := "sapphire-javafx"
 
 organization := "com.sfxcode.sapphire"
 
-crossScalaVersions := Seq("2.13.6", "2.12.12")
+crossScalaVersions := Seq("2.13.8", "2.12.12")
 
 scalaVersion := crossScalaVersions.value.head
 
@@ -21,15 +21,15 @@ scalacOptions += "-deprecation"
 
 test / parallelExecution := false
 
-val LogbackVersion    = "1.2.3"
+val LogbackVersion    = "1.2.10"
 val DeltaspikeVersion = "1.9.5"
-val IkonliVersion     = "12.2.0"
+val IkonliVersion     = "12.3.0"
 
 addCommandAlias("run-showcase", "sapphire-javafx-showcase/run")
 
 lazy val demo_login = Project(id = "sapphire-javafx-login", base = file("demos/login"))
   .settings(
-    scalaVersion := "2.13.5",
+    scalaVersion := "2.13.8",
     name := "sapphire-javafx-login",
     description := "Sapphire Login Demo",
     libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
@@ -43,7 +43,7 @@ addCommandAlias("run-login", "sapphire-login-demo/run")
 
 lazy val demo_issues = Project(id = "sapphire-javafx-issues", base = file("demos/issues"))
   .settings(
-    scalaVersion := "2.13.6",
+    scalaVersion := "2.13.8",
     name := "sapphire-javafx-issues",
     description := "Sapphire Issues Demo",
     libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
@@ -64,7 +64,7 @@ addCommandAlias("run-issues", "sapphire-issues-demo/run")
 
 lazy val tutorial = Project(id = "sapphire-javafx-tutorial", base = file("demos/tutorial"))
   .settings(
-    scalaVersion := "2.13.5",
+    scalaVersion := "2.13.8",
     name := "sapphire-javafx-tutorial",
     description := "Sapphire Tutorial",
     libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
@@ -76,7 +76,7 @@ lazy val tutorial = Project(id = "sapphire-javafx-tutorial", base = file("demos/
 
 lazy val windows = Project(id = "sapphire-javafx-windows", base = file("demos/windows"))
   .settings(
-    scalaVersion := "2.13.5",
+    scalaVersion := "2.13.8",
     name := "sapphire-javafx-windows",
     description := "Sapphire Windows",
     libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
@@ -89,7 +89,7 @@ lazy val windows = Project(id = "sapphire-javafx-windows", base = file("demos/wi
 lazy val showcase =
   Project(id = "sapphire-javafx-showcase", base = file("showcase"))
     .settings(
-      scalaVersion := "2.13.5",
+      scalaVersion := "2.13.8",
       name := "sapphire-javafx-showcase",
       description := "Sapphire JavaFX Showcase",
       libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
@@ -128,7 +128,7 @@ lazy val docs = (project in file("docs"))
   .enablePlugins(ParadoxMaterialThemePlugin)
   .enablePlugins(GhpagesPlugin)
   .settings(
-    scalaVersion := "2.13.5",
+    scalaVersion := "2.13.8",
     name := "sapphire-javafx-docs",
     publish / skip := true,
     ghpagesNoJekyll := true,
@@ -141,7 +141,7 @@ lazy val docs = (project in file("docs"))
     ParadoxPlugin.InDirectoryFilter((Compile / paradox / sourceDirectory).value / "includes")
   )
 
-val JavaFXVersion = "16"
+val JavaFXVersion = "17.0.2"
 
 val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Linux")   => "linux"
@@ -154,9 +154,11 @@ addCommandAlias("run-tutorial", "sapphire-tutorial/run")
 
 // Test
 
-libraryDependencies += "org.scalameta" %% "munit" % "0.7.26" % Test
+libraryDependencies += "org.specs2" %% "specs2-core" % "4.13.2" % Test
 
-libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3" % Test
+libraryDependencies += "org.scalameta" %% "munit" % "0.7.29" % Test
+
+libraryDependencies += "ch.qos.logback" % "logback-classic" % LogbackVersion % Test
 
 val circeVersion = "0.14.1"
 
@@ -172,9 +174,9 @@ libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "sw
   "org.openjfx" % s"javafx-$m" % JavaFXVersion % Provided classifier osName
 )
 
-libraryDependencies += "com.sfxcode.sapphire" %% "sapphire-data" % "1.2.0"
+libraryDependencies += "com.sfxcode.sapphire" %% "sapphire-data" % "1.3.0"
 
-libraryDependencies += "org.controlsfx" % "controlsfx" % "11.1.0" intransitive ()
+libraryDependencies += "org.controlsfx" % "controlsfx" % "11.1.1" intransitive ()
 
 libraryDependencies += "org.kordamp.ikonli" % "ikonli-javafx" % IkonliVersion
 
@@ -182,13 +184,13 @@ libraryDependencies += "org.kordamp.ikonli" % "ikonli-fontawesome-pack" % Ikonli
 
 // extension akka
 
-libraryDependencies += ("com.typesafe.akka" %% "akka-actor" % "2.6.15" % Provided).cross(CrossVersion.for3Use2_13)
+libraryDependencies += ("com.typesafe.akka" %% "akka-actor" % "2.6.18" % Provided).cross(CrossVersion.for3Use2_13)
 
 // extension showcase
 
 libraryDependencies += "com.jfoenix" % "jfoenix" % "9.0.10" % Provided
 
-libraryDependencies += "org.fxmisc.richtext" % "richtextfx" % "0.10.6" % Provided
+libraryDependencies += "org.fxmisc.richtext" % "richtextfx" % "0.10.7" % Provided
 
 licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
 

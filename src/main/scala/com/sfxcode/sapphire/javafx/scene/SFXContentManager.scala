@@ -2,20 +2,20 @@ package com.sfxcode.sapphire.javafx.scene
 
 import com.sfxcode.sapphire.javafx.SFXLogging
 import com.sfxcode.sapphire.javafx.controller.SFXViewController
-import javafx.beans.property.{SimpleBooleanProperty, SimpleIntegerProperty}
+import javafx.beans.property.{ SimpleBooleanProperty, SimpleIntegerProperty }
 import javafx.scene.Node
 import javafx.scene.layout.Pane
 
 class SFXContentManager extends SFXLogging {
-  val stackSize               = new SimpleIntegerProperty(0)
+  val stackSize = new SimpleIntegerProperty(0)
   private val controllerStack = ControllerStack(this)
-  var useStack                = new SimpleBooleanProperty(false)
+  var useStack = new SimpleBooleanProperty(false)
 
   var contentPane: Pane = _
 
   var parentController: SFXViewController = _
   var actualController: SFXViewController = _
-  var lastController: SFXViewController   = _
+  var lastController: SFXViewController = _
 
   def addToStack(viewController: SFXViewController): Unit = {
     controllerStack.push(viewController)
@@ -42,21 +42,19 @@ class SFXContentManager extends SFXLogging {
     updatePaneContent(lastController)
 
   def updateWithTransition(
-      newController: SFXViewController,
-      transition: SFXTransition = SFXEaseInTransition(),
-      pushToStack: Boolean = true
-  ): Unit =
+    newController: SFXViewController,
+    transition: SFXTransition = SFXEaseInTransition(),
+    pushToStack: Boolean = true): Unit =
     updatePaneContent(newController, Some(transition), pushToStack)
 
   def updatePaneContent(
-      newController: SFXViewController,
-      transition: Option[SFXTransition] = None,
-      pushToStack: Boolean = true
-  ): Unit = {
+    newController: SFXViewController,
+    transition: Option[SFXTransition] = None,
+    pushToStack: Boolean = true): Unit = {
 
-    val oldController         = actualController
+    val oldController = actualController
     val isDifferentController = newController != oldController
-    val canChange             = oldController == null || oldController.shouldLooseVisibility
+    val canChange = oldController == null || oldController.shouldLooseVisibility
 
     if (newController != null && isDifferentController && newController.canGainVisibility() && canChange) {
 
@@ -83,11 +81,10 @@ class SFXContentManager extends SFXLogging {
   }
 
   protected def switchController(
-      newController: SFXViewController,
-      oldController: SFXViewController,
-      transition: Option[SFXTransition],
-      pushToStack: Boolean
-  ): Unit =
+    newController: SFXViewController,
+    oldController: SFXViewController,
+    transition: Option[SFXTransition],
+    pushToStack: Boolean): Unit =
     if (oldController != null) {
       if (transition.isDefined) {
         val timeline = transition.get.createTimeline(newController.rootPane, oldController.rootPane)
@@ -96,13 +93,11 @@ class SFXContentManager extends SFXLogging {
         }
         addNewController(newController)
         timeline.play()
-      }
-      else {
+      } else {
         addNewController(newController)
         removeOldController(oldController, pushToStack)
       }
-    }
-    else {
+    } else {
       addNewController(newController)
     }
 
@@ -136,10 +131,9 @@ class SFXContentManager extends SFXLogging {
 object SFXContentManager {
 
   def apply(
-      contentPane: Pane,
-      parentController: SFXViewController,
-      startController: SFXViewController = null
-  ): SFXContentManager = {
+    contentPane: Pane,
+    parentController: SFXViewController,
+    startController: SFXViewController = null): SFXContentManager = {
 
     if (contentPane == null)
       throw new IllegalArgumentException("contentPane must not be NULL")

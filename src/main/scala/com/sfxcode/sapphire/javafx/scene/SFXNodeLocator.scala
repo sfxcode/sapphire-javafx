@@ -1,7 +1,7 @@
 package com.sfxcode.sapphire.javafx.scene
 
 import javafx.scene.control._
-import javafx.scene.{Node, Scene}
+import javafx.scene.{ Node, Scene }
 import javafx.stage.Stage
 
 trait SFXNodeLocator {
@@ -39,8 +39,7 @@ trait SFXNodeLocator {
         val lookupByIdResult = scene.lookup("#" + nodeId)
         Option(lookupByIdResult)
       }
-    }
-    else {
+    } else {
       val lookupResult = parent.lookup(nodeId)
       if (lookupResult != null)
         Some(lookupResult)

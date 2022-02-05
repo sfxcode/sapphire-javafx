@@ -61,8 +61,7 @@ abstract class SFXDataTableController extends SFXViewController with SFXLogging 
     logger.debug("new value: %s".format({
       if (newValue != null) {
         newValue.bean
-      }
-      else {
+      } else {
         null
       }
     }))

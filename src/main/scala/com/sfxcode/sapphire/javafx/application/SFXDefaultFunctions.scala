@@ -28,8 +28,7 @@ object SFXDefaultFunctions extends Configuration {
       "boolString",
       classOf[Boolean],
       classOf[String],
-      classOf[String]
-    )
+      classOf[String])
     helper.addFunction(SapphireFunctionPrefix, "configString", clazz, "configString", classOf[String])
     helper.addFunction(SapphireFunctionPrefix, "i18n", clazz, "i18n", classOf[String], classOf[Array[Any]])
     helper.addFunction(
@@ -38,8 +37,7 @@ object SFXDefaultFunctions extends Configuration {
       classOf[java.lang.String],
       "format",
       classOf[String],
-      classOf[Array[Any]]
-    )
+      classOf[Array[Any]])
     helper
   }
 
@@ -53,8 +51,7 @@ object SFXDefaultFunctions extends Configuration {
   def boolString(value: Boolean, trueValue: String, falseValue: String): String =
     if (value) {
       trueValue
-    }
-    else {
+    } else {
       falseValue
     }
 
@@ -64,7 +61,7 @@ object SFXDefaultFunctions extends Configuration {
 
   def dateString(date: AnyRef): String = {
     val s = date match {
-      case d: java.util.Date     => defaultDateConverter.toString(d)
+      case d: java.util.Date => defaultDateConverter.toString(d)
       case c: java.util.Calendar => defaultDateConverter.toString(c.getTime)
       case c: javax.xml.datatype.XMLGregorianCalendar =>
         defaultDateConverter.toString(c.toGregorianCalendar.getTime)

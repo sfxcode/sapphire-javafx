@@ -9,7 +9,7 @@ import com.sfxcode.sapphire.javafx.scene.SFXNodeLocator
 import javafx.beans.property.SimpleObjectProperty
 import javafx.collections.ObservableMap
 import javafx.scene.layout.StackPane
-import javafx.scene.{Parent, Scene}
+import javafx.scene.{ Parent, Scene }
 import javafx.stage.Stage
 
 import java.util.ResourceBundle
@@ -17,8 +17,8 @@ import java.util.ResourceBundle
 abstract class SFXWindowController extends FxmlLoading with SFXNodeLocator with Expressions with SFXLogging {
   val sceneMap: ObservableMap[Parent, Scene] = Map[Parent, Scene]()
 
-  var stageProperty           = new SimpleObjectProperty[Stage]()
-  var sceneProperty           = new SimpleObjectProperty[Scene]()
+  var stageProperty = new SimpleObjectProperty[Stage]()
+  var sceneProperty = new SimpleObjectProperty[Scene]()
   var sceneControllerProperty = new SimpleObjectProperty[SFXViewController]()
 
   implicit def simpleObjectPropertyToOption[T <: AnyRef](prop: SimpleObjectProperty[T]): Option[T] =
@@ -51,10 +51,8 @@ abstract class SFXWindowController extends FxmlLoading with SFXNodeLocator with 
   def replaceSceneContent(newController: SFXViewController, resize: Boolean = true): Unit = {
     val oldController = actualSceneController
 
-    if (
-      newController != null && newController != oldController && newController.canGainVisibility()
-      && (oldController == null || oldController.shouldLooseVisibility)
-    ) {
+    if (newController != null && newController != oldController && newController.canGainVisibility()
+      && (oldController == null || oldController.shouldLooseVisibility)) {
       // old willLooseVisibility
       if (oldController != null) {
         withErrorLogging(oldController.willLooseVisibility())

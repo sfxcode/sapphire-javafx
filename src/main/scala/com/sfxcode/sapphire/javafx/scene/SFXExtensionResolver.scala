@@ -11,7 +11,7 @@ class SFXExtensionResolver extends SFXNodePropertyResolving {
   def resolve(node: Node): Option[Property[_]] =
     node match {
       case rating: Rating => Some(rating.ratingProperty())
-      case _              => None
+      case _ => None
     }
 }
 // #NodePropertyResolving

@@ -1,6 +1,6 @@
 package com.sfxcode.sapphire.javafx.scene
 
-import javafx.animation.{Interpolator, KeyFrame, KeyValue, Timeline}
+import javafx.animation.{ Interpolator, KeyFrame, KeyValue, Timeline }
 import javafx.scene.layout.Pane
 import javafx.util.Duration
 
