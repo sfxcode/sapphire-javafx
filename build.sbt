@@ -29,7 +29,7 @@ addCommandAlias("run-showcase", "sapphire-javafx-showcase/run")
 
 lazy val demo_login = Project(id = "sapphire-javafx-login", base = file("demos/login"))
   .settings(
-    scalaVersion := "2.13.8",
+    scalaVersion := "2.13.10",
     name := "sapphire-javafx-login",
     description := "Sapphire Login Demo",
     libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
@@ -43,13 +43,13 @@ addCommandAlias("run-login", "sapphire-login-demo/run")
 
 lazy val demo_issues = Project(id = "sapphire-javafx-issues", base = file("demos/issues"))
   .settings(
-    scalaVersion := "2.13.8",
+    scalaVersion := "2.13.10",
     name := "sapphire-javafx-issues",
     description := "Sapphire Issues Demo",
     libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
       .map(m => "org.openjfx" % s"javafx-$m" % JavaFXVersion classifier osName),
     libraryDependencies += "ch.qos.logback"                % "logback-classic"        % LogbackVersion,
-    libraryDependencies += "org.scalafx"                  %% "scalafx"                % "16.0.0-R24",
+    libraryDependencies += "org.scalafx"                  %% "scalafx"                % "18.0.1-R28",
     libraryDependencies += "javax.enterprise"              % "cdi-api"                % "2.0",
     libraryDependencies += "javax.annotation"              % "javax.annotation-api"   % "1.3.2",
     libraryDependencies += "org.apache.openwebbeans"       % "openwebbeans-impl"      % "2.0.22",
@@ -64,7 +64,7 @@ addCommandAlias("run-issues", "sapphire-issues-demo/run")
 
 lazy val tutorial = Project(id = "sapphire-javafx-tutorial", base = file("demos/tutorial"))
   .settings(
-    scalaVersion := "2.13.8",
+    scalaVersion := "2.13.10",
     name := "sapphire-javafx-tutorial",
     description := "Sapphire Tutorial",
     libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
@@ -76,7 +76,7 @@ lazy val tutorial = Project(id = "sapphire-javafx-tutorial", base = file("demos/
 
 lazy val windows = Project(id = "sapphire-javafx-windows", base = file("demos/windows"))
   .settings(
-    scalaVersion := "2.13.8",
+    scalaVersion := "2.13.10",
     name := "sapphire-javafx-windows",
     description := "Sapphire Windows",
     libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
@@ -89,7 +89,7 @@ lazy val windows = Project(id = "sapphire-javafx-windows", base = file("demos/wi
 lazy val showcase =
   Project(id = "sapphire-javafx-showcase", base = file("showcase"))
     .settings(
-      scalaVersion := "2.13.8",
+      scalaVersion := "2.13.10",
       name := "sapphire-javafx-showcase",
       description := "Sapphire JavaFX Showcase",
       libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
@@ -103,10 +103,10 @@ lazy val showcase =
       resolvers += "sandec" at "https://sandec.jfrog.io/artifactory/repo",
       libraryDependencies += "com.sandec"            % "mdfx"         % "0.2.8",
       libraryDependencies += "com.jfoenix"           % "jfoenix"      % "9.0.10",
-      libraryDependencies += "org.fxmisc.richtext"   % "richtextfx"   % "0.10.3",
+      libraryDependencies += "org.fxmisc.richtext"   % "richtextfx"   % "0.11.0",
       libraryDependencies += "com.github.pathikrit" %% "better-files" % "3.9.1",
       resolvers += "jasperreports-repo" at "https://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts",
-      libraryDependencies += "net.sf.jasperreports" % "jasperreports" % "6.15.0",
+      libraryDependencies += "net.sf.jasperreports" % "jasperreports" % "6.20.0",
       libraryDependencies += "xerces"               % "xercesImpl"    % "2.12.0",
       mainClass := Some("com.sfxcode.sapphire.javafx.showcase.Application")
     )
