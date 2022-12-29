@@ -7,7 +7,7 @@ name := "sapphire-javafx"
 
 organization := "com.sfxcode.sapphire"
 
-crossScalaVersions := Seq("2.13.8", "2.12.12")
+crossScalaVersions := Seq("2.13.10", "2.12.12")
 
 scalaVersion := crossScalaVersions.value.head
 
@@ -21,9 +21,9 @@ scalacOptions += "-deprecation"
 
 test / parallelExecution := false
 
-val LogbackVersion    = "1.2.10"
+val LogbackVersion    = "1.4.5"
 val DeltaspikeVersion = "1.9.5"
-val IkonliVersion     = "12.3.0"
+val IkonliVersion     = "12.3.1"
 
 addCommandAlias("run-showcase", "sapphire-javafx-showcase/run")
 
@@ -100,8 +100,8 @@ lazy val showcase =
         "io.circe" %% "circe-parser"
       ).map(_ % circeVersion),
       libraryDependencies += "ch.qos.logback" % "logback-classic" % LogbackVersion,
-      resolvers += "sandec" at "https://sandec.bintray.com/repo",
-      libraryDependencies += "com.sandec"            % "mdfx"         % "0.1.7",
+      resolvers += "sandec" at "https://sandec.jfrog.io/artifactory/repo",
+      libraryDependencies += "com.sandec"            % "mdfx"         % "0.2.8",
       libraryDependencies += "com.jfoenix"           % "jfoenix"      % "9.0.10",
       libraryDependencies += "org.fxmisc.richtext"   % "richtextfx"   % "0.10.3",
       libraryDependencies += "com.github.pathikrit" %% "better-files" % "3.9.1",
@@ -141,7 +141,7 @@ lazy val docs = (project in file("docs"))
     ParadoxPlugin.InDirectoryFilter((Compile / paradox / sourceDirectory).value / "includes")
   )
 
-val JavaFXVersion = "17.0.2"
+val JavaFXVersion = "19"
 
 val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Linux")   => "linux"
@@ -154,13 +154,13 @@ addCommandAlias("run-tutorial", "sapphire-tutorial/run")
 
 // Test
 
-libraryDependencies += "org.specs2" %% "specs2-core" % "4.13.2" % Test
+libraryDependencies += "org.specs2" %% "specs2-core" % "4.19.0" % Test
 
 libraryDependencies += "org.scalameta" %% "munit" % "0.7.29" % Test
 
 libraryDependencies += "ch.qos.logback" % "logback-classic" % LogbackVersion % Test
 
-val circeVersion = "0.14.1"
+val circeVersion = "0.14.3"
 
 libraryDependencies ++= Seq(
   "io.circe" %% "circe-core",
@@ -174,9 +174,9 @@ libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "sw
   "org.openjfx" % s"javafx-$m" % JavaFXVersion % Provided classifier osName
 )
 
-libraryDependencies += "com.sfxcode.sapphire" %% "sapphire-data" % "1.3.0"
+libraryDependencies += "com.sfxcode.sapphire" %% "sapphire-data" % "1.3.2"
 
-libraryDependencies += "org.controlsfx" % "controlsfx" % "11.1.1" intransitive ()
+libraryDependencies += "org.controlsfx" % "controlsfx" % "11.1.2" intransitive ()
 
 libraryDependencies += "org.kordamp.ikonli" % "ikonli-javafx" % IkonliVersion
 
@@ -184,13 +184,13 @@ libraryDependencies += "org.kordamp.ikonli" % "ikonli-fontawesome-pack" % Ikonli
 
 // extension akka
 
-libraryDependencies += ("com.typesafe.akka" %% "akka-actor" % "2.6.18" % Provided).cross(CrossVersion.for3Use2_13)
+libraryDependencies += ("com.typesafe.akka" %% "akka-actor" % "2.6.20" % Provided).cross(CrossVersion.for3Use2_13)
 
 // extension showcase
 
 libraryDependencies += "com.jfoenix" % "jfoenix" % "9.0.10" % Provided
 
-libraryDependencies += "org.fxmisc.richtext" % "richtextfx" % "0.10.7" % Provided
+libraryDependencies += "org.fxmisc.richtext" % "richtextfx" % "0.11.0" % Provided
 
 licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
 

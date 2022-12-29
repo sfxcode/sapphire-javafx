@@ -1,7 +1,7 @@
 package com.sfxcode.sapphire.javafx.showcase.controller
 
 import com.jfoenix.controls.{ JFXTabPane, JFXTreeView }
-import com.sandec.mdfx.MDFXNode
+import com.sandec.mdfx.MarkdownView
 import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import com.sfxcode.sapphire.javafx.scene.SFXContentManager
 import com.sfxcode.sapphire.javafx.showcase.code.CodeAreaWrapper
@@ -142,7 +142,7 @@ abstract class ShowcaseController extends SFXViewController {
       val docs = source.getLines().mkString("\n")
       val documentation = "# %s - %s\n%s".format(item.group, item.name, docs)
 
-      val markdown = new MDFXNode(documentation)
+      val markdown = new MarkdownView(documentation)
       markdown.getStylesheets.add(markdownCss)
       markdown.setPadding(new Insets(4))
       documentationBox.getChildren.add(markdown)
@@ -153,7 +153,7 @@ abstract class ShowcaseController extends SFXViewController {
           docs
       }
       source.close()
-      val markdownShort = new MDFXNode(shortDocs)
+      val markdownShort = new MarkdownView(shortDocs)
       markdownShort.getStylesheets.add(markdownCss)
       showcaseBottomBox.getChildren.add(markdownShort)
     }
