@@ -7,7 +7,7 @@
 	</queryString>
 	<field name="id" class="java.lang.Long"/>
 	<field name="name" class="java.lang.String"/>
-	<field name="#SELF_name()@" class="java.lang.String"/>
+	<field name="#_self.getValue(&apos;name&apos;)@" class="java.lang.String"/>
 	<background>
 		<band/>
 	</background>
@@ -61,7 +61,7 @@
 				<reportElement x="230" y="3" width="100" height="12" uuid="e7d68c86-344a-4054-83a9-7962e3b40987">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
-				<textFieldExpression><![CDATA[$F{SELF_name()_END}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{#_self.getValue('name')@}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

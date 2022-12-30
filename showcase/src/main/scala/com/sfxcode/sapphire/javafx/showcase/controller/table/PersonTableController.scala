@@ -44,7 +44,7 @@ class PersonTableController extends SFXDataTableController with BaseController w
       // create report
       val exporter = PdfExporter(Resource.getUrl("report/personTable.jrxml"))
       val exportResult = exporter.exportReport(
-        File.newTemporaryFile(),
+        File.newTemporaryFile(suffix = ".pdf"),
         Map("text" -> "All Persons"),
         AdapterDataSource.fromList[Person](tableFilter.selectedItems.toList))
       // open report
