@@ -1,11 +1,10 @@
 package com.sfxcode.sapphire.javafx.value
 
 import com.sfxcode.sapphire.data.DataAdapter
-import com.sfxcode.sapphire.data.el.ObjectExpressionHelper
+import com.sfxcode.sapphire.data.el.{ Expressions, ObjectExpressionHelper }
 import com.sfxcode.sapphire.data.reflect.FieldMeta._
 import com.sfxcode.sapphire.data.reflect.FieldMeta
 import com.sfxcode.sapphire.javafx.Configuration
-import com.sfxcode.sapphire.javafx.value.SFXBean.FxmlExpressionPrefix
 
 import scala.jdk.CollectionConverters.MapHasAsScala
 
@@ -24,13 +23,21 @@ class SFXBean[T <: AnyRef](val bean: T, typeHints: List[FieldMeta] = EmptyTypeHi
 
   override protected def shouldHandleRelations(key: String): Boolean =
     key.contains(".") && !key.contains(ObjectExpressionHelper.ExpressionPrefix) &&
-      !key.contains(FxmlExpressionPrefix)
+      !key.contains(SFXBean.FxmlExpressionPrefix)
 
   override def updateValue(key: String, valueToUpdate: Any): Unit = {
     super.updateValue(key, valueToUpdate)
     val property = propertyMap.asScala.getOrElse(key, getProperty(key))
     updateObservableValue(property, valueToUpdate)
 
+  }
+
+  override def getValueForExpression[T <: Any](expression: String): Option[T] = {
+    if (expression.contains(SFXBean.FxmlExpressionPrefix)) {
+      Expressions.evaluateExpressionOnObject[T](wrappedData, expression.replace(SFXBean.FxmlExpressionPrefix, ObjectExpressionHelper.ExpressionPrefix))
+    } else {
+      Expressions.evaluateExpressionOnObject[T](wrappedData, expression)
+    }
   }
 
 }

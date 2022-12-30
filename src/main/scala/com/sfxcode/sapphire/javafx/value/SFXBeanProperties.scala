@@ -4,7 +4,6 @@ import com.sfxcode.sapphire.data.DataAdapter
 import com.sfxcode.sapphire.data.el.ObjectExpressionHelper
 import com.sfxcode.sapphire.data.reflect.{ FieldMeta, FieldMetaRegistry, ReflectionTools }
 import com.sfxcode.sapphire.data.reflect.FieldMeta._
-import com.typesafe.scalalogging.LazyLogging
 import javafx.beans.property._
 import javafx.beans.value.{ ChangeListener, ObservableValue }
 import javafx.collections.{ FXCollections, ObservableMap }
@@ -31,6 +30,9 @@ class SFXBeanProperties[T <: AnyRef](val sfxBean: T, typeHints: List[FieldMeta] 
   def getValue(key: String): Any = value(key)
 
   def getOldValue(key: String): Any = oldValue(key)
+
+  def isExpressionKey(key: String): Boolean =
+    key.contains(ObjectExpressionHelper.ExpressionPrefix) || key.contains(SFXBean.FxmlExpressionPrefix)
 
   def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any): Unit = {
     var key = ""
@@ -89,7 +91,7 @@ class SFXBeanProperties[T <: AnyRef](val sfxBean: T, typeHints: List[FieldMeta] 
 
   // property handling
   def getProperty(key: String): Property[_] =
-    if (key.contains(".") && !ObjectExpressionHelper.isExpressionKey(key)) {
+    if (key.contains(".") && !isExpressionKey(key)) {
       val objectKey = key.substring(0, key.indexOf("."))
       val newKey = key.substring(key.indexOf(".") + 1)
       val value = getValue(objectKey)
