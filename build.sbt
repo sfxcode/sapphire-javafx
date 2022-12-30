@@ -182,10 +182,6 @@ libraryDependencies += "org.kordamp.ikonli" % "ikonli-javafx" % IkonliVersion
 
 libraryDependencies += "org.kordamp.ikonli" % "ikonli-fontawesome-pack" % IkonliVersion
 
-// extension akka
-
-libraryDependencies += ("com.typesafe.akka" %% "akka-actor" % "2.6.20" % Provided).cross(CrossVersion.for3Use2_13)
-
 // extension showcase
 
 libraryDependencies += "com.jfoenix" % "jfoenix" % "9.0.10" % Provided
