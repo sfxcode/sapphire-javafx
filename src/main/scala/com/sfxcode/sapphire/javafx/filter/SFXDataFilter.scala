@@ -1,12 +1,10 @@
 package com.sfxcode.sapphire.javafx.filter
 
-import com.sfxcode.sapphire.data.wrapper.FieldProperties.defaultDateConverter
 import javafx.scene.Node
 import javafx.scene.layout.Pane
 import com.sfxcode.sapphire.javafx.value.SFXBean
 import com.sfxcode.sapphire.javafx.filter.SFXFilterType._
 import com.typesafe.config.{ Config, ConfigFactory }
-import com.typesafe.scalalogging.LazyLogging
 import org.controlsfx.control.textfield.TextFields
 
 import scala.collection.mutable
@@ -15,6 +13,7 @@ import javafx.collections.{ FXCollections, ObservableList }
 import javafx.scene.control.{ ComboBox, Control, TextField }
 import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
 import com.sfxcode.sapphire.javafx.SFXLogging
+import com.sfxcode.sapphire.javafx.value.Converter.defaultDateConverter
 
 import scala.jdk.CollectionConverters._
 

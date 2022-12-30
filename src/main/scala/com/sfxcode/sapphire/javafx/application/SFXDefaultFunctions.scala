@@ -1,11 +1,11 @@
 package com.sfxcode.sapphire.javafx.application
 
-import com.sfxcode.sapphire.data.Configuration
+import com.sfxcode.sapphire.javafx.Configuration
 
 import java.util.Date
 import com.sfxcode.sapphire.data.el.FunctionHelper
 import com.sfxcode.sapphire.javafx.SFXResourceBundleHolder
-import com.sfxcode.sapphire.data.wrapper.FieldProperties.defaultDateConverter
+import com.sfxcode.sapphire.javafx.value.Converter.defaultDateConverter
 
 import scala.annotation.varargs
 

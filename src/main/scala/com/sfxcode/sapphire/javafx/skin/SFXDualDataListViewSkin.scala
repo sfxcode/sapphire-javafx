@@ -1,6 +1,6 @@
 package com.sfxcode.sapphire.javafx.skin
 
-import com.sfxcode.sapphire.data.Configuration
+import com.sfxcode.sapphire.javafx.Configuration
 import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
 import com.sfxcode.sapphire.javafx.control.SFXIconTools._
 import com.sfxcode.sapphire.javafx.control.{ SFXDataListView, SFXDualDataListView }

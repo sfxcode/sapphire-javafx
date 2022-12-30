@@ -1,6 +1,6 @@
 package com.sfxcode.sapphire.javafx.property
 
-import com.sfxcode.sapphire.data.Configuration
+import com.sfxcode.sapphire.javafx.Configuration
 
 import java.time.{ Instant, LocalDate, LocalDateTime, ZoneId }
 import java.util.{ Date, Optional }

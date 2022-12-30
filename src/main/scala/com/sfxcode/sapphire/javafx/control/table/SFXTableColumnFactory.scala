@@ -1,6 +1,6 @@
 package com.sfxcode.sapphire.javafx.control.table
 
-import com.sfxcode.sapphire.data.Configuration
+import com.sfxcode.sapphire.javafx.Configuration
 import com.sfxcode.sapphire.javafx.control.{ SFXTableCellFactory, SFXTableValueFactory }
 import com.sfxcode.sapphire.javafx.value.SFXBean
 import javafx.scene.control.TableColumn

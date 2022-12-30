@@ -11,7 +11,7 @@
 
 ### 1.1.0
 * BREAKING CHANGE: Namespace **SFX** is added as prefix to all Classes and Styles (see Migration.md)
-* SFXConfigValues is deprecated use: com.sfxcode.sapphire.data.Configuration
+* SFXConfigValues is deprecated use: com.sfxcode.sapphire.javafx.Configuration
 * Fixed DataListViews CSS Bug
 
 ### 1.0.6

@@ -1,6 +1,6 @@
 package com.sfxcode.sapphire.javafx.fxml
 
-import com.sfxcode.sapphire.data.Configuration
+import com.sfxcode.sapphire.javafx.Configuration
 
 import java.net.URL
 import java.util.ResourceBundle

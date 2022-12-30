@@ -1,6 +1,6 @@
 package com.sfxcode.sapphire.javafx.base
 
-import com.sfxcode.sapphire.data.Configuration
+import com.sfxcode.sapphire.javafx.Configuration
 import org.specs2.mutable.Specification
 
 class ConfigValuesSpec extends Specification with Configuration {
