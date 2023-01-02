@@ -44,8 +44,10 @@ abstract class SFXDataTableController extends SFXViewController with SFXLogging 
 
     initTable(tableFilter)
 
-    tableFilter.selectedItem.addListener((_, oldValue, newValue) => selectedTableViewItemDidChange(oldValue, newValue))
-    tableFilter.selectedItems.addChangeListener(_ => selectedTableViewItemsDidChange(tableFilter.selectedItems))
+    tableFilter.selectedItem.addListener(
+      (_, oldValue, newValue) => selectedTableViewItemDidChange(oldValue, newValue))
+    tableFilter.selectedItems.addChangeListener(
+      _ => selectedTableViewItemsDidChange(tableFilter.selectedItems))
   }
 
   def shouldAddColunns: Boolean = true

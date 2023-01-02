@@ -25,9 +25,11 @@ trait SFXBeanConversions {
       None
 
   implicit def beansToObservableList[T <: AnyRef](iterable: Iterable[T]): ObservableList[SFXBean[T]] =
-    iterable.map(item => SFXBean[T](item))
+    iterable.map(
+      item => SFXBean[T](item))
 
   implicit def observableListToBeans[T <: AnyRef](list: ObservableList[SFXBean[T]]): Iterable[T] =
-    list.asScala.map(item => item.bean)
+    list.asScala.map(
+      item => item.bean)
 
 }

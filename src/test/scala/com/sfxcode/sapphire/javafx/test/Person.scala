@@ -44,7 +44,9 @@ object PersonDatabase {
 
   def testFriend(id: Int) = SFXBean(friends(id))
 
-  def testPersonen: List[SFXBean[Person]] = personen.map(item => SFXBean[Person](item))
+  def testPersonen: List[SFXBean[Person]] = personen.map(
+    item => SFXBean[Person](item))
 
-  def testFriends: List[SFXBean[Friend]] = friends.map(item => SFXBean[Friend](item))
+  def testFriends: List[SFXBean[Friend]] = friends.map(
+    item => SFXBean[Friend](item))
 }

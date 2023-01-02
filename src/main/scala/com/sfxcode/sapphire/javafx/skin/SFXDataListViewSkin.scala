@@ -24,14 +24,19 @@ class SFXDataListViewSkin[S <: AnyRef](view: SFXDataListView[S]) extends SkinBas
   view.footer.set(footerBox)
 
   updateCellFactory()
-  view.cellProperty.addListener((_, _, _) => updateView())
+  view.cellProperty.addListener(
+    (_, _, _) => updateView())
 
-  view.header.addListener((_, _, _) => updateView())
+  view.header.addListener(
+    (_, _, _) => updateView())
 
-  view.showHeader.addListener((_, _, _) => updateView())
+  view.showHeader.addListener(
+    (_, _, _) => updateView())
 
-  view.footer.addListener((_, _, _) => updateView())
-  view.showFooter.addListener((_, _, _) => updateView())
+  view.footer.addListener(
+    (_, _, _) => updateView())
+  view.showFooter.addListener(
+    (_, _, _) => updateView())
 
   getChildren.add(contentBox)
 

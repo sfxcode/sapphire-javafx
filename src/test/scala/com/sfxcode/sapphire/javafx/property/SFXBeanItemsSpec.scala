@@ -36,12 +36,12 @@ class SFXBeanItemsSpec extends Specification with LazyLogging {
 
       items must have size 2
       val nameItem = items.get(0)
-      nameItem.getName must be equalTo "name"
-      nameItem.getValue must be equalTo "Wendy Strong"
+      (nameItem.getName must be).equalTo("name")
+      (nameItem.getValue must be).equalTo("Wendy Strong")
 
       val idItem = items.get(1)
-      idItem.getName must be equalTo "id"
-      idItem.getValue.asInstanceOf[Long] must be equalTo 2
+      (idItem.getName must be).equalTo("id")
+      (idItem.getValue.asInstanceOf[Long] must be).equalTo(2)
 
     }
 
@@ -59,8 +59,8 @@ class SFXBeanItemsSpec extends Specification with LazyLogging {
 
       items must have size 3
       val nameItem = beanItems.beanItem("name").get
-      nameItem.getType.toString must be equalTo "class java.lang.String"
-      nameItem.getValue.toString must be equalTo "ABC"
+      (nameItem.getType.toString must be).equalTo("class java.lang.String")
+      (nameItem.getValue.toString must be).equalTo("ABC")
     }
 
   }

@@ -14,15 +14,16 @@ abstract class SFXMasterController extends SFXDataTableController with SFXEventH
 
   override def initTable(filter: SFXDataTableFilter[R]): Unit = {
     super.initTable(filter)
-    table.setOnMouseClicked { event =>
-      val clickCount = event.getClickCount
-      if (clickCount == 2) {
-        val isHeaderClicked = isEventTargetTableHeader(event.getTarget)
-        if (!isHeaderClicked) {
-          onDoubleClick(filter.selectedBean)
-          lastSelected = filter.getTable.getSelectionModel.selectedIndexProperty().intValue()
+    table.setOnMouseClicked {
+      event =>
+        val clickCount = event.getClickCount
+        if (clickCount == 2) {
+          val isHeaderClicked = isEventTargetTableHeader(event.getTarget)
+          if (!isHeaderClicked) {
+            onDoubleClick(filter.selectedBean)
+            lastSelected = filter.getTable.getSelectionModel.selectedIndexProperty().intValue()
+          }
         }
-      }
     }
   }
 
@@ -37,16 +38,18 @@ abstract class SFXMasterController extends SFXDataTableController with SFXEventH
 
   def onDoubleClick(bean: SFXBean[R]): Unit = {
     logger.debug("double clicked %s".format(bean))
-    detailController.foreach { detailController =>
-      navigateToDetailController(detailController)
-      detailController.masterTableController = Some(this)
-      updateDetailBean(bean)
+    detailController.foreach {
+      detailController =>
+        navigateToDetailController(detailController)
+        detailController.masterTableController = Some(this)
+        updateDetailBean(bean)
     }
   }
 
   def updateDetailBean(bean: SFXBean[R]): Unit =
-    detailController.foreach { detailController =>
-      detailController.updateBean(bean.asInstanceOf[SFXBean[detailController.R]])
+    detailController.foreach {
+      detailController =>
+        detailController.updateBean(bean.asInstanceOf[SFXBean[detailController.R]])
     }
 
   def navigateToDetailController(detailController: SFXDetailController): Unit

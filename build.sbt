@@ -172,7 +172,7 @@ libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "sw
   "org.openjfx" % s"javafx-$m" % JavaFXVersion % Provided classifier osName
 )
 
-libraryDependencies += "org.scala-lang.modules" %% "scala-collection-compat" % "2.6.0"
+libraryDependencies += "org.scala-lang.modules" %% "scala-collection-compat" % "2.9.0"
 
 libraryDependencies += "com.sfxcode.sapphire" %% "sapphire-data" % "2.0.3"
 

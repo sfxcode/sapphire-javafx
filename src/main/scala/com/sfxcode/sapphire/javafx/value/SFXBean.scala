@@ -8,8 +8,7 @@ import com.sfxcode.sapphire.javafx.Configuration
 
 import scala.jdk.CollectionConverters._
 
-class SFXBean[T <: AnyRef](val bean: T, typeHints: List[FieldMeta] = EmptyTypeHints)
-  extends SFXBeanProperties[T](bean, typeHints) {
+class SFXBean[T <: AnyRef](val bean: T, typeHints: List[FieldMeta] = EmptyTypeHints) extends SFXBeanProperties[T](bean, typeHints) {
 
   override def createChildForKey(key: String, value: Any): DataAdapter[AnyRef] = {
     if (!childrenMap.contains(key)) {

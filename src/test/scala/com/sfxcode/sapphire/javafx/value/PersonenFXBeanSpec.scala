@@ -10,9 +10,10 @@ class PersonenFXBeanSpec extends Specification {
     "should filter by FXBeanFunction" in {
       val testPersonen = PersonDatabase.testPersonen
 
-      testPersonen.size must be equalTo 200
-      val filtered = testPersonen.filter(p => p.getValue("age") == 25)
-      filtered.size must be equalTo 13
+      (testPersonen.size must be).equalTo(200)
+      val filtered = testPersonen.filter(
+        p => p.getValue("age") == 25)
+      (filtered.size must be).equalTo(13)
 
     }
   }

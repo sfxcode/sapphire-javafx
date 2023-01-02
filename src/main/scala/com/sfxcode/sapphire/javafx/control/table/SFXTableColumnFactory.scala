@@ -40,36 +40,32 @@ object SFXTableColumnFactory extends Configuration {
     val buffer = new ArrayBuffer[String]()
     val map = mutable.HashMap[String, TableColumn[SFXBean[S], T]]()
 
-    fieldMap.keySet.foreach { name =>
-      val field: Field = fieldMap(name)
-      val signature = field.getGenericType.getTypeName.toLowerCase
+    fieldMap.keySet.foreach {
+      name =>
+        val field: Field = fieldMap(name)
+        val signature = field.getGenericType.getTypeName.toLowerCase
 
-      buffer.+=(name)
+        buffer.+=(name)
 
-      val cellFactory = new SFXTableCellFactory[SFXBean[S], T]()
+        val cellFactory = new SFXTableCellFactory[SFXBean[S], T]()
 
-      val valueFactory = new SFXTableValueFactory[SFXBean[S], T]()
-      val property = columnPropertyMap.getOrElse(name, name)
-      valueFactory.property = property
+        val valueFactory = new SFXTableValueFactory[SFXBean[S], T]()
+        val property = columnPropertyMap.getOrElse(name, name)
+        valueFactory.property = property
 
-      if (editable)
-        cellFactory.converter = converterForSignature(signature)
-      else {
-        if (signature.contains("int") || signature.contains("long"))
-          valueFactory.format = numberFormat
-        else if (signature.contains("double") || signature.contains("float"))
-          valueFactory.format = decimalFormat
-      }
+        if (editable)
+          cellFactory.converter = converterForSignature(signature)
+        else {
+          if (signature.contains("int") || signature.contains("long"))
+            valueFactory.format = numberFormat
+          else if (signature.contains("double") || signature.contains("float"))
+            valueFactory.format = decimalFormat
+        }
 
-      if (shouldAlignRight(signature))
-        cellFactory.alignment = TextAlignment.RIGHT
+        if (shouldAlignRight(signature))
+          cellFactory.alignment = TextAlignment.RIGHT
 
-      map.put(
-        property,
-        columnFromFactories[S, T](
-          columnHeaderMap.getOrElse(name, propertyToHeader(name)),
-          valueFactory,
-          Some(cellFactory)))
+        map.put(property, columnFromFactories[S, T](columnHeaderMap.getOrElse(name, propertyToHeader(name)), valueFactory, Some(cellFactory)))
 
     }
     (buffer.toList, map.toMap)
@@ -80,19 +76,21 @@ object SFXTableColumnFactory extends Configuration {
       return property.toUpperCase
     val result = new mutable.StringBuilder()
     result.append(property.charAt(0).toUpper)
-    property.substring(1).toCharArray.foreach { c =>
-      if (c.isUpper)
-        result.append(" " + c)
-      else
-        result.append(c)
+    property.substring(1).toCharArray.foreach {
+      c =>
+        if (c.isUpper)
+          result.append(" " + c)
+        else
+          result.append(c)
     }
     result.toString()
   }
 
   private def shouldAlignRight(signature: String): Boolean = {
-    rightAlignmentList.foreach { s =>
-      if (signature.contains(s))
-        return true
+    rightAlignmentList.foreach {
+      s =>
+        if (signature.contains(s))
+          return true
     }
     false
   }

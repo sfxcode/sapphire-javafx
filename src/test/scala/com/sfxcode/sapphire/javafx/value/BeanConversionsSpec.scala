@@ -10,9 +10,9 @@ class BeanConversionsSpec extends Specification with SFXBeanConversions {
 
     "convert Bean To FXBean and back " in {
       val bean: SFXBean[TestBean] = TestBean()
-      bean.getValue("name") must be equalTo "test"
+      (bean.getValue("name") must be).equalTo("test")
       val convertedBean: TestBean = bean
-      convertedBean.name must be equalTo "test"
+      (convertedBean.name must be).equalTo("test")
     }
 
     "convert Bean List to ObservableList " in {
@@ -21,7 +21,7 @@ class BeanConversionsSpec extends Specification with SFXBeanConversions {
 
       val observableList: ObservableList[SFXBean[TestBean]] = list
 
-      observableList.head must be equalTo testBean
+      (observableList.head must be).equalTo(testBean)
 
     }
 

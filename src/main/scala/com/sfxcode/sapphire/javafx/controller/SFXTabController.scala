@@ -9,8 +9,9 @@ abstract class SFXTabController extends SFXViewController {
 
   override def didGainVisibilityFirstTime(): Unit = {
     super.didGainVisibilityFirstTime()
-    tabPane.getSelectionModel.selectedItemProperty.addListener { (_, oldValue, newValue) =>
-      tabPaneHasChanged(oldValue, newValue)
+    tabPane.getSelectionModel.selectedItemProperty.addListener {
+      (_, oldValue, newValue) =>
+        tabPaneHasChanged(oldValue, newValue)
     }
   }
 

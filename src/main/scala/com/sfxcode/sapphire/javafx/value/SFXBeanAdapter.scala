@@ -11,9 +11,7 @@ import javafx.util.StringConverter
 
 import scala.jdk.CollectionConverters._
 
-class SFXBeanAdapter[T <: AnyRef](val viewController: SFXViewController, var parent: Node = null)
-  extends SFXKeyConverter
-  with LazyLogging {
+class SFXBeanAdapter[T <: AnyRef](val viewController: SFXViewController, var parent: Node = null) extends SFXKeyConverter with LazyLogging {
 
   val beanProperty = new SimpleObjectProperty[SFXBean[T]]()
 
@@ -21,7 +19,8 @@ class SFXBeanAdapter[T <: AnyRef](val viewController: SFXViewController, var par
 
   hasBeanProperty.bind(beanProperty.isNotNull)
 
-  beanProperty.addListener((_, oldValue, newValue) => updateBean(oldValue, newValue))
+  beanProperty.addListener(
+    (_, oldValue, newValue) => updateBean(oldValue, newValue))
 
   val nodeCache: ObservableMap[String, Option[Node]] =
     FXCollections.observableHashMap[String, Option[javafx.scene.Node]]()
@@ -47,10 +46,11 @@ class SFXBeanAdapter[T <: AnyRef](val viewController: SFXViewController, var par
   }
 
   def addBindings(keyBindings: SFXKeyBindings): Unit =
-    keyBindings.keys.foreach { key =>
-      val property = guessPropertyForNode(key)
-      if (property.isDefined)
-        bindingMap.put(property.get, keyBindings(key))
+    keyBindings.keys.foreach {
+      key =>
+        val property = guessPropertyForNode(key)
+        if (property.isDefined)
+          bindingMap.put(property.get, keyBindings(key))
     }
 
   def guessPropertyForNode(key: String): Option[Property[_]] = {
@@ -84,17 +84,22 @@ class SFXBeanAdapter[T <: AnyRef](val viewController: SFXViewController, var par
   }
 
   protected def unbindAll(): Unit = {
-    boundProperties.keySet.asScala.foreach { p =>
-      val p1 = p.asInstanceOf[jfxbp.Property[Any]]
-      val p2 = boundProperties.get(p).asInstanceOf[jfxbp.Property[Any]]
-      p1.unbindBidirectional(p2)
+    boundProperties.keySet.asScala.foreach {
+      p =>
+        val p1 = p.asInstanceOf[jfxbp.Property[Any]]
+        val p2 = boundProperties.get(p).asInstanceOf[jfxbp.Property[Any]]
+        p1.unbindBidirectional(p2)
     }
     boundProperties.clear()
   }
 
   protected def bindAll(bean: SFXBean[T]): Unit =
     if (hasValue)
-      bindingMap.keySet().asScala.foreach(property => bindBidirectional(bean, property, bindingMap.get(property)))
+      bindingMap
+        .keySet()
+        .asScala
+        .foreach(
+          property => bindBidirectional(bean, property, bindingMap.get(property)))
 
   protected def bindBidirectional[S](bean: SFXBean[T], property: Property[S], beanKey: String): Unit = {
     val observable = bean.getProperty(beanKey)
@@ -109,10 +114,7 @@ class SFXBeanAdapter[T <: AnyRef](val viewController: SFXViewController, var par
     }
   }
 
-  protected def bindBidirectionalFromStringProperty[S](
-    stringProperty: StringProperty,
-    beanProperty: Property[S],
-    beanKey: String): Unit = {
+  protected def bindBidirectionalFromStringProperty[S](stringProperty: StringProperty, beanProperty: Property[S], beanKey: String): Unit = {
     val converter = converterMap.asScala.get(stringProperty)
     if (converter.isDefined) {
       val c = converter.get

@@ -16,12 +16,13 @@ class SFXNodePropertyResolver {
   def resolve(node: Node): Option[Property[_]] = {
     var maybeProperty: Option[Property[_]] = None
     breakable {
-      resolverBuffer.foreach { r =>
-        val result = r.resolve(node)
-        if (result.isDefined) {
-          maybeProperty = result
-          break()
-        }
+      resolverBuffer.foreach {
+        r =>
+          val result = r.resolve(node)
+          if (result.isDefined) {
+            maybeProperty = result
+            break()
+          }
       }
     }
     maybeProperty

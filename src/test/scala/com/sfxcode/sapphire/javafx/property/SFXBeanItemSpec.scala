@@ -14,21 +14,21 @@ class SFXBeanItemSpec extends Specification with LazyLogging {
 
     "be created with bean property" in {
       val person: SFXBean[Person] = PersonDatabase.testPerson(1)
-      person.bean.name must be equalTo "Bowen Leon"
+      (person.bean.name must be).equalTo("Bowen Leon")
 
       val nameItem = BeanItem(person, "name")
 
       nameItem.setValue("ABC")
 
-      person.bean.name must be equalTo "ABC"
+      (person.bean.name must be).equalTo("ABC")
 
-      nameItem.getType.toString must be equalTo "class java.lang.String"
+      (nameItem.getType.toString must be).equalTo("class java.lang.String")
 
       val ageItem = BeanItem(person, "age")
-      ageItem.getType.toString must be equalTo "int"
+      (ageItem.getType.toString must be).equalTo("int")
 
       val activeItem = BeanItem(person, "isActive")
-      activeItem.getType.toString must be equalTo "boolean"
+      (activeItem.getType.toString must be).equalTo("boolean")
 
     }
 
@@ -43,15 +43,15 @@ class SFXBeanItemSpec extends Specification with LazyLogging {
 
       nameItem.setValue("ABC")
 
-      person.getValue("name") must be equalTo "ABC"
+      (person.getValue("name") must be).equalTo("ABC")
 
-      nameItem.getType.toString must be equalTo "class java.lang.String"
+      (nameItem.getType.toString must be).equalTo("class java.lang.String")
 
       val ageItem = BeanItem(person, "age")
-      ageItem.getType.toString must be equalTo "class java.lang.Integer"
+      (ageItem.getType.toString must be).equalTo("class java.lang.Integer")
 
       val activeItem = BeanItem(person, "isActive")
-      activeItem.getType.toString must be equalTo "class java.lang.Boolean"
+      (activeItem.getType.toString must be).equalTo("class java.lang.Boolean")
 
     }
 
@@ -62,10 +62,10 @@ class SFXBeanItemSpec extends Specification with LazyLogging {
       map.put("isActive", true)
       val person = SFXBean(map)
       val nameItem = BeanItem(SFXBean(Map()), "name", clazz = classOf[String])
-      nameItem.getType.toString must be equalTo "class java.lang.String"
+      (nameItem.getType.toString must be).equalTo("class java.lang.String")
       nameItem.bean = person
 
-      nameItem.getValue.toString must be equalTo "ABC"
+      (nameItem.getValue.toString must be).equalTo("ABC")
 
     }
 

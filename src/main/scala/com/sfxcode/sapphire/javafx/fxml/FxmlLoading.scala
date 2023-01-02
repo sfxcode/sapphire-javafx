@@ -12,8 +12,7 @@ import javafx.scene.layout.Pane
 import scala.reflect.ClassTag
 
 trait FxmlLoading extends Configuration {
-  private lazy val recourceBundleHolder = SFXResourceBundleHolder(
-    resources.getOrElse(SFXApplicationEnvironment.resourceBundle))
+  private lazy val recourceBundleHolder = SFXResourceBundleHolder(resources.getOrElse(SFXApplicationEnvironment.resourceBundle))
 
   var rootPane: Pane = _
   var location: Option[URL] = None

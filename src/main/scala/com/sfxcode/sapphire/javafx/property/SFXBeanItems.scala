@@ -29,29 +29,35 @@ class SFXBeanItems[T <: AnyRef]() {
 
   def addItems[T <: AnyRef](implicit ct: ClassTag[T]): Unit = {
     val fieldMap = FieldRegistry.fieldMap(ct.runtimeClass)
-    fieldMap.keys.foreach { key =>
-      addItem(key)
+    fieldMap.keys.foreach {
+      key =>
+        addItem(key)
     }
   }
 
   def addItemsFromMap(scalaMap: Map[String, Any]): Unit =
-    scalaMap.keys.foreach { key =>
-      val value = scalaMap.get(key)
-      value.foreach(value => addItem(key, clazz = value.getClass))
+    scalaMap.keys.foreach {
+      key =>
+        val value = scalaMap.get(key)
+        value.foreach(
+          value => addItem(key, clazz = value.getClass))
     }
 
   def updateBeanValue(newValue: T): Unit = {
     beanItemBean = SFXBean[T](newValue)
-    itemBuffer.foreach(item => item.bean = beanItemBean)
+    itemBuffer.foreach(
+      item => item.bean = beanItemBean)
   }
 
   def updateBean(newBean: SFXBean[T]): Unit = {
     beanItemBean = newBean
-    itemBuffer.foreach(item => item.bean = beanItemBean)
+    itemBuffer.foreach(
+      item => item.bean = beanItemBean)
   }
 
   def beanItem(key: String): Option[BeanItem] =
-    itemBuffer.asScala.find(item => key.equals(item.getKey))
+    itemBuffer.asScala.find(
+      item => key.equals(item.getKey))
 
   def bean: SFXBean[T] = beanItemBean
 

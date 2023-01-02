@@ -13,14 +13,14 @@ class DefaultFunctionsSpec extends Specification {
       val functionHelper = Expressions.functionHelper
       SFXDefaultFunctions.addDefaultFunctions(functionHelper)
 
-      Expressions.getValue("${sfx:frameworkName()}").get must be equalTo "sapphire-javafx"
+      (Expressions.getValue("${sfx:frameworkName()}").get must be).equalTo("sapphire-javafx")
 
       val df = new SimpleDateFormat("yyyy-MM-dd")
       val date = df.parse("2015-01-01")
 
       Expressions.register("testDate", date)
 
-      Expressions.getValue("${sfx:dateString(testDate)}").get must be equalTo "2015-01-01"
+      (Expressions.getValue("${sfx:dateString(testDate)}").get must be).equalTo("2015-01-01")
 
       val nowString = Expressions.getValue("${sfx:nowAsString()}").get.toString
 
@@ -28,14 +28,14 @@ class DefaultFunctionsSpec extends Specification {
 
       Expressions.register("testBoolean", true)
 
-      Expressions.getValue("${sfx:boolString(testBoolean,'Y', 'N')}").get must be equalTo "Y"
+      (Expressions.getValue("${sfx:boolString(testBoolean,'Y', 'N')}").get must be).equalTo("Y")
 
       // #coreFunction
       Expressions.register("testBoolean", false)
-      Expressions.getValue("${sfx:boolString(testBoolean,'Y', 'N')}").get must be equalTo "N"
+      (Expressions.getValue("${sfx:boolString(testBoolean,'Y', 'N')}").get must be).equalTo("N")
       // #coreFunction
 
-      Expressions.getValue("${sfx:configString('test.string')}").get must be equalTo "Hello World"
+      (Expressions.getValue("${sfx:configString('test.string')}").get must be).equalTo("Hello World")
 
     }
 

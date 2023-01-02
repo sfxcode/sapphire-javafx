@@ -13,26 +13,29 @@ abstract class SFXAdditionalWindowController extends SFXWindowController with SF
     }
 
   def show(x: Double = 0.0, y: Double = 0.0): Unit =
-    stageProperty.foreach { stage =>
-      if (!stage.isShowing) {
-        setStagePosition(stage, x, y)
-        stage.show()
-      }
+    stageProperty.foreach {
+      stage =>
+        if (!stage.isShowing) {
+          setStagePosition(stage, x, y)
+          stage.show()
+        }
     }
 
   def showAndWait(x: Double = 0.0, y: Double = 0.0): Unit =
-    stageProperty.foreach { stage =>
-      if (!stage.isShowing) {
-        setStagePosition(stage, x, y)
-        stage.showAndWait()
-      }
+    stageProperty.foreach {
+      stage =>
+        if (!stage.isShowing) {
+          setStagePosition(stage, x, y)
+          stage.showAndWait()
+        }
     }
 
   def close(): Unit =
-    stageProperty.foreach { stage =>
-      if (stage.isShowing) {
-        stage.close()
-      }
+    stageProperty.foreach {
+      stage =>
+        if (stage.isShowing) {
+          stage.close()
+        }
 
     }
 

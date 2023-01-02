@@ -6,8 +6,7 @@ import javafx.util.converter.{ DateStringConverter, DateTimeStringConverter }
 object Converter extends Configuration {
 
   val DefaultDateConverterPattern: String = configStringValue("com.sfxcode.sapphire.data.defaultDateConverterPattern")
-  val DefaultDateTimeConverterPattern: String = configStringValue(
-    "com.sfxcode.sapphire.data.defaultDateTimeConverterPattern")
+  val DefaultDateTimeConverterPattern: String = configStringValue("com.sfxcode.sapphire.data.defaultDateTimeConverterPattern")
 
   var defaultDateConverter = new DateStringConverter(DefaultDateConverterPattern)
   var defaultDateTimeConverter = new DateTimeStringConverter(DefaultDateTimeConverterPattern)

@@ -21,23 +21,10 @@ object SFXDefaultFunctions extends Configuration {
     helper.addFunction(SapphireFunctionPrefix, "dateString", clazz, "dateString", classOf[AnyRef])
     helper.addFunction(SapphireFunctionPrefix, "now", clazz, "now")
     helper.addFunction(SapphireFunctionPrefix, "nowAsString", clazz, "nowAsString")
-    helper.addFunction(
-      SapphireFunctionPrefix,
-      "boolString",
-      clazz,
-      "boolString",
-      classOf[Boolean],
-      classOf[String],
-      classOf[String])
+    helper.addFunction(SapphireFunctionPrefix, "boolString", clazz, "boolString", classOf[Boolean], classOf[String], classOf[String])
     helper.addFunction(SapphireFunctionPrefix, "configString", clazz, "configString", classOf[String])
     helper.addFunction(SapphireFunctionPrefix, "i18n", clazz, "i18n", classOf[String], classOf[Array[Any]])
-    helper.addFunction(
-      SapphireFunctionPrefix,
-      "format",
-      classOf[java.lang.String],
-      "format",
-      classOf[String],
-      classOf[Array[Any]])
+    helper.addFunction(SapphireFunctionPrefix, "format", classOf[java.lang.String], "format", classOf[String], classOf[Array[Any]])
     helper
   }
 

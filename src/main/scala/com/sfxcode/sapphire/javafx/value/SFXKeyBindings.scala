@@ -18,12 +18,14 @@ class SFXKeyBindings {
   }
 
   def add(list: List[String], nodePrefix: String = ""): SFXKeyBindings = {
-    list.foreach(key => bindingMap.put(nodePrefix + key, key))
+    list.foreach(
+      key => bindingMap.put(nodePrefix + key, key))
     this
   }
 
   def add(map: Map[String, String]): SFXKeyBindings = {
-    map.keys.foreach(key => bindingMap.put(key, map(key)))
+    map.keys.foreach(
+      key => bindingMap.put(key, map(key)))
     this
   }
 
@@ -55,8 +57,9 @@ object SFXKeyBindings {
     val bindings = new SFXKeyBindings
 
     val fields = FieldRegistry.fieldMap(ct.runtimeClass)
-    fields.keys.foreach { name =>
-      bindings.add(nodePrefix + name, name)
+    fields.keys.foreach {
+      name =>
+        bindings.add(nodePrefix + name, name)
     }
     bindings
 

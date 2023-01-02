@@ -18,15 +18,12 @@ import javafx.stage.Stage
 
 import scala.language.implicitConversions
 
-abstract class SFXViewController
-  extends FxmlLoading
-  with SFXActionEvents
-  with Initializable
-  with Expressions
-  with LazyLogging
-  with SFXNodeLocator {
+abstract class SFXViewController extends FxmlLoading with SFXActionEvents with Initializable with Expressions with LazyLogging with SFXNodeLocator {
 
-  implicit def stringListToMap(list: List[String]): Map[String, String] = list.map(s => (s, s)).toMap
+  implicit def stringListToMap(list: List[String]): Map[String, String] = list
+    .map(
+      s => (s, s))
+    .toMap
 
   implicit def simpleObjectPropertyToOption[T <: AnyRef](prop: SimpleObjectProperty[T]): Option[T] =
     Option[T](prop.get())
@@ -76,27 +73,35 @@ abstract class SFXViewController
   def canGainVisibility(): Boolean = true
 
   def willGainVisibility(): Unit = {
-    managedChildren.foreach(controller => controller.willGainVisibility())
-    unmanagedChildren.foreach(controller => controller.willGainVisibility())
+    managedChildren.foreach(
+      controller => controller.willGainVisibility())
+    unmanagedChildren.foreach(
+      controller => controller.willGainVisibility())
   }
 
   def didGainVisibilityFirstTime(): Unit = {}
 
   def didGainVisibility(): Unit = {
-    managedChildren.foreach(controller => controller.didGainVisibility())
-    unmanagedChildren.foreach(controller => controller.didGainVisibility())
+    managedChildren.foreach(
+      controller => controller.didGainVisibility())
+    unmanagedChildren.foreach(
+      controller => controller.didGainVisibility())
   }
 
   def shouldLooseVisibility: Boolean = true
 
   def willLooseVisibility(): Unit = {
-    managedChildren.foreach(controller => controller.willLooseVisibility())
-    unmanagedChildren.foreach(controller => controller.willLooseVisibility())
+    managedChildren.foreach(
+      controller => controller.willLooseVisibility())
+    unmanagedChildren.foreach(
+      controller => controller.willLooseVisibility())
   }
 
   def didLooseVisibility(): Unit = {
-    managedChildren.foreach(controller => controller.didLooseVisibility())
-    unmanagedChildren.foreach(controller => controller.didLooseVisibility())
+    managedChildren.foreach(
+      controller => controller.didLooseVisibility())
+    unmanagedChildren.foreach(
+      controller => controller.didLooseVisibility())
   }
 
   def updatePaneContent(pane: Pane, viewController: SFXViewController): Boolean =
@@ -133,9 +138,5 @@ abstract class SFXViewController
   def actualSceneController: SFXViewController = windowController.get.actualSceneController
 
   override def toString: String =
-    "%s %s (fxml: %s, gainedVisibility: %s)".format(
-      this.getClass.getSimpleName,
-      hashCode(),
-      isLoadedFromFXML,
-      gainedVisibility)
+    "%s %s (fxml: %s, gainedVisibility: %s)".format(this.getClass.getSimpleName, hashCode(), isLoadedFromFXML, gainedVisibility)
 }

@@ -17,11 +17,7 @@ import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
 
 import java.lang.reflect.Field
 
-class SFXDataTableFilter[S <: AnyRef](
-  table: TableView[SFXBean[S]],
-  items: ObjectProperty[ObservableList[SFXBean[S]]],
-  pane: ObjectProperty[Pane])(implicit ct: ClassTag[S])
-  extends SFXDataFilter[S](items, pane) {
+class SFXDataTableFilter[S <: AnyRef](table: TableView[SFXBean[S]], items: ObjectProperty[ObservableList[SFXBean[S]]], pane: ObjectProperty[Pane])(implicit ct: ClassTag[S]) extends SFXDataFilter[S](items, pane) {
 
   // columns
   val columnMapping = new mutable.HashMap[String, TableColumn[SFXBean[S], _]]()
@@ -31,10 +27,11 @@ class SFXDataTableFilter[S <: AnyRef](
 
   val fieldMap: Map[String, Field] = FieldRegistry.fieldMap(ct.runtimeClass)
 
-  filterResult.addChangeListener { _ =>
-    table.getItems.clear()
-    table.getItems.addAll(filterResult)
-    table.sort()
+  filterResult.addChangeListener {
+    _ =>
+      table.getItems.clear()
+      table.getItems.addAll(filterResult)
+      table.sort()
   }
 
   filter()
@@ -54,21 +51,14 @@ class SFXDataTableFilter[S <: AnyRef](
     editable: Boolean = false,
     numberFormat: String = SFXTableColumnFactory.DefaultNumberFormat,
     decimalFormat: String = SFXTableColumnFactory.DefaultDecimalFormat): Unit = {
-    val columnList = SFXTableColumnFactory.columnListFromMembers[S, T](
-      fieldMap,
-      columnHeaderMap.toMap,
-      columnPropertyMap.toMap,
-      editable,
-      numberFormat,
-      decimalFormat)
+    val columnList =
+      SFXTableColumnFactory.columnListFromMembers[S, T](fieldMap, columnHeaderMap.toMap, columnPropertyMap.toMap, editable, numberFormat, decimalFormat)
 
-    columnList._1.foreach(key => addColumn(key, columnList._2(key)))
+    columnList._1.foreach(
+      key => addColumn(key, columnList._2(key)))
   }
 
-  def addColumn[T](
-    header: String,
-    property: String,
-    alignment: TextAlignment = TextAlignment.LEFT): TableColumn[SFXBean[S], T] = {
+  def addColumn[T](header: String, property: String, alignment: TextAlignment = TextAlignment.LEFT): TableColumn[SFXBean[S], T] = {
     val valueFactory = new SFXTableValueFactory[SFXBean[S], T]()
     valueFactory.property = columnPropertyMap.getOrElse(property, property)
     val cellFactory = new SFXTableCellFactory[SFXBean[S], T]()
@@ -86,13 +76,21 @@ class SFXDataTableFilter[S <: AnyRef](
 
   def getItems: ObservableList[SFXBean[S]] = table.getItems
 
-  def hideColumn(name: String*): Unit = name.foreach(name => getColumn(name).foreach(c => c.setVisible(false)))
+  def hideColumn(name: String*): Unit = name.foreach(
+    name =>
+      getColumn(name).foreach(
+        c => c.setVisible(false)))
 
-  def showColumn(name: String*): Unit = name.foreach(name => getColumn(name).foreach(c => c.setVisible(true)))
+  def showColumn(name: String*): Unit = name.foreach(
+    name =>
+      getColumn(name).foreach(
+        c => c.setVisible(true)))
 
-  def setColumnText(name: String, text: String): Unit = getColumn(name).foreach(c => c.setText(text))
+  def setColumnText(name: String, text: String): Unit = getColumn(name).foreach(
+    c => c.setText(text))
 
-  def setColumnPrefWidth(name: String, value: Double): Unit = getColumn(name).foreach(c => c.setPrefWidth(value))
+  def setColumnPrefWidth(name: String, value: Double): Unit = getColumn(name).foreach(
+    c => c.setPrefWidth(value))
 
   def selectedBean: SFXBean[S] = table.getSelectionModel.selectedItemProperty.get
 

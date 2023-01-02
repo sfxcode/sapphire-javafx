@@ -23,18 +23,19 @@ class SFXDualDataListViewSkin[S <: AnyRef](view: SFXDualDataListView[S])
     getStyleClass.add("sfx-dual-data-list-content-grid")
   }
 
-  val buttonMoveToTarget: Button = decoratedFontIconButton(
-    configStringValue(IconConfigPath + "right", "fa-angle-right"))
-  val buttonMoveToTargetAll: Button = decoratedFontIconButton(
-    configStringValue(IconConfigPath + "double-right", "fa-angle-double-right"))
+  val buttonMoveToTarget: Button = decoratedFontIconButton(configStringValue(IconConfigPath + "right", "fa-angle-right"))
+  val buttonMoveToTargetAll: Button = decoratedFontIconButton(configStringValue(IconConfigPath + "double-right", "fa-angle-double-right"))
   val buttonMoveToSource: Button = decoratedFontIconButton(configStringValue(IconConfigPath + "left", "fa-angle-left"))
-  val buttonMoveToSourceAll: Button = decoratedFontIconButton(
-    configStringValue(IconConfigPath + "double-left", "fa-angle-double-left"))
+  val buttonMoveToSourceAll: Button = decoratedFontIconButton(configStringValue(IconConfigPath + "double-left", "fa-angle-double-left"))
 
-  buttonMoveToTarget.setOnAction(_ => moveToTarget())
-  buttonMoveToSource.setOnAction(_ => moveToSource())
-  buttonMoveToTargetAll.setOnAction(_ => moveAllToTarget())
-  buttonMoveToSourceAll.setOnAction(_ => moveAllToSource())
+  buttonMoveToTarget.setOnAction(
+    _ => moveToTarget())
+  buttonMoveToSource.setOnAction(
+    _ => moveToSource())
+  buttonMoveToTargetAll.setOnAction(
+    _ => moveAllToTarget())
+  buttonMoveToSourceAll.setOnAction(
+    _ => moveAllToSource())
 
   def leftItems: ObservableList[SFXBean[S]] = view.leftDataListView.getItems
 
@@ -47,13 +48,17 @@ class SFXDualDataListViewSkin[S <: AnyRef](view: SFXDualDataListView[S])
   leftSelectionModel.setSelectionMode(MULTIPLE)
   rightSelectionModel.setSelectionMode(MULTIPLE)
 
-  leftItems.addChangeListener(_ => bindButtons())
+  leftItems.addChangeListener(
+    _ => bindButtons())
 
-  rightItems.addChangeListener(_ => bindButtons())
+  rightItems.addChangeListener(
+    _ => bindButtons())
 
-  leftSelectionModel.getSelectedItems.addChangeListener(_ => bindButtons())
+  leftSelectionModel.getSelectedItems.addChangeListener(
+    _ => bindButtons())
 
-  rightSelectionModel.getSelectedItems.addChangeListener(_ => bindButtons())
+  rightSelectionModel.getSelectedItems.addChangeListener(
+    _ => bindButtons())
 
   def bindButtons(): Unit = {
     buttonMoveToTargetAll.disableProperty.bind(Bindings.isEmpty(leftSelectionModel.getSelectedItems))
@@ -113,18 +118,12 @@ class SFXDualDataListViewSkin[S <: AnyRef](view: SFXDualDataListView[S])
   }
 
   private def moveToTarget(): Unit = {
-    move(
-      view.leftDataListView,
-      view.rightDataListView,
-      FXCollections.observableArrayList(leftSelectionModel.getSelectedItem))
+    move(view.leftDataListView, view.rightDataListView, FXCollections.observableArrayList(leftSelectionModel.getSelectedItem))
     leftSelectionModel.clearSelection()
   }
 
   private def moveToSource(): Unit = {
-    move(
-      view.rightDataListView,
-      view.leftDataListView,
-      FXCollections.observableArrayList(rightSelectionModel.getSelectedItem))
+    move(view.rightDataListView, view.leftDataListView, FXCollections.observableArrayList(rightSelectionModel.getSelectedItem))
     rightSelectionModel.clearSelection()
   }
 

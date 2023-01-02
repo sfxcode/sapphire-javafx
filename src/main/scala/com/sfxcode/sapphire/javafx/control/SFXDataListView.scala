@@ -18,10 +18,7 @@ class SFXDataListView[S <: AnyRef] extends Control with SFXBeanConversions {
 
   getStyleClass.add("sfx-data-list")
 
-  val items = new SimpleObjectProperty[ObservableList[SFXBean[S]]](
-    this,
-    "listViewItems",
-    FXCollections.observableArrayList[SFXBean[S]]())
+  val items = new SimpleObjectProperty[ObservableList[SFXBean[S]]](this, "listViewItems", FXCollections.observableArrayList[SFXBean[S]]())
 
   val listView = new ListView[SFXBean[S]]()
 
@@ -42,7 +39,7 @@ class SFXDataListView[S <: AnyRef] extends Control with SFXBeanConversions {
   val filterPromptProperty = new SimpleStringProperty("type to filter")
   val filter = new SimpleObjectProperty(new SFXDataListFilter[S](this))
 
-  protected override def createDefaultSkin: Skin[SFXDataListView[S]] =
+  override protected def createDefaultSkin: Skin[SFXDataListView[S]] =
     new SFXDataListViewSkin[S](this)
 
   override def getUserAgentStylesheet: String = css
@@ -58,13 +55,15 @@ class SFXDataListView[S <: AnyRef] extends Control with SFXBeanConversions {
 
   def getItems: ObservableList[SFXBean[S]] = items.get
 
-  footer.addListener { (_, _, _) =>
-    if (showFooter.get)
-      footerLabel.get.setText(footerTextProperty.get.format(filter.get.filterResult.size, filter.get.itemValues.size))
-    filter.get.filterResult.addChangeListener { _ =>
+  footer.addListener {
+    (_, _, _) =>
       if (showFooter.get)
         footerLabel.get.setText(footerTextProperty.get.format(filter.get.filterResult.size, filter.get.itemValues.size))
-    }
+      filter.get.filterResult.addChangeListener {
+        _ =>
+          if (showFooter.get)
+            footerLabel.get.setText(footerTextProperty.get.format(filter.get.filterResult.size, filter.get.itemValues.size))
+      }
   }
 
   private def sortedItems(values: ObservableList[SFXBean[S]]): ObservableList[SFXBean[S]] = {
@@ -77,7 +76,8 @@ class SFXDataListView[S <: AnyRef] extends Control with SFXBeanConversions {
         else
           sortProperty.get
       }
-      result = values.asScala.sortBy(f => "" + f.getValue(sortKey))
+      result = values.asScala.sortBy(
+        f => "" + f.getValue(sortKey))
     }
     result
   }

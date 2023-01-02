@@ -47,11 +47,12 @@ abstract class BaseDocumentLoader {
       case e: Exception =>
         val message = String.format("can not load fxml from path [%s]", path)
         throw new IllegalStateException(message, e)
-    } finally if (inputStream != null)
-      try inputStream.close()
-      catch {
-        case e: IOException =>
-      }
+    } finally
+      if (inputStream != null)
+        try inputStream.close()
+        catch {
+          case e: IOException =>
+        }
   }
 
   def getResourceAsStream(path: String): InputStream = {

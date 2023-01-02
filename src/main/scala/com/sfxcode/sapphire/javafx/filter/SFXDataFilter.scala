@@ -17,8 +17,7 @@ import com.sfxcode.sapphire.javafx.value.Converter.defaultDateConverter
 
 import scala.jdk.CollectionConverters._
 
-class SFXDataFilter[S <: AnyRef](items: ObjectProperty[ObservableList[SFXBean[S]]], pane: ObjectProperty[Pane])
-  extends SFXLogging {
+class SFXDataFilter[S <: AnyRef](items: ObjectProperty[ObservableList[SFXBean[S]]], pane: ObjectProperty[Pane]) extends SFXLogging {
   val conf: Config = ConfigFactory.load()
 
   protected val controlList: ObservableList[Node] = FXCollections.observableArrayList[Node]()
@@ -31,20 +30,25 @@ class SFXDataFilter[S <: AnyRef](items: ObjectProperty[ObservableList[SFXBean[S]
 
   val filterResult = FXCollections.observableArrayList[SFXBean[S]]()
 
-  itemValues.addChangeListener(_ => filter())
+  itemValues.addChangeListener(
+    _ => filter())
 
-  items.addListener { (_, _, _) =>
-    itemValues.addChangeListener(_ => filter())
-    filter()
+  items.addListener {
+    (_, _, _) =>
+      itemValues.addChangeListener(
+        _ => filter())
+      filter()
   }
 
-  items.addListener((_, oldValue, newValue) => itemsChanged(oldValue, newValue))
+  items.addListener(
+    (_, oldValue, newValue) => itemsChanged(oldValue, newValue))
 
   def itemsChanged(oldItems: ObservableList[SFXBean[S]], newItems: ObservableList[SFXBean[S]]): Unit = {
     //    oldItems.addListener(_ => {
     //
     //    })
-    newItems.addChangeListener(_ => filter())
+    newItems.addChangeListener(
+      _ => filter())
     itemsHasChanged()
   }
 
@@ -58,7 +62,8 @@ class SFXDataFilter[S <: AnyRef](items: ObjectProperty[ObservableList[SFXBean[S]
       filter()
   }
 
-  pane.addListener((_, oldValue, newValue) => paneChanged(oldValue, newValue))
+  pane.addListener(
+    (_, oldValue, newValue) => paneChanged(oldValue, newValue))
 
   def paneChanged(oldPane: Pane, newPane: Pane): Unit = {
     if (oldPane != null)
@@ -81,14 +86,14 @@ class SFXDataFilter[S <: AnyRef](items: ObjectProperty[ObservableList[SFXBean[S]
     searchField: TextField = TextFields.createClearableTextField()): TextField =
     addCustomSearchField(name, filterFunction(filterType, propertyKey, name), searchField)
 
-  def addCustomSearchField(
-    name: String,
-    p: SFXBean[S] => Boolean,
-    searchField: TextField = new TextField()): TextField = {
+  def addCustomSearchField(name: String, p: SFXBean[S] => Boolean, searchField: TextField = new TextField()): TextField = {
     if (filterControlPane != null)
       filterControlPane.getChildren.add(searchField)
     searchField.setId(name)
-    searchField.textProperty().addListener((_, oldValue, newValue) => filter())
+    searchField
+      .textProperty()
+      .addListener(
+        (_, oldValue, newValue) => filter())
     controlList.add(searchField)
     controlFilterMap.put(searchField, p)
     updateMapping(name, searchField).asInstanceOf[TextField]
@@ -106,19 +111,23 @@ class SFXDataFilter[S <: AnyRef](items: ObjectProperty[ObservableList[SFXBean[S]
     controlList.add(searchBox)
     controlFilterPropertyMap.put(searchBox, propertyKey)
     controlFilterMap.put(searchBox, equalsFunction(propertyKey, name))
-    searchBox.setOnAction(_ => filter())
+    searchBox.setOnAction(
+      _ => filter())
     updateMapping(name, searchBox).asInstanceOf[ComboBox[String]]
   }
 
   def updateSearchBoxValues(searchBox: ComboBox[String], noSelection: String, propertyKey: String): Unit = {
     val distinctList = items.getValue.asScala
-      .filter(b => b.getValue(propertyKey) != null)
-      .map(b => b.getValue(propertyKey).toString)
+      .filter(
+        b => b.getValue(propertyKey) != null)
+      .map(
+        b => b.getValue(propertyKey).toString)
       .distinct
       .sorted
     val valueBuffer = FXCollections.observableArrayList[String]()
     valueBuffer.add(noSelection)
-    distinctList.toList.foreach(entry => valueBuffer.add(entry))
+    distinctList.toList.foreach(
+      entry => valueBuffer.add(entry))
     searchBox.getItems.setAll(valueBuffer)
     searchBox.getSelectionModel.select(0)
   }
@@ -130,23 +139,28 @@ class SFXDataFilter[S <: AnyRef](items: ObjectProperty[ObservableList[SFXBean[S]
     filterNameControlMapping(name).asInstanceOf[ComboBox[String]]
 
   def removeFilterControl(control: Control): Unit =
-    filterControlNameMapping.get(control).foreach(s => removeFilterControl(s))
+    filterControlNameMapping
+      .get(control)
+      .foreach(
+        s => removeFilterControl(s))
 
   def removeFilterControl(identifier: String): Unit = {
     val control = filterNameControlMapping.get(identifier)
 
-    control.foreach { c =>
-      filterNameControlMapping.remove(identifier)
-      filterControlNameMapping.remove(c)
-      controlFilterMap.remove(c)
-      controlFilterPropertyMap.remove(c)
-      controlList.remove(c)
-      pane.get.getChildren.remove(c)
+    control.foreach {
+      c =>
+        filterNameControlMapping.remove(identifier)
+        filterControlNameMapping.remove(c)
+        controlFilterMap.remove(c)
+        controlFilterPropertyMap.remove(c)
+        controlList.remove(c)
+        pane.get.getChildren.remove(c)
     }
   }
 
   def removeAllControls(): Unit =
-    filterNameControlMapping.keys.foreach(key => removeFilterControl(key))
+    filterNameControlMapping.keys.foreach(
+      key => removeFilterControl(key))
 
   private def updateMapping(name: String, control: Control): Control = {
     filterControlNameMapping.put(control, name)
@@ -179,8 +193,7 @@ class SFXDataFilter[S <: AnyRef](items: ObjectProperty[ObservableList[SFXBean[S]
     filterResult.clear()
     filterResult.setAll(filtered)
 
-    logger.debug(
-      "filtered [%s] (new size %d) in %d ms".format(this.hashCode(), filtered.size, System.currentTimeMillis() - start))
+    logger.debug("filtered [%s] (new size %d) in %d ms".format(this.hashCode(), filtered.size, System.currentTimeMillis() - start))
   }
 
   def reset(): Unit = {
@@ -205,20 +218,24 @@ class SFXDataFilter[S <: AnyRef](items: ObjectProperty[ObservableList[SFXBean[S]
     else
       b => false
 
-  private def containsFunction(property: String, valueKey: String): SFXBean[S] => Boolean = { b =>
-    getFilterString(b, property).contains(valueMap(valueKey).toString)
+  private def containsFunction(property: String, valueKey: String): SFXBean[S] => Boolean = {
+    b =>
+      getFilterString(b, property).contains(valueMap(valueKey).toString)
   }
 
-  private def containsLowerCaseFunction(property: String, valueKey: String): SFXBean[S] => Boolean = { b =>
-    getFilterString(b, property).toLowerCase.contains(valueMap(valueKey).toString.toLowerCase)
+  private def containsLowerCaseFunction(property: String, valueKey: String): SFXBean[S] => Boolean = {
+    b =>
+      getFilterString(b, property).toLowerCase.contains(valueMap(valueKey).toString.toLowerCase)
   }
 
-  private def equalsFunction(property: String, valueKey: String): SFXBean[S] => Boolean = { b =>
-    getFilterString(b, property).equals(valueMap(valueKey))
+  private def equalsFunction(property: String, valueKey: String): SFXBean[S] => Boolean = {
+    b =>
+      getFilterString(b, property).equals(valueMap(valueKey))
   }
 
-  private def equalsLowerCaseFunction(property: String, valueKey: String): SFXBean[S] => Boolean = { b =>
-    getFilterString(b, property).toLowerCase.equals(valueMap(valueKey).toString.toLowerCase)
+  private def equalsLowerCaseFunction(property: String, valueKey: String): SFXBean[S] => Boolean = {
+    b =>
+      getFilterString(b, property).toLowerCase.equals(valueMap(valueKey).toString.toLowerCase)
   }
 
   private def getFilterString(bean: SFXBean[S], property: String): String = {
@@ -236,9 +253,7 @@ class SFXDataFilter[S <: AnyRef](items: ObjectProperty[ObservableList[SFXBean[S]
 
 object SFXDataFilter {
 
-  def apply[S <: AnyRef](
-    items: ObjectProperty[ObservableList[SFXBean[S]]],
-    pane: ObjectProperty[Pane]): SFXDataFilter[S] =
+  def apply[S <: AnyRef](items: ObjectProperty[ObservableList[SFXBean[S]]], pane: ObjectProperty[Pane]): SFXDataFilter[S] =
     new SFXDataFilter[S](items, pane)
 
 }

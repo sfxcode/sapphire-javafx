@@ -10,14 +10,14 @@ class SFXKeyBindingsSpec extends Specification {
     "should have default constructor" in {
       val bindings = SFXKeyBindings("name", "age")
       bindings.keys must haveSize(2)
-      bindings("name") must be equalTo "name"
+      (bindings("name") must be).equalTo("name")
 
     }
 
     "should be created by class tag" in {
       val bindings = SFXKeyBindings.forClass[TestBean]("test_")
       bindings.keys must haveSize(5)
-      bindings("test_name") must be equalTo "name"
+      (bindings("test_name") must be).equalTo("name")
     }
   }
 }

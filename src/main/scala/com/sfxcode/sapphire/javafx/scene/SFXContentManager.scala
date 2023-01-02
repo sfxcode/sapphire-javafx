@@ -41,16 +41,10 @@ class SFXContentManager extends SFXLogging {
   def switchToLast(): Unit =
     updatePaneContent(lastController)
 
-  def updateWithTransition(
-    newController: SFXViewController,
-    transition: SFXTransition = SFXEaseInTransition(),
-    pushToStack: Boolean = true): Unit =
+  def updateWithTransition(newController: SFXViewController, transition: SFXTransition = SFXEaseInTransition(), pushToStack: Boolean = true): Unit =
     updatePaneContent(newController, Some(transition), pushToStack)
 
-  def updatePaneContent(
-    newController: SFXViewController,
-    transition: Option[SFXTransition] = None,
-    pushToStack: Boolean = true): Unit = {
+  def updatePaneContent(newController: SFXViewController, transition: Option[SFXTransition] = None, pushToStack: Boolean = true): Unit = {
 
     val oldController = actualController
     val isDifferentController = newController != oldController
@@ -88,8 +82,9 @@ class SFXContentManager extends SFXLogging {
     if (oldController != null) {
       if (transition.isDefined) {
         val timeline = transition.get.createTimeline(newController.rootPane, oldController.rootPane)
-        timeline.setOnFinished { _ =>
-          removeOldController(oldController, pushToStack)
+        timeline.setOnFinished {
+          _ =>
+            removeOldController(oldController, pushToStack)
         }
         addNewController(newController)
         timeline.play()
@@ -130,10 +125,7 @@ class SFXContentManager extends SFXLogging {
 
 object SFXContentManager {
 
-  def apply(
-    contentPane: Pane,
-    parentController: SFXViewController,
-    startController: SFXViewController = null): SFXContentManager = {
+  def apply(contentPane: Pane, parentController: SFXViewController, startController: SFXViewController = null): SFXContentManager = {
 
     if (contentPane == null)
       throw new IllegalArgumentException("contentPane must not be NULL")

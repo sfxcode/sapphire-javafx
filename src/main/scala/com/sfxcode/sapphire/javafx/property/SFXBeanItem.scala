@@ -124,8 +124,9 @@ object BeanItem {
   def beanItems[T <: AnyRef](bean: SFXBean[T])(implicit ct: ClassTag[T]): ObservableList[Item] = {
     val result = FXCollections.observableArrayList[Item]()
     val fieldMap = FieldRegistry.fieldMap(ct.runtimeClass)
-    fieldMap.keys.foreach { key =>
-      result.add(BeanItem(bean, key))
+    fieldMap.keys.foreach {
+      key =>
+        result.add(BeanItem(bean, key))
     }
     result
   }

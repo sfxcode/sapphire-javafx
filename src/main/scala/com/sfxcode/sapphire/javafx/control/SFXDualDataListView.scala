@@ -14,7 +14,7 @@ class SFXDualDataListView[S <: AnyRef] extends Control {
 
   val rightDataListView = new SFXDataListView[S]()
 
-  protected override def createDefaultSkin: Skin[SFXDualDataListView[S]] =
+  override protected def createDefaultSkin: Skin[SFXDualDataListView[S]] =
     new SFXDualDataListViewSkin[S](this)
 
   override def getUserAgentStylesheet: String = css

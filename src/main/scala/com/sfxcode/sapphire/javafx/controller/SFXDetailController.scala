@@ -17,9 +17,10 @@ abstract class SFXDetailController extends SFXEditorController {
   }
 
   def actionReturn(event: ActionEvent): Unit =
-    masterTableController.foreach { masterController =>
-      navigateToMasterController(masterController)
-      masterController.table.getSelectionModel.select(masterController.lastSelected)
+    masterTableController.foreach {
+      masterController =>
+        navigateToMasterController(masterController)
+        masterController.table.getSelectionModel.select(masterController.lastSelected)
     }
 
   def navigateToMasterController(masterController: SFXMasterController): Unit

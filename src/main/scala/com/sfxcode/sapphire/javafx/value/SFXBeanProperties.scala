@@ -23,7 +23,10 @@ class SFXBeanProperties[T <: AnyRef](val sfxBean: T, typeHints: List[FieldMeta] 
   lazy val propertyMap: ObservableMap[String, Property[_]] = FXCollections.observableHashMap[String, Property[_]]()
 
   val EmptyMemberInfo: FieldMeta = FieldMeta("name_ignored")
-  val memberInfoMap: Map[String, FieldMeta] = typeHints.map(info => (info.name, info)).toMap
+  val memberInfoMap: Map[String, FieldMeta] = typeHints
+    .map(
+      info => (info.name, info))
+    .toMap
 
   def getBean: AnyRef = wrappedData
 
@@ -50,12 +53,15 @@ class SFXBeanProperties[T <: AnyRef](val sfxBean: T, typeHints: List[FieldMeta] 
       }
     }
 
-    expressionMap.keySet.asScala.foreach(k => updateObservableValue(expressionMap.get(k), getValue(k)))
-    parentDataAdapter.foreach(bean => bean.asInstanceOf[SFXBean[T]].childHasChanged(observable, oldValue, newValue))
+    expressionMap.keySet.asScala.foreach(
+      k => updateObservableValue(expressionMap.get(k), getValue(k)))
+    parentDataAdapter.foreach(
+      bean => bean.asInstanceOf[SFXBean[T]].childHasChanged(observable, oldValue, newValue))
   }
 
   def childHasChanged(observable: ObservableValue[_], oldValue: Any, newValue: Any): Unit =
-    expressionMap.keySet.asScala.foreach(k => updateObservableValue(expressionMap.get(k), getValue(k)))
+    expressionMap.keySet.asScala.foreach(
+      k => updateObservableValue(expressionMap.get(k), getValue(k)))
 
   override def preserveChanges(key: String, oldValue: Any, newValue: Any): Unit = {
     super.preserveChanges(key, oldValue, newValue)
@@ -66,9 +72,10 @@ class SFXBeanProperties[T <: AnyRef](val sfxBean: T, typeHints: List[FieldMeta] 
   }
 
   def updateParentChangesProperty(): Unit =
-    parentDataAdapter.foreach { adapter =>
-      adapter.asInstanceOf[SFXBean[T]].hasChangesProperty.setValue(parentDataAdapter.get.asInstanceOf[SFXBean[T]].hasManagedChanges || hasManagedChanges)
-      adapter.asInstanceOf[SFXBean[T]].updateParentChangesProperty()
+    parentDataAdapter.foreach {
+      adapter =>
+        adapter.asInstanceOf[SFXBean[T]].hasChangesProperty.setValue(parentDataAdapter.get.asInstanceOf[SFXBean[T]].hasManagedChanges || hasManagedChanges)
+        adapter.asInstanceOf[SFXBean[T]].updateParentChangesProperty()
     }
 
   def memberInfo(name: String): FieldMeta =
@@ -236,7 +243,10 @@ class SFXBeanProperties[T <: AnyRef](val sfxBean: T, typeHints: List[FieldMeta] 
     }
 
   def hasManagedChanges: Boolean = {
-    val childrenChangeCount: Int = childrenMap.values.map(bean => bean.changeManagementMap.size).sum
+    val childrenChangeCount: Int = childrenMap.values
+      .map(
+        bean => bean.changeManagementMap.size)
+      .sum
     (changeManagementMap.size + childrenChangeCount) > 0
   }
 

@@ -38,10 +38,12 @@ abstract class SFXEditorController extends SFXViewController {
   }
 
   def actionSave(event: ActionEvent): Unit =
-    editableBean.foreach(b => save(b.bean))
+    editableBean.foreach(
+      b => save(b.bean))
 
   def actionRevert(event: ActionEvent): Unit =
-    editableBean.foreach(fxBean => fxBean.revert())
+    editableBean.foreach(
+      fxBean => fxBean.revert())
 
   def save(beanValue: R): Unit
 

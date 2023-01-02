@@ -7,16 +7,17 @@ import javafx.collections.ObservableList
 import javafx.scene.control.{ ListView, TextField }
 import com.sfxcode.sapphire.javafx.SFXCollectionExtensions._
 
-class SFXDataListFilter[S <: AnyRef](dataList: SFXDataListView[S])
-  extends SFXDataFilter[S](dataList.items, dataList.header) {
+class SFXDataListFilter[S <: AnyRef](dataList: SFXDataListView[S]) extends SFXDataFilter[S](dataList.items, dataList.header) {
   var sortFiltered = true
 
   var searchField: TextField = addSearchField(dataList.cellProperty.get)
   searchField.setPromptText(dataList.filterPromptProperty.get)
 
-  dataList.filterPromptProperty.addListener((_, oldValue, newValue) => searchField.setPromptText(newValue))
+  dataList.filterPromptProperty.addListener(
+    (_, oldValue, newValue) => searchField.setPromptText(newValue))
 
-  dataList.cellProperty.addListener((_, oldValue, newValue) => cellPropertyChanged(oldValue, newValue))
+  dataList.cellProperty.addListener(
+    (_, oldValue, newValue) => cellPropertyChanged(oldValue, newValue))
 
   def cellPropertyChanged(oldValue: String, newValue: String): Unit = {
     controlList.clear()
@@ -36,10 +37,12 @@ class SFXDataListFilter[S <: AnyRef](dataList: SFXDataListView[S])
 
   }
 
-  filterResult.addChangeListener { _ =>
-    dataList.listView.getItems.clear()
-    if (!filterResult.isEmpty)
-      filterResult.foreach(v => dataList.listView.getItems.add(v))
+  filterResult.addChangeListener {
+    _ =>
+      dataList.listView.getItems.clear()
+      if (!filterResult.isEmpty)
+        filterResult.foreach(
+          v => dataList.listView.getItems.add(v))
   }
 
   filter()
