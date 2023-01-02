@@ -199,7 +199,7 @@ Demo applications and showcase available as blueprints.
 
 ## maven
 
-sapphire-javafx is deployed on bintray (jcenter) and maven central.
+sapphire-javafx is deployed on  maven central.
 
 ## Supporters
 
