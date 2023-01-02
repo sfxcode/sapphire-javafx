@@ -5,7 +5,7 @@ import com.sfxcode.sapphire.javafx.test.{ Person, PersonDatabase, TestViewContro
 import org.specs2.mutable.Specification
 
 class SFXBeanAdapterSpec extends Specification {
-  val adapter = SFXBeanAdapter[Person](new TestViewController)
+  val adapter: SFXBeanAdapter[Person] = SFXBeanAdapter[Person](new TestViewController)
 
   sequential
 

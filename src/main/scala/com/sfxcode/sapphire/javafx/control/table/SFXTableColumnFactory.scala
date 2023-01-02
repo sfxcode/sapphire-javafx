@@ -11,7 +11,7 @@ import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 
 object SFXTableColumnFactory extends Configuration {
-  val rightAlignmentList = List("int", "long", "double", "float")
+  val rightAlignmentList: List[String] = List("int", "long", "double", "float")
 
   val PrefWidth: Double = configDoubleValue("sapphire.javafx.TableColumnFactory.prefWidth", 80.0)
   val DefaultNumberFormat: String = configStringValue("sapphire.defaultNumberFormat", "#,##0")

@@ -40,9 +40,9 @@ object PersonDatabase {
     Source.fromInputStream(is, "UTF-8").getLines().mkString
   }
 
-  def testPerson(id: Int) = SFXBean(personen(id))
+  def testPerson(id: Int): SFXBean[Person] = SFXBean(personen(id))
 
-  def testFriend(id: Int) = SFXBean(friends(id))
+  def testFriend(id: Int): SFXBean[Friend] = SFXBean(friends(id))
 
   def testPersonen: List[SFXBean[Person]] = personen.map(
     item => SFXBean[Person](item))

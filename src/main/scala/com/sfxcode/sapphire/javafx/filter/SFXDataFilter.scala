@@ -28,7 +28,7 @@ class SFXDataFilter[S <: AnyRef](items: ObjectProperty[ObservableList[SFXBean[S]
   protected val filterControlNameMapping = new mutable.HashMap[Control, String]()
   protected val filterNameControlMapping = new mutable.HashMap[String, Control]()
 
-  val filterResult = FXCollections.observableArrayList[SFXBean[S]]()
+  val filterResult: ObservableList[SFXBean[S]] = FXCollections.observableArrayList[SFXBean[S]]()
 
   itemValues.addChangeListener(
     _ => filter())
