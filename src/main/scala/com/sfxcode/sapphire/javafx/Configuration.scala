@@ -1,13 +1,13 @@
 package com.sfxcode.sapphire.javafx
 
 import com.sfxcode.sapphire.javafx.Configuration._
-import com.sfxcode.sapphire.javafx.stage.Stage
+import com.sfxcode.sapphire.javafx.stage.SFXStage
 import com.typesafe.config.{ Config, ConfigFactory }
 import com.typesafe.scalalogging.LazyLogging
 
 import scala.jdk.CollectionConverters._
 
-trait Configuration extends Stage with LazyLogging {
+trait Configuration extends SFXStage with LazyLogging {
 
   val config: Config = ConfigFactory.load()
 

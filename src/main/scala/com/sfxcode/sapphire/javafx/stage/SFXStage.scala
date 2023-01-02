@@ -1,9 +1,9 @@
 package com.sfxcode.sapphire.javafx.stage
 
-import com.sfxcode.sapphire.javafx.stage.StageValues._
+import com.sfxcode.sapphire.javafx.stage.SFXStageValues._
 import com.typesafe.scalalogging.LazyLogging
 
-trait Stage extends LazyLogging {
+trait SFXStage extends LazyLogging {
   val StageKey = "SFX_SYSTEM_STAGE"
 
   def isDevelopment: Boolean =
@@ -32,7 +32,7 @@ trait Stage extends LazyLogging {
 
   def setStage(stage: String): Unit = {
     System.setProperty(StageKey, stage)
-    logger.debug("Stage changed to %s".format(stage))
+    logger.debug("SFXStage changed to %s".format(stage))
   }
 
   def setUnitTest(): Unit = setStage(UnitTest.toString)

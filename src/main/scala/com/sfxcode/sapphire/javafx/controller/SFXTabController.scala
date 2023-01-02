@@ -1,6 +1,5 @@
 package com.sfxcode.sapphire.javafx.controller
 
-import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import javafx.fxml.FXML
 import javafx.scene.control._
 

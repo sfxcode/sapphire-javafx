@@ -1,6 +1,5 @@
 package com.sfxcode.sapphire.javafx.controller
 
-import com.sfxcode.sapphire.javafx.controller.SFXViewController
 import com.sfxcode.sapphire.javafx.value.{ SFXBean, SFXBeanAdapter, SFXKeyBindings }
 import javafx.event.ActionEvent
 import javafx.fxml.FXML

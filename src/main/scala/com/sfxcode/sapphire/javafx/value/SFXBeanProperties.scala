@@ -12,7 +12,7 @@ import com.sfxcode.sapphire.javafx.value.Converter._
 
 import java.time.LocalDate
 import scala.collection.mutable
-import scala.jdk.CollectionConverters.CollectionHasAsScala
+import scala.jdk.CollectionConverters._
 
 class SFXBeanProperties[T <: AnyRef](val sfxBean: T, typeHints: List[FieldMeta] = EmptyTypeHints)
   extends DataAdapter[T](sfxBean, typeHints)
