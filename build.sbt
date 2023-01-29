@@ -139,7 +139,7 @@ lazy val docs = (project in file("docs"))
     ParadoxPlugin.InDirectoryFilter((Compile / paradox / sourceDirectory).value / "includes")
   )
 
-val JavaFXVersion = "19"
+val JavaFXVersion = "19.0.2.1"
 
 val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Linux")   => "linux"
@@ -152,7 +152,7 @@ addCommandAlias("run-tutorial", "sapphire-tutorial/run")
 
 // Test
 
-libraryDependencies += "org.specs2" %% "specs2-core" % "4.19.0" % Test
+libraryDependencies += "org.specs2" %% "specs2-core" % "4.19.2" % Test
 
 libraryDependencies += "org.scalameta" %% "munit" % "0.7.29" % Test
 
@@ -174,14 +174,13 @@ libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "sw
 
 libraryDependencies += "org.scala-lang.modules" %% "scala-collection-compat" % "2.9.0"
 
-libraryDependencies += "com.sfxcode.sapphire" %% "sapphire-data" % "2.0.3"
+libraryDependencies += "com.sfxcode.sapphire" %% "sapphire-data" % "2.0.5"
 
 libraryDependencies += "org.controlsfx" % "controlsfx" % "11.1.2" intransitive ()
 
 libraryDependencies += "org.kordamp.ikonli" % "ikonli-javafx" % IkonliVersion
 
 libraryDependencies += "org.kordamp.ikonli" % "ikonli-fontawesome-pack" % IkonliVersion
-
 // extension showcase
 
 libraryDependencies += "com.jfoenix" % "jfoenix" % "9.0.10" % Provided

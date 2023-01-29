@@ -32,6 +32,24 @@ class PersonBeanSpec extends Specification {
       // #expression
 
     }
+
+    "update value of members of case class" in {
+      val person: SFXBean[Person] = PersonDatabase.testPerson(0)
+
+      (person.getValue("age") must be).equalTo(25)
+
+      person.updateValue("age", 26)
+
+      (person.getOldValue("age") must be).equalTo(25)
+      (person.getValue("age") must be).equalTo(26)
+
+      person.revert()
+      (person.getValue("age") must be).equalTo(25)
+
+      person.bean.age must be equalTo (25)
+      person.getBean().age must be equalTo (25)
+
+    }
   }
 
 }

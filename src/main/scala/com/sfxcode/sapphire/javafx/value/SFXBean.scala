@@ -8,7 +8,11 @@ import com.sfxcode.sapphire.javafx.Configuration
 
 import scala.jdk.CollectionConverters._
 
-class SFXBean[T <: AnyRef](val bean: T, typeHints: List[FieldMeta] = EmptyTypeHints) extends SFXBeanProperties[T](bean, typeHints) {
+class SFXBean[T <: AnyRef](private val wrappedBean: T, typeHints: List[FieldMeta] = EmptyTypeHints) extends SFXBeanProperties[T](wrappedBean, typeHints) {
+
+  def bean: T = wrappedBean
+
+  def getBean(): T = bean
 
   override def createChildForKey(key: String, value: Any): DataAdapter[AnyRef] = {
     if (!childrenMap.contains(key)) {
@@ -33,9 +37,9 @@ class SFXBean[T <: AnyRef](val bean: T, typeHints: List[FieldMeta] = EmptyTypeHi
 
   override def getValueForExpression[T <: Any](expression: String): Option[T] = {
     if (expression.contains(SFXBean.FxmlExpressionPrefix)) {
-      Expressions.evaluateExpressionOnObject[T](wrappedData, expression.replace(SFXBean.FxmlExpressionPrefix, ObjectExpressionHelper.ExpressionPrefix))
+      Expressions.evaluateExpressionOnObject[T](bean, expression.replace(SFXBean.FxmlExpressionPrefix, ObjectExpressionHelper.ExpressionPrefix))
     } else {
-      Expressions.evaluateExpressionOnObject[T](wrappedData, expression)
+      Expressions.evaluateExpressionOnObject[T](bean, expression)
     }
   }
 

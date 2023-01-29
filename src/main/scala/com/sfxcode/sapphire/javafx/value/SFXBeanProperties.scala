@@ -14,8 +14,8 @@ import java.time.LocalDate
 import scala.collection.mutable
 import scala.jdk.CollectionConverters._
 
-class SFXBeanProperties[T <: AnyRef](val sfxBean: T, typeHints: List[FieldMeta] = EmptyTypeHints)
-  extends DataAdapter[T](sfxBean, typeHints)
+abstract class SFXBeanProperties[T <: AnyRef](private val wrappedBeanProperties: T, typeHints: List[FieldMeta] = EmptyTypeHints)
+  extends DataAdapter[T](wrappedBeanProperties, typeHints)
   with ChangeListener[Any] {
 
   lazy val hasChangesProperty = new SimpleBooleanProperty(data, "_hasChanges", false)
@@ -27,8 +27,6 @@ class SFXBeanProperties[T <: AnyRef](val sfxBean: T, typeHints: List[FieldMeta] 
     .map(
       info => (info.name, info))
     .toMap
-
-  def getBean: AnyRef = wrappedData
 
   def getValue(key: String): Any = value(key)
 
@@ -46,10 +44,10 @@ class SFXBeanProperties[T <: AnyRef](val sfxBean: T, typeHints: List[FieldMeta] 
 
     if (key.nonEmpty) {
       preserveChanges(key, oldValue, newValue)
-      wrappedData match {
+      wrappedBeanProperties match {
         case map: mutable.Map[String, Any] => map.put(key, newValue)
         case javaMap: java.util.Map[String, Any] => javaMap.put(key, newValue)
-        case _ => ReflectionTools.setFieldValue(wrappedData, key, newValue)
+        case _ => ReflectionTools.setFieldValue(wrappedBeanProperties, key, newValue)
       }
     }
 
